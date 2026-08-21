@@ -149,7 +149,26 @@ function render(){
   $("cards").innerHTML=rankedResults.slice(0,shownCount).map(cardHTML).join("");
   $("more-btn").hidden=shownCount>=Math.min(6,rankedResults.length);
 }
+document.addEventListener("click", e => {
+  const link = e.target.closest(".product-link");
+  if (!link) return;
 
+  const card = link.closest(".shoe-card");
+  const productName = card?.querySelector(".shoe-name")?.textContent || "";
+
+  let rank = 0;
+  if (card?.classList.contains("rank1")) rank = 1;
+  else if (card?.classList.contains("rank2")) rank = 2;
+  else if (card?.classList.contains("rank3")) rank = 3;
+
+  if (typeof gtag === "function") {
+    gtag("event", "product_click", {
+      product_name: productName,
+      rank: rank,
+      destination_url: link.href
+    });
+  }
+});
 $("profile-form").addEventListener("submit",e=>{
   e.preventDefault();
   validatePriorityUI();
@@ -174,6 +193,18 @@ $("profile-form").addEventListener("submit",e=>{
   });
   shownCount=3;
   render();
+  if (typeof gtag === "function") {
+  gtag("event", "recommendation_generated", {
+    position: p.position,
+    surface: p.surface,
+    budget: p.budget,
+    foot: p.foot,
+    brand: p.brand,
+    top1: rankedResults[0]?.name || "",
+    top2: rankedResults[1]?.name || "",
+    top3: rankedResults[2]?.name || ""
+  });
+}
   $("result-summary").textContent=`Profil : ${p.position.toLowerCase()} · ${p.surface.toLowerCase()} · ${euro(p.budget)} · pied ${p.foot.toLowerCase()}`;
   $("results-section").hidden=false;
   $("results-section").scrollIntoView({behavior:"smooth",block:"start"});
