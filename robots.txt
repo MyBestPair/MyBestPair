@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://myshoesbasket.github.io/my-shoes/sitemap.xml
