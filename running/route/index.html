@@ -331,6 +331,88 @@
       });
     });
   });
+  <script>
+  document.querySelectorAll('.question').forEach(question => {
+    const buttons = question.querySelectorAll('.option');
+
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        buttons.forEach(btn => {
+          btn.classList.remove('selected');
+        });
+
+        button.classList.add('selected');
+      });
+    });
+  });
+
+  document.getElementById('recommendBtn').addEventListener('click', () => {
+
+    const budget = document.getElementById('budget').value;
+    const poids = document.getElementById('poids').value;
+
+    const questions = document.querySelectorAll('.question');
+
+    const objectif = questions[1].querySelector('.selected')?.textContent.trim();
+    const distance = questions[2].querySelector('.selected')?.textContent.trim();
+    const allure = questions[3].querySelector('.selected')?.textContent.trim();
+    const typePied = questions[5].querySelector('.selected')?.textContent.trim();
+    const attaque = questions[6].querySelector('.selected')?.textContent.trim();
+    const priorite1 = questions[7].querySelector('.selected')?.textContent.trim();
+    const priorite2 = questions[8].querySelector('.selected')?.textContent.trim();
+    const priorite3 = questions[9].querySelector('.selected')?.textContent.trim();
+    const marque = questions[10].querySelector('.selected')?.textContent.trim();
+
+    if (
+      !budget ||
+      !objectif ||
+      !distance ||
+      !allure ||
+      !poids ||
+      !typePied ||
+      !attaque ||
+      !priorite1 ||
+      !priorite2 ||
+      !priorite3 ||
+      !marque
+    ) {
+      alert("⚠️ Merci de compléter toutes les informations avant de voir tes recommandations.");
+      return;
+    }
+
+    if (
+      priorite1 === priorite2 ||
+      priorite1 === priorite3 ||
+      priorite2 === priorite3
+    ) {
+      alert("⚠️ Tes priorités n°1, n°2 et n°3 doivent être différentes.");
+      return;
+    }
+
+    const profil = {
+      budget: Number(budget),
+      objectif,
+      distance,
+      allure,
+      poids: Number(poids),
+      typePied,
+      attaque,
+      priorite1,
+      priorite2,
+      priorite3,
+      marque
+    };
+
+    console.log("PROFIL RUNNING ROUTE :", profil);
+
+    localStorage.setItem(
+      "myshoesRouteProfil",
+      JSON.stringify(profil)
+    );
+
+    alert("✅ Profil enregistré ! Le moteur de recommandation peut maintenant analyser les chaussures.");
+  });
 </script>
+
 </body>
 </html>
