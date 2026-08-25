@@ -1,18 +1,208 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chaussures Running Route | MyShoes</title>
+
+  <title>Trouve ta chaussure de running idéale | MY SHOES</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+      color: #172033;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #173b7a, #2468d8);
+      color: white;
+      text-align: center;
+      padding: 55px 20px;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 {
+      margin: 0 auto 15px;
+      max-width: 700px;
+      font-size: 38px;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: auto;
+      font-size: 17px;
+      line-height: 1.6;
+      opacity: 0.95;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: -25px auto 50px;
+      padding: 0 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 18px;
+      padding: 30px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    }
+
+    .badge {
+      display: inline-block;
+      background: #e8f0ff;
+      color: #1f5fc4;
+      padding: 8px 14px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    h2 {
+      margin-top: 5px;
+      font-size: 26px;
+    }
+
+    .description {
+      color: #657086;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .question {
+      padding: 20px 0;
+      border-top: 1px solid #e7eaf0;
+    }
+
+    .question:first-of-type {
+      border-top: none;
+    }
+
+    .question-title {
+      font-weight: 700;
+      font-size: 17px;
+      margin-bottom: 12px;
+    }
+
+    .options {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .option {
+      border: 2px solid #dce2ec;
+      background: white;
+      padding: 12px 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    .option:hover {
+      border-color: #2468d8;
+      background: #f2f6ff;
+    }
+
+    .back {
+      display: block;
+      text-align: center;
+      margin-top: 25px;
+      color: #2468d8;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 30px;
+      }
+
+      .hero {
+        padding: 40px 18px;
+      }
+
+      .card {
+        padding: 22px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-  <h1>🏃 MyShoes Running — Route</h1>
+  <section class="hero">
+    <div class="logo">🏃 MY SHOES • RUNNING</div>
 
-  <p>Trouve les chaussures de running route qui correspondent vraiment à ton profil.</p>
+    <h1>Trouve la chaussure qui correspond vraiment à ta course.</h1>
 
-  <p>Le questionnaire MyShoes Route arrive ici.</p>
+    <p>
+      Renseigne ton profil de coureur et MY SHOES analyse tes besoins
+      pour te proposer les chaussures les plus adaptées.
+    </p>
+  </section>
+
+  <main class="container">
+
+    <div class="card">
+
+      <span class="badge">🏃 RUNNING • ROUTE</span>
+
+      <h2>Ton profil de coureur</h2>
+
+      <p class="description">
+        Quelques questions suffisent pour comprendre ta pratique
+        et trouver les modèles qui te correspondent.
+      </p>
+
+      <div class="question">
+        <div class="question-title">Quelle est ta distance habituelle ?</div>
+
+        <div class="options">
+          <button class="option">5 km</button>
+          <button class="option">10 km</button>
+          <button class="option">Semi-marathon</button>
+          <button class="option">Marathon</button>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="question-title">Quel est ton objectif principal ?</div>
+
+        <div class="options">
+          <button class="option">⚡ Vitesse</button>
+          <button class="option">⚖️ Polyvalence</button>
+          <button class="option">☁️ Confort</button>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="question-title">Quel est ton niveau ?</div>
+
+        <div class="options">
+          <button class="option">Débutant</button>
+          <button class="option">Intermédiaire</button>
+          <button class="option">Confirmé</button>
+        </div>
+      </div>
+
+    </div>
+
+    <a class="back" href="../">← Retour à Running</a>
+
+  </main>
 
 </body>
 </html>
