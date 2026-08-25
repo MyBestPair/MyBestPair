@@ -138,6 +138,11 @@
         padding: 22px;
       }
     }
+    .option.selected {
+  background: #2468d8;
+  color: white;
+  border-color: #2468d8;
+}
   </style>
 </head>
 
@@ -167,42 +172,143 @@
         et trouver les modèles qui te correspondent.
       </p>
 
-      <div class="question">
-        <div class="question-title">Quelle est ta distance habituelle ?</div>
+  <div class="question">
+  <div class="question-title">Quel est ton budget ?</div>
+  <div class="options">
+    <input type="number" id="budget" min="50" max="400" step="10" placeholder="Ex : 150 €">
+  </div>
+</div>
 
-        <div class="options">
-          <button class="option">5 km</button>
-          <button class="option">10 km</button>
-          <button class="option">Semi-marathon</button>
-          <button class="option">Marathon</button>
-        </div>
-      </div>
+<div class="question">
+  <div class="question-title">Quel est ton objectif principal ?</div>
+  <div class="options">
+    <button class="option">CONFORT</button>
+    <button class="option">PERFORMANCE</button>
+    <button class="option">POLYVALENCE</button>
+    <button class="option">COMPÉTITION</button>
+    <button class="option">ENTRAÎNEMENT</button>
+  </div>
+</div>
 
-      <div class="question">
-        <div class="question-title">Quel est ton objectif principal ?</div>
+<div class="question">
+  <div class="question-title">Quelle est ta distance principale ?</div>
+  <div class="options">
+    <button class="option">5 KM</button>
+    <button class="option">10 KM</button>
+    <button class="option">SEMI-MARATHON</button>
+    <button class="option">MARATHON</button>
+  </div>
+</div>
 
-        <div class="options">
-          <button class="option">⚡ Vitesse</button>
-          <button class="option">⚖️ Polyvalence</button>
-          <button class="option">☁️ Confort</button>
-        </div>
-      </div>
+<div class="question">
+  <div class="question-title">Quelle est ton allure habituelle ?</div>
+  <div class="options">
+    <button class="option">&lt; 4:00 /KM</button>
+    <button class="option">4:00 - 5:00/KM</button>
+    <button class="option">5:00 - 6:00/KM</button>
+    <button class="option">&gt; 6:00 /KM</button>
+  </div>
+</div>
 
-      <div class="question">
-        <div class="question-title">Quel est ton niveau ?</div>
+<div class="question">
+  <div class="question-title">Quel est ton poids ?</div>
+  <div class="options">
+    <input type="number" id="poids" min="40" max="200" step="1" placeholder="Ex : 85 kg">
+  </div>
+</div>
 
-        <div class="options">
-          <button class="option">Débutant</button>
-          <button class="option">Intermédiaire</button>
-          <button class="option">Confirmé</button>
-        </div>
-      </div>
+<div class="question">
+  <div class="question-title">Quel est ton type de pied ?</div>
+  <div class="options">
+    <button class="option">ÉTROIT</button>
+    <button class="option">STANDARD</button>
+    <button class="option">LARGE</button>
+  </div>
+</div>
+
+<div class="question">
+  <div class="question-title">Quelle est ton attaque de pied ?</div>
+  <div class="options">
+    <button class="option">TALON</button>
+    <button class="option">MÉDIO-PIED</button>
+    <button class="option">AVANT-PIED</button>
+    <button class="option">JE NE SAIS PAS</button>
+  </div>
+</div>
+
+<div class="question">
+  <div class="question-title">Priorité n°1</div>
+  <div class="options">
+    <button class="option">AMORTI</button>
+    <button class="option">DYNAMISME</button>
+    <button class="option">STABILITÉ</button>
+    <button class="option">CONFORT</button>
+    <button class="option">DURABILITÉ</button>
+    <button class="option">LÉGÈRETÉ</button>
+  </div>
+</div>
+
+<div class="question">
+  <div class="question-title">Priorité n°2</div>
+  <div class="options">
+    <button class="option">AMORTI</button>
+    <button class="option">DYNAMISME</button>
+    <button class="option">STABILITÉ</button>
+    <button class="option">CONFORT</button>
+    <button class="option">DURABILITÉ</button>
+    <button class="option">LÉGÈRETÉ</button>
+  </div>
+</div>
+
+<div class="question">
+  <div class="question-title">Priorité n°3</div>
+  <div class="options">
+    <button class="option">AMORTI</button>
+    <button class="option">DYNAMISME</button>
+    <button class="option">STABILITÉ</button>
+    <button class="option">CONFORT</button>
+    <button class="option">DURABILITÉ</button>
+    <button class="option">LÉGÈRETÉ</button>
+  </div>
+</div>
+
+<div class="question">
+  <div class="question-title">Quelle est ta marque préférée ?</div>
+  <div class="options">
+    <button class="option">AUCUNE</button>
+    <button class="option">NIKE</button>
+    <button class="option">ASICS</button>
+    <button class="option">ADIDAS</button>
+    <button class="option">HOKA</button>
+    <button class="option">BROOKS</button>
+    <button class="option">SAUCONY</button>
+    <button class="option">NEW BALANCE</button>
+    <button class="option">PUMA</button>
+    <button class="option">MIZUNO</button>
+    <button class="option">ON</button>
+    <button class="option">KIPRUN</button>
+  </div>
+</div>
 
     </div>
 
     <a class="back" href="../">← Retour à Running</a>
 
   </main>
+<script>
+  document.querySelectorAll('.question').forEach(question => {
+    const buttons = question.querySelectorAll('.option');
 
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        buttons.forEach(btn => {
+          btn.classList.remove('selected');
+        });
+
+        button.classList.add('selected');
+      });
+    });
+  });
+</script>
 </body>
 </html>
