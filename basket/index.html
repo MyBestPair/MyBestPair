@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1f5cff">
+<title>Quelle chaussure de basket choisir ? | MY SHOES</title>
+<meta name="description" content="Trouve la chaussure de basket idéale selon ton poste, ton style de jeu, ton budget et tes priorités. MY SHOES analyse les modèles et te recommande les meilleures paires.">
+  <link rel="canonical" href="https://myshoesbasket.github.io/my-shoes/">
+
+<meta property="og:title" content="Quelle chaussure de basket choisir ? | MY SHOES">
+<meta property="og:description" content="Trouve la chaussure de basket idéale selon ton poste, ton style de jeu, ton budget et tes priorités.">
+<meta property="og:url" content="https://myshoesbasket.github.io/my-shoes/">
+<meta property="og:type" content="website">
+  <link rel="stylesheet" href="style.css">
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8CZ831W067"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8CZ831W067');
+</script>
+</head>
+<body>
+  <header class="hero">
+    <div class="shell hero-inner">
+      <div class="logo">🏀 <span>MY SHOES</span></div>
+     <h1>Trouve la chaussure de basket qui correspond vraiment à ton jeu.</h1>
+<p>Renseigne ton profil et découvre quelles chaussures de basket correspondent le mieux à ton poste, ton style de jeu, ton budget et tes priorités.</p>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section id="profile-section" class="panel profile-panel">
+      <div class="section-heading">
+        <span class="eyebrow">01 — TON PROFIL</span>
+        <h2>Quelques choix, puis on s’occupe du reste.</h2>
+      </div>
+
+      <form id="profile-form" novalidate>
+        <div class="field">
+          <label for="position">Ton poste</label>
+          <select id="position">
+            <option>MENEUR</option><option>ARRIERE</option><option>AILIER</option>
+            <option>AILIER FORT</option><option>PIVOT</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <span class="field-label">Ta surface principale</span>
+          <div class="segmented" data-name="surface">
+            <button type="button" class="seg active" data-value="INDOOR">Indoor</button>
+            <button type="button" class="seg" data-value="OUTDOOR">Outdoor</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="budget">Ton budget</label>
+          <div class="money-input">
+            <input id="budget" type="number" min="1" step="1" value="100" inputmode="decimal">
+            <span>€</span>
+          </div>
+          <small>MY SHOES garde automatiquement une marge “coup de cœur” de 20 €.</small>
+        </div>
+
+        <div class="field">
+          <span class="field-label">Ton type de pied</span>
+          <div class="segmented" data-name="foot">
+            <button type="button" class="seg" data-value="ETROIT">Étroit</button>
+            <button type="button" class="seg active" data-value="STANDARD">Standard</button>
+            <button type="button" class="seg" data-value="LARGE">Large</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="brand">Marque préférée</label>
+          <select id="brand">
+            <option value="AUCUNE">Aucune préférence</option>
+            <option value="NIKE">Nike / Jordan</option>
+            <option value="ADIDAS">adidas</option>
+            <option value="UNDER ARMOUR">Under Armour</option>
+            <option value="PUMA">PUMA</option>
+            <option value="NEW BALANCE">New Balance</option>
+            <option value="LI-NING">Li-Ning / Way of Wade</option>
+            <option value="ASICS">ASICS</option>
+            <option value="ANTA">ANTA</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="style">Style de jeu</label>
+          <select id="style">
+            <option value="RAPIDE">Rapide</option>
+            <option value="PUISSANT">Puissant</option>
+            <option value="EXPLOSIF">Explosif</option>
+            <option value="POLYVALENT">Polyvalent</option>
+            <option value="SHOOTEUR">Shooteur</option>
+            <option value="DEFENSEUR">Défenseur</option>
+          </select>
+        </div>
+
+        <div class="priorities">
+          <div class="field"><label for="priority1">Priorité n°1</label><select id="priority1"></select></div>
+          <div class="field"><label for="priority2">Priorité n°2</label><select id="priority2"></select></div>
+          <div class="field"><label for="priority3">Priorité n°3</label><select id="priority3"></select></div>
+        </div>
+
+        <div id="form-error" class="form-error" hidden></div>
+        <button class="cta" type="submit">🏆 Trouver mes chaussures</button>
+      </form>
+    </section>
+
+    <section id="results-section" class="results-section" hidden>
+      <div class="section-heading results-heading">
+        <span class="eyebrow">02 — TES RECOMMANDATIONS</span>
+        <h2>Les modèles qui correspondent le mieux à ton profil.</h2>
+        <p id="result-summary"></p>
+      </div>
+
+      <div id="cards" class="cards"></div>
+
+      <div class="result-actions">
+        <button id="more-btn" class="secondary-btn" type="button">Voir 3 autres modèles</button>
+        <button id="edit-btn" class="ghost-btn" type="button">← Modifier mon profil</button>
+      </div>
+    </section>
+    <section class="seo-section">
+  <div class="section-heading">
+    <span class="eyebrow">GUIDE</span>
+    <h2>Comment choisir sa chaussure de basket ?</h2>
+  </div>
+
+  <p>
+    Choisir une chaussure de basket dépend de plusieurs critères : ton poste,
+    ton style de jeu, la surface sur laquelle tu joues, ton type de pied et
+    les sensations que tu recherches sur le terrain. Un meneur rapide n’aura
+    pas forcément les mêmes besoins qu’un pivot puissant ou qu’un ailier
+    polyvalent.
+  </p>
+
+  <h3>Choisir sa chaussure selon son poste</h3>
+  <p>
+    Les meneurs et arrières recherchent souvent de la légèreté, de la
+    réactivité et une excellente traction pour changer de direction rapidement.
+    Les ailiers ont généralement besoin d’un bon équilibre entre dynamisme,
+    maintien et polyvalence. Pour les ailiers forts et les pivots, l’amorti,
+    la stabilité et le maintien prennent souvent davantage d’importance.
+  </p>
+
+  <h3>Indoor ou outdoor : une différence importante</h3>
+  <p>
+    Une chaussure destinée au parquet indoor privilégie généralement
+    l’adhérence et les sensations de jeu. Pour une utilisation outdoor, la
+    durabilité de la semelle devient essentielle afin de résister aux terrains
+    plus abrasifs. Certaines chaussures sont suffisamment polyvalentes pour
+    être utilisées sur les deux surfaces.
+  </p>
+
+  <h3>Ton style de jeu et ton type de pied comptent aussi</h3>
+  <p>
+    Que tu sois rapide, puissant, explosif, shooteur, défenseur ou polyvalent,
+    tes priorités peuvent être très différentes. La largeur du pied est
+    également importante : une chaussure trop étroite peut devenir
+    inconfortable, tandis qu’un modèle trop large peut réduire le maintien.
+  </p>
+
+  <p>
+    MY SHOES croise ces différents critères pour t’aider à trouver les
+    chaussures de basket les plus adaptées à ton profil, à ton budget et à
+    tes priorités.
+  </p>
+</section>
+  </main>
+
+  <footer>
+    <div class="shell footer-inner">
+      <span>MY SHOES — Web V1.1</span>
+      <span>Recommandations indicatives basées sur les données du projet.</span>
+    </div>
+  </footer>
+
+  <script src="shoes.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
