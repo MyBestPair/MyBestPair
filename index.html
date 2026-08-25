@@ -1,187 +1,216 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#1f5cff">
-<title>Quelle chaussure de basket choisir ? | MY SHOES</title>
-<meta name="description" content="Trouve la chaussure de basket idéale selon ton poste, ton style de jeu, ton budget et tes priorités. MY SHOES analyse les modèles et te recommande les meilleures paires.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#173b7a">
+  <title>MY SHOES | Trouve la chaussure faite pour toi</title>
+  <meta name="description" content="MY SHOES analyse ton profil sportif pour te recommander les chaussures les plus adaptées en basketball, running route et trail.">
   <link rel="canonical" href="https://myshoesbasket.github.io/my-shoes/">
-
-<meta property="og:title" content="Quelle chaussure de basket choisir ? | MY SHOES">
-<meta property="og:description" content="Trouve la chaussure de basket idéale selon ton poste, ton style de jeu, ton budget et tes priorités.">
-<meta property="og:url" content="https://myshoesbasket.github.io/my-shoes/">
-<meta property="og:type" content="website">
-  <link rel="stylesheet" href="style.css">
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-8CZ831W067"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-8CZ831W067');
-</script>
+  <style>
+    * { box-sizing: border-box; }
+    :root {
+      --navy:#102a55; --blue:#2468d8; --green:#1f7a59;
+      --text:#172033; --muted:#647087; --line:#e5eaf2; --bg:#f5f7fb;
+    }
+    html { scroll-behavior:smooth; }
+    body {
+      margin:0; font-family:Arial,Helvetica,sans-serif; color:var(--text);
+      background:
+        radial-gradient(circle at 20% 10%, rgba(47,121,238,.12), transparent 30%),
+        radial-gradient(circle at 82% 17%, rgba(31,122,89,.10), transparent 25%),
+        var(--bg);
+    }
+    a { color:inherit; }
+    .hero {
+      position:relative; overflow:hidden; color:white;
+      background:linear-gradient(135deg,#102a55,#2468d8);
+      padding:24px 20px 105px; min-height:455px;
+    }
+    .hero::before,.hero::after {
+      content:""; position:absolute; border-radius:50%; background:rgba(255,255,255,.09);
+    }
+    .hero::before { width:390px; height:390px; right:-140px; top:-120px; }
+    .hero::after { width:250px; height:250px; left:-100px; bottom:-80px; }
+    .topbar {
+      position:relative; z-index:2; max-width:1120px; margin:0 auto;
+      display:flex; justify-content:space-between; align-items:center; gap:20px;
+    }
+    .logo { font-size:23px; font-weight:900; letter-spacing:.5px; }
+    .tagline { font-size:13px; font-weight:700; opacity:.85; }
+    .hero-content {
+      position:relative; z-index:2; max-width:860px; margin:70px auto 0; text-align:center;
+    }
+    .eyebrow {
+      display:inline-block; padding:8px 14px; border:1px solid rgba(255,255,255,.35);
+      background:rgba(255,255,255,.10); border-radius:999px; font-size:13px;
+      font-weight:800; margin-bottom:18px;
+    }
+    h1 {
+      margin:0 auto 18px; max-width:840px; font-size:clamp(38px,7vw,64px); line-height:1.02;
+    }
+    .hero p { margin:0 auto; max-width:700px; font-size:18px; line-height:1.65; opacity:.95; }
+    .content {
+      width:min(1120px,calc(100% - 28px)); margin:-70px auto 50px; position:relative; z-index:3;
+    }
+    .sports { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    .sport-card {
+      min-height:365px; background:white; border-radius:22px; overflow:hidden; text-decoration:none;
+      box-shadow:0 14px 38px rgba(23,32,51,.12); border:1px solid rgba(19,52,100,.08);
+      display:flex; flex-direction:column; transition:transform .2s ease, box-shadow .2s ease;
+    }
+    .sport-card:hover { transform:translateY(-5px); box-shadow:0 20px 48px rgba(23,32,51,.17); }
+    .visual {
+      height:165px; display:flex; align-items:center; justify-content:center; position:relative;
+      overflow:hidden; font-size:74px;
+    }
+    .visual::after {
+      content:""; position:absolute; width:175px; height:175px;
+      border:2px solid rgba(255,255,255,.18); border-radius:50%;
+    }
+    .basket .visual { background:linear-gradient(135deg,#123875,#2468d8); }
+    .route .visual { background:linear-gradient(135deg,#204b9c,#2f79ee); }
+    .trail .visual { background:linear-gradient(135deg,#174d3a,#278768); }
+    .sport-body { padding:24px; display:flex; flex-direction:column; flex:1; }
+    .sport-label { color:var(--muted); font-size:12px; font-weight:900; letter-spacing:.55px; margin-bottom:7px; }
+    .sport-title { margin:0 0 10px; font-size:29px; }
+    .sport-desc { margin:0; color:var(--muted); line-height:1.58; font-size:15px; }
+    .sport-footer {
+      margin-top:auto; padding-top:22px; display:flex; justify-content:space-between;
+      align-items:center; gap:10px; font-weight:900;
+    }
+    .basket .sport-footer,.route .sport-footer { color:var(--blue); }
+    .trail .sport-footer { color:var(--green); }
+    .arrow {
+      width:38px; height:38px; border-radius:50%; display:grid; place-items:center;
+      background:#f1f5fb; font-size:20px; flex:0 0 auto;
+    }
+    .steps {
+      margin-top:32px; background:white; border:1px solid var(--line); border-radius:20px;
+      padding:28px; box-shadow:0 8px 26px rgba(23,32,51,.06);
+    }
+    .steps h2 { margin:0 0 22px; text-align:center; font-size:27px; }
+    .step-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    .step { padding:12px; text-align:center; }
+    .step-icon {
+      width:54px; height:54px; margin:0 auto 12px; border-radius:16px; display:grid;
+      place-items:center; background:#edf3ff; font-size:25px;
+    }
+    .step strong { display:block; margin-bottom:7px; }
+    .step p { margin:0; color:var(--muted); line-height:1.5; font-size:14px; }
+    footer {
+      padding:8px 20px 36px; text-align:center; color:var(--muted); font-size:13px; line-height:1.6;
+    }
+    @media (max-width:900px) {
+      .sports { grid-template-columns:1fr; }
+      .sport-card { min-height:315px; }
+      .visual { height:145px; }
+    }
+    @media (max-width:700px) {
+      .hero { min-height:420px; padding-bottom:92px; }
+      .hero-content { margin-top:55px; }
+      .step-grid { grid-template-columns:1fr; }
+      .tagline { display:none; }
+    }
+  </style>
 </head>
 <body>
   <header class="hero">
-    <div class="shell hero-inner">
-      <div class="logo">🏀 <span>MY SHOES</span></div>
-     <h1>Trouve la chaussure de basket qui correspond vraiment à ton jeu.</h1>
-<p>Renseigne ton profil et découvre quelles chaussures de basket correspondent le mieux à ton poste, ton style de jeu, ton budget et tes priorités.</p>
+    <div class="topbar">
+      <div class="logo">MY SHOES</div>
+      <div class="tagline">Trouve la chaussure faite pour toi.</div>
+    </div>
+
+    <div class="hero-content">
+      <div class="eyebrow">👟 RECOMMANDATION PERSONNALISÉE</div>
+      <h1>Trouve la chaussure qui te correspond vraiment.</h1>
+      <p>
+        Choisis ta pratique, renseigne ton profil et laisse MY SHOES comparer les modèles
+        pour te proposer les chaussures les plus adaptées à tes besoins.
+      </p>
     </div>
   </header>
 
-  <main class="shell">
-    <section id="profile-section" class="panel profile-panel">
-      <div class="section-heading">
-        <span class="eyebrow">01 — TON PROFIL</span>
-        <h2>Quelques choix, puis on s’occupe du reste.</h2>
-      </div>
+  <main class="content">
+    <section class="sports" aria-label="Choisir sa pratique">
 
-      <form id="profile-form" novalidate>
-        <div class="field">
-          <label for="position">Ton poste</label>
-          <select id="position">
-            <option>MENEUR</option><option>ARRIERE</option><option>AILIER</option>
-            <option>AILIER FORT</option><option>PIVOT</option>
-          </select>
-        </div>
-
-        <div class="field">
-          <span class="field-label">Ta surface principale</span>
-          <div class="segmented" data-name="surface">
-            <button type="button" class="seg active" data-value="INDOOR">Indoor</button>
-            <button type="button" class="seg" data-value="OUTDOOR">Outdoor</button>
+      <a class="sport-card basket" href="basket/">
+        <div class="visual" aria-hidden="true">🏀</div>
+        <div class="sport-body">
+          <div class="sport-label">MY SHOES • BASKETBALL</div>
+          <h2 class="sport-title">Basketball</h2>
+          <p class="sport-desc">
+            Poste, surface, style de jeu, budget, type de pied et priorités :
+            trouve la paire adaptée à ton profil sur le terrain.
+          </p>
+          <div class="sport-footer">
+            <span>Trouver ma paire de basket</span>
+            <span class="arrow">→</span>
           </div>
         </div>
+      </a>
 
-        <div class="field">
-          <label for="budget">Ton budget</label>
-          <div class="money-input">
-            <input id="budget" type="number" min="1" step="1" value="100" inputmode="decimal">
-            <span>€</span>
-          </div>
-          <small>MY SHOES garde automatiquement une marge “coup de cœur” de 20 €.</small>
-        </div>
-
-        <div class="field">
-          <span class="field-label">Ton type de pied</span>
-          <div class="segmented" data-name="foot">
-            <button type="button" class="seg" data-value="ETROIT">Étroit</button>
-            <button type="button" class="seg active" data-value="STANDARD">Standard</button>
-            <button type="button" class="seg" data-value="LARGE">Large</button>
+      <a class="sport-card route" href="running/route/">
+        <div class="visual" aria-hidden="true">🏃</div>
+        <div class="sport-body">
+          <div class="sport-label">MY SHOES • RUNNING ROUTE</div>
+          <h2 class="sport-title">Running Route</h2>
+          <p class="sport-desc">
+            5 km, 10 km, semi ou marathon : compare ton allure, ton poids,
+            ton pied et tes priorités pour obtenir ton Top 3 Route.
+          </p>
+          <div class="sport-footer">
+            <span>Trouver ma paire Route</span>
+            <span class="arrow">→</span>
           </div>
         </div>
+      </a>
 
-        <div class="field">
-          <label for="brand">Marque préférée</label>
-          <select id="brand">
-            <option value="AUCUNE">Aucune préférence</option>
-            <option value="NIKE">Nike / Jordan</option>
-            <option value="ADIDAS">adidas</option>
-            <option value="UNDER ARMOUR">Under Armour</option>
-            <option value="PUMA">PUMA</option>
-            <option value="NEW BALANCE">New Balance</option>
-            <option value="LI-NING">Li-Ning / Way of Wade</option>
-            <option value="ASICS">ASICS</option>
-            <option value="ANTA">ANTA</option>
-          </select>
+      <a class="sport-card trail" href="running/trail/">
+        <div class="visual" aria-hidden="true">⛰️</div>
+        <div class="sport-body">
+          <div class="sport-label">MY SHOES • TRAIL</div>
+          <h2 class="sport-title">Trail</h2>
+          <p class="sport-desc">
+            Distance, terrain, accroche, protection et stabilité :
+            trouve les chaussures adaptées à tes sorties et à ton profil.
+          </p>
+          <div class="sport-footer">
+            <span>Trouver ma paire Trail</span>
+            <span class="arrow">→</span>
+          </div>
         </div>
+      </a>
 
-        <div class="field">
-          <label for="style">Style de jeu</label>
-          <select id="style">
-            <option value="RAPIDE">Rapide</option>
-            <option value="PUISSANT">Puissant</option>
-            <option value="EXPLOSIF">Explosif</option>
-            <option value="POLYVALENT">Polyvalent</option>
-            <option value="SHOOTEUR">Shooteur</option>
-            <option value="DEFENSEUR">Défenseur</option>
-          </select>
-        </div>
-
-        <div class="priorities">
-          <div class="field"><label for="priority1">Priorité n°1</label><select id="priority1"></select></div>
-          <div class="field"><label for="priority2">Priorité n°2</label><select id="priority2"></select></div>
-          <div class="field"><label for="priority3">Priorité n°3</label><select id="priority3"></select></div>
-        </div>
-
-        <div id="form-error" class="form-error" hidden></div>
-        <button class="cta" type="submit">🏆 Trouver mes chaussures</button>
-      </form>
     </section>
 
-    <section id="results-section" class="results-section" hidden>
-      <div class="section-heading results-heading">
-        <span class="eyebrow">02 — TES RECOMMANDATIONS</span>
-        <h2>Les modèles qui correspondent le mieux à ton profil.</h2>
-        <p id="result-summary"></p>
-      </div>
+    <section class="steps">
+      <h2>Comment ça marche ?</h2>
+      <div class="step-grid">
+        <div class="step">
+          <div class="step-icon">🧩</div>
+          <strong>1. Choisis ta pratique</strong>
+          <p>Basketball, running route ou trail.</p>
+        </div>
 
-      <div id="cards" class="cards"></div>
+        <div class="step">
+          <div class="step-icon">⚙️</div>
+          <strong>2. MY SHOES analyse ton profil</strong>
+          <p>Budget, pratique, morphologie et priorités sont comparés aux modèles.</p>
+        </div>
 
-      <div class="result-actions">
-        <button id="more-btn" class="secondary-btn" type="button">Voir 3 autres modèles</button>
-        <button id="edit-btn" class="ghost-btn" type="button">← Modifier mon profil</button>
+        <div class="step">
+          <div class="step-icon">🏆</div>
+          <strong>3. Découvre ton Top 3</strong>
+          <p>Tu obtiens les chaussures les plus compatibles avec tes besoins.</p>
+        </div>
       </div>
     </section>
-    <section class="seo-section">
-  <div class="section-heading">
-    <span class="eyebrow">GUIDE</span>
-    <h2>Comment choisir sa chaussure de basket ?</h2>
-  </div>
-
-  <p>
-    Choisir une chaussure de basket dépend de plusieurs critères : ton poste,
-    ton style de jeu, la surface sur laquelle tu joues, ton type de pied et
-    les sensations que tu recherches sur le terrain. Un meneur rapide n’aura
-    pas forcément les mêmes besoins qu’un pivot puissant ou qu’un ailier
-    polyvalent.
-  </p>
-
-  <h3>Choisir sa chaussure selon son poste</h3>
-  <p>
-    Les meneurs et arrières recherchent souvent de la légèreté, de la
-    réactivité et une excellente traction pour changer de direction rapidement.
-    Les ailiers ont généralement besoin d’un bon équilibre entre dynamisme,
-    maintien et polyvalence. Pour les ailiers forts et les pivots, l’amorti,
-    la stabilité et le maintien prennent souvent davantage d’importance.
-  </p>
-
-  <h3>Indoor ou outdoor : une différence importante</h3>
-  <p>
-    Une chaussure destinée au parquet indoor privilégie généralement
-    l’adhérence et les sensations de jeu. Pour une utilisation outdoor, la
-    durabilité de la semelle devient essentielle afin de résister aux terrains
-    plus abrasifs. Certaines chaussures sont suffisamment polyvalentes pour
-    être utilisées sur les deux surfaces.
-  </p>
-
-  <h3>Ton style de jeu et ton type de pied comptent aussi</h3>
-  <p>
-    Que tu sois rapide, puissant, explosif, shooteur, défenseur ou polyvalent,
-    tes priorités peuvent être très différentes. La largeur du pied est
-    également importante : une chaussure trop étroite peut devenir
-    inconfortable, tandis qu’un modèle trop large peut réduire le maintien.
-  </p>
-
-  <p>
-    MY SHOES croise ces différents critères pour t’aider à trouver les
-    chaussures de basket les plus adaptées à ton profil, à ton budget et à
-    tes priorités.
-  </p>
-</section>
   </main>
 
   <footer>
-    <div class="shell footer-inner">
-      <span>MY SHOES — Web V1.1</span>
-      <span>Recommandations indicatives basées sur les données du projet.</span>
-    </div>
+    MY SHOES est un outil d'aide au choix. Le confort et le ressenti peuvent varier selon chaque sportif.<br>
+    © MY SHOES
   </footer>
-
-  <script src="shoes.js"></script>
-  <script src="app.js"></script>
 </body>
 </html>
