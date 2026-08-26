@@ -8,13 +8,17 @@
   <meta name="description" content="MY SHOES analyse ton profil pour te recommander les meilleures chaussures de basketball, running route et trail.">
   <link rel="canonical" href="https://myshoesbasket.github.io/my-shoes/">
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8CZ831W067"></script>
+  <!-- Google Analytics : chargé uniquement après consentement -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-8CZ831W067');
+
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied',
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied'
+    });
   </script>
 
   <style>
@@ -373,6 +377,92 @@
       .step::after { display:none !important; }
       .section-title { font-size:22px; }
     }
+
+    /* Bannière de consentement cookies */
+    .cookie-banner {
+      position:fixed;
+      left:18px;
+      right:18px;
+      bottom:18px;
+      z-index:9999;
+      max-width:760px;
+      margin:0 auto;
+      padding:18px;
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:18px;
+      background:#081f49;
+      box-shadow:0 18px 55px rgba(0,0,0,.38);
+      display:none;
+    }
+
+    .cookie-banner.show { display:block; }
+
+    .cookie-banner strong {
+      display:block;
+      margin-bottom:7px;
+      font-size:17px;
+    }
+
+    .cookie-banner p {
+      margin:0;
+      color:#dce7fb;
+      font-size:14px;
+      line-height:1.5;
+    }
+
+    .cookie-actions {
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:14px;
+    }
+
+    .cookie-btn {
+      border:0;
+      border-radius:10px;
+      padding:11px 16px;
+      font-weight:800;
+      cursor:pointer;
+    }
+
+    .cookie-accept {
+      background:var(--blue);
+      color:#fff;
+    }
+
+    .cookie-refuse {
+      background:rgba(255,255,255,.10);
+      color:#fff;
+      border:1px solid rgba(255,255,255,.18);
+    }
+
+    .cookie-settings {
+      margin-top:12px;
+      background:none;
+      border:0;
+      color:#c7d4ec;
+      text-decoration:underline;
+      cursor:pointer;
+      font-size:12px;
+    }
+
+    @media (max-width:600px) {
+      .cookie-banner {
+        left:10px;
+        right:10px;
+        bottom:10px;
+        padding:16px;
+      }
+
+      .cookie-actions {
+        flex-direction:column;
+      }
+
+      .cookie-btn {
+        width:100%;
+      }
+    }
+
   </style>
 </head>
 
@@ -514,5 +604,74 @@
 
     <footer>© MY SHOES</footer>
   </div>
+
+  <div id="cookieBanner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Choix des cookies">
+    <strong>🍪 Cookies & mesure d’audience</strong>
+    <p>
+      MY SHOES utilise Google Analytics uniquement avec ton accord afin de mesurer
+      l’audience du site et améliorer l’expérience. Tu peux accepter ou refuser :
+      ton choix n’empêche pas d’utiliser le site.
+    </p>
+    <div class="cookie-actions">
+      <button id="acceptCookies" class="cookie-btn cookie-accept" type="button">Accepter</button>
+      <button id="refuseCookies" class="cookie-btn cookie-refuse" type="button">Refuser</button>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const CONSENT_KEY = 'myshoes_analytics_consent';
+      const GA_ID = 'G-8CZ831W067';
+      const banner = document.getElementById('cookieBanner');
+      let analyticsLoaded = false;
+
+      function loadAnalytics() {
+        if (analyticsLoaded) return;
+        analyticsLoaded = true;
+
+        gtag('consent', 'update', {
+          'analytics_storage': 'granted'
+        });
+
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+        document.head.appendChild(script);
+
+        gtag('js', new Date());
+        gtag('config', GA_ID, { 'anonymize_ip': true });
+      }
+
+      function acceptCookies() {
+        localStorage.setItem(CONSENT_KEY, 'accepted');
+        banner.classList.remove('show');
+        loadAnalytics();
+      }
+
+      function refuseCookies() {
+        localStorage.setItem(CONSENT_KEY, 'refused');
+        banner.classList.remove('show');
+
+        gtag('consent', 'update', {
+          'analytics_storage': 'denied',
+          'ad_storage': 'denied',
+          'ad_user_data': 'denied',
+          'ad_personalization': 'denied'
+        });
+      }
+
+      document.getElementById('acceptCookies').addEventListener('click', acceptCookies);
+      document.getElementById('refuseCookies').addEventListener('click', refuseCookies);
+
+      const savedChoice = localStorage.getItem(CONSENT_KEY);
+
+      if (savedChoice === 'accepted') {
+        loadAnalytics();
+      } else if (savedChoice !== 'refused') {
+        banner.classList.add('show');
+      }
+    })();
+  </script>
+
 </body>
 </html>
