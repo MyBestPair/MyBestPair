@@ -121,14 +121,25 @@ const SHOES = [
     "link": "https://www.basket4ballers.com/fr/nouveautes/59064-adidas-harden-volume-10-pioneer-jr1598.html"
   },
   {
-    "name": "D.O.N. Issue 7",
-    "brand": "adidas",
-    "price": 120,
-    "scores": [9.5, 8.0, 8.5, 9.5, 9.0, 7.5, 8.5, 8.5],
-    "surface": "INDOOR/OUTDOOR",
-    "foot": "LARGE",
-    "scoreBrand": "ADIDAS",
-    "link": "https://www.basket4ballers.com/fr/1347-chaussures-adidas-don-issue-7"
+{
+  "name": "D.O.N. Issue 8",
+  "brand": "adidas",
+  "price": 120,
+  "scores": [
+    9.5,
+    9.0,
+    9.5,
+    9.0,
+    9.0,
+    8.5,
+    9.0,
+    8.0
+  ],
+  "surface": "INDOOR",
+  "foot": "STANDARD",
+  "scoreBrand": "ADIDAS",
+  "link": "https://click.linksynergy.com/link?id=wi07X%2fYO2lw&offerid=2079203.4480618163004132934585230&type=2&murl=https%3a%2f%2fwww.decathlon.fr%2fp%2fchaussures-de-basketball-adulte-d-o-n-issue-8-bleu-violet-et-rouge%2f386596%2fm9034125"
+},
   },
   {
     "name": "Anthony Edwards 2",
