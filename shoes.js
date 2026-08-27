@@ -258,7 +258,7 @@ const SHOES = [
     "surface": "INDOOR",
     "foot": "STANDARD",
     "scoreBrand": "PUMA",
-    "link": "https://eu.puma.com/fr/fr/pd/chaussures-de-basketball-mb05-stainless-unisexe/313594"
+"link": "https://click.linksynergy.com/link?id=wi07X%2fYO2lw&offerid=2079203.448062860480963943302379&type=2&murl=https%3a%2f%2fwww.decathlon.fr%2fp%2fchaussures-de-basketball-adulte-lamelo-ball-mb05-low-violet-lavande%2f386580%2fm9027164"
   },
   {
     "name": "All-Pro Nitro 3",
