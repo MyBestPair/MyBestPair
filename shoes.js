@@ -138,7 +138,7 @@ const SHOES = [
     "surface": "INDOOR/OUTDOOR",
     "foot": "STANDARD",
     "scoreBrand": "ADIDAS",
-    "link": "https://www.basket4ballers.com/fr/basketball/57030-adidas-anthony-edwards-2-with-love-js3514.html"
+"link": "https://click.linksynergy.com/link?id=wi07X%2fYO2lw&offerid=2079203.448067708749017818793452&type=2&murl=https%3a%2f%2fwww.decathlon.fr%2fp%2fchaussures-de-basketball-adulte-anthony-edwards-ae2-rose-corail%2f386555%2fm9030183"
   },
   {
     "name": "Dame X",
