@@ -330,7 +330,7 @@ const SHOES = [
     "surface": "INDOOR/OUTDOOR",
     "foot": "UNIVERSEL",
     "scoreBrand": "PUMA",
-    "link": "https://www.basket4ballers.com/fr/basket4ballers/55744-puma-all-pro-nitro-2-venice-basketball-league.html"
+"link": "https://click.linksynergy.com/link?id=wi07X%2fYO2lw&offerid=2079203.448064029210942586065056&type=2&murl=https%3a%2f%2fwww.decathlon.fr%2fp%2fchaussures-de-basketball-adulte-all-pro-nitro-2-noir-et-vert%2f362929%2fc1m9029941"
   },
   {
     "name": "TWO WXY V5",
