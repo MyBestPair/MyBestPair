@@ -8,21 +8,13 @@ const CRITERIA = [
   "CONFORT",
   "DURABILITE"
 ];
+
 const SHOES = [
   {
     "name": "G.T. Cut Academy 2",
     "brand": "Nike",
     "price": 99.99,
-    "scores": [
-      8.5,
-      7.5,
-      8.5,
-      8.0,
-      7.5,
-      8.5,
-      8.0,
-      7.5
-    ],
+    "scores": [8.5, 7.5, 8.5, 8.0, 7.5, 8.5, 8.0, 7.5],
     "surface": "INDOOR/OUTDOOR",
     "foot": "ETROIT",
     "scoreBrand": "NIKE",
@@ -32,16 +24,7 @@ const SHOES = [
     "name": "Giannis Immortality 5",
     "brand": "Nike",
     "price": 89.99,
-    "scores": [
-      8.5,
-      7.5,
-      8.5,
-      8.0,
-      8.0,
-      8.5,
-      8.0,
-      7.5
-    ],
+    "scores": [8.5, 7.5, 8.5, 8.0, 8.0, 8.5, 8.0, 7.5],
     "surface": "INDOOR/OUTDOOR",
     "foot": "STANDARD",
     "scoreBrand": "NIKE",
@@ -51,16 +34,7 @@ const SHOES = [
     "name": "LeBron Witness 9",
     "brand": "Nike",
     "price": 109.99,
-    "scores": [
-      8.5,
-      8.0,
-      8.0,
-      9.0,
-      9.0,
-      6.5,
-      8.5,
-      9.0
-    ],
+    "scores": [8.5, 8.0, 8.0, 9.0, 9.0, 6.5, 8.5, 9.0],
     "surface": "INDOOR/OUTDOOR",
     "foot": "UNIVERSEL",
     "scoreBrand": "NIKE",
@@ -70,16 +44,7 @@ const SHOES = [
     "name": "Ja 3",
     "brand": "Nike",
     "price": 134.99,
-    "scores": [
-      9.5,
-      8.5,
-      9.0,
-      8.5,
-      7.5,
-      8.5,
-      8.0,
-      5.5
-    ],
+    "scores": [9.5, 8.5, 9.0, 8.5, 7.5, 8.5, 8.0, 5.5],
     "surface": "INDOOR/OUTDOOR",
     "foot": "STANDARD",
     "scoreBrand": "NIKE",
@@ -88,17 +53,8 @@ const SHOES = [
   {
     "name": "Sabrina 3",
     "brand": "Nike",
-    "price": 90.99,
-    "scores": [
-      8.5,
-      7.0,
-      9.5,
-      9.5,
-      9.0,
-      9.5,
-      8.0,
-      6.5
-    ],
+    "price": 129.99,
+    "scores": [8.5, 7.0, 9.5, 9.5, 9.0, 9.5, 8.0, 6.5],
     "surface": "INDOOR/OUTDOOR",
     "foot": "STANDARD",
     "scoreBrand": "NIKE",
@@ -108,16 +64,7 @@ const SHOES = [
     "name": "Luka 5",
     "brand": "Jordan",
     "price": 129.99,
-    "scores": [
-      8.5,
-      8.5,
-      8.5,
-      9.0,
-      9.0,
-      7.5,
-      8.5,
-      8.0
-    ],
+    "scores": [8.5, 8.5, 8.5, 9.0, 9.0, 7.5, 8.5, 8.0],
     "surface": "INDOOR/OUTDOOR",
     "foot": "STANDARD",
     "scoreBrand": "NIKE",
@@ -126,17 +73,8 @@ const SHOES = [
   {
     "name": "Tatum 4",
     "brand": "Jordan",
-    "price": 130.0,
-    "scores": [
-      7.5,
-      8.5,
-      8.5,
-      8.0,
-      8.5,
-      7.5,
-      8.5,
-      7.0
-    ],
+    "price": 129.99,
+    "scores": [7.5, 8.5, 8.5, 8.0, 8.5, 7.5, 8.5, 7.0],
     "surface": "INDOOR/OUTDOOR",
     "foot": "STANDARD",
     "scoreBrand": "NIKE",
@@ -146,16 +84,7 @@ const SHOES = [
     "name": "KD19",
     "brand": "Nike",
     "price": 159.99,
-    "scores": [
-      9.0,
-      9.0,
-      9.0,
-      8.5,
-      9.0,
-      6.5,
-      8.5,
-      8.0
-    ],
+    "scores": [9.0, 9.0, 9.0, 8.5, 9.0, 6.5, 8.5, 8.0],
     "surface": "INDOOR/OUTDOOR",
     "foot": "ETROIT",
     "scoreBrand": "NIKE",
@@ -164,17 +93,8 @@ const SHOES = [
   {
     "name": "Kobe IX Elite Low Protro",
     "brand": "Nike",
-    "price": 179.99,
-    "scores": [
-      9.5,
-      8.5,
-      9.0,
-      9.0,
-      9.0,
-      8.5,
-      8.5,
-      6.5
-    ],
+    "price": 209.99,
+    "scores": [9.5, 8.5, 9.0, 9.0, 9.0, 8.5, 8.5, 6.5],
     "surface": "INDOOR",
     "foot": "ETROIT",
     "scoreBrand": "NIKE",
@@ -184,16 +104,7 @@ const SHOES = [
     "name": "Book 2",
     "brand": "Nike",
     "price": 149.99,
-    "scores": [
-      7.5,
-      8.0,
-      7.5,
-      8.5,
-      8.5,
-      6.0,
-      7.0,
-      8.0
-    ],
+    "scores": [7.5, 8.0, 7.5, 8.5, 8.5, 6.0, 7.0, 8.0],
     "surface": "INDOOR/OUTDOOR",
     "foot": "STANDARD",
     "scoreBrand": "NIKE",
@@ -202,17 +113,8 @@ const SHOES = [
   {
     "name": "Harden Volume 10",
     "brand": "adidas",
-    "price": 160.0,
-    "scores": [
-      8.5,
-      9.0,
-      8.0,
-      9.5,
-      9.5,
-      6.5,
-      8.5,
-      8.5
-    ],
+    "price": 160,
+    "scores": [8.5, 9.0, 8.0, 9.5, 9.5, 6.5, 8.5, 8.5],
     "surface": "INDOOR",
     "foot": "ETROIT",
     "scoreBrand": "ADIDAS",
@@ -221,17 +123,8 @@ const SHOES = [
   {
     "name": "D.O.N. Issue 7",
     "brand": "adidas",
-    "price": 60.0,
-    "scores": [
-      9.5,
-      8.0,
-      8.5,
-      9.5,
-      9.0,
-      7.5,
-      8.5,
-      8.5
-    ],
+    "price": 120,
+    "scores": [9.5, 8.0, 8.5, 9.5, 9.0, 7.5, 8.5, 8.5],
     "surface": "INDOOR/OUTDOOR",
     "foot": "LARGE",
     "scoreBrand": "ADIDAS",
@@ -240,17 +133,8 @@ const SHOES = [
   {
     "name": "Anthony Edwards 2",
     "brand": "adidas",
-    "price": 130.0,
-    "scores": [
-      9.0,
-      8.5,
-      9.0,
-      9.0,
-      9.0,
-      8.0,
-      8.5,
-      6.5
-    ],
+    "price": 130,
+    "scores": [9.0, 8.5, 9.0, 9.0, 9.0, 8.0, 8.5, 6.5],
     "surface": "INDOOR/OUTDOOR",
     "foot": "STANDARD",
     "scoreBrand": "ADIDAS",
@@ -259,17 +143,8 @@ const SHOES = [
   {
     "name": "Dame X",
     "brand": "adidas",
-    "price": 90.0,
-    "scores": [
-      8.5,
-      7.5,
-      8.0,
-      8.0,
-      8.0,
-      8.5,
-      8.0,
-      6.5
-    ],
+    "price": 90,
+    "scores": [8.5, 7.5, 8.0, 8.0, 8.0, 8.5, 8.0, 6.5],
     "surface": "INDOOR",
     "foot": "LARGE",
     "scoreBrand": "ADIDAS",
@@ -278,17 +153,8 @@ const SHOES = [
   {
     "name": "Curry 13",
     "brand": "Under Armour",
-    "price": 83.97,
-    "scores": [
-      8.5,
-      9.0,
-      9.0,
-      8.5,
-      8.5,
-      9.0,
-      9.0,
-      6.5
-    ],
+    "price": 140,
+    "scores": [8.5, 9.0, 9.0, 8.5, 8.5, 9.0, 9.0, 6.5],
     "surface": "INDOOR/OUTDOOR",
     "foot": "ETROIT",
     "scoreBrand": "UNDER ARMOUR",
@@ -297,17 +163,8 @@ const SHOES = [
   {
     "name": "D. Fox 2",
     "brand": "Under Armour",
-    "price": 84.0,
-    "scores": [
-      8.5,
-      8.0,
-      9.0,
-      8.5,
-      8.5,
-      9.0,
-      8.5,
-      7.5
-    ],
+    "price": 120,
+    "scores": [8.5, 8.0, 9.0, 8.5, 8.5, 9.0, 8.5, 7.5],
     "surface": "INDOOR/OUTDOOR",
     "foot": "STANDARD",
     "scoreBrand": "NIKE",
@@ -316,36 +173,18 @@ const SHOES = [
   {
     "name": "All-Pro Nitro 2",
     "brand": "Puma",
-    "price": 130.0,
-    "scores": [
-      8.5,
-      8.5,
-      7.5,
-      9.0,
-      8.5,
-      8.0,
-      8.5,
-      9.0
-    ],
+    "price": 130,
+    "scores": [8.5, 8.5, 7.5, 9.0, 8.5, 8.0, 8.5, 9.0],
     "surface": "INDOOR/OUTDOOR",
     "foot": "UNIVERSEL",
     "scoreBrand": "PUMA",
-"link": "https://click.linksynergy.com/link?id=wi07X%2fYO2lw&offerid=2079203.448064029210942586065056&type=2&murl=https%3a%2f%2fwww.decathlon.fr%2fp%2fchaussures-de-basketball-adulte-all-pro-nitro-2-noir-et-vert%2f362929%2fc1m9029941"
+    "link": "https://click.linksynergy.com/link?id=wi07X%2fYO2lw&offerid=2079203.448064029210942586065056&type=2&murl=https%3a%2f%2fwww.decathlon.fr%2fp%2fchaussures-de-basketball-adulte-all-pro-nitro-2-noir-et-vert%2f362929%2fc1m9029941"
   },
   {
     "name": "TWO WXY V5",
     "brand": "New Balance",
-    "price": 70.0,
-    "scores": [
-      9.0,
-      8.5,
-      8.5,
-      9.5,
-      9.0,
-      7.5,
-      9.0,
-      8.5
-    ],
+    "price": 130,
+    "scores": [9.0, 8.5, 8.5, 9.5, 9.0, 7.5, 9.0, 8.5],
     "surface": "INDOOR/OUTDOOR",
     "foot": "LARGE",
     "scoreBrand": "NEW BALANCE",
@@ -354,17 +193,8 @@ const SHOES = [
   {
     "name": "Fresh Foam BB V3",
     "brand": "New Balance",
-    "price": 70.0,
-    "scores": [
-      9.0,
-      9.5,
-      7.5,
-      8.5,
-      9.0,
-      7.0,
-      9.5,
-      7.0
-    ],
+    "price": 140,
+    "scores": [9.0, 9.5, 7.5, 8.5, 9.0, 7.0, 9.5, 7.0],
     "surface": "INDOOR/OUTDOOR",
     "foot": "ETROIT",
     "scoreBrand": "NEW BALANCE",
@@ -373,17 +203,8 @@ const SHOES = [
   {
     "name": "Giannis Freak 7",
     "brand": "Nike",
-    "price": 80.49,
-    "scores": [
-      8.5,
-      8.5,
-      8.5,
-      8.5,
-      8.5,
-      8.0,
-      8.5,
-      8.0
-    ],
+    "price": 114.99,
+    "scores": [8.5, 8.5, 8.5, 8.5, 8.5, 8.0, 8.5, 8.0],
     "surface": "INDOOR/OUTDOOR",
     "foot": "ETROIT",
     "scoreBrand": "NIKE",
@@ -392,17 +213,8 @@ const SHOES = [
   {
     "name": "Way of Wade 12",
     "brand": "LI-NING",
-    "price": 180.0,
-    "scores": [
-      9.0,
-      9.5,
-      9.0,
-      9.0,
-      9.0,
-      9.0,
-      8.5,
-      7.5
-    ],
+    "price": 180,
+    "scores": [9.0, 9.5, 9.0, 9.0, 9.0, 9.0, 8.5, 7.5],
     "surface": "INDOOR",
     "foot": "ETROIT",
     "scoreBrand": "LI-NING",
@@ -411,17 +223,8 @@ const SHOES = [
   {
     "name": "Way of Wade All City 14",
     "brand": "LI-NING",
-    "price": 150.0,
-    "scores": [
-      9.5,
-      9.0,
-      8.5,
-      9.0,
-      9.0,
-      9.0,
-      8.5,
-      9.0
-    ],
+    "price": 135,
+    "scores": [9.5, 9.0, 8.5, 9.0, 9.0, 9.0, 8.5, 9.0],
     "surface": "INDOOR/OUTDOOR",
     "foot": "ETROIT",
     "scoreBrand": "LI-NING",
@@ -430,17 +233,8 @@ const SHOES = [
   {
     "name": "Wade 808 5 Ultra",
     "brand": "LI-NING",
-    "price": 160.0,
-    "scores": [
-      9.5,
-      9.5,
-      9.5,
-      8.5,
-      8.5,
-      9.0,
-      8.5,
-      7.5
-    ],
+    "price": 145,
+    "scores": [9.5, 9.5, 9.5, 8.5, 8.5, 9.0, 8.5, 7.5],
     "surface": "INDOOR",
     "foot": "ETROIT",
     "scoreBrand": "LI-NING",
@@ -449,17 +243,8 @@ const SHOES = [
   {
     "name": "Nike G.T. Future",
     "brand": "Nike",
-    "price": 200.0,
-    "scores": [
-      8.0,
-      9.5,
-      7.5,
-      7.0,
-      7.0,
-      5.5,
-      6.5,
-      8.0
-    ],
+    "price": 199.99,
+    "scores": [8.0, 9.5, 7.5, 7.0, 7.0, 5.5, 6.5, 8.0],
     "surface": "INDOOR",
     "foot": "ETROIT",
     "scoreBrand": "NIKE",
@@ -468,17 +253,8 @@ const SHOES = [
   {
     "name": "MB.05",
     "brand": "PUMA",
-    "price": 130.0,
-    "scores": [
-      8.5,
-      8.5,
-      8.0,
-      8.0,
-      8.0,
-      7.0,
-      8.5,
-      7.0
-    ],
+    "price": 130,
+    "scores": [8.5, 8.5, 8.0, 8.0, 8.0, 7.0, 8.5, 7.0],
     "surface": "INDOOR",
     "foot": "STANDARD",
     "scoreBrand": "PUMA",
@@ -487,17 +263,8 @@ const SHOES = [
   {
     "name": "All-Pro Nitro 3",
     "brand": "PUMA",
-    "price": 140.0,
-    "scores": [
-      9.0,
-      8.5,
-      8.5,
-      9.0,
-      8.5,
-      8.5,
-      8.5,
-      8.0
-    ],
+    "price": 140,
+    "scores": [9.0, 8.5, 8.5, 9.0, 8.5, 8.5, 8.5, 8.0],
     "surface": "INDOOR",
     "foot": "STANDARD",
     "scoreBrand": "PUMA",
@@ -506,17 +273,8 @@ const SHOES = [
   {
     "name": "Nova Surge 4",
     "brand": "Asics",
-    "price": 180.0,
-    "scores": [
-      9.0,
-      9.5,
-      8.5,
-      9.5,
-      9.0,
-      7.5,
-      9.5,
-      9.0
-    ],
+    "price": 180,
+    "scores": [9.0, 9.5, 8.5, 9.5, 9.0, 7.5, 9.5, 9.0],
     "surface": "INDOOR",
     "foot": "STANDARD",
     "scoreBrand": "ASICS",
@@ -525,17 +283,8 @@ const SHOES = [
   {
     "name": "Gelburst 30",
     "brand": "Asics",
-    "price": 160.0,
-    "scores": [
-      9.0,
-      7.5,
-      9.0,
-      9.0,
-      9.0,
-      8.5,
-      8.0,
-      8.5
-    ],
+    "price": 160,
+    "scores": [9.0, 7.5, 9.0, 9.0, 9.0, 8.5, 8.0, 8.5],
     "surface": "INDOOR",
     "foot": "STANDARD",
     "scoreBrand": "ASICS",
@@ -545,16 +294,7 @@ const SHOES = [
     "name": "ANTA KAI 3",
     "brand": "ANTA",
     "price": 139.95,
-    "scores": [
-      9.0,
-      8.0,
-      9.0,
-      9.0,
-      9.5,
-      8.5,
-      9.0,
-      7.5
-    ],
+    "scores": [9.0, 8.0, 9.0, 9.0, 9.5, 8.5, 9.0, 7.5],
     "surface": "INDOOR",
     "foot": "STANDARD",
     "scoreBrand": "ANTA",
@@ -563,82 +303,20 @@ const SHOES = [
   {
     "name": "Shock Wave 7 Pro",
     "brand": "ANTA",
-    "price": 130.0,
-    "scores": [
-      9.0,
-      8.5,
-      9.0,
-      9.0,
-      9.0,
-      8.5,
-      8.0,
-      9.0
-    ],
+    "price": 130,
+    "scores": [9.0, 8.5, 9.0, 9.0, 9.0, 8.5, 8.0, 9.0],
     "surface": "INDOOR/OUTDOOR",
     "foot": "LARGE",
     "scoreBrand": "ANTA",
     "link": "https://anta-sports.eu/shop/anta-shock-wave-7-pro-927"
   }
 ];
+
 const STYLE_MODS = {
-  "RAPIDE": [
-    0.15,
-    0,
-    0.15,
-    0.05,
-    0.05,
-    0.15,
-    0,
-    0
-  ],
-  "PUISSANT": [
-    0.05,
-    0.15,
-    0,
-    0.15,
-    0.15,
-    -0.05,
-    0.05,
-    0.05
-  ],
-  "EXPLOSIF": [
-    0.1,
-    0.05,
-    0.15,
-    0.1,
-    0.05,
-    0.1,
-    0,
-    0
-  ],
-  "POLYVALENT": [
-    0.05,
-    0.05,
-    0.05,
-    0.05,
-    0.05,
-    0.05,
-    0.05,
-    0.05
-  ],
-  "SHOOTEUR": [
-    0.1,
-    0,
-    0.1,
-    0.1,
-    0.05,
-    0.05,
-    0.05,
-    0
-  ],
-  "DEFENSEUR": [
-    0.15,
-    0.05,
-    0.1,
-    0.15,
-    0.1,
-    0.05,
-    0,
-    0
-  ]
+  "RAPIDE": [0.15, 0, 0.15, 0.05, 0.05, 0.15, 0, 0],
+  "PUISSANT": [0.05, 0.15, 0, 0.15, 0.15, -0.05, 0.05, 0.05],
+  "EXPLOSIF": [0.1, 0.05, 0.15, 0.1, 0.05, 0.1, 0, 0],
+  "POLYVALENT": [0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05],
+  "SHOOTEUR": [0.1, 0, 0.1, 0.1, 0.05, 0.05, 0.05, 0],
+  "DEFENSEUR": [0.15, 0.05, 0.1, 0.15, 0.1, 0.05, 0, 0]
 };
