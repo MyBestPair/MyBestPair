@@ -316,7 +316,7 @@ const SHOES = [
   {
     "name": "All-Pro Nitro 2",
     "brand": "Puma",
-    "price": 64.0,
+    "price": 130.0,
     "scores": [
       8.5,
       8.5,
