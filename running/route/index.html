@@ -8,6 +8,16 @@
   <meta name="description" content="Trouve les chaussures de running route adaptées à ton budget, ta distance, ton poids, ton pied, ton attaque et tes priorités. MY SHOES compare 50 modèles pour sortir ton Top 3 personnalisé.">
   <link rel="canonical" href="https://myshoesbasket.github.io/my-shoes/running/route/">
 
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8CZ831W067"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-8CZ831W067');
+  </script>
+
+
   <style>
     * { box-sizing: border-box; }
     :root {
@@ -698,7 +708,13 @@ function cardHTML(shoe,index,p) {
         <div class="detail"><strong>🎯 TES PRIORITÉS :</strong> ${prettyCriterion(p.priorite1)} · ${prettyCriterion(p.priorite2)} · ${prettyCriterion(p.priorite3)}</div>
         <div class="detail"><strong>💡 Pourquoi cette chaussure ?</strong><br>${whyText(shoe,p)}</div>
 
-        <a class="shoe-link" href="${shoe.lien}" target="_blank" rel="noopener noreferrer">🔗 VOIR LA CHAUSSURE</a>
+        <a class="shoe-link"
+           href="${shoe.lien}"
+           target="_blank"
+           rel="noopener noreferrer"
+           data-product-name="${shoe.modele}"
+           data-product-brand="${shoe.marque}"
+           data-rank="${index+1}">🔗 VOIR LA CHAUSSURE</a>
       </div>
     </article>`;
 }
@@ -719,9 +735,76 @@ function showResults(p) {
   $("#podium").innerHTML=top3.map((shoe,i)=>cardHTML(shoe,i,p)).join("");
   $("#resultsSub").textContent=`${ranking.length} modèles compatibles analysés sur les 50 références Route.`;
   $("#results").style.display="block";
+
+  if (typeof gtag === "function") {
+    gtag("event", "recommendation_generated", {
+      sport: "running_route",
+      compatible_models: ranking.length,
+      top_1: top3[0]?.modele || "",
+      top_2: top3[1]?.modele || "",
+      top_3: top3[2]?.modele || ""
+    });
+  }
+
   localStorage.setItem("myshoesRouteProfil",JSON.stringify(p));
   $("#results").scrollIntoView({behavior:"smooth",block:"start"});
 }
+
+
+let routeQuestionnaireStarted = false;
+
+function trackRouteQuestionnaireStart() {
+  if (routeQuestionnaireStarted) return;
+  routeQuestionnaireStarted = true;
+
+  if (typeof gtag === "function") {
+    gtag("event", "questionnaire_start", {
+      sport: "running_route"
+    });
+  }
+}
+
+$("#questionnaire").addEventListener("click", event => {
+  if (event.target.closest(".option")) {
+    trackRouteQuestionnaireStart();
+  }
+});
+
+$("#questionnaire").addEventListener("input", event => {
+  if (event.target.matches("input")) {
+    trackRouteQuestionnaireStart();
+  }
+});
+
+$("#podium").addEventListener("click", event => {
+  const link = event.target.closest(".shoe-link");
+  if (!link) return;
+
+  const productName = link.dataset.productName || "";
+  const productBrand = link.dataset.productBrand || "";
+  const rank = Number(link.dataset.rank || 0);
+  const isAffiliate = link.href.includes("click.linksynergy.com");
+
+  if (typeof gtag === "function") {
+    gtag("event", "product_click", {
+      product_name: productName,
+      brand: productBrand,
+      rank: rank,
+      sport: "running_route",
+      affiliate: isAffiliate ? "yes" : "no"
+    });
+
+    if (isAffiliate) {
+      gtag("event", "affiliate_click", {
+        product_name: productName,
+        brand: productBrand,
+        rank: rank,
+        sport: "running_route",
+        affiliate_network: "rakuten"
+      });
+    }
+  }
+});
 
 $("#recommendBtn").addEventListener("click",()=>{
   const p=profileFromForm();
