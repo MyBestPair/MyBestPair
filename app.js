@@ -161,13 +161,26 @@ document.addEventListener("click", e => {
   else if (card?.classList.contains("rank2")) rank = 2;
   else if (card?.classList.contains("rank3")) rank = 3;
 
-  if (typeof gtag === "function") {
-    gtag("event", "product_click", {
+if (typeof gtag === "function") {
+
+  const isAffiliate = link.href.includes("click.linksynergy.com");
+
+  gtag("event", "product_click", {
+    product_name: productName,
+    rank: rank,
+    sport: "basketball",
+    affiliate: isAffiliate ? "yes" : "no"
+  });
+
+  if (isAffiliate) {
+    gtag("event", "affiliate_click", {
       product_name: productName,
       rank: rank,
-      destination_url: link.href
+      sport: "basketball",
+      affiliate_network: "rakuten"
     });
   }
+}
 });
 $("profile-form").addEventListener("submit",e=>{
   e.preventDefault();
