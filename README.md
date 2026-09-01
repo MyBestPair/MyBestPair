@@ -1,26 +1,68 @@
-# MY SHOES WEB V1.1
+# MySportShoes
 
-Version corrigée et resynchronisée avec le dernier export du MASTER.
+**Trouve la chaussure de sport adaptée à ton profil.**
 
-## Correction principale
-- Les 30 modèles, notes, prix, surfaces, types de pied, marques et liens sont relus depuis le dernier MASTER.
-- Le calcul reste strictement basé sur le moteur du MASTER :
-  - 72 % score personnalisé
-  - 10 % surface
-  - 8 % pied
-  - 5 % marque
-  - 5 % budget
-  - priorités : x1,5 / x1,25 / x1,1
-  - marge coup de cœur : 20 €
-- Nouveau départage des quasi-égalités (< 0,10 point) :
-  priorité à la compatibilité budget, puis surface, puis pied.
-  Le score affiché n'est pas artificiellement modifié.
+MySportShoes est un outil gratuit de recommandation de chaussures basé sur les caractéristiques et les besoins de chaque sportif.
 
-## Pourquoi ce changement ?
-Deux modèles pouvant afficher tous les deux 86/100 étaient parfois séparés par seulement quelques centièmes.
-Le nouveau départage évite qu'une chaussure hors budget passe devant une chaussure dans le budget pour un écart invisible pour l'utilisateur.
+L'utilisateur répond à un questionnaire personnalisé et MySportShoes analyse son profil afin de lui proposer un **Top 3 de chaussures adaptées**.
 
-## Test à refaire
-Repasser exactement les 3 profils de contrôle déjà utilisés, en particulier :
-Arrière / Indoor / 150 € / Standard / Adidas / Shooteur /
-Stabilité / Amorti / Confort.
+## Sports disponibles
+
+### 🏀 Basketball
+Recommandations selon notamment :
+- budget
+- poste et style de jeu
+- surface
+- type de pied
+- priorités
+- marque préférée
+
+### 🏃 Running Route
+Recommandations selon notamment :
+- budget
+- poids du coureur
+- distance
+- type de pied
+- attaque
+- priorités
+- marque préférée
+
+### ⛰️ Trail
+Recommandations selon notamment :
+- budget
+- poids du coureur
+- terrain
+- distance
+- dénivelé
+- type de pied
+- attaque
+- priorités
+- marque préférée
+
+## Fonctionnement
+
+Les caractéristiques des chaussures sont comparées au profil renseigné par l'utilisateur.
+
+Un système de scoring permet ensuite de classer les modèles et d'afficher les **3 chaussures les plus adaptées au profil**.
+
+Les recommandations sont calculées indépendamment de la présence ou non d'un lien d'affiliation.
+
+## Affiliation
+
+Certains liens présents sur MySportShoes peuvent être des liens affiliés.
+
+Lorsqu'un utilisateur effectue un achat éligible après avoir suivi l'un de ces liens, MySportShoes peut percevoir une commission sans augmentation du prix payé par l'utilisateur.
+
+L'affiliation n'influence pas le classement des chaussures.
+
+## Site
+
+https://mysportshoes.fr
+
+## Contact
+
+myshoesfr.contact@gmail.com
+
+---
+
+© 2026 MySportShoes
