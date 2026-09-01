@@ -118,7 +118,7 @@ const SHOES = [
     "surface": "INDOOR",
     "foot": "ETROIT",
     "scoreBrand": "ADIDAS",
-    "link": "https://www.basket4ballers.com/fr/nouveautes/59064-adidas-harden-volume-10-pioneer-jr1598.html"
+    "link": "https://www.awin1.com/cread.php?awinmid=65154&awinaffid=3058285&ued=https%3A%2F%2Fbasket-center.fr%2Fki1605-chaussures-de-basketball-adidas-harden-volume-10-turfla-noiess-turfla"
   },
   {
     "name": "D.O.N. Issue 8",
@@ -148,7 +148,7 @@ const SHOES = [
     "surface": "INDOOR",
     "foot": "LARGE",
     "scoreBrand": "ADIDAS",
-    "link": "https://www.basket4ballers.com/fr/basketball/56822-adidas-dame-10-electric-pink-ki5996.html"
+    "link": "https://www.awin1.com/cread.php?awinmid=65154&awinaffid=3058285&ued=https%3A%2F%2Fbasket-center.fr%2Fjr9943-chaussures-de-basketball-adidas-dame-x-cblack-warvan-blubrs"
   },
   {
     "name": "Curry 13",
@@ -158,7 +158,7 @@ const SHOES = [
     "surface": "INDOOR/OUTDOOR",
     "foot": "ETROIT",
     "scoreBrand": "UNDER ARMOUR",
-    "link": "https://www.basket4ballers.com/fr/1740-chaussures-under-armour-curry-13"
+    "link": "https://www.awin1.com/cread.php?awinmid=65154&awinaffid=3058285&ued=https%3A%2F%2Fbasket-center.fr%2F6007670-790-chaussures-de-basketball-under-armour-curry-13-taxi-taxi-taxi"
   },
   {
     "name": "D. Fox 2",
