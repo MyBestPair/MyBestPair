@@ -4,762 +4,306 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#174d3a">
-  <title>Quelle chaussure de trail choisir ? | MY SHOES</title>
-  <meta name="description" content="Trouve les chaussures de trail adaptées à ton budget, ta distance, ton terrain, ton poids, ton pied et tes priorités. MY SHOES compare 50 modèles pour sortir ton Top 3 personnalisé.">
-  <link rel="canonical" href="https://myshoesbasket.github.io/my-shoes/running/trail/">
+
+  <title>Chaussures de running personnalisées | MySportShoes</title>
+  <meta name="description" content="Trouve les chaussures de running adaptées à ton profil. Choisis Route ou Trail et réponds au questionnaire MySportShoes pour obtenir ton Top 3 personnalisé.">
+  <link rel="canonical" href="https://mysportshoes.fr/running/">
 
   <style>
-    * { box-sizing:border-box; }
+    * { box-sizing: border-box; }
+
     :root {
-      --green:#1f7a59;
-      --green-dark:#174d3a;
-      --green-soft:#e8f5ef;
-      --blue:#2468d8;
-      --text:#172033;
-      --muted:#647087;
-      --line:#e4e9f1;
-      --bg:#f4f7f6;
-      --gold:#ffe17c;
-      --silver:#e9edf4;
-      --bronze:#e49a85;
-      --ok:#15803d;
-      --red:#b42318;
+      --green: #1f7a59;
+      --green-dark: #174d3a;
+      --green-soft: #e8f5ef;
+      --blue: #2468d8;
+      --blue-dark: #174b9b;
+      --blue-soft: #eaf2ff;
+      --text: #172033;
+      --muted: #647087;
+      --line: #e4e9f1;
+      --bg: #f4f7f6;
     }
-    html { scroll-behavior:smooth; }
+
+    html { scroll-behavior: smooth; }
+
     body {
-      margin:0;
-      font-family:Arial, Helvetica, sans-serif;
-      background:var(--bg);
-      color:var(--text);
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
     }
-    button,input { font:inherit; }
+
     .hero {
-      background:linear-gradient(135deg,var(--green-dark),#258866);
-      color:white;
-      padding:52px 20px 70px;
-      text-align:center;
+      background: linear-gradient(135deg, #174d3a, #258866);
+      color: white;
+      padding: 62px 20px 92px;
+      text-align: center;
     }
+
     .brand {
-      font-size:21px;
-      font-weight:900;
-      letter-spacing:.3px;
-      margin-bottom:22px;
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: .4px;
+      margin-bottom: 24px;
     }
+
     .hero h1 {
-      max-width:780px;
-      margin:0 auto 14px;
-      font-size:clamp(30px,5vw,44px);
-      line-height:1.1;
+      max-width: 850px;
+      margin: 0 auto 16px;
+      font-size: clamp(32px, 5vw, 48px);
+      line-height: 1.08;
     }
+
     .hero p {
-      max-width:720px;
-      margin:0 auto;
-      font-size:17px;
-      line-height:1.6;
-      opacity:.96;
+      max-width: 720px;
+      margin: 0 auto;
+      font-size: 17px;
+      line-height: 1.6;
+      opacity: .96;
     }
+
     .wrap {
-      width:min(920px,calc(100% - 28px));
-      margin:-34px auto 55px;
+      width: min(1000px, calc(100% - 28px));
+      margin: -48px auto 60px;
     }
-    .panel {
-      background:white;
-      border-radius:20px;
-      box-shadow:0 12px 38px rgba(26,47,86,.12);
-      overflow:hidden;
+
+    .choice-panel {
+      background: white;
+      border-radius: 22px;
+      padding: 32px;
+      box-shadow: 0 12px 38px rgba(26, 47, 86, .12);
     }
-    .panel-head { padding:28px 30px 18px; }
+
+    .choice-title {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .choice-title h2 {
+      margin: 0 0 9px;
+      font-size: 29px;
+    }
+
+    .choice-title p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .sport-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-height: 330px;
+      padding: 28px;
+      border-radius: 19px;
+      text-decoration: none;
+      color: var(--text);
+      border: 2px solid var(--line);
+      overflow: hidden;
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+
+    .sport-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(26, 47, 86, .12);
+    }
+
+    .route {
+      background: linear-gradient(145deg, #fff, var(--blue-soft));
+    }
+
+    .route:hover { border-color: var(--blue); }
+
+    .trail {
+      background: linear-gradient(145deg, #fff, var(--green-soft));
+    }
+
+    .trail:hover { border-color: var(--green); }
+
+    .icon {
+      font-size: 52px;
+      margin-bottom: 18px;
+    }
+
     .badge {
-      display:inline-block;
-      padding:8px 13px;
-      border-radius:999px;
-      background:var(--green-soft);
-      color:var(--green-dark);
-      font-weight:800;
-      font-size:13px;
-      margin-bottom:12px;
+      align-self: flex-start;
+      padding: 7px 11px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 900;
+      margin-bottom: 12px;
     }
-    h2 { margin:3px 0 8px; font-size:27px; }
-    .intro { color:var(--muted); margin:0; line-height:1.55; }
-    .form { padding:0 30px 30px; }
-    .question {
-      padding:20px 0;
-      border-top:1px solid var(--line);
+
+    .route .badge {
+      background: var(--blue-soft);
+      color: var(--blue-dark);
     }
-    .question-title {
-      font-size:16px;
-      font-weight:800;
-      margin-bottom:12px;
+
+    .trail .badge {
+      background: var(--green-soft);
+      color: var(--green-dark);
     }
-    .hint {
-      display:block;
-      color:var(--muted);
-      font-size:12px;
-      font-weight:400;
-      margin-top:4px;
+
+    .sport-card h3 {
+      margin: 0 0 10px;
+      font-size: 28px;
     }
-    .options { display:flex; flex-wrap:wrap; gap:9px; }
-    .option {
-      border:2px solid #dce3ee;
-      background:#fff;
-      padding:11px 15px;
-      border-radius:10px;
-      cursor:pointer;
-      transition:.15s ease;
+
+    .sport-card p {
+      margin: 0 0 22px;
+      color: var(--muted);
+      line-height: 1.55;
+      flex-grow: 1;
     }
-    .option:hover { border-color:var(--green); background:#f1faf6; }
-    .option.selected {
-      background:var(--green);
-      border-color:var(--green);
-      color:white;
-      box-shadow:0 4px 12px rgba(31,122,89,.2);
+
+    .cta {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 14px 16px;
+      border-radius: 12px;
+      color: white;
+      font-weight: 900;
     }
-    .option.disabled {
-      opacity:.35;
-      pointer-events:none;
-      text-decoration:line-through;
+
+    .route .cta { background: var(--blue); }
+    .trail .cta { background: var(--green); }
+
+    .info {
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+      max-width: 720px;
+      margin: 24px auto 0;
     }
-    .number-input {
-      width:180px;
-      max-width:100%;
-      border:2px solid #dce3ee;
-      padding:12px 13px;
-      border-radius:10px;
-      outline:none;
-    }
-    .number-input:focus { border-color:var(--green); }
-    .recommend-btn {
-      width:100%;
-      border:0;
-      border-radius:13px;
-      background:var(--green);
-      color:white;
-      padding:16px 20px;
-      font-weight:900;
-      cursor:pointer;
-      font-size:16px;
-      transition:.2s ease;
-      margin-top:8px;
-    }
-    .recommend-btn:hover { background:var(--green-dark); transform:translateY(-1px); }
-    .error {
-      display:none;
-      margin:14px 0 0;
-      padding:12px 14px;
-      background:#fff1f0;
-      border:1px solid #ffc9c5;
-      border-radius:10px;
-      color:var(--red);
-      font-weight:700;
-      line-height:1.4;
-    }
+
     .back {
-      display:block;
-      text-align:center;
-      color:var(--green);
-      text-decoration:none;
-      font-weight:800;
-      margin:24px auto 0;
+      display: block;
+      width: fit-content;
+      margin: 28px auto 0;
+      color: var(--green-dark);
+      text-decoration: none;
+      font-weight: 800;
     }
-    .results {
-      display:none;
-      margin-top:26px;
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      padding: 0 20px 30px;
     }
-    .results-title {
-      text-align:center;
-      margin:0 0 7px;
-      font-size:30px;
-    }
-    .results-sub {
-      text-align:center;
-      color:var(--muted);
-      margin:0 0 20px;
-    }
-    .podium {
-      display:grid;
-      grid-template-columns:1fr;
-      gap:16px;
-    }
-    .shoe-card {
-      background:white;
-      border-radius:18px;
-      box-shadow:0 9px 30px rgba(26,47,86,.10);
-      overflow:hidden;
-      border:1px solid #e5eaf2;
-    }
-    .rank-head {
-      padding:17px 22px;
-      font-weight:900;
-      font-size:18px;
-      display:flex;
-      justify-content:space-between;
-      gap:12px;
-      align-items:center;
-    }
-    .rank-1 .rank-head { background:var(--gold); }
-    .rank-2 .rank-head { background:var(--silver); }
-    .rank-3 .rank-head { background:var(--bronze); }
-    .shoe-body { padding:21px 22px 22px; }
-    .shoe-name { font-size:25px; font-weight:900; margin:0 0 6px; }
-    .brand-line { color:var(--muted); font-weight:700; margin-bottom:15px; }
-    .score-line {
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      padding:13px 14px;
-      border-radius:12px;
-      background:#f4f8f6;
-      margin-bottom:14px;
-    }
-    .score-big { font-size:26px; font-weight:900; color:var(--green-dark); }
-    .meta { display:flex; flex-wrap:wrap; gap:8px; margin:12px 0; }
-    .pill {
-      background:#f1f4f8;
-      border-radius:999px;
-      padding:7px 10px;
-      font-size:13px;
-      font-weight:700;
-    }
-    .budget-ok { color:var(--ok); }
-    .budget-heart { color:#c24170; }
-    .budget-out { color:#9a6700; }
-    .detail {
-      padding:12px 0;
-      border-top:1px solid var(--line);
-      line-height:1.55;
-      font-size:14px;
-    }
-    .detail strong { font-weight:900; }
-    .shoe-link {
-      display:block;
-      width:100%;
-      text-align:center;
-      margin-top:16px;
-      text-decoration:none;
-      border-radius:11px;
-      padding:13px 15px;
-      background:var(--green);
-      color:white;
-      font-weight:900;
-    }
-    .shoe-link:hover { background:var(--green-dark); }
-    .restart {
-      display:block;
-      margin:22px auto 0;
-      border:0;
-      background:transparent;
-      color:var(--green);
-      font-weight:800;
-      cursor:pointer;
-      padding:10px;
-    }
-    .engine-note {
-      margin-top:18px;
-      color:var(--muted);
-      font-size:12px;
-      text-align:center;
-      line-height:1.5;
-    }
-    @media(max-width:650px) {
-      .hero { padding:40px 17px 61px; }
-      .wrap { width:min(100% - 18px,920px); }
-      .panel-head,.form { padding-left:19px; padding-right:19px; }
-      .shoe-body,.rank-head { padding-left:17px; padding-right:17px; }
-      .option { padding:10px 12px; font-size:13px; }
-      .number-input { width:100%; }
-      .shoe-name { font-size:21px; }
+
+    @media (max-width: 700px) {
+      .hero {
+        padding: 46px 17px 76px;
+      }
+
+      .wrap {
+        width: min(100% - 18px, 1000px);
+        margin-top: -38px;
+      }
+
+      .choice-panel {
+        padding: 21px 17px 25px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .sport-card {
+        min-height: 290px;
+        padding: 23px;
+      }
+
+      .icon {
+        font-size: 45px;
+      }
     }
   </style>
 </head>
+
 <body>
+
   <header class="hero">
-    <div class="brand">⛰️ MY SHOES • RUNNING</div>
-    <h1>Trouve la chaussure de trail adaptée à ton terrain.</h1>
-    <p>Ton profil est comparé à 50 chaussures de trail selon tes distances, ton terrain, ton poids, ton pied et tes priorités.</p>
+    <div class="brand">🏃 MYSPORTSHOES • RUNNING</div>
+
+    <h1>Trouve la chaussure de running faite pour toi.</h1>
+
+    <p>
+      Route ou trail, ton profil n'est pas celui des autres.
+      Choisis ta pratique et découvre les 3 chaussures les plus adaptées à tes besoins.
+    </p>
   </header>
 
   <main class="wrap">
-    <section class="panel" id="questionnaire">
-      <div class="panel-head">
-        <span class="badge">⛰️ RUNNING • TRAIL</span>
-        <h2>Ton profil de traileur</h2>
-        <p class="intro">Réponds aux questions ci-dessous. MY SHOES calculera ensuite ton Top 3 personnalisé.</p>
+
+    <section class="choice-panel">
+
+      <div class="choice-title">
+        <h2>Tu cours où ?</h2>
+        <p>Choisis ton terrain pour accéder au questionnaire personnalisé.</p>
       </div>
 
-      <div class="form">
-        <div class="question" data-key="budget">
-          <div class="question-title">Quel est ton budget ?</div>
-          <input class="number-input" id="budget" type="number" min="50" max="500" step="1" placeholder="Ex : 170 €">
-        </div>
+      <div class="cards">
 
-        <div class="question" data-key="objectif">
-          <div class="question-title">Quel est ton objectif principal ?</div>
-          <div class="options">
-            <button class="option" data-value="ENTRAÎNEMENT">ENTRAÎNEMENT</button>
-            <button class="option" data-value="CONFORT">CONFORT</button>
-            <button class="option" data-value="POLYVALENT">POLYVALENT</button>
-            <button class="option" data-value="PERFORMANCE">PERFORMANCE</button>
-            <button class="option" data-value="COMPÉTITION">COMPÉTITION</button>
-          </div>
-        </div>
+        <a class="sport-card route" href="./route/">
+          <div class="icon">🏃‍♂️</div>
+          <span class="badge">RUNNING • ROUTE</span>
 
-        <div class="question" data-key="distance">
-          <div class="question-title">Quelle est ta distance principale ?</div>
-          <div class="options">
-            <button class="option" data-value="< 10 KM">&lt; 10 KM</button>
-            <button class="option" data-value="10 - 30 KM">10 - 30 KM</button>
-            <button class="option" data-value="30 - 50 KM">30 - 50 KM</button>
-            <button class="option" data-value="> 50 KM">&gt; 50 KM</button>
-            <button class="option" data-value="ULTRA">ULTRA</button>
-          </div>
-        </div>
+          <h3>Route</h3>
 
-        <div class="question" data-key="terrain">
-          <div class="question-title">Quel est ton terrain principal ?</div>
-          <div class="options">
-            <button class="option" data-value="ROULANT">ROULANT</button>
-            <button class="option" data-value="MIXTE">MIXTE</button>
-            <button class="option" data-value="TECHNIQUE">TECHNIQUE</button>
-            <button class="option" data-value="MONTAGNE">MONTAGNE</button>
-          </div>
-        </div>
+          <p>
+            Pour tes sorties sur route, tes entraînements et tes compétitions.
+            Ton profil est analysé selon ton budget, ta distance, ton poids,
+            ton pied, ton attaque et tes priorités.
+          </p>
 
-        <div class="question" data-key="poids">
-          <div class="question-title">Quel est ton poids ?</div>
-          <input class="number-input" id="poids" type="number" min="40" max="200" step="1" placeholder="Ex : 80 kg">
-        </div>
+          <span class="cta">TROUVER MA PAIRE ROUTE →</span>
+        </a>
 
-        <div class="question" data-key="typePied">
-          <div class="question-title">Quel est ton type de pied ?</div>
-          <div class="options">
-            <button class="option" data-value="ÉTROIT">ÉTROIT</button>
-            <button class="option" data-value="STANDARD">STANDARD</button>
-            <button class="option" data-value="LARGE">LARGE</button>
-          </div>
-        </div>
+        <a class="sport-card trail" href="./trail/">
+          <div class="icon">⛰️</div>
+          <span class="badge">RUNNING • TRAIL</span>
 
-        <div class="question" data-key="attaque">
-          <div class="question-title">Quelle est ton attaque de pied ?</div>
-          <div class="options">
-            <button class="option" data-value="TALON">TALON</button>
-            <button class="option" data-value="MÉDIO-PIED">MÉDIO-PIED</button>
-            <button class="option" data-value="AVANT-PIED">AVANT-PIED</button>
-            <button class="option" data-value="JE NE SAIS PAS">JE NE SAIS PAS</button>
-          </div>
-        </div>
+          <h3>Trail</h3>
 
-        <div class="question priority-question" data-key="priorite1">
-          <div class="question-title">Priorité n°1 <span class="hint">Le critère le plus important pour toi.</span></div>
-          <div class="options">
-            <button class="option" data-value="ACCROCHE">ACCROCHE</button>
-            <button class="option" data-value="AMORTI">AMORTI</button>
-            <button class="option" data-value="STABILITE">STABILITÉ</button>
-            <button class="option" data-value="PROTECTION">PROTECTION</button>
-            <button class="option" data-value="DYNAMISME">DYNAMISME</button>
-            <button class="option" data-value="CONFORT">CONFORT</button>
-          </div>
-        </div>
+          <p>
+            Pour courir sur sentiers, terrains mixtes, techniques ou montagne.
+            Le questionnaire prend notamment en compte ton terrain,
+            ta distance, ton poids et tes priorités.
+          </p>
 
-        <div class="question priority-question" data-key="priorite2">
-          <div class="question-title">Priorité n°2</div>
-          <div class="options">
-            <button class="option" data-value="ACCROCHE">ACCROCHE</button>
-            <button class="option" data-value="AMORTI">AMORTI</button>
-            <button class="option" data-value="STABILITE">STABILITÉ</button>
-            <button class="option" data-value="PROTECTION">PROTECTION</button>
-            <button class="option" data-value="DYNAMISME">DYNAMISME</button>
-            <button class="option" data-value="CONFORT">CONFORT</button>
-          </div>
-        </div>
+          <span class="cta">TROUVER MA PAIRE TRAIL →</span>
+        </a>
 
-        <div class="question priority-question" data-key="priorite3">
-          <div class="question-title">Priorité n°3</div>
-          <div class="options">
-            <button class="option" data-value="ACCROCHE">ACCROCHE</button>
-            <button class="option" data-value="AMORTI">AMORTI</button>
-            <button class="option" data-value="STABILITE">STABILITÉ</button>
-            <button class="option" data-value="PROTECTION">PROTECTION</button>
-            <button class="option" data-value="DYNAMISME">DYNAMISME</button>
-            <button class="option" data-value="CONFORT">CONFORT</button>
-          </div>
-        </div>
-
-        <div class="question" data-key="marque">
-          <div class="question-title">Quelle est ta marque préférée ?</div>
-          <div class="options">
-            <button class="option" data-value="AUCUNE">AUCUNE</button>
-            <button class="option" data-value="ADIDAS">ADIDAS</button>
-            <button class="option" data-value="ALTRA">ALTRA</button>
-            <button class="option" data-value="ASICS">ASICS</button>
-            <button class="option" data-value="BROOKS">BROOKS</button>
-            <button class="option" data-value="HOKA">HOKA</button>
-            <button class="option" data-value="LA SPORTIVA">LA SPORTIVA</button>
-            <button class="option" data-value="NEW BALANCE">NEW BALANCE</button>
-            <button class="option" data-value="NIKE">NIKE</button>
-            <button class="option" data-value="NNORMAL">NNORMAL</button>
-            <button class="option" data-value="ON">ON</button>
-            <button class="option" data-value="SALOMON">SALOMON</button>
-            <button class="option" data-value="SAUCONY">SAUCONY</button>
-            <button class="option" data-value="THE NORTH FACE">THE NORTH FACE</button>
-            <button class="option" data-value="TOPO">TOPO</button>
-          </div>
-        </div>
-
-        <button class="recommend-btn" id="recommendBtn">🔎 VOIR MES RECOMMANDATIONS</button>
-        <div class="error" id="errorBox"></div>
       </div>
+
+      <p class="info">
+        MySportShoes compare ton profil aux caractéristiques des chaussures
+        pour établir un Top 3 personnalisé. Le ressenti et l'essayage restent
+        importants avant l'achat.
+      </p>
+
+      <a class="back" href="../">← Retour à l'accueil MySportShoes</a>
+
     </section>
 
-    <section class="results" id="results">
-      <h2 class="results-title">🏆 Ton Top 3 MY SHOES Trail</h2>
-      <p class="results-sub" id="resultsSub"></p>
-      <div class="podium" id="podium"></div>
-      <button class="restart" id="restartBtn">↻ Modifier mon profil</button>
-      <p class="engine-note">Le classement reprend les pondérations du moteur MASTER Trail. L'essayage et le ressenti personnel restent importants, surtout sur terrain technique.</p>
-    </section>
-
-    <a class="back" href="../">← Retour à Running</a>
   </main>
 
-<script>
-const SHOES = [{"modele":"HOKA Speedgoat 7","marque":"HOKA","prix":180.0,"type":"POLYVALENTE","poidsChaussure":275.0,"drop":5.0,"accroche":9.0,"amorti":8.5,"stabilite":9.0,"protection":8.5,"dynamisme":9.0,"confort":7.5,"distance":"10 - 30 KM / 30 - 50 KM / > 50 KM","terrain":"MIXTE / TECHNIQUE / MONTAGNE","typePied":"STANDARD","attaque":"MILIEU / AVANT","poidsIdealMin":60.0,"poidsIdealMax":105.0,"poidsMax":125.0,"objectif":"POLYVALENT","carbone":"NON","lien":"https://nz.hoka.com/products/m-speedgoat-7-1171928-bckt-bckt"},{"modele":"HOKA Mafate 5","marque":"HOKA","prix":190.0,"type":"ULTRA","poidsChaussure":332.0,"drop":8.0,"accroche":9.5,"amorti":8.0,"stabilite":9.0,"protection":9.0,"dynamisme":9.5,"confort":5.5,"distance":"30 - 50 KM / > 50 KM / ULTRA","terrain":"TECHNIQUE / MONTAGNE","typePied":"STANDARD / LARGE","attaque":"TALON / MILIEU","poidsIdealMin":70.0,"poidsIdealMax":110.0,"poidsMax":130.0,"objectif":"CONFORT","carbone":"NON","lien":"https://nz.hoka.com/products/m-mafate-5-1168722-swrd-swrd"},{"modele":"HOKA Tecton X 3","marque":"HOKA","prix":250.0,"type":"RACE","poidsChaussure":283.0,"drop":5.0,"accroche":8.5,"amorti":10.0,"stabilite":8.5,"protection":8.0,"dynamisme":8.0,"confort":8.0,"distance":"10 - 30 KM / 30 - 50 KM / > 50 KM","terrain":"ROULANT / MIXTE / TECHNIQUE","typePied":"STANDARD / ÉTROIT","attaque":"MILIEU / AVANT","poidsIdealMin":55.0,"poidsIdealMax":90.0,"poidsMax":110.0,"objectif":"COMPÉTITION","carbone":"OUI","lien":"https://au.hoka.com/products/m-tecton-x-3-1155112-bhkb-bhkb"},{"modele":"SALOMON Genesis","marque":"SALOMON","prix":160.0,"type":"POLYVALENTE","poidsChaussure":269.0,"drop":8.0,"accroche":8.5,"amorti":8.0,"stabilite":9.5,"protection":8.5,"dynamisme":9.0,"confort":8.0,"distance":"10 - 30 KM / 30 - 50 KM / > 50 KM","terrain":"MIXTE / TECHNIQUE / MONTAGNE","typePied":"STANDARD","attaque":"TALON / MILIEU","poidsIdealMin":60.0,"poidsIdealMax":100.0,"poidsMax":120.0,"objectif":"POLYVALENT","carbone":"NON","lien":"https://www.salomon.com/fr-fr/product/genesis-li5372"},{"modele":"SALOMON Speedcross 6","marque":"SALOMON","prix":150.0,"type":"TECHNIQUE","poidsChaussure":298.0,"drop":10.0,"accroche":7.5,"amorti":7.5,"stabilite":9.5,"protection":7.5,"dynamisme":9.0,"confort":6.5,"distance":"< 10 KM / 10 - 30 KM / 30 - 50 KM","terrain":"TECHNIQUE / MONTAGNE","typePied":"STANDARD / ÉTROIT","attaque":"TALON / MILIEU","poidsIdealMin":60.0,"poidsIdealMax":100.0,"poidsMax":120.0,"objectif":"ENTRAÎNEMENT","carbone":"NON","lien":"https://www.salomon.com/fr-fr/product/speedcross-6-lg9213"},{"modele":"SALOMON S/LAB Genesis","marque":"SALOMON","prix":220.0,"type":"RACE","poidsChaussure":258.0,"drop":8.0,"accroche":9.0,"amorti":9.0,"stabilite":9.0,"protection":8.0,"dynamisme":8.5,"confort":8.0,"distance":"10 - 30 KM / 30 - 50 KM / > 50 KM","terrain":"TECHNIQUE / MONTAGNE","typePied":"STANDARD / ÉTROIT","attaque":"MILIEU / AVANT","poidsIdealMin":55.0,"poidsIdealMax":90.0,"poidsMax":110.0,"objectif":"COMPÉTITION","carbone":"NON","lien":"https://www.salomon.com/fr-fr/c/collection/genesis"},{"modele":"SALOMON Ultra Glide 3","marque":"SALOMON","prix":150.0,"type":"ULTRA","poidsChaussure":290.0,"drop":6.0,"accroche":9.0,"amorti":7.5,"stabilite":8.5,"protection":9.5,"dynamisme":9.0,"confort":6.5,"distance":"30 - 50 KM / > 50 KM / ULTRA","terrain":"ROULANT / MIXTE","typePied":"STANDARD / LARGE","attaque":"TALON / MILIEU","poidsIdealMin":65.0,"poidsIdealMax":110.0,"poidsMax":130.0,"objectif":"CONFORT","carbone":"NON","lien":"https://www.salomon.com/fr-fr/c/collection/salomon-shoes/trail-running"},{"modele":"ASICS Trabuco Max 4","marque":"ASICS","prix":180.0,"type":"ULTRA","poidsChaussure":315.0,"drop":5.0,"accroche":9.5,"amorti":7.5,"stabilite":9.0,"protection":9.5,"dynamisme":9.0,"confort":5.5,"distance":"30 - 50 KM / > 50 KM / ULTRA","terrain":"ROULANT / MIXTE","typePied":"STANDARD / LARGE","attaque":"TALON / MILIEU","poidsIdealMin":70.0,"poidsIdealMax":115.0,"poidsMax":135.0,"objectif":"CONFORT","carbone":"NON","lien":"https://www.asics.com/fr/fr-fr/trail-running-hiking-gear/c/as41809000/"},{"modele":"ASICS Fuji Lite 6","marque":"ASICS","prix":140.0,"type":"TEMPO","poidsChaussure":250.0,"drop":4.0,"accroche":7.5,"amorti":9.0,"stabilite":8.0,"protection":7.5,"dynamisme":7.5,"confort":9.0,"distance":"< 10 KM / 10 - 30 KM / 30 - 50 KM","terrain":"ROULANT / MIXTE","typePied":"STANDARD","attaque":"MILIEU / AVANT","poidsIdealMin":55.0,"poidsIdealMax":90.0,"poidsMax":110.0,"objectif":"PERFORMANCE","carbone":"NON","lien":"https://www.asics.com/fr/fr-fr/chaussures-randonnee/c/as41801000/?start=47"},{"modele":"ASICS Metafuji Trail","marque":"ASICS","prix":250.0,"type":"RACE","poidsChaussure":260.0,"drop":5.0,"accroche":8.0,"amorti":10.0,"stabilite":8.0,"protection":7.5,"dynamisme":7.0,"confort":9.0,"distance":"10 - 30 KM / 30 - 50 KM","terrain":"ROULANT / MIXTE / TECHNIQUE","typePied":"STANDARD / ÉTROIT","attaque":"MILIEU / AVANT","poidsIdealMin":55.0,"poidsIdealMax":85.0,"poidsMax":105.0,"objectif":"COMPÉTITION","carbone":"OUI","lien":"https://www.asics.com/fr/fr-fr/trail-running-campaign/"},{"modele":"NIKE Zegama 2","marque":"NIKE","prix":180.0,"type":"ULTRA","poidsChaussure":320.0,"drop":4.0,"accroche":9.5,"amorti":8.0,"stabilite":9.0,"protection":9.0,"dynamisme":9.5,"confort":6.5,"distance":"30 - 50 KM / > 50 KM / ULTRA","terrain":"TECHNIQUE / MONTAGNE","typePied":"STANDARD / LARGE","attaque":"TALON / MILIEU","poidsIdealMin":65.0,"poidsIdealMax":110.0,"poidsMax":135.0,"objectif":"CONFORT","carbone":"NON","lien":"https://www.nike.com/fr/w/trail-running-chaussures-37v7jz7ful"},{"modele":"NIKE Pegasus Trail 5","marque":"NIKE","prix":140.0,"type":"POLYVALENTE","poidsChaussure":300.0,"drop":9.5,"accroche":8.5,"amorti":8.0,"stabilite":8.0,"protection":9.0,"dynamisme":8.0,"confort":7.5,"distance":"< 10 KM / 10 - 30 KM / 30 - 50 KM","terrain":"ROULANT / MIXTE","typePied":"STANDARD / LARGE","attaque":"TALON / MILIEU","poidsIdealMin":60.0,"poidsIdealMax":105.0,"poidsMax":125.0,"objectif":"POLYVALENT","carbone":"NON","lien":"https://www.nike.com/fr/w/trail-running-chaussures-37v7jz7ful"},{"modele":"ADIDAS Terrex Agravic Speed Ultra","marque":"ADIDAS","prix":230.0,"type":"RACE","poidsChaussure":275.0,"drop":8.0,"accroche":8.5,"amorti":10.0,"stabilite":8.0,"protection":8.0,"dynamisme":7.5,"confort":9.0,"distance":"10 - 30 KM / 30 - 50 KM / > 50 KM","terrain":"MIXTE / TECHNIQUE","typePied":"STANDARD","attaque":"MILIEU / AVANT","poidsIdealMin":55.0,"poidsIdealMax":90.0,"poidsMax":110.0,"objectif":"COMPÉTITION","carbone":"OUI","lien":"https://www.adidas.fr/terrex-agravic"},{"modele":"BROOKS Cascadia 19","marque":"BROOKS","prix":150.0,"type":"POLYVALENTE","poidsChaussure":310.0,"drop":8.0,"accroche":9.0,"amorti":7.0,"stabilite":9.5,"protection":9.0,"dynamisme":9.5,"confort":6.0,"distance":"10 - 30 KM / 30 - 50 KM / > 50 KM","terrain":"MIXTE / TECHNIQUE / MONTAGNE","typePied":"STANDARD / LARGE","attaque":"TALON / MILIEU","poidsIdealMin":65.0,"poidsIdealMax":115.0,"poidsMax":135.0,"objectif":"ENTRAÎNEMENT","carbone":"NON","lien":"https://www.brooksrunning.com/fr_fr/chaussures-de-trail-running-cascadia/"},{"modele":"SAUCONY Peregrine 15","marque":"SAUCONY","prix":150.0,"type":"TEMPO","poidsChaussure":275.0,"drop":4.0,"accroche":8.0,"amorti":9.0,"stabilite":9.0,"protection":8.0,"dynamisme":8.5,"confort":8.5,"distance":"< 10 KM / 10 - 30 KM / 30 - 50 KM","terrain":"MIXTE / TECHNIQUE","typePied":"STANDARD / ÉTROIT","attaque":"MILIEU / AVANT","poidsIdealMin":55.0,"poidsIdealMax":95.0,"poidsMax":115.0,"objectif":"PERFORMANCE","carbone":"NON","lien":"https://www.saucony.com/FR/fr_FR/peregrine/"},{"modele":"NEW BALANCE Fresh Foam X Hierro v9","marque":"NEW BALANCE","prix":160.0,"type":"POLYVALENTE","poidsChaussure":290.0,"drop":4.0,"accroche":9.0,"amorti":7.5,"stabilite":8.5,"protection":9.0,"dynamisme":9.0,"confort":6.5,"distance":"10 - 30 KM / 30 - 50 KM / > 50 KM","terrain":"MIXTE / TECHNIQUE","typePied":"STANDARD / LARGE","attaque":"TALON / MILIEU","poidsIdealMin":65.0,"poidsIdealMax":110.0,"poidsMax":130.0,"objectif":"CONFORT","carbone":"NON","lien":"https://www.newbalance.fr/fr/men/shoes/running/trail-running-shoes/"},{"modele":"LA SPORTIVA Prodigio","marque":"LA SPORTIVA","prix":160.0,"type":"TEMPO","poidsChaussure":270.0,"drop":6.0,"accroche":8.5,"amorti":9.0,"stabilite":8.5,"protection":8.5,"dynamisme":8.0,"confort":8.5,"distance":"10 - 30 KM / 30 - 50 KM / > 50 KM","terrain":"MIXTE / TECHNIQUE","typePied":"STANDARD / ÉTROIT","attaque":"MILIEU / AVANT","poidsIdealMin":55.0,"poidsIdealMax":95.0,"poidsMax":115.0,"objectif":"PERFORMANCE","carbone":"NON","lien":"https://www.lasportiva.com/en/shoes-trail-running"},{"modele":"LA SPORTIVA Bushido III","marque":"LA SPORTIVA","prix":175.0,"type":"TECHNIQUE","poidsChaussure":300.0,"drop":6.0,"accroche":8.0,"amorti":8.0,"stabilite":10.0,"protection":8.0,"dynamisme":9.5,"confort":7.0,"distance":"< 10 KM / 10 - 30 KM / 30 - 50 KM","terrain":"TECHNIQUE / MONTAGNE","typePied":"ÉTROIT / STANDARD","attaque":"MILIEU / AVANT","poidsIdealMin":55.0,"poidsIdealMax":95.0,"poidsMax":115.0,"objectif":"POLYVALENT","carbone":"NON","lien":"https://www.lasportiva.com/en/shoes-trail-running"},{"modele":"NNORMAL Kjerag 2.0","marque":"NNORMAL","prix":190.0,"type":"RACE","poidsChaussure":215.0,"drop":6.0,"accroche":7.5,"amorti":10.0,"stabilite":9.0,"protection":7.5,"dynamisme":9.0,"confort":10.0,"distance":"< 10 KM / 10 - 30 KM / 30 - 50 KM","terrain":"ROULANT / MIXTE / TECHNIQUE","typePied":"STANDARD / ÉTROIT","attaque":"MILIEU / AVANT","poidsIdealMin":50.0,"poidsIdealMax":85.0,"poidsMax":105.0,"objectif":"COMPÉTITION","carbone":"NON","lien":"https://www.nnormal.com/en_FR/men/shoes"},{"modele":"SALOMON S/LAB Ultra Glide 1.5","marque":"SALOMON","prix":250.0,"type":"ULTRA","poidsChaussure":285.0,"drop":6.0,"accroche":9.5,"amorti":8.5,"stabilite":9.0,"protection":9.5,"dynamisme":9.5,"confort":7.0,"distance":"30 - 50 KM / > 50 KM / ULTRA","terrain":"MIXTE / TECHNIQUE / MONTAGNE","typePied":"STANDARD","attaque":"TALON / MILIEU","poidsIdealMin":65.0,"poidsIdealMax":105.0,"poidsMax":125.0,"objectif":"CONFORT","carbone":"NON","lien":"https://www.salomon.com/fr-fr/c/sports/trail-running/shoes"},{"modele":"HOKA Challenger 8","marque":"HOKA","prix":150.0,"type":"POLYVALENTE","poidsChaussure":287.0,"drop":8.0,"accroche":8.0,"amorti":8.0,"stabilite":8.5,"protection":7.5,"dynamisme":8.5,"confort":8.0,"distance":"10 - 50 KM","terrain":"MIXTE / ROULANT","typePied":"STANDARD","attaque":"MILIEU / TALON","poidsIdealMin":60.0,"poidsIdealMax":110.0,"poidsMax":130.0,"objectif":"POLYVALENT","carbone":"NON","lien":"https://www.hoka.com/"},{"modele":"HOKA Zinal 3","marque":"HOKA","prix":160.0,"type":"TEMPO","poidsChaussure":240.0,"drop":5.0,"accroche":9.0,"amorti":7.5,"stabilite":8.5,"protection":7.0,"dynamisme":9.0,"confort":7.5,"distance":"< 30 KM","terrain":"TECHNIQUE / ROULANT","typePied":"STANDARD / ÉTROIT","attaque":"MILIEU / AVANT","poidsIdealMin":55.0,"poidsIdealMax":95.0,"poidsMax":110.0,"objectif":"PERFORMANCE","carbone":"NON","lien":"https://www.hoka.com/"},{"modele":"SALOMON S/LAB Genesis 2","marque":"SALOMON","prix":200.0,"type":"RACE","poidsChaussure":260.0,"drop":8.0,"accroche":10.0,"amorti":8.0,"stabilite":9.5,"protection":8.5,"dynamisme":9.5,"confort":8.0,"distance":"10 - 100 KM","terrain":"TECHNIQUE / MIXTE","typePied":"STANDARD","attaque":"MILIEU / AVANT","poidsIdealMin":55.0,"poidsIdealMax":105.0,"poidsMax":120.0,"objectif":"COMPÉTITION","carbone":"NON","lien":"https://www.salomon.com/fr-fr/"},{"modele":"SALOMON Genesis 2","marque":"SALOMON","prix":150.0,"type":"POLYVALENTE","poidsChaussure":275.0,"drop":8.0,"accroche":9.5,"amorti":8.5,"stabilite":9.5,"protection":9.0,"dynamisme":8.5,"confort":9.0,"distance":"10 - 100 KM","terrain":"TECHNIQUE / MIXTE","typePied":"STANDARD","attaque":"MILIEU / TALON","poidsIdealMin":60.0,"poidsIdealMax":115.0,"poidsMax":135.0,"objectif":"POLYVALENT","carbone":"NON","lien":"https://www.salomon.com/fr-fr/"},{"modele":"SALOMON Ultra Glide 4","marque":"SALOMON","prix":150.0,"type":"ULTRA","poidsChaussure":285.0,"drop":6.0,"accroche":8.5,"amorti":9.5,"stabilite":8.5,"protection":8.0,"dynamisme":8.5,"confort":9.5,"distance":"30 - 100 KM","terrain":"MIXTE / ROULANT","typePied":"STANDARD / LARGE","attaque":"MILIEU / TALON","poidsIdealMin":65.0,"poidsIdealMax":120.0,"poidsMax":140.0,"objectif":"CONFORT","carbone":"NON","lien":"https://www.salomon.com/fr-fr/"},{"modele":"SALOMON S/LAB Ultra Glide 2","marque":"SALOMON","prix":250.0,"type":"ULTRA","poidsChaussure":275.0,"drop":6.0,"accroche":9.0,"amorti":9.5,"stabilite":9.0,"protection":8.5,"dynamisme":9.0,"confort":9.5,"distance":"30 - 100 KM","terrain":"TECHNIQUE / MIXTE","typePied":"STANDARD","attaque":"MILIEU / AVANT","poidsIdealMin":60.0,"poidsIdealMax":110.0,"poidsMax":125.0,"objectif":"COMPÉTITION","carbone":"NON","lien":"https://www.salomon.com/fr-fr/"},{"modele":"SAUCONY Peregrine 16","marque":"SAUCONY","prix":160.0,"type":"POLYVALENTE","poidsChaussure":271.0,"drop":4.0,"accroche":9.5,"amorti":7.5,"stabilite":9.0,"protection":8.5,"dynamisme":9.0,"confort":8.0,"distance":"< 50 KM","terrain":"TECHNIQUE / MIXTE","typePied":"STANDARD","attaque":"MILIEU / AVANT","poidsIdealMin":55.0,"poidsIdealMax":105.0,"poidsMax":120.0,"objectif":"POLYVALENT","carbone":"NON","lien":"https://www.saucony.com/"},{"modele":"SAUCONY Xodus Ultra 4","marque":"SAUCONY","prix":170.0,"type":"ULTRA","poidsChaussure":295.0,"drop":6.0,"accroche":9.0,"amorti":9.5,"stabilite":9.0,"protection":9.0,"dynamisme":8.0,"confort":9.5,"distance":"30 - 100 KM","terrain":"MIXTE / TECHNIQUE","typePied":"STANDARD / LARGE","attaque":"MILIEU / TALON","poidsIdealMin":65.0,"poidsIdealMax":120.0,"poidsMax":140.0,"objectif":"CONFORT","carbone":"NON","lien":"https://www.saucony.com/"},{"modele":"BROOKS Cascadia 20","marque":"BROOKS","prix":150.0,"type":"POLYVALENTE","poidsChaussure":300.0,"drop":8.0,"accroche":9.0,"amorti":8.5,"stabilite":9.5,"protection":9.5,"dynamisme":7.5,"confort":8.5,"distance":"10 - 100 KM","terrain":"TECHNIQUE / MIXTE","typePied":"STANDARD / LARGE","attaque":"MILIEU / TALON","poidsIdealMin":65.0,"poidsIdealMax":120.0,"poidsMax":140.0,"objectif":"POLYVALENT","carbone":"NON","lien":"https://www.brooksrunning.com/"},{"modele":"BROOKS Cascadia Elite","marque":"BROOKS","prix":220.0,"type":"RACE","poidsChaussure":270.0,"drop":6.0,"accroche":9.5,"amorti":8.5,"stabilite":9.0,"protection":8.5,"dynamisme":9.5,"confort":8.5,"distance":"10 - 80 KM","terrain":"ROULANT / MIXTE","typePied":"STANDARD","attaque":"MILIEU / AVANT","poidsIdealMin":55.0,"poidsIdealMax":100.0,"poidsMax":115.0,"objectif":"COMPÉTITION","carbone":"OUI","lien":"https://www.brooksrunning.com/"},{"modele":"BROOKS Caldera 8","marque":"BROOKS","prix":150.0,"type":"ULTRA","poidsChaussure":300.0,"drop":6.0,"accroche":8.5,"amorti":9.5,"stabilite":9.0,"protection":9.0,"dynamisme":7.5,"confort":9.5,"distance":"30 - 100 KM","terrain":"MIXTE / ROULANT","typePied":"STANDARD / LARGE","attaque":"MILIEU / TALON","poidsIdealMin":65.0,"poidsIdealMax":125.0,"poidsMax":145.0,"objectif":"CONFORT","carbone":"NON","lien":"https://www.brooksrunning.com/"},{"modele":"ASICS GEL-Trabuco 14","marque":"ASICS","prix":160.0,"type":"POLYVALENTE","poidsChaussure":290.0,"drop":8.0,"accroche":9.5,"amorti":8.5,"stabilite":9.5,"protection":9.5,"dynamisme":8.0,"confort":8.5,"distance":"10 - 80 KM","terrain":"TECHNIQUE / MIXTE","typePied":"STANDARD","attaque":"MILIEU / TALON","poidsIdealMin":65.0,"poidsIdealMax":120.0,"poidsMax":140.0,"objectif":"POLYVALENT","carbone":"NON","lien":"https://www.asics.com/fr/fr-fr/"},{"modele":"ASICS Fuji Speed 4","marque":"ASICS","prix":180.0,"type":"TEMPO","poidsChaussure":245.0,"drop":5.0,"accroche":9.0,"amorti":7.5,"stabilite":8.5,"protection":8.0,"dynamisme":9.5,"confort":7.5,"distance":"< 50 KM","terrain":"ROULANT / MIXTE","typePied":"STANDARD","attaque":"MILIEU / AVANT","poidsIdealMin":55.0,"poidsIdealMax":100.0,"poidsMax":115.0,"objectif":"PERFORMANCE","carbone":"OUI","lien":"https://www.asics.com/fr/fr-fr/"},{"modele":"NIKE ACG Pegasus Trail","marque":"NIKE","prix":150.0,"type":"POLYVALENTE","poidsChaussure":295.0,"drop":8.0,"accroche":8.0,"amorti":8.5,"stabilite":8.0,"protection":7.5,"dynamisme":8.0,"confort":9.0,"distance":"10 - 50 KM","terrain":"ROULANT / MIXTE","typePied":"STANDARD / LARGE","attaque":"MILIEU / TALON","poidsIdealMin":60.0,"poidsIdealMax":115.0,"poidsMax":135.0,"objectif":"POLYVALENT","carbone":"NON","lien":"https://www.nike.com/fr/"},{"modele":"NIKE ACG Zegama Trail","marque":"NIKE","prix":180.0,"type":"ULTRA","poidsChaussure":315.0,"drop":4.0,"accroche":9.5,"amorti":9.5,"stabilite":9.0,"protection":9.0,"dynamisme":7.5,"confort":9.5,"distance":"30 - 100 KM","terrain":"TECHNIQUE / MIXTE","typePied":"STANDARD / LARGE","attaque":"MILIEU / TALON","poidsIdealMin":65.0,"poidsIdealMax":125.0,"poidsMax":145.0,"objectif":"CONFORT","carbone":"NON","lien":"https://www.nike.com/fr/"},{"modele":"NIKE ACG Ultrafly Trail","marque":"NIKE","prix":260.0,"type":"RACE","poidsChaussure":285.0,"drop":8.0,"accroche":8.5,"amorti":9.0,"stabilite":8.5,"protection":8.0,"dynamisme":9.5,"confort":8.5,"distance":"10 - 100 KM","terrain":"ROULANT / MIXTE","typePied":"STANDARD","attaque":"MILIEU / AVANT","poidsIdealMin":55.0,"poidsIdealMax":105.0,"poidsMax":120.0,"objectif":"COMPÉTITION","carbone":"OUI","lien":"https://www.nike.com/fr/"},{"modele":"ADIDAS Terrex Agravic Speed 2","marque":"ADIDAS","prix":180.0,"type":"TEMPO","poidsChaussure":260.0,"drop":8.0,"accroche":8.5,"amorti":7.5,"stabilite":8.0,"protection":8.0,"dynamisme":9.5,"confort":7.5,"distance":"< 50 KM","terrain":"ROULANT / MIXTE","typePied":"STANDARD","attaque":"MILIEU / AVANT","poidsIdealMin":55.0,"poidsIdealMax":100.0,"poidsMax":115.0,"objectif":"PERFORMANCE","carbone":"NON","lien":"https://www.adidas.fr/"},{"modele":"ADIDAS Terrex Agravic Speed Ultra 2","marque":"ADIDAS","prix":230.0,"type":"RACE","poidsChaussure":265.0,"drop":8.0,"accroche":9.0,"amorti":8.5,"stabilite":8.5,"protection":8.0,"dynamisme":10.0,"confort":8.0,"distance":"10 - 80 KM","terrain":"ROULANT / MIXTE","typePied":"STANDARD","attaque":"MILIEU / AVANT","poidsIdealMin":55.0,"poidsIdealMax":100.0,"poidsMax":115.0,"objectif":"COMPÉTITION","carbone":"OUI","lien":"https://www.adidas.fr/"},{"modele":"NEW BALANCE FuelCell SuperComp Trail","marque":"NEW BALANCE","prix":220.0,"type":"RACE","poidsChaussure":270.0,"drop":8.0,"accroche":9.0,"amorti":8.5,"stabilite":8.5,"protection":8.0,"dynamisme":9.5,"confort":8.5,"distance":"10 - 80 KM","terrain":"ROULANT / MIXTE","typePied":"STANDARD","attaque":"MILIEU / AVANT","poidsIdealMin":55.0,"poidsIdealMax":105.0,"poidsMax":120.0,"objectif":"COMPÉTITION","carbone":"OUI","lien":"https://www.newbalance.fr/"},{"modele":"NEW BALANCE Fresh Foam X More Trail v3","marque":"NEW BALANCE","prix":170.0,"type":"ULTRA","poidsChaussure":320.0,"drop":4.0,"accroche":8.5,"amorti":10.0,"stabilite":9.0,"protection":9.0,"dynamisme":7.0,"confort":10.0,"distance":"30 - 100 KM","terrain":"MIXTE / ROULANT","typePied":"STANDARD / LARGE","attaque":"MILIEU / TALON","poidsIdealMin":70.0,"poidsIdealMax":130.0,"poidsMax":150.0,"objectif":"CONFORT","carbone":"NON","lien":"https://www.newbalance.fr/"},{"modele":"LA SPORTIVA Prodigio Pro","marque":"LA SPORTIVA","prix":200.0,"type":"RACE","poidsChaussure":255.0,"drop":6.0,"accroche":9.5,"amorti":8.5,"stabilite":9.0,"protection":8.5,"dynamisme":9.5,"confort":8.0,"distance":"10 - 80 KM","terrain":"TECHNIQUE / MIXTE","typePied":"STANDARD / ÉTROIT","attaque":"MILIEU / AVANT","poidsIdealMin":55.0,"poidsIdealMax":100.0,"poidsMax":115.0,"objectif":"COMPÉTITION","carbone":"NON","lien":"https://www.lasportiva.com/"},{"modele":"LA SPORTIVA Jackal II","marque":"LA SPORTIVA","prix":170.0,"type":"ULTRA","poidsChaussure":300.0,"drop":7.0,"accroche":9.0,"amorti":9.0,"stabilite":9.0,"protection":9.5,"dynamisme":7.5,"confort":9.0,"distance":"30 - 100 KM","terrain":"TECHNIQUE / MIXTE","typePied":"STANDARD","attaque":"MILIEU / TALON","poidsIdealMin":65.0,"poidsIdealMax":120.0,"poidsMax":140.0,"objectif":"CONFORT","carbone":"NON","lien":"https://www.lasportiva.com/"},{"modele":"LA SPORTIVA Akasha II","marque":"LA SPORTIVA","prix":170.0,"type":"ULTRA","poidsChaussure":310.0,"drop":6.0,"accroche":9.0,"amorti":9.5,"stabilite":9.5,"protection":9.5,"dynamisme":7.0,"confort":9.0,"distance":"30 - 100 KM","terrain":"TECHNIQUE / MIXTE","typePied":"STANDARD / LARGE","attaque":"MILIEU / TALON","poidsIdealMin":70.0,"poidsIdealMax":125.0,"poidsMax":145.0,"objectif":"CONFORT","carbone":"NON","lien":"https://www.lasportiva.com/"},{"modele":"NNORMAL Tomir 2.0","marque":"NNORMAL","prix":170.0,"type":"POLYVALENTE","poidsChaussure":265.0,"drop":8.0,"accroche":9.5,"amorti":8.0,"stabilite":9.0,"protection":9.5,"dynamisme":8.0,"confort":8.5,"distance":"10 - 100 KM","terrain":"TECHNIQUE / MIXTE","typePied":"STANDARD","attaque":"MILIEU / AVANT","poidsIdealMin":60.0,"poidsIdealMax":110.0,"poidsMax":130.0,"objectif":"POLYVALENT","carbone":"NON","lien":"https://www.nnormal.com/"},{"modele":"NNORMAL Kjerag Brut","marque":"NNORMAL","prix":210.0,"type":"RACE","poidsChaussure":225.0,"drop":6.0,"accroche":10.0,"amorti":7.0,"stabilite":8.5,"protection":8.5,"dynamisme":10.0,"confort":7.0,"distance":"< 50 KM","terrain":"TECHNIQUE / BOUE","typePied":"STANDARD / ÉTROIT","attaque":"MILIEU / AVANT","poidsIdealMin":50.0,"poidsIdealMax":90.0,"poidsMax":105.0,"objectif":"COMPÉTITION","carbone":"NON","lien":"https://www.nnormal.com/"},{"modele":"ON Cloudultra 3","marque":"ON","prix":190.0,"type":"ULTRA","poidsChaussure":295.0,"drop":6.0,"accroche":8.5,"amorti":9.5,"stabilite":9.0,"protection":9.0,"dynamisme":8.0,"confort":9.0,"distance":"30 - 100 KM","terrain":"MIXTE / TECHNIQUE","typePied":"STANDARD","attaque":"MILIEU / TALON","poidsIdealMin":65.0,"poidsIdealMax":120.0,"poidsMax":140.0,"objectif":"CONFORT","carbone":"NON","lien":"https://www.on.com/fr-fr/"},{"modele":"ALTRA Lone Peak 9+","marque":"ALTRA","prix":160.0,"type":"POLYVALENTE","poidsChaussure":275.0,"drop":0.0,"accroche":9.5,"amorti":7.5,"stabilite":9.0,"protection":9.0,"dynamisme":8.0,"confort":8.5,"distance":"10 - 80 KM","terrain":"TECHNIQUE / MIXTE","typePied":"LARGE","attaque":"MILIEU / AVANT","poidsIdealMin":60.0,"poidsIdealMax":115.0,"poidsMax":135.0,"objectif":"POLYVALENT","carbone":"NON","lien":"https://www.altrarunning.eu/"},{"modele":"ALTRA Experience Wild 3+","marque":"ALTRA","prix":160.0,"type":"POLYVALENTE","poidsChaussure":275.0,"drop":4.0,"accroche":9.0,"amorti":8.5,"stabilite":8.5,"protection":8.5,"dynamisme":8.5,"confort":8.5,"distance":"10 - 80 KM","terrain":"MIXTE / ROULANT","typePied":"LARGE","attaque":"MILIEU / AVANT","poidsIdealMin":60.0,"poidsIdealMax":115.0,"poidsMax":135.0,"objectif":"POLYVALENT","carbone":"NON","lien":"https://www.altrarunning.eu/"},{"modele":"TOPO Ultraventure 4","marque":"TOPO","prix":170.0,"type":"ULTRA","poidsChaussure":295.0,"drop":5.0,"accroche":8.5,"amorti":9.5,"stabilite":9.0,"protection":9.0,"dynamisme":8.0,"confort":9.5,"distance":"30 - 100 KM","terrain":"MIXTE / ROULANT","typePied":"LARGE","attaque":"MILIEU / TALON","poidsIdealMin":65.0,"poidsIdealMax":120.0,"poidsMax":140.0,"objectif":"CONFORT","carbone":"NON","lien":"https://www.topoathletic.com/"},{"modele":"THE NORTH FACE Altamesa 500 V2","marque":"THE NORTH FACE","prix":170.0,"type":"ULTRA","poidsChaussure":290.0,"drop":6.0,"accroche":8.5,"amorti":9.5,"stabilite":8.5,"protection":9.0,"dynamisme":8.0,"confort":9.5,"distance":"30 - 100 KM","terrain":"MIXTE / ROULANT","typePied":"STANDARD / LARGE","attaque":"MILIEU / TALON","poidsIdealMin":65.0,"poidsIdealMax":120.0,"poidsMax":140.0,"objectif":"CONFORT","carbone":"NON","lien":"https://www.thenorthface.fr/"}];
+  <footer>
+    MYSPORTSHOES — Running
+  </footer>
 
-const WEIGHTS = {
-  personalized:0.50,
-  objective:0.10,
-  budget:0.08,
-  runnerWeight:0.03,
-  distance:0.10,
-  terrain:0.10,
-  foot:0.03,
-  strike:0.03,
-  brand:0.03
-};
-
-const PRIORITY_COEFS=[1.5,1.25,1.1];
-
-const OBJECTIVE_TYPE={
-  "ENTRAÎNEMENT":{"DAILY":100,"TEMPO":75,"MAX CUSHION":90,"RACE":35,"POLYVALENTE":95},
-  "CONFORT":{"DAILY":90,"TEMPO":65,"MAX CUSHION":100,"RACE":30,"POLYVALENTE":85},
-  "POLYVALENT":{"DAILY":95,"TEMPO":100,"MAX CUSHION":75,"RACE":70,"POLYVALENTE":100},
-  "PERFORMANCE":{"DAILY":70,"TEMPO":100,"MAX CUSHION":50,"RACE":95,"POLYVALENTE":85},
-  "COMPÉTITION":{"DAILY":40,"TEMPO":80,"MAX CUSHION":25,"RACE":100,"POLYVALENTE":70}
-};
-
-const DIST_MATRIX={
-  "< 10 KM":{"< 10 KM":100,"10 - 30 KM":70,"30 - 50 KM":30,"> 50 KM":10,"ULTRA":0},
-  "10 - 30 KM":{"< 10 KM":70,"10 - 30 KM":100,"30 - 50 KM":70,"> 50 KM":30,"ULTRA":10},
-  "30 - 50 KM":{"< 10 KM":30,"10 - 30 KM":70,"30 - 50 KM":100,"> 50 KM":70,"ULTRA":40},
-  "> 50 KM":{"< 10 KM":10,"10 - 30 KM":30,"30 - 50 KM":70,"> 50 KM":100,"ULTRA":90},
-  "ULTRA":{"< 10 KM":0,"10 - 30 KM":10,"30 - 50 KM":40,"> 50 KM":90,"ULTRA":100}
-};
-
-const TERRAIN_MATRIX={
-  "ROULANT":{"ROULANT":100,"MIXTE":75,"TECHNIQUE":35,"MONTAGNE":15,"TOUTES":90},
-  "MIXTE":{"ROULANT":75,"MIXTE":100,"TECHNIQUE":80,"MONTAGNE":55,"TOUTES":90},
-  "TECHNIQUE":{"ROULANT":35,"MIXTE":80,"TECHNIQUE":100,"MONTAGNE":85,"TOUTES":90},
-  "MONTAGNE":{"ROULANT":15,"MIXTE":55,"TECHNIQUE":85,"MONTAGNE":100,"TOUTES":90}
-};
-
-const CRITERIA=[
-  ["ACCROCHE","accroche"],
-  ["AMORTI","amorti"],
-  ["STABILITE","stabilite"],
-  ["PROTECTION","protection"],
-  ["DYNAMISME","dynamisme"],
-  ["CONFORT","confort"]
-];
-
-const $=(s,r=document)=>r.querySelector(s);
-const $$=(s,r=document)=>[...r.querySelectorAll(s)];
-
-function normalizeText(s){
-  return String(s??"").toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
-}
-
-$$(".question").forEach(q=>{
-  const buttons=$$(".option",q);
-  buttons.forEach(btn=>btn.addEventListener("click",()=>{
-    buttons.forEach(b=>b.classList.remove("selected"));
-    btn.classList.add("selected");
-    updatePriorityAvailability();
-  }));
-});
-
-function selectedValue(key){
-  const q=$(`.question[data-key="${key}"]`);
-  const b=q?$(".option.selected",q):null;
-  return b?b.dataset.value:"";
-}
-
-function updatePriorityAvailability(){
-  const p1=selectedValue("priorite1");
-  const p2=selectedValue("priorite2");
-  const groups=["priorite1","priorite2","priorite3"];
-  groups.forEach((key,index)=>{
-    const q=$(`.question[data-key="${key}"]`);
-    $$(".option",q).forEach(btn=>{
-      btn.classList.remove("disabled");
-      if(index===1 && btn.dataset.value===p1) btn.classList.add("disabled");
-      if(index===2 && (btn.dataset.value===p1 || btn.dataset.value===p2)) btn.classList.add("disabled");
-    });
-  });
-}
-
-function profileFromForm(){
-  return {
-    budget:Number($("#budget").value),
-    objectif:selectedValue("objectif"),
-    distance:selectedValue("distance"),
-    terrain:selectedValue("terrain"),
-    poids:Number($("#poids").value),
-    typePied:selectedValue("typePied"),
-    attaque:selectedValue("attaque"),
-    priorite1:selectedValue("priorite1"),
-    priorite2:selectedValue("priorite2"),
-    priorite3:selectedValue("priorite3"),
-    marque:selectedValue("marque")
-  };
-}
-
-function validateProfile(p){
-  if(!p.budget||!p.objectif||!p.distance||!p.terrain||!p.poids||!p.typePied||!p.attaque||
-     !p.priorite1||!p.priorite2||!p.priorite3||!p.marque)
-    return "⚠️ Merci de compléter toutes les informations avant de lancer le calcul.";
-  if(new Set([p.priorite1,p.priorite2,p.priorite3]).size!==3)
-    return "⚠️ Les priorités n°1, n°2 et n°3 doivent être différentes.";
-  if(p.budget<50||p.budget>500) return "⚠️ Entre un budget compris entre 50 € et 500 €.";
-  if(p.poids<40||p.poids>200) return "⚠️ Entre un poids compris entre 40 kg et 200 kg.";
-  return "";
-}
-
-function personalizedScore(shoe,p){
-  const priorities=[p.priorite1,p.priorite2,p.priorite3];
-  let num=0,den=0;
-  CRITERIA.forEach(([crit,key])=>{
-    let coef=1;
-    const pos=priorities.indexOf(crit);
-    if(pos>=0) coef=PRIORITY_COEFS[pos];
-    num+=shoe[key]*coef;
-    den+=coef;
-  });
-  return (num/den)*10;
-}
-
-function objectiveScore(shoe,p){
-  return OBJECTIVE_TYPE[p.objectif]?.[shoe.type] ?? 0;
-}
-
-function budgetScore(shoe,p){
-  const d=shoe.prix-p.budget;
-  if(d<=0)return 100;
-  if(d<=10)return 90;
-  if(d<=20)return 75;
-  if(d<=30)return 55;
-  if(d<=50)return 30;
-  return 0;
-}
-
-function runnerWeightScore(shoe,p){
-  if(p.poids>shoe.poidsMax)return 0;
-  if(p.poids>=shoe.poidsIdealMin && p.poids<=shoe.poidsIdealMax)return 100;
-  const d=Math.min(Math.abs(p.poids-shoe.poidsIdealMin),Math.abs(p.poids-shoe.poidsIdealMax));
-  if(d<=5)return 90;
-  if(d<=10)return 70;
-  if(d<=15)return 40;
-  return 0;
-}
-
-function shoeDistanceTokens(raw){
-  const s=normalizeText(raw);
-  const out=[];
-  ["< 10 KM","10 - 30 KM","30 - 50 KM","> 50 KM","ULTRA"].forEach(token=>{
-    if(s.includes(normalizeText(token))) out.push(token);
-  });
-  /* Les 30 références ajoutées plus tard utilisent parfois des plages compactes.
-     On les convertit vers les catégories du moteur Trail. */
-  if(/10\s*-\s*50\s*KM/.test(s)) out.push("10 - 30 KM","30 - 50 KM");
-  if(/10\s*-\s*80\s*KM/.test(s)||/10\s*-\s*100\s*KM/.test(s)) out.push("10 - 30 KM","30 - 50 KM","> 50 KM");
-  if(/30\s*-\s*100\s*KM/.test(s)) out.push("30 - 50 KM","> 50 KM","ULTRA");
-  if(/<\s*30\s*KM/.test(s)) out.push("< 10 KM","10 - 30 KM");
-  if(/<\s*50\s*KM/.test(s)) out.push("< 10 KM","10 - 30 KM","30 - 50 KM");
-  return [...new Set(out)];
-}
-
-function distanceScore(shoe,p){
-  const tokens=shoeDistanceTokens(shoe.distance);
-  if(!tokens.length)return 0;
-  return Math.max(...tokens.map(t=>DIST_MATRIX[p.distance]?.[t]??0));
-}
-
-function shoeTerrainTokens(raw){
-  const s=normalizeText(raw);
-  const out=[];
-  ["ROULANT","MIXTE","TECHNIQUE","MONTAGNE","TOUTES"].forEach(t=>{
-    if(s.includes(normalizeText(t)))out.push(t);
-  });
-  /* BOUE est traitée comme terrain technique */
-  if(s.includes("BOUE"))out.push("TECHNIQUE");
-  return [...new Set(out)];
-}
-
-function terrainScore(shoe,p){
-  const tokens=shoeTerrainTokens(shoe.terrain);
-  if(!tokens.length)return 0;
-  return Math.max(...tokens.map(t=>TERRAIN_MATRIX[p.terrain]?.[t]??0));
-}
-
-function footScore(shoe,p){
-  return normalizeText(shoe.typePied).includes(normalizeText(p.typePied))?100:50;
-}
-
-function strikeScore(shoe,p){
-  if(p.attaque==="JE NE SAIS PAS")return 100;
-  const a=normalizeText(shoe.attaque);
-  if(p.attaque==="AVANT-PIED") return a.includes("AVANT")?100:(a.includes("MILIEU")?90:50);
-  if(p.attaque==="MÉDIO-PIED") return a.includes("MILIEU")?100:(a.includes("AVANT")?90:50);
-  if(p.attaque==="TALON") return a.includes("TALON")?100:(a.includes("MILIEU")?90:50);
-  return 50;
-}
-
-function brandScore(shoe,p){
-  if(p.marque==="AUCUNE")return 100;
-  return shoe.marque===p.marque?100:50;
-}
-
-function calculate(shoe,p){
-  const scores={
-    personalized:personalizedScore(shoe,p),
-    objective:objectiveScore(shoe,p),
-    budget:budgetScore(shoe,p),
-    runnerWeight:runnerWeightScore(shoe,p),
-    distance:distanceScore(shoe,p),
-    terrain:terrainScore(shoe,p),
-    foot:footScore(shoe,p),
-    strike:strikeScore(shoe,p),
-    brand:brandScore(shoe,p)
-  };
-  const final=
-    scores.personalized*WEIGHTS.personalized+
-    scores.objective*WEIGHTS.objective+
-    scores.budget*WEIGHTS.budget+
-    scores.runnerWeight*WEIGHTS.runnerWeight+
-    scores.distance*WEIGHTS.distance+
-    scores.terrain*WEIGHTS.terrain+
-    scores.foot*WEIGHTS.foot+
-    scores.strike*WEIGHTS.strike+
-    scores.brand*WEIGHTS.brand;
-  return {...shoe,scores,final,eligible:p.poids<=shoe.poidsMax};
-}
-
-function budgetLabel(shoe,p){
-  if(shoe.prix<=p.budget)return '<span class="budget-ok">✅ DANS LE BUDGET</span>';
-  if(shoe.prix<=p.budget+20)return '<span class="budget-heart">❤️ COUP DE CŒUR</span>';
-  return '<span class="budget-out">⚠️ HORS BUDGET</span>';
-}
-
-function prettyCriterion(s){
-  return s.replace("STABILITE","STABILITÉ");
-}
-
-function topStrengths(shoe){
-  return CRITERIA.map(([l,k])=>[l,shoe[k]])
-    .sort((a,b)=>b[1]-a[1]).slice(0,3)
-    .map(x=>prettyCriterion(x[0])).join(" · ");
-}
-
-function weakPoint(shoe){
-  const s=CRITERIA.map(([l,k])=>[l,shoe[k]]).sort((a,b)=>a[1]-b[1]);
-  return s[0][1]<7?prettyCriterion(s[0][0]):"";
-}
-
-function priorityValue(shoe,p){
-  const row=CRITERIA.find(([l])=>l===p);
-  return row?shoe[row[1]]:0;
-}
-
-function whyText(shoe,p){
-  const vals=[p.priorite1,p.priorite2,p.priorite3].map(x=>priorityValue(shoe,x));
-  const avg=vals.reduce((a,b)=>a+b,0)/3;
-  const lead=avg>=8.5?"Elle correspond très bien à tes priorités":"Elle correspond bien à tes priorités";
-  const fmt=n=>String(n).replace(".",",");
-  return `Cette chaussure obtient ${Math.round(shoe.final)}/100 pour ton profil. ${lead} : ${prettyCriterion(p.priorite1).toLowerCase()} ${fmt(vals[0])}/10, ${prettyCriterion(p.priorite2).toLowerCase()} ${fmt(vals[1])}/10 et ${prettyCriterion(p.priorite3).toLowerCase()} ${fmt(vals[2])}/10.`;
-}
-
-function cardHTML(shoe,index,p){
-  const medals=["🥇","🥈","🥉"];
-  const point=weakPoint(shoe);
-  const link=shoe.lien&&shoe.lien!=="#" ? shoe.lien : "#";
-  return `
-  <article class="shoe-card rank-${index+1}">
-    <div class="rank-head">
-      <span>${medals[index]} ${index===0?"TA RECOMMANDATION":`${index+1}e RECOMMANDATION`}</span>
-      <span>⭐ ${Math.round(shoe.final)} / 100</span>
-    </div>
-    <div class="shoe-body">
-      <h3 class="shoe-name">${shoe.modele}</h3>
-      <div class="brand-line">${shoe.marque} • ${shoe.type}</div>
-
-      <div class="score-line">
-        <div><strong>Score MY SHOES</strong><br><small>Compatibilité avec ton profil</small></div>
-        <div class="score-big">${Math.round(shoe.final)}/100</div>
-      </div>
-
-      <div class="meta">
-        <span class="pill">💰 ${shoe.prix.toFixed(0)} €</span>
-        <span class="pill">${budgetLabel(shoe,p)}</span>
-        <span class="pill">⚖️ ${shoe.poidsChaussure.toFixed(0)} g</span>
-        <span class="pill">📏 ${shoe.distance}</span>
-        <span class="pill">⛰️ ${shoe.terrain}</span>
-        <span class="pill">${shoe.carbone==="OUI"?"🟢":"⚪"} Carbone : ${shoe.carbone}</span>
-      </div>
-
-      <div class="detail"><strong>✅ POINTS FORTS :</strong> ${topStrengths(shoe)}</div>
-      ${point?`<div class="detail"><strong>⚠️ POINT À SAVOIR :</strong> ${point}</div>`:""}
-      <div class="detail"><strong>🎯 TES PRIORITÉS :</strong> ${prettyCriterion(p.priorite1)} · ${prettyCriterion(p.priorite2)} · ${prettyCriterion(p.priorite3)}</div>
-      <div class="detail"><strong>💡 Pourquoi cette chaussure ?</strong><br>${whyText(shoe,p)}</div>
-
-      <a class="shoe-link" href="${link}" target="_blank" rel="noopener noreferrer">🔗 VOIR LA CHAUSSURE</a>
-    </div>
-  </article>`;
-}
-
-function showResults(p){
-  const ranking=SHOES.map(s=>calculate(s,p))
-    .filter(s=>s.eligible)
-    .sort((a,b)=>b.final-a.final);
-
-  if(!ranking.length){
-    $("#errorBox").textContent="Aucune chaussure de la base n'est compatible avec le poids indiqué.";
-    $("#errorBox").style.display="block";
-    return;
-  }
-
-  const top3=ranking.slice(0,3);
-  $("#podium").innerHTML=top3.map((s,i)=>cardHTML(s,i,p)).join("");
-  $("#resultsSub").textContent=`${ranking.length} modèles compatibles analysés sur les 50 références Trail.`;
-  $("#results").style.display="block";
-  localStorage.setItem("myshoesTrailProfil",JSON.stringify(p));
-  $("#results").scrollIntoView({behavior:"smooth",block:"start"});
-}
-
-$("#recommendBtn").addEventListener("click",()=>{
-  const p=profileFromForm();
-  const err=validateProfile(p);
-  if(err){
-    $("#errorBox").textContent=err;
-    $("#errorBox").style.display="block";
-    return;
-  }
-  $("#errorBox").style.display="none";
-  showResults(p);
-});
-
-$("#restartBtn").addEventListener("click",()=>{
-  $("#results").style.display="none";
-  $("#questionnaire").scrollIntoView({behavior:"smooth",block:"start"});
-});
-</script>
 </body>
 </html>
