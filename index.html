@@ -69,11 +69,29 @@
       font-weight:1000;
       font-style:italic;
       letter-spacing:-1px;
+      line-height:1;
     }
 
     .brand-mark {
       font-size:34px;
       filter:drop-shadow(0 5px 12px rgba(22,129,255,.25));
+    }
+
+    .brand-name {
+      display:flex;
+      align-items:baseline;
+      letter-spacing:-1.4px;
+      text-shadow:0 4px 18px rgba(0,0,0,.18);
+    }
+
+    .brand-my,
+    .brand-shoes {
+      color:#ffffff;
+    }
+
+    .brand-sport {
+      color:var(--blue);
+      text-shadow:0 0 18px rgba(22,129,255,.28);
     }
 
     .topline {
@@ -520,7 +538,9 @@
     <div class="topbar">
       <div class="brand">
         <span class="brand-mark">👟</span>
-        <span>MYSPORTSHOES</span>
+        <span class="brand-name">
+          <span class="brand-my">My</span><span class="brand-sport">Sport</span><span class="brand-shoes">Shoes</span>
+        </span>
       </div>
       <div class="topline">Trouve la chaussure qui te correspond</div>
     </div>
