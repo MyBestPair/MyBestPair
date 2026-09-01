@@ -167,7 +167,7 @@ const SHOES = [
     "scores": [8.5, 8.0, 9.0, 8.5, 8.5, 9.0, 8.5, 7.5],
     "surface": "INDOOR/OUTDOOR",
     "foot": "STANDARD",
-    "scoreBrand": "NIKE",
+    "scoreBrand": "UNDER ARMOUR",
     "link": "https://www.basket4ballers.com/fr/1203-chaussures-basketball-de-aaron-fox"
   },
   {
