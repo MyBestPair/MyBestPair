@@ -3,307 +3,419 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#174d3a">
+  <meta name="theme-color" content="#071d3f">
 
   <title>Chaussures de running personnalisées | MySportShoes</title>
   <meta name="description" content="Trouve les chaussures de running adaptées à ton profil. Choisis Route ou Trail et réponds au questionnaire MySportShoes pour obtenir ton Top 3 personnalisé.">
   <link rel="canonical" href="https://mysportshoes.fr/running/">
 
   <style>
-    * { box-sizing: border-box; }
-
-    :root {
-      --green: #1f7a59;
-      --green-dark: #174d3a;
-      --green-soft: #e8f5ef;
-      --blue: #2468d8;
-      --blue-dark: #174b9b;
-      --blue-soft: #eaf2ff;
-      --text: #172033;
-      --muted: #647087;
-      --line: #e4e9f1;
-      --bg: #f4f7f6;
+    *{box-sizing:border-box}
+    :root{
+      --navy:#061d45;--navy2:#0b2d59;--blue:#1681ff;--blue2:#2468d8;
+      --green:#1f9b62;--green2:#14764b;--text:#13213a;--muted:#66738a;
+      --bg:#eef3f7;--white:#fff;
+    }
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      min-height:100vh;
+      font-family:Arial,Helvetica,sans-serif;
+      background:var(--bg);
+      color:var(--text);
     }
 
-    html { scroll-behavior: smooth; }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--bg);
-      color: var(--text);
+    .topbar{
+      height:64px;
+      background:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 4.5vw;
+      position:relative;
+      z-index:20;
+      box-shadow:0 1px 0 rgba(6,29,69,.08);
+    }
+    .logo{
+      font-size:22px;
+      font-weight:950;
+      letter-spacing:.2px;
+      text-decoration:none;
+      color:var(--navy);
+    }
+    .logo span{color:var(--blue)}
+    .home{
+      text-decoration:none;
+      color:var(--navy);
+      font-weight:800;
+      font-size:14px;
     }
 
-    .hero {
-      background: linear-gradient(135deg, #174d3a, #258866);
-      color: white;
-      padding: 62px 20px 92px;
-      text-align: center;
+    .hero{
+      position:relative;
+      min-height:590px;
+      color:white;
+      overflow:hidden;
+      background:var(--navy);
+    }
+    .split{
+      position:absolute;
+      inset:0;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+    }
+    .half{
+      position:relative;
+      background-position:center;
+      background-size:cover;
+    }
+    .half::after{
+      content:"";
+      position:absolute;
+      inset:0;
+    }
+    .road{
+      background-image:url("https://images.unsplash.com/photo-1590333748338-d629e4564ad9?auto=format&fit=crop&q=88&w=2200");
+      background-position:center 58%;
+    }
+    .road::after{
+      background:linear-gradient(90deg,rgba(6,29,69,.72),rgba(6,29,69,.43));
+    }
+    .trail{
+      background-image:url("https://images.squarespace-cdn.com/content/v1/5e790d324d56551c61ede56e/1657121824104-UQLL80C5X3G3V05T78U3/image-asset.jpeg");
+      background-position:center 52%;
+    }
+    .trail::after{
+      background:linear-gradient(90deg,rgba(12,58,42,.46),rgba(5,39,28,.72));
+    }
+    .split-line{
+      position:absolute;
+      z-index:3;
+      top:-5%;
+      bottom:-5%;
+      left:50%;
+      width:3px;
+      transform:rotate(2deg);
+      background:linear-gradient(transparent,rgba(255,255,255,.75),transparent);
+      opacity:.55;
     }
 
-    .brand {
-      font-size: 22px;
-      font-weight: 900;
-      letter-spacing: .4px;
-      margin-bottom: 24px;
+    .hero-content{
+      position:relative;
+      z-index:5;
+      min-height:590px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:70px 20px 150px;
+      background:linear-gradient(180deg,rgba(5,21,48,.15),rgba(5,21,48,.20));
+    }
+    .eyebrow{
+      color:#4da2ff;
+      font-size:15px;
+      font-weight:950;
+      letter-spacing:3px;
+      margin-bottom:16px;
+    }
+    .eyebrow b{color:white}
+    .hero h1{
+      margin:0;
+      font-size:clamp(43px,5vw,70px);
+      line-height:1;
+      letter-spacing:-2px;
+      text-shadow:0 4px 24px rgba(0,0,0,.22);
+    }
+    .brush{
+      width:min(390px,55vw);
+      height:5px;
+      border-radius:100%;
+      background:var(--blue);
+      margin:20px auto 17px;
+      transform:rotate(-1deg);
+      box-shadow:0 0 16px rgba(22,129,255,.4);
+    }
+    .lead{
+      margin:0;
+      font-size:clamp(20px,2.2vw,28px);
+      line-height:1.35;
+      font-weight:700;
+      text-shadow:0 3px 18px rgba(0,0,0,.25);
+    }
+    .benefits{
+      display:flex;
+      gap:55px;
+      margin-top:48px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+    .benefit{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:8px;
+      min-width:120px;
+      font-size:14px;
+      font-weight:800;
+    }
+    .benefit-icon{font-size:29px}
+
+    .wrap{
+      position:relative;
+      z-index:10;
+      width:min(1080px,calc(100% - 28px));
+      margin:-105px auto 60px;
+    }
+    .choice-panel{
+      background:#fff;
+      border-radius:24px;
+      padding:28px;
+      box-shadow:0 20px 50px rgba(13,36,67,.17);
+    }
+    .choice-title{text-align:center;margin:0 0 22px}
+    .choice-title h2{
+      margin:0 0 7px;
+      font-size:34px;
+      letter-spacing:-.7px;
+    }
+    .choice-title p{margin:0;color:var(--muted);font-size:15px}
+
+    .cards{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+    .sport-card{
+      min-height:440px;
+      border-radius:18px;
+      overflow:hidden;
+      position:relative;
+      color:#fff;
+      text-decoration:none;
+      display:flex;
+      align-items:flex-end;
+      isolation:isolate;
+      transition:transform .2s ease,box-shadow .2s ease;
+      background-position:center;
+      background-size:cover;
+    }
+    .sport-card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 16px 30px rgba(6,29,69,.18);
+    }
+    .sport-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:-1;
+    }
+    .route-card{
+      background-image:url("https://images.unsplash.com/photo-1590333748338-d629e4564ad9?auto=format&fit=crop&q=88&w=1500");
+      background-position:center 62%;
+    }
+    .route-card::before{
+      background:linear-gradient(180deg,rgba(6,29,69,.03) 20%,rgba(6,29,69,.94) 88%);
+    }
+    .trail-card{
+      background-image:url("https://images.squarespace-cdn.com/content/v1/5e790d324d56551c61ede56e/1657121824104-UQLL80C5X3G3V05T78U3/image-asset.jpeg");
+      background-position:center 45%;
+    }
+    .trail-card::before{
+      background:linear-gradient(180deg,rgba(6,47,34,.04) 18%,rgba(5,57,39,.96) 88%);
+    }
+    .card-content{width:100%;padding:26px}
+    .badge{
+      display:inline-flex;
+      padding:7px 11px;
+      border-radius:999px;
+      font-size:11px;
+      font-weight:950;
+      margin-bottom:10px;
+      background:#eaf2ff;
+      color:#145ab8;
+    }
+    .trail-card .badge{background:#e5f6ec;color:#126b43}
+    .sport-card h3{
+      margin:0 0 8px;
+      font-size:38px;
+      line-height:1;
+    }
+    .sport-card p{
+      margin:0 0 20px;
+      max-width:440px;
+      line-height:1.45;
+      font-size:15px;
+      color:rgba(255,255,255,.93);
+    }
+    .features{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:8px;
+      margin:0 0 20px;
+    }
+    .feature{
+      text-align:center;
+      font-size:11px;
+      font-weight:800;
+      color:#fff;
+    }
+    .feature span{
+      display:block;
+      font-size:22px;
+      margin-bottom:4px;
+    }
+    .cta{
+      display:block;
+      width:100%;
+      text-align:center;
+      padding:15px 16px;
+      border-radius:12px;
+      background:var(--blue);
+      color:#fff;
+      font-weight:950;
+      font-size:14px;
+    }
+    .trail-card .cta{background:#20a964}
+
+    .info{
+      text-align:center;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.55;
+      max-width:760px;
+      margin:22px auto 0;
+    }
+    .back{
+      display:block;
+      width:fit-content;
+      margin:22px auto 2px;
+      color:var(--navy);
+      text-decoration:none;
+      font-weight:900;
+      font-size:14px;
     }
 
-    .hero h1 {
-      max-width: 850px;
-      margin: 0 auto 16px;
-      font-size: clamp(32px, 5vw, 48px);
-      line-height: 1.08;
+    footer{
+      background:#061b35;
+      color:#fff;
+      padding:26px max(22px,4.5vw);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      font-size:13px;
     }
+    footer strong{font-size:18px}
+    footer span{color:#94a6bc}
 
-    .hero p {
-      max-width: 720px;
-      margin: 0 auto;
-      font-size: 17px;
-      line-height: 1.6;
-      opacity: .96;
-    }
-
-    .wrap {
-      width: min(1000px, calc(100% - 28px));
-      margin: -48px auto 60px;
-    }
-
-    .choice-panel {
-      background: white;
-      border-radius: 22px;
-      padding: 32px;
-      box-shadow: 0 12px 38px rgba(26, 47, 86, .12);
-    }
-
-    .choice-title {
-      text-align: center;
-      margin-bottom: 28px;
-    }
-
-    .choice-title h2 {
-      margin: 0 0 9px;
-      font-size: 29px;
-    }
-
-    .choice-title p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.5;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-
-    .sport-card {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      min-height: 330px;
-      padding: 28px;
-      border-radius: 19px;
-      text-decoration: none;
-      color: var(--text);
-      border: 2px solid var(--line);
-      overflow: hidden;
-      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
-    }
-
-    .sport-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 28px rgba(26, 47, 86, .12);
-    }
-
-    .route {
-      background: linear-gradient(145deg, #fff, var(--blue-soft));
-    }
-
-    .route:hover { border-color: var(--blue); }
-
-    .trail {
-      background: linear-gradient(145deg, #fff, var(--green-soft));
-    }
-
-    .trail:hover { border-color: var(--green); }
-
-    .icon {
-      font-size: 52px;
-      margin-bottom: 18px;
-    }
-
-    .badge {
-      align-self: flex-start;
-      padding: 7px 11px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 900;
-      margin-bottom: 12px;
-    }
-
-    .route .badge {
-      background: var(--blue-soft);
-      color: var(--blue-dark);
-    }
-
-    .trail .badge {
-      background: var(--green-soft);
-      color: var(--green-dark);
-    }
-
-    .sport-card h3 {
-      margin: 0 0 10px;
-      font-size: 28px;
-    }
-
-    .sport-card p {
-      margin: 0 0 22px;
-      color: var(--muted);
-      line-height: 1.55;
-      flex-grow: 1;
-    }
-
-    .cta {
-      display: block;
-      width: 100%;
-      text-align: center;
-      padding: 14px 16px;
-      border-radius: 12px;
-      color: white;
-      font-weight: 900;
-    }
-
-    .route .cta { background: var(--blue); }
-    .trail .cta { background: var(--green); }
-
-    .info {
-      text-align: center;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.6;
-      max-width: 720px;
-      margin: 24px auto 0;
-    }
-
-    .back {
-      display: block;
-      width: fit-content;
-      margin: 28px auto 0;
-      color: var(--green-dark);
-      text-decoration: none;
-      font-weight: 800;
-    }
-
-    footer {
-      text-align: center;
-      color: var(--muted);
-      font-size: 13px;
-      padding: 0 20px 30px;
-    }
-
-    @media (max-width: 700px) {
-      .hero {
-        padding: 46px 17px 76px;
-      }
-
-      .wrap {
-        width: min(100% - 18px, 1000px);
-        margin-top: -38px;
-      }
-
-      .choice-panel {
-        padding: 21px 17px 25px;
-      }
-
-      .cards {
-        grid-template-columns: 1fr;
-      }
-
-      .sport-card {
-        min-height: 290px;
-        padding: 23px;
-      }
-
-      .icon {
-        font-size: 45px;
-      }
+    @media(max-width:760px){
+      .topbar{height:58px;padding:0 16px}
+      .logo{font-size:17px}
+      .hero{min-height:610px}
+      .split{grid-template-columns:1fr}
+      .road{position:absolute;inset:0 0 50% 0}
+      .trail{position:absolute;inset:50% 0 0 0}
+      .split-line{display:none}
+      .hero-content{min-height:610px;padding:60px 18px 135px;background:rgba(6,29,69,.25)}
+      .hero h1{font-size:43px}
+      .lead{font-size:19px}
+      .benefits{gap:20px;margin-top:35px}
+      .benefit{min-width:100px;font-size:12px}
+      .wrap{margin-top:-90px;width:calc(100% - 16px)}
+      .choice-panel{padding:18px 12px 22px}
+      .choice-title h2{font-size:28px}
+      .cards{grid-template-columns:1fr}
+      .sport-card{min-height:430px}
+      .features{grid-template-columns:repeat(2,1fr);gap:12px}
+      footer{flex-direction:column;text-align:center}
     }
   </style>
 </head>
 
 <body>
+  <nav class="topbar">
+    <a class="logo" href="../">🏃 MYSPORT<span>SHOES</span></a>
+    <a class="home" href="../">Accueil</a>
+  </nav>
 
   <header class="hero">
-    <div class="brand">🏃 MYSPORTSHOES • RUNNING</div>
+    <div class="split" aria-hidden="true">
+      <div class="half road"></div>
+      <div class="half trail"></div>
+      <div class="split-line"></div>
+    </div>
 
-    <h1>Trouve la chaussure de running faite pour toi.</h1>
+    <div class="hero-content">
+      <div class="eyebrow">MYSPORTSHOES <b>• RUNNING</b></div>
+      <h1>Où est-ce que tu cours ?</h1>
+      <div class="brush"></div>
+      <p class="lead">Route ou trail, choisis ton terrain.<br>On s'occupe du reste.</p>
 
-    <p>
-      Route ou trail, ton profil n'est pas celui des autres.
-      Choisis ta pratique et découvre les 3 chaussures les plus adaptées à tes besoins.
-    </p>
+      <div class="benefits">
+        <div class="benefit"><span class="benefit-icon">📊</span>Un profil personnalisé</div>
+        <div class="benefit"><span class="benefit-icon">🏆</span>Un Top 3 adapté</div>
+        <div class="benefit"><span class="benefit-icon">👟</span>Des conseils objectifs</div>
+        <div class="benefit"><span class="benefit-icon">🧭</span>100% indépendant</div>
+      </div>
+    </div>
   </header>
 
   <main class="wrap">
-
     <section class="choice-panel">
-
       <div class="choice-title">
         <h2>Tu cours où ?</h2>
         <p>Choisis ton terrain pour accéder au questionnaire personnalisé.</p>
       </div>
 
       <div class="cards">
+        <a class="sport-card route-card" href="./route/">
+          <div class="card-content">
+            <span class="badge">RUNNING • ROUTE</span>
+            <h3>Route</h3>
+            <p>Pour tes sorties sur route, tes entraînements et tes compétitions. Ton profil est analysé selon ton budget, ta distance, ton poids, ton pied, ton attaque et tes priorités.</p>
 
-        <a class="sport-card route" href="./route/">
-          <div class="icon">🏃‍♂️</div>
-          <span class="badge">RUNNING • ROUTE</span>
+            <div class="features">
+              <div class="feature"><span>🛣️</span>Distance</div>
+              <div class="feature"><span>⏱️</span>Allure</div>
+              <div class="feature"><span>👟</span>Type de pied</div>
+              <div class="feature"><span>🎯</span>Tes priorités</div>
+            </div>
 
-          <h3>Route</h3>
-
-          <p>
-            Pour tes sorties sur route, tes entraînements et tes compétitions.
-            Ton profil est analysé selon ton budget, ta distance, ton poids,
-            ton pied, ton attaque et tes priorités.
-          </p>
-
-          <span class="cta">TROUVER MA PAIRE ROUTE →</span>
+            <span class="cta">TROUVER MA PAIRE ROUTE →</span>
+          </div>
         </a>
 
-        <a class="sport-card trail" href="./trail/">
-          <div class="icon">⛰️</div>
-          <span class="badge">RUNNING • TRAIL</span>
+        <a class="sport-card trail-card" href="./trail/">
+          <div class="card-content">
+            <span class="badge">RUNNING • TRAIL</span>
+            <h3>Trail</h3>
+            <p>Pour courir sur sentiers, terrains mixtes, techniques ou montagne. Le questionnaire prend notamment en compte ton terrain, ta distance, ton poids et tes priorités.</p>
 
-          <h3>Trail</h3>
+            <div class="features">
+              <div class="feature"><span>🌲</span>Terrain</div>
+              <div class="feature"><span>⛰️</span>Dénivelé</div>
+              <div class="feature"><span>🗺️</span>Distance</div>
+              <div class="feature"><span>🎯</span>Tes priorités</div>
+            </div>
 
-          <p>
-            Pour courir sur sentiers, terrains mixtes, techniques ou montagne.
-            Le questionnaire prend notamment en compte ton terrain,
-            ta distance, ton poids et tes priorités.
-          </p>
-
-          <span class="cta">TROUVER MA PAIRE TRAIL →</span>
+            <span class="cta">TROUVER MA PAIRE TRAIL →</span>
+          </div>
         </a>
-
       </div>
 
       <p class="info">
-        MySportShoes compare ton profil aux caractéristiques des chaussures
-        pour établir un Top 3 personnalisé. Le ressenti et l'essayage restent
-        importants avant l'achat.
+        MySportShoes compare ton profil aux caractéristiques des chaussures pour établir un Top 3 personnalisé.
+        Le ressenti et l'essayage restent importants avant l'achat.
       </p>
 
       <a class="back" href="../">← Retour à l'accueil MySportShoes</a>
-
     </section>
-
   </main>
 
   <footer>
-    MYSPORTSHOES — Running
+    <strong>MYSPORT<span>SHOES</span></strong>
+    <span>Le bon choix. À chaque terrain.</span>
   </footer>
-
 </body>
 </html>
