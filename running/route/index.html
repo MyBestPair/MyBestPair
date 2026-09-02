@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#1d5fd0">
-  <title>Quelle chaussure de running route choisir ? | MY SPORT SHOES</title>
-  <meta name="description" content="Trouve les chaussures de running route adaptées à ton budget, ta distance, ton poids, ton pied, ton attaque et tes priorités. MY SPORT SHOES compare 50 modèles pour sortir ton Top 3 personnalisé.">
+  <meta name="theme-color" content="#124f9c">
+  <title>Quelle chaussure de running route choisir ? | MYSPORTSHOES</title>
+  <meta name="description" content="Trouve les chaussures de running route adaptées à ton budget, ta distance, ton poids, ton pied, ton attaque et tes priorités. MYSPORTSHOES compare 50 modèles pour sortir ton Top 3 personnalisé.">
   <link rel="canonical" href="https://mysportshoes.fr/running/route/">
 
   <!-- Google tag (gtag.js) -->
@@ -19,281 +19,316 @@
 
 
   <style>
-    * { box-sizing: border-box; }
-    :root {
-      --blue:#2468d8;
-      --blue-dark:#173b7a;
-      --blue-soft:#eaf2ff;
-      --text:#172033;
-      --muted:#647087;
-      --line:#e4e9f1;
-      --bg:#f4f7fb;
-      --gold:#f3c84b;
-      --silver:#d9dee8;
-      --bronze:#d98570;
-      --green:#15803d;
-      --red:#b42318;
-    }
-    html { scroll-behavior:smooth; }
-    body {
-      margin:0;
-      font-family:Arial, Helvetica, sans-serif;
-      background:var(--bg);
-      color:var(--text);
-    }
-    button,input { font:inherit; }
-    .hero {
-      background:linear-gradient(135deg,var(--blue-dark),#2c72e8);
-      color:white;
-      padding:52px 20px 70px;
-      text-align:center;
-    }
-    .brand {
-      font-size:21px;
-      font-weight:900;
-      letter-spacing:.3px;
-      margin-bottom:22px;
-    }
-    .hero h1 {
-      max-width:760px;
-      margin:0 auto 14px;
-      font-size:clamp(30px,5vw,44px);
-      line-height:1.1;
-    }
-    .hero p {
-      max-width:720px;
-      margin:0 auto;
-      font-size:17px;
-      line-height:1.6;
-      opacity:.96;
-    }
-    .wrap {
-      width:min(920px,calc(100% - 28px));
-      margin:-34px auto 55px;
-    }
-    .panel {
-      background:white;
-      border-radius:20px;
-      box-shadow:0 12px 38px rgba(26,47,86,.12);
-      overflow:hidden;
-    }
-    .panel-head { padding:28px 30px 18px; }
-    .badge {
-      display:inline-block;
-      padding:8px 13px;
-      border-radius:999px;
-      background:var(--blue-soft);
-      color:#1455b7;
-      font-weight:800;
-      font-size:13px;
-      margin-bottom:12px;
-    }
-    h2 { margin:3px 0 8px; font-size:27px; }
-    .intro { color:var(--muted); margin:0; line-height:1.55; }
-    .form { padding:0 30px 30px; }
-    .question {
-      padding:20px 0;
-      border-top:1px solid var(--line);
-    }
-    .question-title {
-      font-size:16px;
-      font-weight:800;
-      margin-bottom:12px;
-    }
-    .hint {
-      display:block;
-      color:var(--muted);
-      font-size:12px;
-      font-weight:400;
-      margin-top:4px;
-    }
-    .options { display:flex; flex-wrap:wrap; gap:9px; }
-    .option {
-      border:2px solid #dce3ee;
-      background:#fff;
-      padding:11px 15px;
-      border-radius:10px;
-      cursor:pointer;
-      transition:.15s ease;
-    }
-    .option:hover { border-color:var(--blue); background:#f4f8ff; }
-    .option.selected {
-      background:var(--blue);
-      border-color:var(--blue);
-      color:white;
-      box-shadow:0 4px 12px rgba(36,104,216,.20);
-    }
-    .number-input {
-      width:180px;
-      max-width:100%;
-      border:2px solid #dce3ee;
-      padding:12px 13px;
-      border-radius:10px;
-      outline:none;
-    }
-    .number-input:focus { border-color:var(--blue); }
-    .recommend-btn {
-      width:100%;
-      border:0;
-      border-radius:13px;
-      background:var(--blue);
-      color:#fff;
-      padding:16px 20px;
-      font-weight:900;
-      cursor:pointer;
-      font-size:16px;
-      transition:.2s ease;
-      margin-top:8px;
-    }
-    .recommend-btn:hover { background:var(--blue-dark); transform:translateY(-1px); }
-    .error {
-      display:none;
-      margin:14px 0 0;
-      padding:12px 14px;
-      background:#fff1f0;
-      border:1px solid #ffc9c5;
-      border-radius:10px;
-      color:var(--red);
-      font-weight:700;
-      line-height:1.4;
-    }
-    .back {
-      display:block;
-      text-align:center;
-      color:var(--blue);
-      text-decoration:none;
-      font-weight:800;
-      margin:24px auto 0;
-    }
-    .results {
-      display:none;
-      margin-top:26px;
-    }
-    .results-title {
-      text-align:center;
-      margin:0 0 7px;
-      font-size:30px;
-    }
-    .results-sub {
-      text-align:center;
-      color:var(--muted);
-      margin:0 0 20px;
-    }
-    .podium {
-      display:grid;
-      grid-template-columns:1fr;
-      gap:16px;
-    }
-    .shoe-card {
-      background:white;
-      border-radius:18px;
-      box-shadow:0 9px 30px rgba(26,47,86,.10);
-      overflow:hidden;
-      border:1px solid #e5eaf2;
-    }
-    .rank-head {
-      padding:17px 22px;
-      font-weight:900;
-      font-size:18px;
-      display:flex;
-      justify-content:space-between;
-      gap:12px;
-      align-items:center;
-    }
-    .rank-1 .rank-head { background:#ffe17c; }
-    .rank-2 .rank-head { background:#e9edf4; }
-    .rank-3 .rank-head { background:#e49a85; }
-    .shoe-body { padding:21px 22px 22px; }
-    .shoe-name { font-size:25px; font-weight:900; margin:0 0 6px; }
-    .brand-line { color:var(--muted); font-weight:700; margin-bottom:15px; }
-    .score-line {
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      padding:13px 14px;
-      border-radius:12px;
-      background:#f5f8fd;
-      margin-bottom:14px;
-    }
-    .score-big { font-size:26px; font-weight:900; color:var(--blue-dark); }
-    .meta {
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-      margin:12px 0;
-    }
-    .pill {
-      background:#f1f4f8;
-      border-radius:999px;
-      padding:7px 10px;
-      font-size:13px;
-      font-weight:700;
-    }
-    .budget-ok { color:var(--green); }
-    .budget-heart { color:#c24170; }
-    .budget-out { color:#9a6700; }
-    .detail {
-      padding:12px 0;
-      border-top:1px solid var(--line);
-      line-height:1.55;
-      font-size:14px;
-    }
-    .detail strong { font-weight:900; }
-    .shoe-link {
-      display:block;
-      width:100%;
-      text-align:center;
-      margin-top:16px;
-      text-decoration:none;
-      border-radius:11px;
-      padding:13px 15px;
-      background:var(--blue);
-      color:white;
-      font-weight:900;
-    }
-    .shoe-link:hover { background:var(--blue-dark); }
-    .restart {
-      display:block;
-      margin:22px auto 0;
-      border:0;
-      background:transparent;
-      color:var(--blue);
-      font-weight:800;
-      cursor:pointer;
-      padding:10px;
-    }
-    .engine-note {
-      margin-top:18px;
-      color:var(--muted);
-      font-size:12px;
-      text-align:center;
-      line-height:1.5;
-    }
-    @media(max-width:650px) {
-      .hero { padding:40px 17px 61px; }
-      .wrap { width:min(100% - 18px,920px); }
-      .panel-head,.form { padding-left:19px; padding-right:19px; }
-      .shoe-body,.rank-head { padding-left:17px; padding-right:17px; }
-      .option { padding:10px 12px; font-size:13px; }
-      .number-input { width:100%; }
-      .shoe-name { font-size:21px; }
-    }
-  </style>
+*{box-sizing:border-box}
+:root{
+  --navy:#061d45;
+  --navy2:#0a2a5a;
+  --green:#1681ff;
+  --green-dark:#124f9c;
+  --green-soft:#e8f2ff;
+  --blue:#1681ff;
+  --bg:#eef3f7;
+  --text:#172033;
+  --muted:#647087;
+  --line:#dce4eb;
+  --white:#fff;
+}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:linear-gradient(180deg,#061d45 0 420px,var(--bg) 420px 100%);
+  color:var(--text);
+}
+a{color:inherit}
+.topbar{
+  height:62px;
+  padding:0 18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  background:#041735;
+  color:white;
+  border-bottom:1px solid rgba(255,255,255,.08);
+  position:relative;
+  z-index:5;
+}
+.top-brand{
+  font-weight:900;
+  font-size:20px;
+  letter-spacing:.3px;
+}
+.home-link{
+  text-decoration:none;
+  color:#d9e6f8;
+  font-size:13px;
+  font-weight:800;
+}
+.hero{
+  color:white;
+  display:grid;
+  grid-template-columns:1fr;
+  gap:0;
+  padding:0;
+  text-align:left;
+  background:none;
+}
+.hero-photo{
+  min-height:320px;
+  background:
+    linear-gradient(180deg,rgba(6,29,69,.05),rgba(6,29,69,.68)),
+    url("https://images.unsplash.com/photo-1590333748338-d629e4564ad9?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=85&w=3000") center 58%/cover no-repeat;
+  position:relative;
+}
+.hero-copy{
+  padding:24px 20px 34px;
+  background:linear-gradient(180deg,#07204b,#061d45);
+}
+.hero-kicker{
+  color:var(--green);
+  font-weight:900;
+  font-size:14px;
+  text-transform:uppercase;
+  letter-spacing:.5px;
+  margin-bottom:10px;
+}
+.hero h1{
+  font-size:clamp(34px,8vw,52px);
+  line-height:1.02;
+  margin:0 0 14px;
+  max-width:720px;
+}
+.hero h1 span{color:var(--green)}
+.hero p{
+  max-width:680px;
+  margin:0;
+  line-height:1.55;
+  color:#e3edf9;
+  font-size:16px;
+}
+.hero-chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:18px;
+}
+.hero-chip{
+  border:1px solid rgba(255,255,255,.16);
+  background:rgba(255,255,255,.07);
+  border-radius:999px;
+  padding:8px 11px;
+  font-size:12px;
+  color:#e7effa;
+  font-weight:700;
+}
+.wrap{
+  width:min(900px,calc(100% - 18px));
+  margin:-10px auto 45px;
+  position:relative;
+  z-index:2;
+}
+.panel,.shoe-card{
+  background:white;
+  border-radius:18px;
+  box-shadow:0 12px 32px rgba(6,29,69,.12);
+  overflow:hidden;
+}
+.panel-head{padding:22px 18px 14px}
+.badge{
+  display:inline-block;
+  background:var(--green-soft);
+  color:var(--green-dark);
+  padding:7px 11px;
+  border-radius:999px;
+  font-weight:900;
+  font-size:12px;
+}
+h2{margin:10px 0 7px;font-size:25px}
+.intro{margin:0;color:var(--muted);line-height:1.5;font-size:14px}
+.form{padding:0 18px 22px}
+.question{padding:17px 0;border-top:1px solid var(--line)}
+.question-title{font-weight:800;margin-bottom:10px;font-size:15px}
+.options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.option{
+  border:1.5px solid #d8e2ec;
+  background:white;
+  padding:11px 9px;
+  border-radius:10px;
+  cursor:pointer;
+  font-size:12px;
+  min-height:42px;
+}
+.option:hover{border-color:var(--green);background:#f5faef}
+.option.selected{
+  background:var(--green);
+  border-color:var(--green);
+  color:white;
+  font-weight:800;
+}
+.number-input{
+  width:100%;
+  padding:13px 12px;
+  border:1.5px solid #d8e2ec;
+  border-radius:10px;
+  outline:none;
+  font-size:16px;
+}
+.number-input:focus{border-color:var(--green)}
+.recommend-btn{
+  width:100%;
+  padding:15px 16px;
+  border:0;
+  border-radius:11px;
+  background:linear-gradient(90deg,#6da91e,#86c52d);
+  color:#fff;
+  font-weight:900;
+  font-size:15px;
+  cursor:pointer;
+  margin-top:8px;
+  box-shadow:0 8px 18px rgba(121,185,40,.22);
+}
+.error{
+  display:none;
+  margin-top:12px;
+  padding:11px 12px;
+  background:#fff1f0;
+  color:#b42318;
+  border:1px solid #ffc9c5;
+  border-radius:10px;
+  font-weight:700;
+  font-size:13px;
+}
+.results{display:none;margin-top:24px}
+.results-title,.results-sub{text-align:center}
+.results-title{color:white;margin-bottom:5px}
+.results-sub{color:#c9d9ef;margin:0 0 16px}
+.podium{display:grid;gap:14px}
+.rank-head{
+  padding:15px 16px;
+  font-weight:900;
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  font-size:14px;
+}
+.rank-1 .rank-head{background:#ffe17c}
+.rank-2 .rank-head{background:#e9edf4}
+.rank-3 .rank-head{background:#e49a85}
+.shoe-body{padding:18px}
+.shoe-name{font-size:22px;font-weight:900;margin:0 0 5px}
+.brand-line{color:var(--muted);font-weight:700;font-size:13px}
+.score-line{
+  margin:13px 0;
+  padding:12px 13px;
+  background:#f2f8f5;
+  border-radius:11px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+.score-big{font-size:24px;font-weight:900;color:var(--green-dark)}
+.meta{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0}
+.pill{
+  background:#f1f4f8;
+  border-radius:999px;
+  padding:7px 9px;
+  font-size:12px;
+  font-weight:700;
+}
+.detail{border-top:1px solid var(--line);padding:11px 0;line-height:1.5;font-size:13px}
+.shoe-link{
+  display:block;
+  background:linear-gradient(90deg,#6da91e,#86c52d);
+  color:white;
+  text-align:center;
+  text-decoration:none;
+  padding:13px;
+  border-radius:10px;
+  font-weight:900;
+  margin-top:14px;
+}
+.back,.restart{
+  display:block;
+  text-align:center;
+  color:#dce9f9;
+  font-weight:800;
+  margin:22px auto 0;
+  text-decoration:none;
+  background:none;
+  border:0;
+  cursor:pointer;
+}
+.budget-ok{color:#15803d}
+.budget-heart{color:#c24170}
+.budget-out{color:#9a6700}
+.trust-strip{
+  width:min(900px,calc(100% - 18px));
+  margin:0 auto 26px;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+}
+.trust-item{
+  background:#082657;
+  color:#dce7f7;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:12px;
+  padding:12px;
+  text-align:center;
+  font-size:12px;
+  line-height:1.4;
+}
+.trust-item strong{display:block;color:white;margin-bottom:3px}
+@media(min-width:720px){
+  body{background:linear-gradient(180deg,#061d45 0 520px,var(--bg) 520px 100%)}
+  .hero{grid-template-columns:1fr 1fr;min-height:460px}
+  .hero-photo{min-height:460px;order:2}
+  .hero-copy{padding:70px 44px 50px;display:flex;flex-direction:column;justify-content:center}
+  .wrap{margin:-54px auto 55px}
+  .panel-head{padding:28px 30px 18px}
+  .form{padding:0 30px 30px}
+  .options{display:flex;flex-wrap:wrap}
+  .option{font-size:13px;padding:11px 15px}
+  .number-input{width:190px}
+  .trust-strip{grid-template-columns:repeat(4,1fr)}
+  .results-title{color:var(--text)}
+  .results-sub{color:var(--muted)}
+  .back,.restart{color:var(--green)}
+}
+
+.hint{display:block;color:var(--muted);font-size:12px;font-weight:400;margin-top:4px}
+.engine-note{margin-top:10px;color:var(--muted);font-size:12px;line-height:1.45}
+.priority-question .question-title{margin-bottom:8px}
+</style>
 </head>
 <body>
-  <header class="hero">
-    <div class="brand">🏃 MY SPORT SHOES • RUNNING</div>
-    <h1>Trouve la chaussure qui correspond vraiment à ta course.</h1>
-    <p>Ton profil est comparé à 50 chaussures de running route selon les mêmes critères et pondérations que le moteur MY SPORT SHOES.</p>
-  </header>
 
-  <main class="wrap">
+<div class="topbar">
+  <div class="top-brand">🏃 MYSPORTSHOES</div>
+  <a class="home-link" href="../../">Accueil</a>
+</div>
+
+<header class="hero">
+  <div class="hero-photo" aria-label="Coureur sur route"></div>
+  <div class="hero-copy">
+    <div class="hero-kicker">RUNNING ROUTE</div>
+    <h1>Trouve la chaussure <span>qui te correspond.</span></h1>
+    <p>Distance, allure, poids, type de pied et priorités : MYSPORTSHOES compare ton profil à 50 références Route pour faire ressortir les modèles les plus adaptés à ta course.</p>
+    <div class="hero-chips">
+      <span class="hero-chip">50 modèles analysés</span>
+      <span class="hero-chip">Top 3 personnalisé</span>
+      <span class="hero-chip">Liens directs</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
     <section class="panel" id="questionnaire">
       <div class="panel-head">
         <span class="badge">🏃 RUNNING • ROUTE</span>
         <h2>Ton profil de coureur</h2>
-        <p class="intro">Réponds aux questions ci-dessous. MY SPORT SHOES calculera ensuite ton Top 3 personnalisé.</p>
+        <p class="intro">Renseigne ton profil pour obtenir ton Top 3 personnalisé.</p>
       </div>
 
       <div class="form">
@@ -417,7 +452,7 @@
     </section>
 
     <section class="results" id="results">
-      <h2 class="results-title">🏆 Ton Top 3 MY SPORT SHOES</h2>
+      <h2 class="results-title">🏆 Ton Top 3 MYSPORTSHOES</h2>
       <p class="results-sub" id="resultsSub"></p>
       <div class="podium" id="podium"></div>
       <button class="restart" id="restartBtn">↻ Modifier mon profil</button>
@@ -426,6 +461,14 @@
 
     <a class="back" href="../">← Retour à Running</a>
   </main>
+
+
+<section class="trust-strip">
+  <div class="trust-item"><strong>50 MODÈLES</strong>Base Route analysée</div>
+  <div class="trust-item"><strong>6 CRITÈRES CLÉS</strong>Amorti, stabilité, dynamisme...</div>
+  <div class="trust-item"><strong>TOP 3</strong>Recommandations personnalisées</div>
+  <div class="trust-item"><strong>ACCÈS DIRECT</strong>Vers les modèles sélectionnés</div>
+</section>
 
 <script>
 const SHOES = [{"modele":"ASICS Novablast 6","marque":"ASICS","prix":160.0,"type":"POLYVALENTE","poidsChaussure":255.0,"drop":8.0,"amorti":8.5,"dynamisme":8.5,"stabilite":8.0,"confort":8.5,"durabilite":8.0,"legerete":8.0,"distance":"5-30 km","allure":"TOUTES","typePied":"STANDARD/LARGE","attaque":"MILIEU/TALON","poidsIdealMin":60.0,"poidsIdealMax":100.0,"poidsMax":115.0,"objectif":"ENTRAÎNEMENT","carbone":"NON","lien":"https://click.linksynergy.com/link?id=wi07X%2fYO2lw&offerid=2079203.448066271063610794485546&type=2&murl=https%3a%2f%2fwww.decathlon.fr%2fp%2fchaussures-de-running-route-homme-asics-novablast-6%2f389686%2fm9047978"},{"modele":"ASICS Superblast 3","marque":"ASICS","prix":220.0,"type":"POLYVALENTE","poidsChaussure":250.0,"drop":8.0,"amorti":9.0,"dynamisme":9.0,"stabilite":8.0,"confort":9.0,"durabilite":8.0,"legerete":8.0,"distance":"10-42 km","allure":"TOUTES","typePied":"STANDARD","attaque":"MILIEU/TALON","poidsIdealMin":60.0,"poidsIdealMax":105.0,"poidsMax":120.0,"objectif":"POLYVALENT","carbone":"NON","lien":"https://www.asics.com/fr/fr-fr/superblast--3/p/1013A177-001.html"},{"modele":"ASICS Magic Speed 5","marque":"ASICS","prix":190.0,"type":"TEMPO","poidsChaussure":196.0,"drop":7.0,"amorti":7.5,"dynamisme":9.5,"stabilite":8.0,"confort":7.5,"durabilite":7.0,"legerete":9.5,"distance":"5-21 km","allure":"RAPIDE","typePied":"STANDARD/ÉTROIT","attaque":"MILIEU/AVANT","poidsIdealMin":55.0,"poidsIdealMax":85.0,"poidsMax":95.0,"objectif":"PERFORMANCE","carbone":"OUI","lien":"https://www.asics.com/fr/fr-fr/magic-speed-5/p/1013A183-300.html"},{"modele":"Nike Pegasus 42","marque":"NIKE","prix":140.0,"type":"DAILY","poidsChaussure":281.0,"drop":10.0,"amorti":8.0,"dynamisme":7.5,"stabilite":8.0,"confort":8.0,"durabilite":8.5,"legerete":7.0,"distance":"5-30 km","allure":"TOUTES","typePied":"STANDARD","attaque":"MILIEU/TALON","poidsIdealMin":60.0,"poidsIdealMax":100.0,"poidsMax":115.0,"objectif":"ENTRAÎNEMENT","carbone":"NON","lien":"https://www.nike.com/fr/t/chaussure-de-running-sur-route-nike-pegasus-42-pour-homme-M9ckDyR3"},{"modele":"Nike Vomero Plus","marque":"NIKE","prix":180.0,"type":"MAX CUSHION","poidsChaussure":292.0,"drop":10.0,"amorti":10.0,"dynamisme":7.0,"stabilite":8.0,"confort":9.5,"durabilite":8.0,"legerete":6.5,"distance":"5-42 km","allure":"TRANQUILLE/MODÉRÉE","typePied":"STANDARD/LARGE","attaque":"TALON/MILIEU","poidsIdealMin":65.0,"poidsIdealMax":110.0,"poidsMax":125.0,"objectif":"CONFORT","carbone":"NON","lien":"https://www.nike.com/fr/t/chaussure-de-running-sur-route-nike-vomero-plus-pour-homme-ZaR7ZyEh"},{"modele":"Nike Alphafly 3","marque":"NIKE","prix":310.0,"type":"RACE","poidsChaussure":218.0,"drop":8.0,"amorti":9.0,"dynamisme":10.0,"stabilite":7.5,"confort":8.0,"durabilite":5.5,"legerete":9.5,"distance":"10-42 km","allure":"RAPIDE","typePied":"STANDARD/ÉTROIT","attaque":"MILIEU/AVANT","poidsIdealMin":55.0,"poidsIdealMax":85.0,"poidsMax":95.0,"objectif":"COMPÉTITION","carbone":"OUI","lien":"https://www.nike.com/fr/t/chaussure-de-course-sur-route-nike-alphafly-3-pour-homme-KnKE5jwD"},{"modele":"Adidas Adizero EVO SL","marque":"ADIDAS","prix":150.0,"type":"POLYVALENTE","poidsChaussure":224.0,"drop":7.0,"amorti":8.0,"dynamisme":9.0,"stabilite":7.5,"confort":8.0,"durabilite":7.0,"legerete":9.0,"distance":"5-30 km","allure":"MODÉRÉE/RAPIDE","typePied":"STANDARD","attaque":"MILIEU/AVANT","poidsIdealMin":55.0,"poidsIdealMax":90.0,"poidsMax":105.0,"objectif":"POLYVALENT","carbone":"NON","lien":"https://click.linksynergy.com/link?id=wi07X%2fYO2lw&offerid=2079203.4480618326243722295810882&type=2&murl=https%3a%2f%2fwww.decathlon.fr%2fp%2fchaussures-de-running-legeres-homme-adidas-adizero-evo-sl-blanche-et-bleu%2f372979%2fm8968093"},{"modele":"Adidas Adios Pro 4","marque":"ADIDAS","prix":250.0,"type":"RACE","poidsChaussure":200.0,"drop":6.0,"amorti":8.5,"dynamisme":10.0,"stabilite":8.0,"confort":8.0,"durabilite":6.0,"legerete":10.0,"distance":"10-42 km","allure":"RAPIDE","typePied":"STANDARD","attaque":"MILIEU/AVANT","poidsIdealMin":55.0,"poidsIdealMax":90.0,"poidsMax":100.0,"objectif":"COMPÉTITION","carbone":"OUI","lien":"https://www.adidas.fr/chaussure-adizero-adios-pro-4/JR6360.html"},{"modele":"HOKA Clifton 11","marque":"HOKA","prix":160.0,"type":"DAILY","poidsChaussure":283.0,"drop":8.0,"amorti":8.5,"dynamisme":7.0,"stabilite":8.5,"confort":9.0,"durabilite":8.0,"legerete":7.0,"distance":"5-30 km","allure":"TRANQUILLE/MODÉRÉE","typePied":"STANDARD/LARGE","attaque":"TALON/MILIEU","poidsIdealMin":60.0,"poidsIdealMax":105.0,"poidsMax":120.0,"objectif":"ENTRAÎNEMENT","carbone":"NON","lien":"https://click.linksynergy.com/link?id=wi07X%2fYO2lw&offerid=2079203.4480610563771963922080534&type=2&murl=https%3a%2f%2fwww.decathlon.fr%2fp%2fchaussures-de-running-route-homme-hoka-clifton-11-blanc-et-bleu%2f387190%2fc4m9032490"},{"modele":"HOKA Mach 7","marque":"HOKA","prix":160.0,"type":"TEMPO","poidsChaussure":230.0,"drop":5.0,"amorti":7.5,"dynamisme":9.0,"stabilite":8.0,"confort":8.0,"durabilite":7.0,"legerete":9.0,"distance":"5-21 km","allure":"MODÉRÉE/RAPIDE","typePied":"STANDARD","attaque":"MILIEU/AVANT","poidsIdealMin":55.0,"poidsIdealMax":90.0,"poidsMax":105.0,"objectif":"PERFORMANCE","carbone":"NON","lien":"https://au.hoka.com/products/m-mach-7-1171904-bblc-bblc"},{"modele":"HOKA Bondi 9","marque":"HOKA","prix":180.0,"type":"MAX CUSHION","poidsChaussure":297.0,"drop":5.0,"amorti":10.0,"dynamisme":6.0,"stabilite":9.0,"confort":10.0,"durabilite":8.5,"legerete":5.5,"distance":"5-30 km","allure":"TRANQUILLE","typePied":"STANDARD/LARGE","attaque":"TALON/MILIEU","poidsIdealMin":70.0,"poidsIdealMax":120.0,"poidsMax":135.0,"objectif":"CONFORT","carbone":"NON","lien":"https://au.hoka.com/products/m-bondi-9-1162011-bblc-bblc"},{"modele":"Saucony Ride 19","marque":"SAUCONY","prix":160.0,"type":"DAILY","poidsChaussure":255.0,"drop":8.0,"amorti":8.0,"dynamisme":7.5,"stabilite":8.0,"confort":8.5,"durabilite":8.5,"legerete":8.0,"distance":"5-30 km","allure":"TOUTES","typePied":"STANDARD","attaque":"MILIEU/TALON","poidsIdealMin":60.0,"poidsIdealMax":105.0,"poidsMax":120.0,"objectif":"ENTRAÎNEMENT","carbone":"NON","lien":"https://click.linksynergy.com/link?id=wi07X%2fYO2lw&offerid=2079203.448067909193310145778083&type=2&murl=https%3a%2f%2fwww.decathlon.fr%2fp%2fchaussures-de-running-homme-saucony-ride-19%2f381005%2fm9026915"},{"modele":"Saucony Endorphin Speed 5","marque":"SAUCONY","prix":200.0,"type":"TEMPO","poidsChaussure":238.0,"drop":8.0,"amorti":8.0,"dynamisme":9.5,"stabilite":8.0,"confort":8.0,"durabilite":7.5,"legerete":9.0,"distance":"5-42 km","allure":"MODÉRÉE/RAPIDE","typePied":"STANDARD","attaque":"MILIEU/AVANT","poidsIdealMin":55.0,"poidsIdealMax":95.0,"poidsMax":110.0,"objectif":"PERFORMANCE","carbone":"NON","lien":"https://www.saucony.com/FR/fr_FR/endorphin-speed/"},{"modele":"New Balance 1080 v15","marque":"NEW BALANCE","prix":190.0,"type":"MAX CUSHION","poidsChaussure":261.0,"drop":6.0,"amorti":9.5,"dynamisme":7.0,"stabilite":8.0,"confort":9.5,"durabilite":8.0,"legerete":6.5,"distance":"5-42 km","allure":"TRANQUILLE/MODÉRÉE","typePied":"STANDARD/LARGE","attaque":"TALON/MILIEU","poidsIdealMin":65.0,"poidsIdealMax":115.0,"poidsMax":130.0,"objectif":"CONFORT","carbone":"NON","lien":"https://click.linksynergy.com/link?id=wi07X%2fYO2lw&offerid=2079203.4480611276175378675754279&type=2&murl=https%3a%2f%2fwww.decathlon.fr%2fp%2fchaussure-de-running-homme-new-balance-infinion-1080-v15-blanc%2f380846%2fm9030742"},{"modele":"Brooks Adrenaline GTS 25","marque":"BROOKS","prix":160.0,"type":"DAILY","poidsChaussure":300.0,"drop":10.0,"amorti":8.5,"dynamisme":6.5,"stabilite":10.0,"confort":9.0,"durabilite":9.0,"legerete":5.5,"distance":"5-30 km","allure":"TRANQUILLE/MODÉRÉE","typePied":"STANDARD/LARGE","attaque":"TALON/MILIEU","poidsIdealMin":65.0,"poidsIdealMax":120.0,"poidsMax":135.0,"objectif":"ENTRAÎNEMENT","carbone":"NON","lien":"https://click.linksynergy.com/link?id=wi07X%2fYO2lw&offerid=2079203.4480618108660185008819843&type=2&murl=https%3a%2f%2fwww.decathlon.fr%2fp%2fchaussure-de-running-homme-brooks-adrenaline-gts-25-gris-rouge%2f381028%2fm9030584"},{"modele":"PUMA Deviate Nitro 4","marque":"PUMA","prix":180.0,"type":"TEMPO","poidsChaussure":250.0,"drop":8.0,"amorti":8.0,"dynamisme":9.5,"stabilite":8.0,"confort":8.0,"durabilite":7.5,"legerete":8.5,"distance":"5-42 km","allure":"MODÉRÉE/RAPIDE","typePied":"STANDARD","attaque":"MILIEU/AVANT","poidsIdealMin":60.0,"poidsIdealMax":100.0,"poidsMax":115.0,"objectif":"PERFORMANCE","carbone":"OUI","lien":"https://click.linksynergy.com/link?id=wi07X%2fYO2lw&offerid=2079203.4480611546039873521953921&type=2&murl=https%3a%2f%2fwww.decathlon.fr%2fp%2fchaussures-de-running-hyrox-homme-puma-deviate-nitro-4-rouge%2f380836%2fm9026894"},{"modele":"PUMA Fast-R Nitro Elite 3","marque":"PUMA","prix":300.0,"type":"RACE","poidsChaussure":194.0,"drop":8.0,"amorti":8.5,"dynamisme":10.0,"stabilite":7.5,"confort":7.5,"durabilite":5.5,"legerete":10.0,"distance":"10-42 km","allure":"RAPIDE","typePied":"STANDARD/ÉTROIT","attaque":"MILIEU/AVANT","poidsIdealMin":55.0,"poidsIdealMax":85.0,"poidsMax":95.0,"objectif":"COMPÉTITION","carbone":"OUI","lien":"https://eu.puma.com/fr/fr/pd/chaussures-de-running-fast-r-nitro-elite3-homme/312060"},{"modele":"Mizuno Wave Rider 29","marque":"MIZUNO","prix":160.0,"type":"DAILY","poidsChaussure":290.0,"drop":12.0,"amorti":8.0,"dynamisme":7.0,"stabilite":8.5,"confort":8.5,"durabilite":9.0,"legerete":7.0,"distance":"5-30 km","allure":"TOUTES","typePied":"STANDARD","attaque":"TALON/MILIEU","poidsIdealMin":60.0,"poidsIdealMax":110.0,"poidsMax":125.0,"objectif":"ENTRAÎNEMENT","carbone":"NON","lien":"https://click.linksynergy.com/link?id=wi07X%2fYO2lw&offerid=2079203.448066445127846588161838&type=2&murl=https%3a%2f%2fwww.decathlon.fr%2fp%2fchaussure-de-running-homme-mizuno-wave-rider-29%2f373589%2fm9000543"},{"modele":"Mizuno Neo Vista 2","marque":"MIZUNO","prix":180.0,"type":"POLYVALENTE","poidsChaussure":265.0,"drop":8.0,"amorti":9.5,"dynamisme":8.5,"stabilite":8.0,"confort":9.0,"durabilite":7.5,"legerete":7.5,"distance":"5-42 km","allure":"TRANQUILLE/MODÉRÉE","typePied":"STANDARD/LARGE","attaque":"TALON/MILIEU","poidsIdealMin":65.0,"poidsIdealMax":110.0,"poidsMax":125.0,"objectif":"POLYVALENT","carbone":"NON","lien":"https://emea.mizuno.com/eu/fr-fr/mizuno-neo-vista-2/J1GC253453.html"},{"modele":"KIPRUN KD900X LD+","marque":"KIPRUN","prix":200.0,"type":"RACE","poidsChaussure":220.0,"drop":4.0,"amorti":8.5,"dynamisme":9.5,"stabilite":8.0,"confort":8.0,"durabilite":7.0,"legerete":9.5,"distance":"10-42 km","allure":"RAPIDE","typePied":"STANDARD","attaque":"MILIEU/AVANT","poidsIdealMin":60.0,"poidsIdealMax":95.0,"poidsMax":105.0,"objectif":"COMPÉTITION","carbone":"OUI","lien":"https://click.linksynergy.com/link?id=wi07X%2fYO2lw&offerid=2079203.4480618314315195853207343&type=2&murl=https%3a%2f%2fwww.decathlon.fr%2fp%2fchaussures-de-running-a-plaque-carbone-femme-kiprun-kd900x-ld-rose-clair%2f347115%2fc385c266m8942780"},{"modele":"Nike Vomero 18","marque":"NIKE","prix":160.0,"type":"MAX CUSHION","poidsChaussure":325.0,"drop":10.0,"amorti":9.5,"dynamisme":7.0,"stabilite":8.5,"confort":9.5,"durabilite":9.0,"legerete":5.5,"distance":"5-42 km","allure":"TRANQUILLE","typePied":"STANDARD/LARGE","attaque":"TALON/MILIEU","poidsIdealMin":65.0,"poidsIdealMax":120.0,"poidsMax":140.0,"objectif":"CONFORT","carbone":"NON","lien":"https://www.nike.com/fr/"},{"modele":"Nike Structure 26","marque":"NIKE","prix":160.0,"type":"DAILY","poidsChaussure":320.0,"drop":10.0,"amorti":8.5,"dynamisme":7.0,"stabilite":10.0,"confort":9.0,"durabilite":9.0,"legerete":5.5,"distance":"5-42 km","allure":"TRANQUILLE","typePied":"STANDARD/LARGE","attaque":"TALON/MILIEU","poidsIdealMin":65.0,"poidsIdealMax":125.0,"poidsMax":145.0,"objectif":"ENTRAÎNEMENT","carbone":"NON","lien":"https://www.nike.com/fr/"},{"modele":"Nike Zoom Fly 6","marque":"NIKE","prix":180.0,"type":"TEMPO","poidsChaussure":247.0,"drop":8.0,"amorti":8.5,"dynamisme":9.5,"stabilite":8.0,"confort":8.0,"durabilite":7.5,"legerete":8.5,"distance":"5-42 km","allure":"RAPIDE","typePied":"STANDARD","attaque":"MILIEU/AVANT","poidsIdealMin":55.0,"poidsIdealMax":100.0,"poidsMax":120.0,"objectif":"PERFORMANCE","carbone":"OUI","lien":"https://www.nike.com/fr/"},{"modele":"Nike Vaporfly 4","marque":"NIKE","prix":260.0,"type":"RACE","poidsChaussure":161.0,"drop":6.0,"amorti":8.0,"dynamisme":10.0,"stabilite":7.0,"confort":7.5,"durabilite":5.5,"legerete":10.0,"distance":"5-42 km","allure":"RAPIDE","typePied":"STANDARD/ÉTROIT","attaque":"MILIEU/AVANT","poidsIdealMin":50.0,"poidsIdealMax":90.0,"poidsMax":105.0,"objectif":"COMPÉTITION","carbone":"OUI","lien":"https://www.nike.com/fr/"},{"modele":"ASICS Gel-Nimbus 28","marque":"ASICS","prix":200.0,"type":"MAX CUSHION","poidsChaussure":285.0,"drop":8.0,"amorti":10.0,"dynamisme":7.0,"stabilite":8.5,"confort":10.0,"durabilite":9.0,"legerete":6.5,"distance":"5-42 km","allure":"TRANQUILLE","typePied":"STANDARD/LARGE","attaque":"TALON/MILIEU","poidsIdealMin":65.0,"poidsIdealMax":120.0,"poidsMax":140.0,"objectif":"CONFORT","carbone":"NON","lien":"https://click.linksynergy.com/link?id=wi07X%2fYO2lw&offerid=2079203.4480611954074022950066516&type=2&murl=https%3a%2f%2fwww.decathlon.fr%2fp%2fchaussures-de-running-homme-asics-gel-nimbus-28-aw26%2f380668%2fm9047970"},{"modele":"ASICS Gel-Kayano 32","marque":"ASICS","prix":200.0,"type":"MAX CUSHION","poidsChaussure":300.0,"drop":8.0,"amorti":9.5,"dynamisme":6.5,"stabilite":10.0,"confort":9.5,"durabilite":9.0,"legerete":5.5,"distance":"5-42 km","allure":"TRANQUILLE","typePied":"STANDARD/LARGE","attaque":"TALON/MILIEU","poidsIdealMin":70.0,"poidsIdealMax":125.0,"poidsMax":145.0,"objectif":"CONFORT","carbone":"NON","lien":"https://click.linksynergy.com/link?id=wi07X%2fYO2lw&offerid=2079203.448061642452956610463291&type=2&murl=https%3a%2f%2fwww.decathlon.fr%2fp%2fchaussures-de-running-homme-asics-gel-kayano-32-noir%2f380669%2fc1m8999658"},{"modele":"ASICS GT-2000 14","marque":"ASICS","prix":160.0,"type":"DAILY","poidsChaussure":273.0,"drop":8.0,"amorti":8.5,"dynamisme":7.5,"stabilite":9.5,"confort":9.0,"durabilite":9.0,"legerete":7.0,"distance":"5-30 km","allure":"TOUTES","typePied":"STANDARD/LARGE","attaque":"TALON/MILIEU","poidsIdealMin":60.0,"poidsIdealMax":115.0,"poidsMax":135.0,"objectif":"ENTRAÎNEMENT","carbone":"NON","lien":"https://click.linksynergy.com/link?id=wi07X%2fYO2lw&offerid=2079203.4480611720126804863687393&type=2&murl=https%3a%2f%2fwww.decathlon.fr%2fp%2fchaussures-de-running-homme-asics-gt-2000-14-noir-bleu-et-vert%2f383070%2fc1c5c9m9026349"},{"modele":"ASICS Metaspeed Sky Tokyo","marque":"ASICS","prix":270.0,"type":"RACE","poidsChaussure":170.0,"drop":5.0,"amorti":8.5,"dynamisme":10.0,"stabilite":7.5,"confort":8.0,"durabilite":6.0,"legerete":10.0,"distance":"5-42 km","allure":"RAPIDE","typePied":"STANDARD","attaque":"MILIEU/AVANT","poidsIdealMin":50.0,"poidsIdealMax":90.0,"poidsMax":105.0,"objectif":"COMPÉTITION","carbone":"OUI","lien":"https://www.asics.com/fr/fr-fr/"},{"modele":"Adidas Adizero Boston 13","marque":"ADIDAS","prix":160.0,"type":"TEMPO","poidsChaussure":245.0,"drop":6.0,"amorti":8.0,"dynamisme":9.5,"stabilite":8.0,"confort":8.0,"durabilite":9.0,"legerete":8.5,"distance":"5-42 km","allure":"RAPIDE","typePied":"STANDARD","attaque":"MILIEU/AVANT","poidsIdealMin":55.0,"poidsIdealMax":105.0,"poidsMax":125.0,"objectif":"PERFORMANCE","carbone":"OUI","lien":"https://click.linksynergy.com/link?id=wi07X%2fYO2lw&offerid=2079203.448063869895329093447298&type=2&murl=https%3a%2f%2fwww.decathlon.fr%2fp%2fchaussures-de-running-homme-adidas-adizero-boston-13-rose-violet%2f372901%2fm9027084"},{"modele":"Adidas Supernova Rise 3","marque":"ADIDAS","prix":150.0,"type":"DAILY","poidsChaussure":272.0,"drop":8.0,"amorti":8.5,"dynamisme":8.0,"stabilite":8.5,"confort":9.0,"durabilite":9.0,"legerete":7.0,"distance":"5-42 km","allure":"TOUTES","typePied":"STANDARD","attaque":"TALON/MILIEU","poidsIdealMin":60.0,"poidsIdealMax":115.0,"poidsMax":135.0,"objectif":"ENTRAÎNEMENT","carbone":"NON","lien":"https://click.linksynergy.com/link?id=wi07X%2fYO2lw&offerid=2079203.4480615726107392288943954&type=2&murl=https%3a%2f%2fwww.decathlon.fr%2fp%2fchaussures-de-running-femme-adidas-supernova-rise-3-blanche-rose%2f381630%2fc4c24m9002353"},{"modele":"Adidas Adistar 4","marque":"ADIDAS","prix":160.0,"type":"MAX CUSHION","poidsChaussure":300.0,"drop":6.0,"amorti":9.5,"dynamisme":6.5,"stabilite":9.0,"confort":9.5,"durabilite":9.0,"legerete":5.5,"distance":"10-42 km","allure":"TRANQUILLE","typePied":"STANDARD/LARGE","attaque":"TALON/MILIEU","poidsIdealMin":65.0,"poidsIdealMax":125.0,"poidsMax":145.0,"objectif":"CONFORT","carbone":"NON","lien":"https://www.adidas.fr/"},{"modele":"Adidas Adizero Adios 9","marque":"ADIDAS","prix":140.0,"type":"TEMPO","poidsChaussure":200.0,"drop":8.0,"amorti":7.0,"dynamisme":9.5,"stabilite":7.5,"confort":7.5,"durabilite":8.0,"legerete":9.5,"distance":"5-21 km","allure":"RAPIDE","typePied":"STANDARD/ÉTROIT","attaque":"MILIEU/AVANT","poidsIdealMin":50.0,"poidsIdealMax":90.0,"poidsMax":105.0,"objectif":"PERFORMANCE","carbone":"NON","lien":"https://www.adidas.fr/"},{"modele":"Brooks Ghost 17","marque":"BROOKS","prix":150.0,"type":"DAILY","poidsChaussure":286.0,"drop":10.0,"amorti":8.5,"dynamisme":7.0,"stabilite":9.0,"confort":9.5,"durabilite":9.5,"legerete":6.5,"distance":"5-42 km","allure":"TOUTES","typePied":"STANDARD/LARGE","attaque":"TALON/MILIEU","poidsIdealMin":60.0,"poidsIdealMax":120.0,"poidsMax":140.0,"objectif":"ENTRAÎNEMENT","carbone":"NON","lien":"https://click.linksynergy.com/link?id=wi07X%2fYO2lw&offerid=2079203.448069514312419800058061&type=2&murl=https%3a%2f%2fwww.decathlon.fr%2fp%2fchaussure-de-running-femme-brooks-ghost-17-blanc-casse-et-jaune%2f381681%2fc4c22m9002563"},{"modele":"Brooks Glycerin 23","marque":"BROOKS","prix":180.0,"type":"MAX CUSHION","poidsChaussure":300.0,"drop":10.0,"amorti":9.5,"dynamisme":7.0,"stabilite":9.0,"confort":10.0,"durabilite":9.0,"legerete":5.5,"distance":"5-42 km","allure":"TRANQUILLE","typePied":"STANDARD/LARGE","attaque":"TALON/MILIEU","poidsIdealMin":65.0,"poidsIdealMax":125.0,"poidsMax":145.0,"objectif":"CONFORT","carbone":"NON","lien":"https://www.brooksrunning.com/fr_fr/"},{"modele":"Brooks Hyperion Max 3","marque":"BROOKS","prix":200.0,"type":"TEMPO","poidsChaussure":280.0,"drop":6.0,"amorti":8.5,"dynamisme":9.5,"stabilite":8.0,"confort":8.5,"durabilite":8.0,"legerete":7.0,"distance":"5-42 km","allure":"RAPIDE","typePied":"STANDARD","attaque":"MILIEU/AVANT","poidsIdealMin":55.0,"poidsIdealMax":105.0,"poidsMax":125.0,"objectif":"PERFORMANCE","carbone":"OUI","lien":"https://www.brooksrunning.com/fr_fr/"},{"modele":"Brooks Ghost Max 3","marque":"BROOKS","prix":160.0,"type":"MAX CUSHION","poidsChaussure":294.0,"drop":6.0,"amorti":9.5,"dynamisme":6.5,"stabilite":9.5,"confort":9.5,"durabilite":9.0,"legerete":5.5,"distance":"5-42 km","allure":"TRANQUILLE","typePied":"STANDARD/LARGE","attaque":"TALON/MILIEU","poidsIdealMin":65.0,"poidsIdealMax":125.0,"poidsMax":145.0,"objectif":"CONFORT","carbone":"NON","lien":"https://click.linksynergy.com/link?id=wi07X%2fYO2lw&offerid=2079203.448069492339674692488333&type=2&murl=https%3a%2f%2fwww.decathlon.fr%2fp%2fchaussure-de-running-homme-brooks-ghost-max-3%2f381026%2fc4c5m9000480"},{"modele":"Saucony Triumph 23","marque":"SAUCONY","prix":190.0,"type":"MAX CUSHION","poidsChaussure":275.0,"drop":10.0,"amorti":9.5,"dynamisme":7.5,"stabilite":8.5,"confort":9.5,"durabilite":9.0,"legerete":6.5,"distance":"5-42 km","allure":"TRANQUILLE","typePied":"STANDARD/LARGE","attaque":"TALON/MILIEU","poidsIdealMin":65.0,"poidsIdealMax":120.0,"poidsMax":140.0,"objectif":"CONFORT","carbone":"NON","lien":"https://www.saucony.com/FR/fr_FR/"},{"modele":"Saucony Guide 18","marque":"SAUCONY","prix":150.0,"type":"DAILY","poidsChaussure":275.0,"drop":6.0,"amorti":8.5,"dynamisme":7.0,"stabilite":9.5,"confort":9.0,"durabilite":9.0,"legerete":6.5,"distance":"5-42 km","allure":"TRANQUILLE","typePied":"STANDARD/LARGE","attaque":"TALON/MILIEU","poidsIdealMin":65.0,"poidsIdealMax":120.0,"poidsMax":140.0,"objectif":"ENTRAÎNEMENT","carbone":"NON","lien":"https://www.saucony.com/FR/fr_FR/"},{"modele":"Saucony Endorphin Pro 4","marque":"SAUCONY","prix":250.0,"type":"RACE","poidsChaussure":212.0,"drop":8.0,"amorti":8.5,"dynamisme":10.0,"stabilite":7.5,"confort":8.0,"durabilite":6.5,"legerete":9.5,"distance":"5-42 km","allure":"RAPIDE","typePied":"STANDARD","attaque":"MILIEU/AVANT","poidsIdealMin":50.0,"poidsIdealMax":95.0,"poidsMax":110.0,"objectif":"COMPÉTITION","carbone":"OUI","lien":"https://www.saucony.com/FR/fr_FR/"},{"modele":"New Balance FuelCell Rebel v5","marque":"NEW BALANCE","prix":160.0,"type":"TEMPO","poidsChaussure":225.0,"drop":6.0,"amorti":8.0,"dynamisme":9.5,"stabilite":7.5,"confort":8.5,"durabilite":7.5,"legerete":9.0,"distance":"5-30 km","allure":"RAPIDE","typePied":"STANDARD","attaque":"MILIEU/AVANT","poidsIdealMin":50.0,"poidsIdealMax":100.0,"poidsMax":115.0,"objectif":"PERFORMANCE","carbone":"NON","lien":"https://click.linksynergy.com/link?id=wi07X%2fYO2lw&offerid=2079203.44806421070454469646430&type=2&murl=https%3a%2f%2fwww.decathlon.fr%2fp%2fchaussures-de-running-homme-new-balance-fuelcell-rebel-v5-jaune%2f372784%2fm9030750"},{"modele":"New Balance Fresh Foam X More v6","marque":"NEW BALANCE","prix":170.0,"type":"MAX CUSHION","poidsChaussure":306.0,"drop":4.0,"amorti":10.0,"dynamisme":6.5,"stabilite":9.0,"confort":9.5,"durabilite":9.0,"legerete":5.5,"distance":"5-42 km","allure":"TRANQUILLE","typePied":"STANDARD/LARGE","attaque":"TALON/MILIEU","poidsIdealMin":70.0,"poidsIdealMax":130.0,"poidsMax":150.0,"objectif":"CONFORT","carbone":"NON","lien":"https://click.linksynergy.com/link?id=wi07X%2fYO2lw&offerid=2079203.4480613465855927970238698&type=2&murl=https%3a%2f%2fwww.decathlon.fr%2fp%2fchaussures-de-running-homme-new-balance-fresh-foam-x-more-v6-gris%2f372907%2fc251m9030746"},{"modele":"New Balance FuelCell SC Elite v5","marque":"NEW BALANCE","prix":280.0,"type":"RACE","poidsChaussure":215.0,"drop":8.0,"amorti":8.5,"dynamisme":10.0,"stabilite":7.5,"confort":8.0,"durabilite":6.0,"legerete":9.5,"distance":"5-42 km","allure":"RAPIDE","typePied":"STANDARD","attaque":"MILIEU/AVANT","poidsIdealMin":50.0,"poidsIdealMax":95.0,"poidsMax":110.0,"objectif":"COMPÉTITION","carbone":"OUI","lien":"https://www.newbalance.fr/"},{"modele":"PUMA Velocity Nitro 4","marque":"PUMA","prix":140.0,"type":"DAILY","poidsChaussure":250.0,"drop":10.0,"amorti":8.0,"dynamisme":8.0,"stabilite":8.5,"confort":8.5,"durabilite":9.5,"legerete":8.0,"distance":"5-42 km","allure":"TOUTES","typePied":"STANDARD","attaque":"TALON/MILIEU","poidsIdealMin":55.0,"poidsIdealMax":110.0,"poidsMax":130.0,"objectif":"ENTRAÎNEMENT","carbone":"NON","lien":"https://click.linksynergy.com/link?id=wi07X%2fYO2lw&offerid=2079203.4480610135670751103688471&type=2&murl=https%3a%2f%2fwww.decathlon.fr%2fp%2fchaussure-de-running-homme-puma-velocity-nitro-4-jaune-blanc%2f373270%2fc23m8999920"},{"modele":"PUMA MagMax Nitro 2","marque":"PUMA","prix":190.0,"type":"MAX CUSHION","poidsChaussure":300.0,"drop":8.0,"amorti":10.0,"dynamisme":7.5,"stabilite":9.0,"confort":9.5,"durabilite":9.0,"legerete":5.5,"distance":"5-42 km","allure":"TRANQUILLE","typePied":"STANDARD/LARGE","attaque":"TALON/MILIEU","poidsIdealMin":65.0,"poidsIdealMax":125.0,"poidsMax":145.0,"objectif":"CONFORT","carbone":"NON","lien":"https://eu.puma.com/fr/fr/"},{"modele":"PUMA ForeverRun Nitro 2","marque":"PUMA","prix":160.0,"type":"DAILY","poidsChaussure":295.0,"drop":10.0,"amorti":8.5,"dynamisme":7.0,"stabilite":10.0,"confort":9.0,"durabilite":9.5,"legerete":6.0,"distance":"5-42 km","allure":"TRANQUILLE","typePied":"STANDARD/LARGE","attaque":"TALON/MILIEU","poidsIdealMin":65.0,"poidsIdealMax":125.0,"poidsMax":145.0,"objectif":"ENTRAÎNEMENT","carbone":"NON","lien":"https://eu.puma.com/fr/fr/"},{"modele":"Mizuno Wave Sky 9","marque":"MIZUNO","prix":190.0,"type":"MAX CUSHION","poidsChaussure":290.0,"drop":6.0,"amorti":9.5,"dynamisme":7.0,"stabilite":9.0,"confort":9.5,"durabilite":9.5,"legerete":6.0,"distance":"5-42 km","allure":"TRANQUILLE","typePied":"STANDARD/LARGE","attaque":"TALON/MILIEU","poidsIdealMin":65.0,"poidsIdealMax":125.0,"poidsMax":145.0,"objectif":"CONFORT","carbone":"NON","lien":"https://emea.mizuno.com/eu/fr-fr/"},{"modele":"Mizuno Wave Inspire 22","marque":"MIZUNO","prix":160.0,"type":"DAILY","poidsChaussure":295.0,"drop":8.0,"amorti":8.5,"dynamisme":7.0,"stabilite":10.0,"confort":9.0,"durabilite":9.5,"legerete":6.0,"distance":"5-42 km","allure":"TRANQUILLE","typePied":"STANDARD/LARGE","attaque":"TALON/MILIEU","poidsIdealMin":65.0,"poidsIdealMax":125.0,"poidsMax":145.0,"objectif":"ENTRAÎNEMENT","carbone":"NON","lien":"https://emea.mizuno.com/eu/fr-fr/"},{"modele":"Mizuno Neo Zen 2","marque":"MIZUNO","prix":150.0,"type":"POLYVALENTE","poidsChaussure":245.0,"drop":6.0,"amorti":8.5,"dynamisme":9.0,"stabilite":8.0,"confort":9.0,"durabilite":8.0,"legerete":8.5,"distance":"5-42 km","allure":"TOUTES","typePied":"STANDARD","attaque":"MILIEU/AVANT","poidsIdealMin":55.0,"poidsIdealMax":105.0,"poidsMax":120.0,"objectif":"POLYVALENT","carbone":"NON","lien":"https://click.linksynergy.com/link?id=wi07X%2fYO2lw&offerid=2079203.4480616277896492766700295&type=2&murl=https%3a%2f%2fwww.decathlon.fr%2fp%2fchaussures-de-running-homme-mizuno-neo-zen-2-gris%2f381104%2fm9030792"},{"modele":"On Cloudsurfer 2","marque":"ON","prix":170.0,"type":"DAILY","poidsChaussure":260.0,"drop":9.0,"amorti":8.5,"dynamisme":8.0,"stabilite":8.0,"confort":9.0,"durabilite":8.5,"legerete":7.5,"distance":"5-30 km","allure":"TOUTES","typePied":"STANDARD","attaque":"TALON/MILIEU","poidsIdealMin":55.0,"poidsIdealMax":110.0,"poidsMax":130.0,"objectif":"ENTRAÎNEMENT","carbone":"NON","lien":"https://www.on.com/fr-fr/"},{"modele":"On Cloudmonster 2","marque":"ON","prix":190.0,"type":"MAX CUSHION","poidsChaussure":300.0,"drop":6.0,"amorti":9.5,"dynamisme":8.0,"stabilite":8.5,"confort":9.5,"durabilite":8.5,"legerete":5.5,"distance":"5-42 km","allure":"TRANQUILLE","typePied":"STANDARD/LARGE","attaque":"TALON/MILIEU","poidsIdealMin":65.0,"poidsIdealMax":125.0,"poidsMax":145.0,"objectif":"CONFORT","carbone":"NON","lien":"https://www.on.com/fr-fr/"}];
@@ -690,7 +733,7 @@ function cardHTML(shoe,index,p) {
         <div class="brand-line">${shoe.marque} • ${shoe.type}</div>
 
         <div class="score-line">
-          <div><strong>Score MY SPORT SHOES</strong><br><small>Compatibilité avec ton profil</small></div>
+          <div><strong>Score MYSPORTSHOES</strong><br><small>Compatibilité avec ton profil</small></div>
           <div class="score-big">${Math.round(shoe.final)}/100</div>
         </div>
 
