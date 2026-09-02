@@ -202,6 +202,25 @@ h2{margin:10px 0 7px;font-size:25px}
 .results-title,.results-sub{text-align:center}
 .results-title{color:white;margin-bottom:5px}
 .results-sub{color:#c9d9ef;margin:0 0 16px}
+.budget-notice{
+  display:none;
+  max-width:760px;
+  margin:0 auto 16px;
+  padding:14px 16px;
+  border-radius:12px;
+  background:#fff8dc;
+  border:1px solid #f0d77a;
+  color:#5f4a00;
+  font-size:14px;
+  line-height:1.45;
+  box-shadow:0 8px 22px rgba(6,29,69,.08);
+}
+.budget-notice strong{font-weight:900}
+.budget-notice.is-soft{
+  background:#eef6ff;
+  border-color:#b9d8ff;
+  color:#123f73;
+}
 .podium{display:grid;gap:14px}
 .rank-head{
   padding:15px 16px;
@@ -454,6 +473,7 @@ h2{margin:10px 0 7px;font-size:25px}
     <section class="results" id="results">
       <h2 class="results-title">🏆 Ton Top 3 MYSPORTSHOES</h2>
       <p class="results-sub" id="resultsSub"></p>
+      <div class="budget-notice" id="budgetNotice" aria-live="polite"></div>
       <div class="podium" id="podium"></div>
       <button class="restart" id="restartBtn">↻ Modifier mon profil</button>
       <p class="engine-note">Le classement reprend les pondérations de ton moteur MASTER Route. Les recommandations restent une aide au choix : le ressenti personnel et l'essayage restent importants.</p>
@@ -777,6 +797,34 @@ function showResults(p) {
   const top3=ranking.slice(0,3);
   $("#podium").innerHTML=top3.map((shoe,i)=>cardHTML(shoe,i,p)).join("");
   $("#resultsSub").textContent=`${ranking.length} modèles compatibles analysés sur les 50 références Route.`;
+
+  const budgetNotice = $("#budgetNotice");
+  const overBudget = top3.filter(shoe => shoe.prix > p.budget);
+  const clearlyOverBudget = top3.filter(shoe => shoe.prix > p.budget + 20);
+
+  budgetNotice.className = "budget-notice";
+
+  if (clearlyOverBudget.length >= 2) {
+    budgetNotice.innerHTML = `
+      💡 <strong>Ton budget limite les options pour ton profil.</strong><br>
+      Les modèles les plus adaptés dépassent actuellement ton budget de <strong>${p.budget} €</strong>.
+      MYSPORTSHOES privilégie la compatibilité avec ta pratique et tes priorités plutôt que de te recommander
+      une chaussure moins adaptée uniquement pour respecter ton budget.
+    `;
+    budgetNotice.style.display = "block";
+  } else if (overBudget.length >= 1) {
+    budgetNotice.classList.add("is-soft");
+    budgetNotice.innerHTML = `
+      💡 <strong>Certaines recommandations dépassent légèrement ton budget.</strong><br>
+      Ton budget est bien pris en compte, mais un modèle un peu plus cher peut apparaître dans ton Top 3
+      lorsqu'il correspond mieux à ton profil.
+    `;
+    budgetNotice.style.display = "block";
+  } else {
+    budgetNotice.innerHTML = "";
+    budgetNotice.style.display = "none";
+  }
+
   $("#results").style.display="block";
 
   if (typeof gtag === "function") {
