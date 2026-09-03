@@ -1,10 +1,10 @@
-const MYSPORTSHOES_VERSION = "1.1";
+const MYBESTPAIR_VERSION = "1.1";
 
 const $ = (id) => document.getElementById(id);
 const FLEX_BUDGET = 20;
 
 /*
- * Pondération finale MYSPORTSHOES
+ * Pondération finale MYBESTPAIR
  *
  * Le budget passe de 5 % à 15 % afin qu'une chaussure
  * largement hors budget ne puisse pas trop facilement
@@ -227,14 +227,6 @@ function budgetCompat(price, budget) {
   /*
    * Au-delà de la marge :
    * pénalité beaucoup plus importante.
-   *
-   * Exemple budget 80 € :
-   *
-   * 100 € → 80
-   * 110 € → 60
-   * 120 € → 40
-   * 130 € → 20
-   * 140 € → 0
    */
   return Math.max(
     0,
@@ -447,10 +439,6 @@ function compute(shoe, p) {
 
   /*
    * MARQUE
-   *
-   * Si l'utilisateur choisit
-   * "Aucune préférence",
-   * la marque devient neutre.
    */
 
   const hasBrandPreference =
@@ -783,7 +771,7 @@ function cardHTML(r, idx) {
         </div>
 
         <div class="score">
-          ⭐ Score MYSPORTSHOES :
+          ⭐ Score MYBESTPAIR :
           ${Math.round(r.final)} / 100
         </div>
 
@@ -990,12 +978,6 @@ document.addEventListener(
       return;
 
 
-    /*
-     * Les éléments
-     * "Lien bientôt disponible"
-     * ne sont pas de vrais liens.
-     */
-
     if (
       link.classList.contains(
         "disabled"
@@ -1061,20 +1043,12 @@ document.addEventListener(
         link.href || "";
 
 
-      /*
-       * Rakuten Advertising
-       */
-
       const isRakuten =
 
         href.includes(
           "click.linksynergy.com"
         );
 
-
-      /*
-       * Awin
-       */
 
       const isAwin =
 
@@ -1107,11 +1081,6 @@ document.addEventListener(
       }
 
 
-      /*
-       * Événement envoyé pour
-       * TOUS les clics produits.
-       */
-
       gtag(
         "event",
         "product_click",
@@ -1134,11 +1103,6 @@ document.addEventListener(
         }
       );
 
-
-      /*
-       * Événement supplémentaire
-       * pour les liens affiliés.
-       */
 
       if (isAffiliate) {
 
@@ -1189,11 +1153,6 @@ $("profile-form")
         profile();
 
 
-      /*
-       * Les trois priorités
-       * doivent être différentes.
-       */
-
       if (
         new Set(
           p.priorities
@@ -1202,10 +1161,6 @@ $("profile-form")
 
         return;
 
-
-      /*
-       * Budget obligatoire
-       */
 
       if (
         !Number.isFinite(
@@ -1229,10 +1184,6 @@ $("profile-form")
         true;
 
 
-      /* =====================================================
-         CALCUL ET CLASSEMENT
-         ===================================================== */
-
       rankedResults =
 
         SHOES
@@ -1251,13 +1202,6 @@ $("profile-form")
                 b.final -
                 a.final;
 
-
-              /*
-               * Lorsque deux chaussures
-               * sont quasiment à égalité,
-               * le budget sert de premier
-               * critère de départage.
-               */
 
               if (
                 Math.abs(
@@ -1314,8 +1258,7 @@ $("profile-form")
 
 
       /* =====================================================
-         ANALYTICS :
-         RECOMMANDATIONS GÉNÉRÉES
+         ANALYTICS : RECOMMANDATIONS GÉNÉRÉES
          ===================================================== */
 
       if (
@@ -1361,10 +1304,6 @@ $("profile-form")
       }
 
 
-      /* =====================================================
-         RÉSUMÉ DU PROFIL
-         ===================================================== */
-
       $("result-summary")
         .textContent =
 
@@ -1384,10 +1323,6 @@ $("profile-form")
             p.foot.toLowerCase()
           }`;
 
-
-      /*
-       * Affichage résultats
-       */
 
       $("results-section").hidden =
         false;
