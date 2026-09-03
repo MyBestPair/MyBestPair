@@ -1,10 +1,10 @@
-# MySportShoes
+# MyBestPair
 
-**Trouve la chaussure de sport adaptée à ton profil.**
+**Trouve la meilleure paire pour ton sport.**
 
-MySportShoes est un outil gratuit de recommandation de chaussures basé sur les caractéristiques et les besoins de chaque sportif.
+MyBestPair est un outil gratuit de recommandation de chaussures de sport basé sur ton profil, ta pratique et tes besoins.
 
-L'utilisateur répond à un questionnaire personnalisé et MySportShoes analyse son profil afin de lui proposer un **Top 3 de chaussures adaptées**.
+L'utilisateur répond à un questionnaire personnalisé et MyBestPair analyse son profil afin de lui proposer un **Top 3 de chaussures adaptées**.
 
 ## Sports disponibles
 
@@ -49,15 +49,15 @@ Les recommandations sont calculées indépendamment de la présence ou non d'un 
 
 ## Affiliation
 
-Certains liens présents sur MySportShoes peuvent être des liens affiliés.
+Certains liens présents sur MyBestPair peuvent être des liens affiliés.
 
-Lorsqu'un utilisateur effectue un achat éligible après avoir suivi l'un de ces liens, MySportShoes peut percevoir une commission sans augmentation du prix payé par l'utilisateur.
+Lorsqu'un utilisateur effectue un achat éligible après avoir suivi l'un de ces liens, MyBestPair peut percevoir une commission sans augmentation du prix payé par l'utilisateur.
 
 L'affiliation n'influence pas le classement des chaussures.
 
 ## Site
 
-https://mysportshoes.fr
+https://mybestpair.fr
 
 ## Contact
 
@@ -65,4 +65,4 @@ myshoesfr.contact@gmail.com
 
 ---
 
-© 2026 MySportShoes
+© 2026 MyBestPair
