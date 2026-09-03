@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#174d3a">
-<title>Quelle chaussure de trail choisir ? | MYSPORTSHOES</title>
-<meta name="description" content="Trouve ta chaussure de trail idéale avec MYSPORTSHOES : profil, terrain, distance, poids, pied et priorités analysés sur 50 modèles.">
-<link rel="canonical" href="https://mysportshoes.fr/running/trail/">
+<title>Quelle chaussure de trail choisir ? | MYBESTPAIR</title>
+<meta name="description" content="Trouve ta chaussure de trail idéale avec MYBESTPAIR : profil, terrain, distance, poids, pied et priorités analysés sur 50 modèles.">
+<link rel="canonical" href="https://mybestpair.fr/running/trail/">
 
 <style>
 *{box-sizing:border-box}
@@ -300,7 +300,7 @@ gtag('config','G-8CZ831W067');
 <body>
 
 <div class="topbar">
-  <div class="top-brand">⛰️ MYSPORTSHOES</div>
+  <div class="top-brand">⛰️ MYBESTPAIR</div>
   <a class="home-link" href="../../">Accueil</a>
 </div>
 
@@ -309,7 +309,7 @@ gtag('config','G-8CZ831W067');
   <div class="hero-copy">
     <div class="hero-kicker">RUNNING TRAIL</div>
     <h1>Trouve la chaussure <span>qui te correspond.</span></h1>
-    <p>Terrain, distance, poids, type de pied et priorités : MYSPORTSHOES compare ton profil aux 50 références Trail du MASTER.</p>
+    <p>Terrain, distance, poids, type de pied et priorités : MYBESTPAIR compare ton profil aux 50 références Trail du MASTER.</p>
     <div class="hero-chips">
       <span class="hero-chip">50 modèles analysés</span>
       <span class="hero-chip">Top 3 personnalisé</span>
@@ -374,8 +374,8 @@ gtag('config','G-8CZ831W067');
 <div id="errorBox" class="error"></div>
 </div></section>
 
-<section id="results" class="results"><h2 class="results-title">🏆 Ton Top 3 MYSPORTSHOES Trail</h2><p id="resultsSub" class="results-sub"></p><div id="podium" class="podium"></div><button id="restartBtn" class="restart">↻ Modifier mon profil</button></section>
-<a class="back" href="../../">← Retour à l'accueil MYSPORTSHOES</a>
+<section id="results" class="results"><h2 class="results-title">🏆 Ton Top 3 MYBESTPAIR Trail</h2><p id="resultsSub" class="results-sub"></p><div id="podium" class="podium"></div><button id="restartBtn" class="restart">↻ Modifier mon profil</button></section>
+<a class="back" href="../../">← Retour à l'accueil MYBESTPAIR</a>
 </main>
 
 <section class="trust-strip">
@@ -435,7 +435,7 @@ function weak(s){let x=CR.map(([l,k])=>[l,s[k]]).sort((a,b)=>a[1]-b[1])[0];retur
 function pv(s,p){let r=CR.find(([l])=>l===p);return r?s[r[1]]:0}
 function why(s,p){let v=[pv(s,p.priorite1),pv(s,p.priorite2),pv(s,p.priorite3)],avg=(v[0]+v[1]+v[2])/3;return`Cette chaussure obtient ${Math.round(s.final)}/100 pour ton profil. ${avg>=8.5?"Elle correspond très bien":"Elle correspond bien"} à tes priorités : ${pretty(p.priorite1).toLowerCase()} ${v[0]}/10, ${pretty(p.priorite2).toLowerCase()} ${v[1]}/10 et ${pretty(p.priorite3).toLowerCase()} ${v[2]}/10.`}
 function budgetLabel(s,p){return s.prix<=p.budget?'<span class="budget-ok">✅ DANS LE BUDGET</span>':s.prix<=p.budget+20?'<span class="budget-heart">❤️ COUP DE CŒUR</span>':'<span class="budget-out">⚠️ HORS BUDGET</span>'}
-function card(s,i,p){let m=["🥇","🥈","🥉"][i],w=weak(s);return`<article class="shoe-card rank-${i+1}"><div class="rank-head"><span>${m} ${i===0?"TA RECOMMANDATION":`${i+1}e RECOMMANDATION`}</span><span>⭐ ${Math.round(s.final)} / 100</span></div><div class="shoe-body"><h3 class="shoe-name">${s.modele}</h3><div class="brand-line">${s.marque} • ${s.type}</div><div class="score-line"><strong>Score MYSPORTSHOES</strong><span class="score-big">${Math.round(s.final)}/100</span></div><div class="meta"><span class="pill">💰 ${Math.round(s.prix)} €</span><span class="pill">${budgetLabel(s,p)}</span><span class="pill">⚖️ ${Math.round(s.poidsChaussure)} g</span><span class="pill">📏 ${s.distance}</span><span class="pill">⛰️ ${s.terrain}</span></div><div class="detail"><strong>✅ POINTS FORTS :</strong> ${strengths(s)}</div>${w?`<div class="detail"><strong>⚠️ POINT À SAVOIR :</strong> ${w}</div>`:""}<div class="detail"><strong>🎯 TES PRIORITÉS :</strong> ${pretty(p.priorite1)} · ${pretty(p.priorite2)} · ${pretty(p.priorite3)}</div><div class="detail"><strong>💡 Pourquoi cette chaussure ?</strong><br>${why(s,p)}</div><a class="shoe-link" href="${s.lien}" target="_blank" rel="noopener"
+function card(s,i,p){let m=["🥇","🥈","🥉"][i],w=weak(s);return`<article class="shoe-card rank-${i+1}"><div class="rank-head"><span>${m} ${i===0?"TA RECOMMANDATION":`${i+1}e RECOMMANDATION`}</span><span>⭐ ${Math.round(s.final)} / 100</span></div><div class="shoe-body"><h3 class="shoe-name">${s.modele}</h3><div class="brand-line">${s.marque} • ${s.type}</div><div class="score-line"><strong>Score MYBESTPAIR</strong><span class="score-big">${Math.round(s.final)}/100</span></div><div class="meta"><span class="pill">💰 ${Math.round(s.prix)} €</span><span class="pill">${budgetLabel(s,p)}</span><span class="pill">⚖️ ${Math.round(s.poidsChaussure)} g</span><span class="pill">📏 ${s.distance}</span><span class="pill">⛰️ ${s.terrain}</span></div><div class="detail"><strong>✅ POINTS FORTS :</strong> ${strengths(s)}</div>${w?`<div class="detail"><strong>⚠️ POINT À SAVOIR :</strong> ${w}</div>`:""}<div class="detail"><strong>🎯 TES PRIORITÉS :</strong> ${pretty(p.priorite1)} · ${pretty(p.priorite2)} · ${pretty(p.priorite3)}</div><div class="detail"><strong>💡 Pourquoi cette chaussure ?</strong><br>${why(s,p)}</div><a class="shoe-link" href="${s.lien}" target="_blank" rel="noopener"
 data-product-name="${s.modele}" data-product-brand="${s.marque}" data-rank="${i+1}">🔗 VOIR LA CHAUSSURE</a></div></article>`}
 function show(p){
 let r=SHOES.map(s=>calc(s,p)).filter(s=>s.eligible).sort((a,b)=>b.final-a.final);
