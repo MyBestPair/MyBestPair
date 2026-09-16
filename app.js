@@ -1,12 +1,21 @@
-const $ = (id) => document.getElementById(id);
+const MYBESTPAIR_VERSION = "1.1";
 
+const $ = (id) => document.getElementById(id);
 const FLEX_BUDGET = 20;
 
+/*
+ * Pondération finale MYBESTPAIR
+ *
+ * Le budget passe de 5 % à 15 % afin qu'une chaussure
+ * largement hors budget ne puisse pas trop facilement
+ * dépasser une chaussure proche du budget.
+ */
 const FINAL_WEIGHTS = {
-  tech: 0.77,
+  tech: 0.62,
   surface: 0.10,
   foot: 0.08,
-  brand: 0.05
+  brand: 0.05,
+  budget: 0.15
 };
 
 const PRIORITY_MULT = [1.5, 1.25, 1.1];
@@ -14,10 +23,6 @@ const PRIORITY_MULT = [1.5, 1.25, 1.1];
 let rankedResults = [];
 let shownCount = 3;
 
-
-/* =========================================================
-   OUTILS
-========================================================= */
 
 function stripAccentsUpper(s) {
   return String(s)
@@ -28,6 +33,7 @@ function stripAccentsUpper(s) {
 
 
 function titleCriterion(c) {
+
   const m = {
     TRACTION: "traction",
     AMORTI: "amorti",
@@ -44,54 +50,37 @@ function titleCriterion(c) {
 
 
 function euro(n) {
+
   return new Intl.NumberFormat("fr-FR", {
     style: "currency",
     currency: "EUR",
     maximumFractionDigits: 2
   }).format(n);
+
 }
 
 
 function formatNote(n) {
+
   return Number.isInteger(n)
     ? String(n)
     : String(n).replace(".", ",");
+
 }
 
 
 function selectedSegment(name) {
+
   return document.querySelector(
     `.segmented[data-name="${name}"] .seg.active`
   ).dataset.value;
-}
-
-
-/* =========================================================
-   ANALYTICS — DÉBUT DU QUESTIONNAIRE
-========================================================= */
-
-let questionnaireStarted = false;
-
-function trackQuestionnaireStart() {
-
-  if (questionnaireStarted) return;
-
-  questionnaireStarted = true;
-
-  if (typeof gtag === "function") {
-
-    gtag("event", "questionnaire_start", {
-      sport: "basketball"
-    });
-
-  }
 
 }
 
 
 /* =========================================================
    BOUTONS SEGMENTÉS
-========================================================= */
+   ========================================================= */
 
 document.querySelectorAll(".segmented").forEach(group => {
 
@@ -100,8 +89,6 @@ document.querySelectorAll(".segmented").forEach(group => {
     const btn = e.target.closest(".seg");
 
     if (!btn) return;
-
-    trackQuestionnaireStart();
 
     group
       .querySelectorAll(".seg")
@@ -116,7 +103,7 @@ document.querySelectorAll(".segmented").forEach(group => {
 
 /* =========================================================
    PRIORITÉS
-========================================================= */
+   ========================================================= */
 
 function fillPriorities() {
 
@@ -135,10 +122,11 @@ function fillPriorities() {
   selects.forEach((sel, i) => {
 
     sel.innerHTML = CRITERIA
-      .map(c =>
-        `<option value="${c}">
-          ${titleCriterion(c).replace(/^./, x => x.toUpperCase())}
-        </option>`
+      .map(
+        c =>
+          `<option value="${c}">${
+            titleCriterion(c).replace(/^./, x => x.toUpperCase())
+          }</option>`
       )
       .join("");
 
@@ -146,19 +134,9 @@ function fillPriorities() {
 
   });
 
-
-  selects.forEach(sel => {
-
-    sel.addEventListener("change", () => {
-
-      trackQuestionnaireStart();
-
-      validatePriorityUI();
-
-    });
-
-  });
-
+  selects.forEach(
+    sel => sel.addEventListener("change", validatePriorityUI)
+  );
 
   validatePriorityUI();
 
@@ -185,8 +163,8 @@ function validatePriorityUI() {
 
 
 /* =========================================================
-   PROFIL
-========================================================= */
+   PROFIL UTILISATEUR
+   ========================================================= */
 
 function profile() {
 
@@ -217,12 +195,25 @@ function profile() {
 
 /* =========================================================
    BUDGET
-========================================================= */
+   ========================================================= */
 
 function budgetCompat(price, budget) {
 
-  if (price <= budget) return 100;
+  /*
+   * Dans le budget :
+   * compatibilité parfaite.
+   */
+  if (price <= budget)
+    return 100;
 
+
+  /*
+   * Jusqu'à +20 € :
+   * zone "Coup de cœur".
+   *
+   * Le score descend progressivement
+   * de 100 à 80.
+   */
   if (price <= budget + FLEX_BUDGET) {
 
     return (
@@ -232,10 +223,18 @@ function budgetCompat(price, budget) {
 
   }
 
+
+  /*
+   * Au-delà de la marge :
+   * pénalité beaucoup plus importante.
+   */
   return Math.max(
     0,
     80 -
-      ((price - (budget + FLEX_BUDGET)) / FLEX_BUDGET) * 40
+      (
+        (price - (budget + FLEX_BUDGET)) /
+        FLEX_BUDGET
+      ) * 40
   );
 
 }
@@ -252,6 +251,7 @@ function budgetStatus(price, budget) {
 
   }
 
+
   if (price <= budget + FLEX_BUDGET) {
 
     return {
@@ -260,6 +260,7 @@ function budgetStatus(price, budget) {
     };
 
   }
+
 
   return {
     text: "⚠️ Hors budget",
@@ -270,8 +271,8 @@ function budgetStatus(price, budget) {
 
 
 /* =========================================================
-   PONDÉRATION
-========================================================= */
+   PONDÉRATION DU PROFIL
+   ========================================================= */
 
 function playerWeights(p) {
 
@@ -298,11 +299,12 @@ function playerWeights(p) {
 
 /* =========================================================
    POINT À SAVOIR
-========================================================= */
+   ========================================================= */
 
 function weakestMessage(scores) {
 
   const min = Math.min(...scores);
+
 
   if (min >= 8) {
 
@@ -313,9 +315,11 @@ function weakestMessage(scores) {
 
   }
 
+
   const idx = scores.indexOf(min);
 
   const c = CRITERIA[idx];
+
 
   const specific = {
 
@@ -333,11 +337,15 @@ function weakestMessage(scores) {
 
   };
 
+
   return {
 
     text:
       specific[c] ||
-      `⚠️ ${titleCriterion(c).replace(/^./, x => x.toUpperCase())} en retrait`,
+      `⚠️ ${
+        titleCriterion(c)
+          .replace(/^./, x => x.toUpperCase())
+      } en retrait`,
 
     balanced: false
 
@@ -348,34 +356,41 @@ function weakestMessage(scores) {
 
 /* =========================================================
    POINTS FORTS
-========================================================= */
+   ========================================================= */
 
 function strengths(scores) {
 
   return scores
+
     .map((v, i) => ({
       v,
       i
     }))
+
     .sort(
       (a, b) =>
         b.v - a.v ||
         a.i - b.i
     )
+
     .slice(0, 3)
-    .map(x => CRITERIA[x.i]);
+
+    .map(
+      x => CRITERIA[x.i]
+    );
 
 }
 
 
 /* =========================================================
-   CALCUL DU SCORE
-========================================================= */
+   CALCUL D'UNE CHAUSSURE
+   ========================================================= */
 
 function compute(shoe, p) {
 
   const weights =
     playerWeights(p);
+
 
   const weightSum =
     weights.reduce(
@@ -383,12 +398,16 @@ function compute(shoe, p) {
       0
     );
 
+
   const personalized =
 
     shoe.scores.reduce(
+
       (sum, v, i) =>
         sum + v * weights[i],
+
       0
+
     ) / weightSum;
 
 
@@ -418,11 +437,22 @@ function compute(shoe, p) {
 
     !hasBrandPreference ||
 
-    stripAccentsUpper(shoe.scoreBrand) ===
-    stripAccentsUpper(p.brand)
+    stripAccentsUpper(
+      shoe.scoreBrand
+    ) ===
+    stripAccentsUpper(
+      p.brand
+    )
 
       ? 100
       : 0;
+
+
+  const budget =
+    budgetCompat(
+      shoe.price,
+      p.budget
+    );
 
 
   const final =
@@ -438,16 +468,21 @@ function compute(shoe, p) {
       FINAL_WEIGHTS.foot +
 
     brand *
-      FINAL_WEIGHTS.brand;
+      FINAL_WEIGHTS.brand +
+
+    budget *
+      FINAL_WEIGHTS.budget;
 
 
   const priorityNotes =
 
     p.priorities.map(
+
       c =>
         shoe.scores[
           CRITERIA.indexOf(c)
         ]
+
     );
 
 
@@ -462,12 +497,15 @@ function compute(shoe, p) {
   const prefix =
 
     avg >= 9
+
       ? "Correspondance exceptionnelle"
 
       : avg >= 8.5
+
       ? "Excellente correspondance"
 
       : avg >= 8
+
       ? "Très bonne correspondance"
 
       : "Bonne correspondance";
@@ -477,11 +515,23 @@ function compute(shoe, p) {
 
     `${prefix} avec tes priorités : ` +
 
-    `${titleCriterion(p.priorities[0])} (${formatNote(priorityNotes[0])}/10), ` +
+    `${titleCriterion(
+      p.priorities[0]
+    )} (${formatNote(
+      priorityNotes[0]
+    )}/10), ` +
 
-    `${titleCriterion(p.priorities[1])} (${formatNote(priorityNotes[1])}/10) et ` +
+    `${titleCriterion(
+      p.priorities[1]
+    )} (${formatNote(
+      priorityNotes[1]
+    )}/10) et ` +
 
-    `${titleCriterion(p.priorities[2])} (${formatNote(priorityNotes[2])}/10).`;
+    `${titleCriterion(
+      p.priorities[2]
+    )} (${formatNote(
+      priorityNotes[2]
+    )}/10).`;
 
 
   return {
@@ -497,6 +547,8 @@ function compute(shoe, p) {
     brandCompat: brand,
 
     hasBrandPreference,
+
+    budgetCompat: budget,
 
     final,
 
@@ -522,15 +574,17 @@ function compute(shoe, p) {
 
 
 /* =========================================================
-   TEXTES
-========================================================= */
+   TEXTES D'AFFICHAGE
+   ========================================================= */
 
 function surfaceText(s) {
 
   return s === "INDOOR/OUTDOOR"
+
     ? "Indoor / Outdoor"
 
     : s === "INDOOR"
+
     ? "Indoor"
 
     : "Outdoor";
@@ -541,12 +595,15 @@ function surfaceText(s) {
 function footText(v) {
 
   return v >= 90
+
     ? "Excellent"
 
     : v >= 75
+
     ? "Compatible"
 
     : v >= 60
+
     ? "Correct"
 
     : "Peu adapté";
@@ -557,12 +614,15 @@ function footText(v) {
 function brandText(v) {
 
   return v >= 90
+
     ? "Excellente"
 
     : v >= 75
+
     ? "Très bonne"
 
     : v >= 60
+
     ? "Bonne"
 
     : "Faible";
@@ -573,12 +633,15 @@ function brandText(v) {
 function surfaceFit(v) {
 
   return v >= 90
+
     ? "✅ Idéale"
 
     : v >= 75
+
     ? "👍 Très adaptée"
 
     : v >= 60
+
     ? "🟡 Compatible"
 
     : "⚠️ Peu adaptée";
@@ -587,159 +650,150 @@ function surfaceFit(v) {
 
 
 /* =========================================================
-   CARTES — DESIGN ORIGINAL
-========================================================= */
+   CARTE DE RECOMMANDATION
+   ========================================================= */
 
 function cardHTML(r, idx) {
 
-  const rank = idx + 1;
+  const rank =
+    idx + 1;
+
 
   const klass =
+
     rank === 1
+
       ? "rank1"
 
       : rank === 2
+
       ? "rank2"
 
       : rank === 3
+
       ? "rank3"
 
-      : "";
+      : "other";
 
 
   const medal =
+
     rank === 1
+
       ? "🥇"
 
       : rank === 2
+
       ? "🥈"
 
       : rank === 3
+
       ? "🥉"
 
-      : `#${rank}`;
+      : "👟";
 
 
-  const recommendationLabel =
+  const label =
+
     rank === 1
+
       ? "TA RECOMMANDATION"
 
       : rank === 2
+
       ? "2e RECOMMANDATION"
 
       : rank === 3
+
       ? "3e RECOMMANDATION"
 
       : `${rank}e RECOMMANDATION`;
 
 
-  const productName =
-    r.name || r.modele || "";
+  const link =
 
+    r.link
 
-  const link = r.link
+      ? `<a
+          class="product-link"
+          href="${r.link}"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          👟 Voir les coloris & disponibilités
+        </a>`
 
-    ? `
-      <a
-        class="product-link"
-        href="${r.link}"
-        target="_blank"
-        rel="noopener sponsored"
-        data-product-name="${productName}"
-        data-product-brand="${r.brand || r.scoreBrand || ""}"
-        data-rank="${rank}"
-      >
-        👟 Voir les coloris & disponibilités
-      </a>
-    `
-
-    : `
-      <span class="product-link disabled">
-        Lien bientôt disponible
-      </span>
-    `;
+      : `<span class="product-link disabled">
+          Lien bientôt disponible
+        </span>`;
 
 
   return `
 
     <article class="shoe-card ${klass}">
 
-      <div class="recommendation-label">
-        ${medal} ${recommendationLabel}
+      <div class="card-top">
+
+        <div class="rank-label">
+          ${medal} ${label}
+        </div>
+
+        <div class="shoe-name">
+          ${r.name}
+        </div>
+
+        <div class="score">
+          ⭐ Score MYBESTPAIR :
+          ${Math.round(r.final)} / 100
+        </div>
+
       </div>
 
 
-      <div class="shoe-content">
+      <div class="card-body">
 
+        <div class="info-grid">
 
-        <div class="shoe-header">
-
-          <div>
-
-            <h3 class="shoe-name">
-              ${productName}
-            </h3>
-
-            <div class="shoe-brand">
-              ${r.brand || r.scoreBrand || ""}
-            </div>
-
-          </div>
-
-
-          <div class="score">
-
-            <strong>
-              ${r.final.toFixed(1)}
-            </strong>
-
-            <span>
-              /100
-            </span>
-
-            <small>
-              SCORE MYBESTPAIR
-            </small>
-
-          </div>
-
-        </div>
-
-
-        <div class="price-row">
-
-          <strong class="price">
-            ${euro(r.price)}
-          </strong>
-
-          <span
-            class="budget-status ${r.budgetStatus.key}"
-          >
-            ${r.budgetStatus.text}
-          </span>
-
-        </div>
-
-
-        <div class="compatibility">
 
           <div class="info">
 
-            🏀 Surface :
+            💰
+            <strong>
+              ${euro(r.price)}
+            </strong>
+
+            ·
+
+            ${r.budgetStatus.text}
+
+          </div>
+
+
+          <div class="info">
+
+            🏠 Surface :
 
             <strong>
               ${surfaceText(r.surface)}
             </strong>
 
+            ·
+
+            ${surfaceFit(
+              r.surfaceCompat
+            )}
+
           </div>
 
 
           <div class="info">
 
-            👟 Compatibilité surface :
+            👟 Pied :
 
             <strong>
-              ${surfaceFit(r.surfaceCompat)}
+              ${footText(
+                r.footCompat
+              )}
             </strong>
 
           </div>
@@ -747,10 +801,10 @@ function cardHTML(r, idx) {
 
           <div class="info">
 
-            🦶 Compatibilité pied :
+            🏷️ Marque :
 
             <strong>
-              ${footText(r.footCompat)}
+              ${r.brand.toUpperCase()}
             </strong>
 
           </div>
@@ -775,6 +829,7 @@ function cardHTML(r, idx) {
             </strong>
 
           </div>
+
 
         </div>
 
@@ -847,8 +902,8 @@ function cardHTML(r, idx) {
 
 
 /* =========================================================
-   AFFICHAGE
-========================================================= */
+   AFFICHAGE DES RÉSULTATS
+   ========================================================= */
 
 function render() {
 
@@ -878,8 +933,8 @@ function render() {
 
 
 /* =========================================================
-   ANALYTICS — CLIC PRODUIT / AFFILIATION
-========================================================= */
+   SUIVI ANALYTICS DES CLICS PRODUITS / AFFILIATION
+   ========================================================= */
 
 document.addEventListener(
   "click",
@@ -891,131 +946,143 @@ document.addEventListener(
       );
 
 
-    if (!link) return;
+    if (!link)
+      return;
 
 
     if (
       link.classList.contains(
         "disabled"
       )
-    ) return;
+    )
+      return;
 
 
-    if (
-      typeof gtag !== "function"
-    ) return;
+    const card =
+      link.closest(
+        ".shoe-card"
+      );
 
 
     const productName =
-      link.dataset.productName || "";
+
+      card
+        ?.querySelector(
+          ".shoe-name"
+        )
+        ?.textContent
+        ?.trim()
+
+      || "";
 
 
-    const productBrand =
-      link.dataset.productBrand || "";
+    let rank = 0;
 
 
-    const rank =
-      Number(
-        link.dataset.rank || 0
-      );
+    if (
+      card?.classList.contains(
+        "rank1"
+      )
+    )
+
+      rank = 1;
 
 
-    const href =
-      link.href || "";
+    else if (
+      card?.classList.contains(
+        "rank2"
+      )
+    )
+
+      rank = 2;
 
 
-    const isRakuten =
-      href.includes(
-        "click.linksynergy.com"
-      );
+    else if (
+      card?.classList.contains(
+        "rank3"
+      )
+    )
+
+      rank = 3;
 
 
-    const isAwin =
-      href.includes(
-        "awin1.com"
-      );
+    if (
+      typeof gtag === "function"
+    ) {
 
 
-    const isKwanko =
-
-      href.includes(
-        "zof.endurance-store.fr"
-      ) ||
-
-      href.includes(
-        "kwanko.com"
-      );
+      const href =
+        link.href || "";
 
 
-    const isAffiliate =
-      isRakuten ||
-      isAwin ||
-      isKwanko;
+      const isRakuten =
+
+        href.includes(
+          "click.linksynergy.com"
+        );
 
 
-    let affiliateNetwork = "";
+      const isAwin =
+
+        href.includes(
+          "awin1.com"
+        );
 
 
-    if (isKwanko) {
+      const isKwanko =
 
-      affiliateNetwork =
-        "kwanko";
-
-    }
-
-    else if (isRakuten) {
-
-      affiliateNetwork =
-        "rakuten";
-
-    }
-
-    else if (isAwin) {
-
-      affiliateNetwork =
-        "awin";
-
-    }
+        href.includes(
+          "kwanko.com"
+        ) ||
+                href.includes(
+          "endurance-store.fr"
+        );
 
 
-    gtag(
-      "event",
-      "product_click",
-      {
+      const isAffiliate =
 
-        product_name:
-          productName,
+        isRakuten ||
+        isAwin ||
+        isKwanko;
 
-        product_brand:
-          productBrand,
 
-        rank:
-          rank,
+      let affiliateNetwork = "";
 
-        sport:
-          "basketball",
 
-        affiliate:
-          isAffiliate
-            ? "yes"
-            : "no"
+      if (isKwanko) {
+
+        affiliateNetwork =
+          "kwanko";
 
       }
-    );
+
+      else if (isRakuten) {
+
+        affiliateNetwork =
+          "rakuten";
+
+      }
+
+      else if (isAwin) {
+
+        affiliateNetwork =
+          "awin";
+
+      }
 
 
-    if (isAffiliate) {
+      /*
+       * Événement envoyé pour
+       * TOUS les clics produits.
+       */
 
       gtag(
         "event",
-        "affiliate_click",
+        "product_click",
         {
 
           product_name:
             productName,
-
-          product_brand:
-            productBrand,
 
           rank:
             rank,
@@ -1023,11 +1090,43 @@ document.addEventListener(
           sport:
             "basketball",
 
-          affiliate_network:
-            affiliateNetwork
+          affiliate:
+            isAffiliate
+              ? "yes"
+              : "no"
 
         }
       );
+
+
+      /*
+       * Événement supplémentaire
+       * pour les liens affiliés.
+       */
+
+      if (isAffiliate) {
+
+        gtag(
+          "event",
+          "affiliate_click",
+          {
+
+            product_name:
+              productName,
+
+            rank:
+              rank,
+
+            sport:
+              "basketball",
+
+            affiliate_network:
+              affiliateNetwork
+
+          }
+        );
+
+      }
 
     }
 
@@ -1036,36 +1135,53 @@ document.addEventListener(
 
 
 /* =========================================================
-   ANALYTICS — INTERACTIONS QUESTIONNAIRE
-========================================================= */
+   ANALYTICS :
+   DÉBUT DU QUESTIONNAIRE
+   ========================================================= */
 
-const profileForm =
-  $("profile-form");
+let questionnaireStarted = false;
 
 
-if (profileForm) {
+function trackQuestionnaireStart() {
 
-  profileForm.addEventListener(
-    "click",
-    trackQuestionnaireStart
-  );
+  if (questionnaireStarted)
+    return;
 
-  profileForm.addEventListener(
-    "input",
-    trackQuestionnaireStart
-  );
 
-  profileForm.addEventListener(
-    "change",
-    trackQuestionnaireStart
-  );
+  questionnaireStarted = true;
+
+
+  if (typeof gtag === "function") {
+
+    gtag(
+      "event",
+      "questionnaire_start",
+      {
+        sport: "basketball"
+      }
+    );
+
+  }
 
 }
 
 
+["click", "input", "change"].forEach(
+  eventName => {
+
+    $("profile-form")
+      .addEventListener(
+        eventName,
+        trackQuestionnaireStart
+      );
+
+  }
+);
+
+
 /* =========================================================
-   VALIDATION
-========================================================= */
+   VALIDATION DU QUESTIONNAIRE
+   ========================================================= */
 
 $("profile-form")
   .addEventListener(
@@ -1075,15 +1191,17 @@ $("profile-form")
       e.preventDefault();
 
 
-      trackQuestionnaireStart();
-
-
       validatePriorityUI();
 
 
       const p =
         profile();
 
+
+      /*
+       * Les trois priorités
+       * doivent être différentes.
+       */
 
       if (
         new Set(
@@ -1093,6 +1211,10 @@ $("profile-form")
 
         return;
 
+
+      /*
+       * Budget obligatoire
+       */
 
       if (
         !Number.isFinite(
@@ -1116,6 +1238,10 @@ $("profile-form")
         true;
 
 
+      /* =====================================================
+         CALCUL ET CLASSEMENT
+         ===================================================== */
+
       rankedResults =
 
         SHOES
@@ -1128,9 +1254,65 @@ $("profile-form")
           )
 
           .sort(
-            (a, b) =>
-              b.final -
-              a.final
+            (a, b) => {
+
+              const gap =
+                b.final -
+                a.final;
+
+
+              /*
+               * Lorsque deux chaussures
+               * sont quasiment à égalité,
+               * le budget sert de premier
+               * critère de départage.
+               */
+
+              if (
+                Math.abs(
+                  gap
+                ) < 0.10
+              ) {
+
+
+                if (
+                  b.budgetCompat !==
+                  a.budgetCompat
+                )
+
+                  return (
+                    b.budgetCompat -
+                    a.budgetCompat
+                  );
+
+
+                if (
+                  b.surfaceCompat !==
+                  a.surfaceCompat
+                )
+
+                  return (
+                    b.surfaceCompat -
+                    a.surfaceCompat
+                  );
+
+
+                if (
+                  b.footCompat !==
+                  a.footCompat
+                )
+
+                  return (
+                    b.footCompat -
+                    a.footCompat
+                  );
+
+              }
+
+
+              return gap;
+
+            }
           );
 
 
@@ -1141,8 +1323,9 @@ $("profile-form")
 
 
       /* =====================================================
-         ANALYTICS — RECOMMANDATION GÉNÉRÉE
-      ===================================================== */
+         ANALYTICS :
+         RECOMMANDATIONS GÉNÉRÉES
+         ===================================================== */
 
       if (
         typeof gtag ===
@@ -1153,9 +1336,6 @@ $("profile-form")
           "event",
           "recommendation_generated",
           {
-
-            sport:
-              "basketball",
 
             position:
               p.position,
@@ -1172,26 +1352,27 @@ $("profile-form")
             brand:
               p.brand,
 
-            top_1:
-              rankedResults[0]?.name ||
-              rankedResults[0]?.modele ||
-              "",
+            top1:
+              rankedResults[0]
+                ?.name || "",
 
-            top_2:
-              rankedResults[1]?.name ||
-              rankedResults[1]?.modele ||
-              "",
+            top2:
+              rankedResults[1]
+                ?.name || "",
 
-            top_3:
-              rankedResults[2]?.name ||
-              rankedResults[2]?.modele ||
-              ""
+            top3:
+              rankedResults[2]
+                ?.name || ""
 
           }
         );
 
       }
 
+
+      /* =====================================================
+         RÉSUMÉ DU PROFIL
+         ===================================================== */
 
       $("result-summary")
         .textContent =
@@ -1212,6 +1393,10 @@ $("profile-form")
             p.foot.toLowerCase()
           }`;
 
+
+      /*
+       * Affichage résultats
+       */
 
       $("results-section").hidden =
         false;
@@ -1236,7 +1421,7 @@ $("profile-form")
 
 /* =========================================================
    VOIR 3 AUTRES MODÈLES
-========================================================= */
+   ========================================================= */
 
 $("more-btn")
   .addEventListener(
@@ -1252,8 +1437,8 @@ $("more-btn")
 
 
 /* =========================================================
-   MODIFIER MON PROFIL
-========================================================= */
+   MODIFIER LE PROFIL
+   ========================================================= */
 
 $("edit-btn")
   .addEventListener(
@@ -1279,6 +1464,6 @@ $("edit-btn")
 
 /* =========================================================
    INITIALISATION
-========================================================= */
+   ========================================================= */
 
 fillPriorities();
