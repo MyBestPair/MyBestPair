@@ -3,13 +3,6 @@ const MYBESTPAIR_VERSION = "1.1";
 const $ = (id) => document.getElementById(id);
 const FLEX_BUDGET = 20;
 
-/*
- * Pondération finale MYBESTPAIR
- *
- * Le budget passe de 5 % à 15 % afin qu'une chaussure
- * largement hors budget ne puisse pas trop facilement
- * dépasser une chaussure proche du budget.
- */
 const FINAL_WEIGHTS = {
   tech: 0.62,
   surface: 0.10,
@@ -24,6 +17,10 @@ let rankedResults = [];
 let shownCount = 3;
 
 
+/* =========================================================
+   OUTILS
+   ========================================================= */
+
 function stripAccentsUpper(s) {
   return String(s)
     .normalize("NFD")
@@ -33,7 +30,6 @@ function stripAccentsUpper(s) {
 
 
 function titleCriterion(c) {
-
   const m = {
     TRACTION: "traction",
     AMORTI: "amorti",
@@ -50,31 +46,44 @@ function titleCriterion(c) {
 
 
 function euro(n) {
-
   return new Intl.NumberFormat("fr-FR", {
     style: "currency",
     currency: "EUR",
     maximumFractionDigits: 2
   }).format(n);
-
 }
 
 
 function formatNote(n) {
-
   return Number.isInteger(n)
     ? String(n)
     : String(n).replace(".", ",");
-
 }
 
 
 function selectedSegment(name) {
-
   return document.querySelector(
     `.segmented[data-name="${name}"] .seg.active`
   ).dataset.value;
+}
 
+
+/* =========================================================
+   ANALYTICS : DÉBUT DU QUESTIONNAIRE
+   ========================================================= */
+
+let basketQuestionnaireStarted = false;
+
+function trackBasketQuestionnaireStart() {
+  if (basketQuestionnaireStarted) return;
+
+  basketQuestionnaireStarted = true;
+
+  if (typeof gtag === "function") {
+    gtag("event", "questionnaire_start", {
+      sport: "basketball"
+    });
+  }
 }
 
 
@@ -89,6 +98,8 @@ document.querySelectorAll(".segmented").forEach(group => {
     const btn = e.target.closest(".seg");
 
     if (!btn) return;
+
+    trackBasketQuestionnaireStart();
 
     group
       .querySelectorAll(".seg")
@@ -134,9 +145,14 @@ function fillPriorities() {
 
   });
 
-  selects.forEach(
-    sel => sel.addEventListener("change", validatePriorityUI)
-  );
+  selects.forEach(sel => {
+
+    sel.addEventListener("change", () => {
+      trackBasketQuestionnaireStart();
+      validatePriorityUI();
+    });
+
+  });
 
   validatePriorityUI();
 
@@ -199,21 +215,9 @@ function profile() {
 
 function budgetCompat(price, budget) {
 
-  /*
-   * Dans le budget :
-   * compatibilité parfaite.
-   */
   if (price <= budget)
     return 100;
 
-
-  /*
-   * Jusqu'à +20 € :
-   * zone "Coup de cœur".
-   *
-   * Le score descend progressivement
-   * de 100 à 80.
-   */
   if (price <= budget + FLEX_BUDGET) {
 
     return (
@@ -223,11 +227,6 @@ function budgetCompat(price, budget) {
 
   }
 
-
-  /*
-   * Au-delà de la marge :
-   * pénalité beaucoup plus importante.
-   */
   return Math.max(
     0,
     80 -
@@ -251,7 +250,6 @@ function budgetStatus(price, budget) {
 
   }
 
-
   if (price <= budget + FLEX_BUDGET) {
 
     return {
@@ -260,7 +258,6 @@ function budgetStatus(price, budget) {
     };
 
   }
-
 
   return {
     text: "⚠️ Hors budget",
@@ -305,7 +302,6 @@ function weakestMessage(scores) {
 
   const min = Math.min(...scores);
 
-
   if (min >= 8) {
 
     return {
@@ -315,11 +311,9 @@ function weakestMessage(scores) {
 
   }
 
-
   const idx = scores.indexOf(min);
 
   const c = CRITERIA[idx];
-
 
   const specific = {
 
@@ -336,7 +330,6 @@ function weakestMessage(scores) {
       "⚠️ Confort un peu en retrait"
 
   };
-
 
   return {
 
@@ -361,20 +354,16 @@ function weakestMessage(scores) {
 function strengths(scores) {
 
   return scores
-
     .map((v, i) => ({
       v,
       i
     }))
-
     .sort(
       (a, b) =>
         b.v - a.v ||
         a.i - b.i
     )
-
     .slice(0, 3)
-
     .map(
       x => CRITERIA[x.i]
     );
@@ -391,29 +380,20 @@ function compute(shoe, p) {
   const weights =
     playerWeights(p);
 
-
   const weightSum =
     weights.reduce(
       (a, b) => a + b,
       0
     );
 
-
   const personalized =
 
     shoe.scores.reduce(
-
       (sum, v, i) =>
         sum + v * weights[i],
-
       0
-
     ) / weightSum;
 
-
-  /*
-   * SURFACE
-   */
 
   const surface =
 
@@ -424,10 +404,6 @@ function compute(shoe, p) {
       : 0;
 
 
-  /*
-   * TYPE DE PIED
-   */
-
   const foot =
 
     shoe.foot === "UNIVERSEL" ||
@@ -436,10 +412,6 @@ function compute(shoe, p) {
       ? 100
       : 50;
 
-
-  /*
-   * MARQUE
-   */
 
   const hasBrandPreference =
     p.brand !== "AUCUNE";
@@ -460,20 +432,12 @@ function compute(shoe, p) {
       : 0;
 
 
-  /*
-   * BUDGET
-   */
-
   const budget =
     budgetCompat(
       shoe.price,
       p.budget
     );
 
-
-  /*
-   * SCORE FINAL /100
-   */
 
   const final =
 
@@ -494,10 +458,6 @@ function compute(shoe, p) {
       FINAL_WEIGHTS.budget;
 
 
-  /*
-   * NOTES DES 3 PRIORITÉS
-   */
-
   const priorityNotes =
 
     p.priorities.map(
@@ -517,10 +477,6 @@ function compute(shoe, p) {
       0
     ) / 3;
 
-
-  /*
-   * TEXTE DE CORRESPONDANCE
-   */
 
   const prefix =
 
@@ -701,7 +657,7 @@ function cardHTML(r, idx) {
 
       ? "rank3"
 
-      : "other";
+      : "";
 
 
   const medal =
@@ -718,110 +674,112 @@ function cardHTML(r, idx) {
 
       ? "🥉"
 
-      : "👟";
-
-
-  const label =
-
-    rank === 1
-
-      ? "TA RECOMMANDATION"
-
-      : rank === 2
-
-      ? "2e RECOMMANDATION"
-
-      : rank === 3
-
-      ? "3e RECOMMANDATION"
-
-      : `${rank}e RECOMMANDATION`;
+      : `#${rank}`;
 
 
   const link =
 
-    r.link
+    r.url
 
-      ? `<a
+      ? `
+        <a
           class="product-link"
-          href="${r.link}"
+          href="${r.url}"
           target="_blank"
-          rel="noopener noreferrer"
+          rel="noopener sponsored"
+          data-product-name="${r.name || ""}"
+          data-product-brand="${r.brand || r.scoreBrand || ""}"
+          data-rank="${rank}"
         >
-          👟 Voir les coloris & disponibilités
-        </a>`
+          Voir la paire
+        </a>
+      `
 
-      : `<span class="product-link disabled">
+      : `
+        <span
+          class="product-link disabled"
+        >
           Lien bientôt disponible
-        </span>`;
+        </span>
+      `;
 
 
   return `
 
-    <article class="shoe-card ${klass}">
+    <article
+      class="shoe-card ${klass}"
+    >
 
-      <div class="card-top">
-
-        <div class="rank-label">
-          ${medal} ${label}
-        </div>
-
-        <div class="shoe-name">
-          ${r.name}
-        </div>
-
-        <div class="score">
-          ⭐ Score MYBESTPAIR :
-          ${Math.round(r.final)} / 100
-        </div>
-
+      <div class="rank-badge">
+        ${medal}
       </div>
 
 
-      <div class="card-body">
-
-        <div class="info-grid">
+      <div class="shoe-content">
 
 
-          <div class="info">
+        <div class="shoe-header">
 
-            💰
-            <strong>
-              ${euro(r.price)}
-            </strong>
+          <div>
 
-            ·
+            <h3 class="shoe-name">
+              ${r.name}
+            </h3>
 
-            ${r.budgetStatus.text}
+            <div class="shoe-brand">
+              ${r.brand || r.scoreBrand || ""}
+            </div>
 
           </div>
 
 
+          <div class="score">
+
+            <strong>
+              ${r.final.toFixed(1)}
+            </strong>
+
+            <span>/100</span>
+
+          </div>
+
+        </div>
+
+
+        <div class="price-row">
+
+          <strong class="price">
+            ${euro(r.price)}
+          </strong>
+
+          <span
+            class="budget-status ${r.budgetStatus.key}"
+          >
+            ${r.budgetStatus.text}
+          </span>
+
+        </div>
+
+
+        <div class="compatibility">
+
           <div class="info">
 
-            🏠 Surface :
+            🏀 Surface :
 
             <strong>
               ${surfaceText(r.surface)}
             </strong>
 
-            ·
-
-            ${surfaceFit(
-              r.surfaceCompat
-            )}
-
           </div>
 
 
           <div class="info">
 
-            👟 Pied :
+            👟 Compatibilité surface :
 
             <strong>
-              ${footText(
-                r.footCompat
-              )}
+              ${surfaceFit(r.surfaceCompat)}
             </strong>
 
           </div>
@@ -829,10 +787,10 @@ function cardHTML(r, idx) {
 
           <div class="info">
 
-            🏷️ Marque :
+            🦶 Compatibilité pied :
 
             <strong>
-              ${r.brand.toUpperCase()}
+              ${footText(r.footCompat)}
             </strong>
 
           </div>
@@ -857,7 +815,6 @@ function cardHTML(r, idx) {
             </strong>
 
           </div>
-
 
         </div>
 
@@ -961,7 +918,7 @@ function render() {
 
 
 /* =========================================================
-   SUIVI ANALYTICS DES CLICS PRODUITS / AFFILIATION
+   ANALYTICS : CLICS PRODUITS / AFFILIATION
    ========================================================= */
 
 document.addEventListener(
@@ -994,6 +951,8 @@ document.addEventListener(
 
     const productName =
 
+      link.dataset.productName ||
+
       card
         ?.querySelector(
           ".shoe-name"
@@ -1004,90 +963,175 @@ document.addEventListener(
       || "";
 
 
-    let rank = 0;
+    const productBrand =
+      link.dataset.productBrand || "";
+
+
+    let rank =
+      Number(
+        link.dataset.rank || 0
+      );
+
+
+    if (!rank) {
+
+      if (
+        card?.classList.contains(
+          "rank1"
+        )
+      )
+
+        rank = 1;
+
+
+      else if (
+        card?.classList.contains(
+          "rank2"
+        )
+      )
+
+        rank = 2;
+
+
+      else if (
+        card?.classList.contains(
+          "rank3"
+        )
+      )
+
+        rank = 3;
+
+    }
 
 
     if (
-      card?.classList.contains(
-        "rank1"
-      )
+      typeof gtag !== "function"
     )
-
-      rank = 1;
-
-
-    else if (
-      card?.classList.contains(
-        "rank2"
-      )
-    )
-
-      rank = 2;
+      return;
 
 
-    else if (
-      card?.classList.contains(
-        "rank3"
-      )
-    )
-
-      rank = 3;
+    const href =
+      link.href || "";
 
 
-    if (
-      typeof gtag === "function"
-    ) {
+    /*
+     * Rakuten Advertising
+     */
+
+    const isRakuten =
+
+      href.includes(
+        "click.linksynergy.com"
+      );
 
 
-      const href =
-        link.href || "";
+    /*
+     * Awin
+     */
+
+    const isAwin =
+
+      href.includes(
+        "awin1.com"
+      );
 
 
-      const isRakuten =
+    /*
+     * Kwanko
+     *
+     * Les liens du flux Endurance-Store
+     * peuvent utiliser le domaine
+     * Endurance-Store avant redirection.
+     */
 
-        href.includes(
-          "click.linksynergy.com"
-        );
+    const isKwanko =
 
+      href.includes(
+        "zof.endurance-store.fr"
+      ) ||
 
-      const isAwin =
-
-        href.includes(
-          "awin1.com"
-        );
-
-
-      const isAffiliate =
-
-        isRakuten ||
-        isAwin;
-
-
-      let affiliateNetwork = "";
+      href.includes(
+        "kwanko.com"
+      );
 
 
-      if (isRakuten) {
+    const isAffiliate =
+      isRakuten ||
+      isAwin ||
+      isKwanko;
 
-        affiliateNetwork =
-          "rakuten";
+
+    let affiliateNetwork = "";
+
+
+    if (isKwanko) {
+
+      affiliateNetwork =
+        "kwanko";
+
+    }
+
+    else if (isRakuten) {
+
+      affiliateNetwork =
+        "rakuten";
+
+    }
+
+    else if (isAwin) {
+
+      affiliateNetwork =
+        "awin";
+
+    }
+
+
+    /*
+     * Tous les clics sur une paire
+     */
+
+    gtag(
+      "event",
+      "product_click",
+      {
+
+        product_name:
+          productName,
+
+        product_brand:
+          productBrand,
+
+        rank:
+          rank,
+
+        sport:
+          "basketball",
+
+        affiliate:
+          isAffiliate
+            ? "yes"
+            : "no"
 
       }
+    );
 
-      else if (isAwin) {
 
-        affiliateNetwork =
-          "awin";
+    /*
+     * Seulement les clics affiliés
+     */
 
-      }
-
+    if (isAffiliate) {
 
       gtag(
         "event",
-        "product_click",
+        "affiliate_click",
         {
 
           product_name:
             productName,
+
+          product_brand:
+            productBrand,
 
           rank:
             rank,
@@ -1095,43 +1139,44 @@ document.addEventListener(
           sport:
             "basketball",
 
-          affiliate:
-            isAffiliate
-              ? "yes"
-              : "no"
+          affiliate_network:
+            affiliateNetwork
 
         }
       );
-
-
-      if (isAffiliate) {
-
-        gtag(
-          "event",
-          "affiliate_click",
-          {
-
-            product_name:
-              productName,
-
-            rank:
-              rank,
-
-            sport:
-              "basketball",
-
-            affiliate_network:
-              affiliateNetwork
-
-          }
-        );
-
-      }
 
     }
 
   }
 );
+
+
+/* =========================================================
+   ANALYTICS : INTERACTION QUESTIONNAIRE
+   ========================================================= */
+
+const profileForm =
+  $("profile-form");
+
+
+if (profileForm) {
+
+  profileForm.addEventListener(
+    "click",
+    trackBasketQuestionnaireStart
+  );
+
+  profileForm.addEventListener(
+    "input",
+    trackBasketQuestionnaireStart
+  );
+
+  profileForm.addEventListener(
+    "change",
+    trackBasketQuestionnaireStart
+  );
+
+}
 
 
 /* =========================================================
@@ -1146,12 +1191,20 @@ $("profile-form")
       e.preventDefault();
 
 
+      trackBasketQuestionnaireStart();
+
+
       validatePriorityUI();
 
 
       const p =
         profile();
 
+
+      /*
+       * Les trois priorités
+       * doivent être différentes.
+       */
 
       if (
         new Set(
@@ -1161,6 +1214,10 @@ $("profile-form")
 
         return;
 
+
+      /*
+       * Budget obligatoire
+       */
 
       if (
         !Number.isFinite(
@@ -1183,6 +1240,10 @@ $("profile-form")
       $("form-error").hidden =
         true;
 
+
+      /* =====================================================
+         CALCUL ET CLASSEMENT
+         ===================================================== */
 
       rankedResults =
 
@@ -1258,7 +1319,8 @@ $("profile-form")
 
 
       /* =====================================================
-         ANALYTICS : RECOMMANDATIONS GÉNÉRÉES
+         ANALYTICS :
+         RECOMMANDATIONS GÉNÉRÉES
          ===================================================== */
 
       if (
@@ -1270,6 +1332,9 @@ $("profile-form")
           "event",
           "recommendation_generated",
           {
+
+            sport:
+              "basketball",
 
             position:
               p.position,
@@ -1286,15 +1351,15 @@ $("profile-form")
             brand:
               p.brand,
 
-            top1:
+            top_1:
               rankedResults[0]
                 ?.name || "",
 
-            top2:
+            top_2:
               rankedResults[1]
                 ?.name || "",
 
-            top3:
+            top_3:
               rankedResults[2]
                 ?.name || ""
 
@@ -1303,6 +1368,10 @@ $("profile-form")
 
       }
 
+
+      /* =====================================================
+         RÉSUMÉ DU PROFIL
+         ===================================================== */
 
       $("result-summary")
         .textContent =
