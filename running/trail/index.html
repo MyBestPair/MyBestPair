@@ -526,7 +526,12 @@ if(!link)return;
 const productName=link.dataset.productName||"";
 const productBrand=link.dataset.productBrand||"";
 const rank=Number(link.dataset.rank||0);
-const isAffiliate=link.href.includes("click.linksynergy.com");
+const href=link.href||"";
+const isRakuten=href.includes("click.linksynergy.com");
+const isAwin=href.includes("awin1.com");
+const isKwanko=href.includes("zof.endurance-store.fr")||href.includes("kwanko.com");
+const isAffiliate=isRakuten||isAwin||isKwanko;
+const affiliateNetwork=isKwanko?"kwanko":(isRakuten?"rakuten":(isAwin?"awin":""));
 if(typeof gtag==="function"){
 gtag("event","product_click",{
 product_name:productName,brand:productBrand,rank:rank,sport:"trail",
@@ -535,7 +540,7 @@ affiliate:isAffiliate?"yes":"no"
 if(isAffiliate){
 gtag("event","affiliate_click",{
 product_name:productName,brand:productBrand,rank:rank,sport:"trail",
-affiliate_network:"rakuten"
+affiliate_network:affiliateNetwork
 });
 }
 }
