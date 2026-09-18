@@ -364,6 +364,10 @@ gtag('config','G-8CZ831W067');
 <button class="option" data-value="TALON">TALON</button><button class="option" data-value="MÉDIO-PIED">MÉDIO-PIED</button><button class="option" data-value="AVANT-PIED">AVANT-PIED</button><button class="option" data-value="JE NE SAIS PAS">JE NE SAIS PAS</button>
 </div></div>
 
+<div class="question" data-key="pointure"><div class="question-title">Quelle est ta pointure habituelle ? <span class="hint">Elle servira uniquement à trouver les offres marchands les plus pertinentes, sans influencer ton Top 3.</span></div><input id="pointure" class="number-input" type="number" min="35" max="50" step="0.5" placeholder="Ex : 43"></div>
+
+<div class="question" data-key="rayon"><div class="question-title">Quel rayon recherches-tu ? <span class="hint">Cette réponse n'influence pas la recommandation.</span></div><div class="options"><button class="option" data-value="HOMME">HOMME</button><button class="option" data-value="FEMME">FEMME</button><button class="option" data-value="PEU IMPORTE">PEU IMPORTE</button></div></div>
+
 <div class="question" data-key="priorite1"><div class="question-title">Priorité n°1</div><div class="options">
 <button class="option" data-value="ACCROCHE">ACCROCHE</button><button class="option" data-value="AMORTI">AMORTI</button><button class="option" data-value="STABILITE">STABILITÉ</button><button class="option" data-value="PROTECTION">PROTECTION</button><button class="option" data-value="DYNAMISME">DYNAMISME</button><button class="option" data-value="CONFORT">CONFORT</button>
 </div></div><div class="question" data-key="priorite2"><div class="question-title">Priorité n°2</div><div class="options">
@@ -475,8 +479,8 @@ const norm=s=>String(s??"").toUpperCase().normalize("NFD").replace(/[\u0300-\u03
 
 $$(".question").forEach(q=>$$(".option",q).forEach(b=>b.onclick=()=>{$$(".option",q).forEach(x=>x.classList.remove("selected"));b.classList.add("selected")}));
 const selected=k=>{const q=$(`.question[data-key="${k}"]`),b=q&&$(".selected",q);return b?b.dataset.value:""};
-const profile=()=>({budget:+$("#budget").value,objectif:selected("objectif"),distance:selected("distance"),terrain:selected("terrain"),poids:+$("#poids").value,typePied:selected("typePied"),attaque:selected("attaque"),priorite1:selected("priorite1"),priorite2:selected("priorite2"),priorite3:selected("priorite3"),marque:selected("marque")});
-function validate(p){if(!p.budget||!p.objectif||!p.distance||!p.terrain||!p.poids||!p.typePied||!p.attaque||!p.priorite1||!p.priorite2||!p.priorite3||!p.marque)return"⚠️ Merci de compléter toutes les informations.";if(new Set([p.priorite1,p.priorite2,p.priorite3]).size<3)return"⚠️ Les 3 priorités doivent être différentes.";return""}
+const profile=()=>({budget:+$("#budget").value,objectif:selected("objectif"),distance:selected("distance"),terrain:selected("terrain"),poids:+$("#poids").value,typePied:selected("typePied"),attaque:selected("attaque"),pointure:+$("#pointure").value,rayon:selected("rayon"),priorite1:selected("priorite1"),priorite2:selected("priorite2"),priorite3:selected("priorite3"),marque:selected("marque")});
+function validate(p){if(!p.budget||!p.objectif||!p.distance||!p.terrain||!p.poids||!p.typePied||!p.attaque||!p.pointure||!p.rayon||!p.priorite1||!p.priorite2||!p.priorite3||!p.marque)return"⚠️ Merci de compléter toutes les informations.";if(new Set([p.priorite1,p.priorite2,p.priorite3]).size<3)return"⚠️ Les 3 priorités doivent être différentes.";if(p.pointure<35||p.pointure>50||Math.abs(p.pointure*2-Math.round(p.pointure*2))>0.001)return"⚠️ Entre une pointure comprise entre 35 et 50, par demi-pointure.";return""}
 function personalized(s,p){let n=0,d=0;const ps=[p.priorite1,p.priorite2,p.priorite3];CR.forEach(([c,k])=>{let co=1,idx=ps.indexOf(c);if(idx>=0)co=COEFS[idx];n+=s[k]*co;d+=co});return 10*n/d}
 function budget(s,p){let d=s.prix-p.budget;return d<=0?100:d<=10?90:d<=20?75:d<=30?55:d<=50?30:0}
 function weight(s,p){if(p.poids>s.poidsMax)return 0;if(p.poids>=s.poidsIdealMin&&p.poids<=s.poidsIdealMax)return 100;let d=Math.min(Math.abs(p.poids-s.poidsIdealMin),Math.abs(p.poids-s.poidsIdealMax));return d<=5?90:d<=10?70:d<=15?40:0}
