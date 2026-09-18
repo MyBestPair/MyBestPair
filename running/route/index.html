@@ -811,6 +811,19 @@ function whyText(shoe,p) {
   return `Cette chaussure obtient ${Math.round(shoe.final)}/100 pour ton profil. ${lead} : ${prettyCriterion(p.priorite1).toLowerCase()} ${p1.toString().replace(".",",")}/10, ${prettyCriterion(p.priorite2).toLowerCase()} ${p2.toString().replace(".",",")}/10 et ${prettyCriterion(p.priorite3).toLowerCase()} ${p3.toString().replace(".",",")}/10.`;
 }
 
+function merchantInfo(url){
+  const u=(url||"").toLowerCase();
+  if(u.includes("click.linksynergy.com") || u.includes("decathlon.fr")) return {name:"DECATHLON",key:"decathlon",icon:"🛒"};
+  if(u.includes("endurance-store.fr")) return {name:"ENDURANCE-STORE",key:"endurance-store",icon:"🛒"};
+  if(u.includes("i-run.fr")) return {name:"I-RUN",key:"i-run",icon:"🏃"};
+  return {name:"LE REVENDEUR",key:"autre",icon:"🛒"};
+}
+function merchantLink(url,shoe,rank,extraClass=""){
+  if(!url)return "";
+  const m=merchantInfo(url);
+  return `<a class="shoe-link${extraClass?` ${extraClass}`:""}" href="${url}" target="_blank" rel="noopener noreferrer" data-product-name="${shoe.modele}" data-product-brand="${shoe.marque}" data-rank="${rank}" data-merchant="${m.key}">${m.icon} VOIR CHEZ ${m.name}</a>`;
+}
+
 function cardHTML(shoe,index,p) {
   const medals=["🥇","🥈","🥉"];
   const point=weakPoint(shoe);
@@ -846,8 +859,8 @@ function cardHTML(shoe,index,p) {
 
         <div class="merchant-label">🛒 Où trouver cette chaussure ?</div>
         <div class="merchant-offers">
-          <a class="shoe-link" href="${shoe.lien}" target="_blank" rel="noopener noreferrer" data-product-name="${shoe.modele}" data-product-brand="${shoe.marque}" data-rank="${index+1}" data-merchant="endurance-store">🛒 VOIR CHEZ ENDURANCE-STORE</a>
-          ${shoe.lienIRun ? `<a class="shoe-link irun" href="${shoe.lienIRun}" target="_blank" rel="noopener noreferrer" data-product-name="${shoe.modele}" data-product-brand="${shoe.marque}" data-rank="${index+1}" data-merchant="i-run">🏃 VOIR CHEZ I-RUN</a>` : ""}
+          ${merchantLink(shoe.lien,shoe,index+1)}
+          ${shoe.lienIRun ? merchantLink(shoe.lienIRun,shoe,index+1,"irun") : ""}
         </div>
       </div>
     </article>`;
