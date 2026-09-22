@@ -528,15 +528,17 @@ function selectedMerchantOffers(shoe,p){
   const byMerchant={};
   raw.forEach(o=>(byMerchant[o.key]??=[]).push(o));
   let offers=Object.values(byMerchant).map(g=>bestOfferVariant(g,target)).filter(Boolean);
-  // Offre principale : taille exacte ou +/- 0,5 obligatoire, puis prix le plus bas.
-  const primaryPool=offers.filter(o=>sizeDistance(o,target)<=0.5001);
+  // Une offre sans données de pointure (ex. Decathlon/Rakuten) reste éligible.
+  // On affiche alors « Pointures à vérifier » sans prétendre que la taille est disponible.
+  const primaryPool=offers.filter(o=>!o.sizes?.length || sizeDistance(o,target)<=0.5001);
   let primary=primaryPool.sort((a,b)=>a.price-b.price || sizeDistance(a,target)-sizeDistance(b,target))[0]||null;
   // Si aucun flux structuré n'a +/-0,5, on garde le lien historique comme secours.
   const legacy=[];
   if(shoe.lien){const m=merchantInfo(shoe.lien);legacy.push({merchant:m.name,key:m.key,link:shoe.lien,price:null,sizes:[],gender:'unisex',legacy:true});}
   const used=new Set(); if(primary)used.add(primary.key);
   let second=offers.filter(o=>!used.has(o.key)).sort((a,b)=>{
-    const ar=sizeDistance(a,target)<=1.0001?0:1, br=sizeDistance(b,target)<=1.0001?0:1;
+    const ar=(!a.sizes?.length || sizeDistance(a,target)<=1.0001)?0:1;
+    const br=(!b.sizes?.length || sizeDistance(b,target)<=1.0001)?0:1;
     if(ar!==br)return ar-br;
     return a.price-b.price;
   })[0]||null;
