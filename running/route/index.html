@@ -853,36 +853,64 @@ function bestOfferVariant(group,target){
     return a.price-b.price;
   })[0];
 }
+function merchantFallbackPriority(key){
+  if(key==="i-run") return 0;
+  if(key==="decathlon") return 1;
+  return 2;
+}
 function selectedMerchantOffers(shoe,p){
   const target=Number(p.pointure);
   const raw=(MERCHANT_OFFERS[shoe.modele]||[]).filter(o=>offerGenderOk(o,p));
   const byMerchant={};
   raw.forEach(o=>(byMerchant[o.key]??=[]).push(o));
   let offers=Object.values(byMerchant).map(g=>bestOfferVariant(g,target)).filter(Boolean);
-  // Une offre sans données de pointure (ex. Decathlon/Rakuten) reste éligible.
-  // On affiche alors « Pointures à vérifier » sans prétendre que la taille est disponible.
-  const primaryPool=offers.filter(o=>!o.sizes?.length || sizeDistance(o,target)<=0.5001);
-  let primary=primaryPool.sort((a,b)=>a.price-b.price || sizeDistance(a,target)-sizeDistance(b,target))[0]||null;
-  // Si aucun flux structuré n'a +/-0,5, on garde le lien historique comme secours.
+
+  // Priorité marchands MYBESTPAIR :
+  // 1) pointure exacte disponible ; 2) taille à +/- 0,5 ; 3) meilleur prix ;
+  // 4) si aucune disponibilité exploitable ET aucun prix : I-RUN puis Decathlon.
+  const exact=offers.filter(o=>o.sizes?.length && sizeDistance(o,target)<0.001);
+  const half=offers.filter(o=>o.sizes?.length && sizeDistance(o,target)>0.001 && sizeDistance(o,target)<=0.5001);
+  let ranked;
+  if(exact.length){
+    ranked=[...exact].sort((a,b)=>a.price-b.price || merchantFallbackPriority(a.key)-merchantFallbackPriority(b.key));
+    ranked.push(...offers.filter(o=>!exact.includes(o)).sort((a,b)=>{
+      const da=sizeDistance(a,target), db=sizeDistance(b,target);
+      const aHalf=da<=0.5001?0:1, bHalf=db<=0.5001?0:1;
+      if(aHalf!==bHalf)return aHalf-bHalf;
+      return a.price-b.price || merchantFallbackPriority(a.key)-merchantFallbackPriority(b.key);
+    }));
+  }else if(half.length){
+    ranked=[...half].sort((a,b)=>a.price-b.price || sizeDistance(a,target)-sizeDistance(b,target) || merchantFallbackPriority(a.key)-merchantFallbackPriority(b.key));
+    ranked.push(...offers.filter(o=>!half.includes(o)).sort((a,b)=>a.price-b.price || merchantFallbackPriority(a.key)-merchantFallbackPriority(b.key)));
+  }else{
+    // Personne n'a la pointure exacte ou une taille à +/-0,5 : le prix décide.
+    ranked=[...offers].sort((a,b)=>{
+      const ap=Number.isFinite(Number(a.price)), bp=Number.isFinite(Number(b.price));
+      if(ap!==bp)return ap?-1:1;
+      if(ap && Number(a.price)!==Number(b.price))return Number(a.price)-Number(b.price);
+      return merchantFallbackPriority(a.key)-merchantFallbackPriority(b.key);
+    });
+  }
+
+  // Liens historiques uniquement en dernier recours quand le flux ne permet pas de départager.
   const legacy=[];
+  if(shoe.lienIRun) legacy.push({merchant:"I-RUN",key:"i-run",link:shoe.lienIRun,price:null,sizes:[],gender:'unisex',legacy:true});
   if(shoe.lien){const m=merchantInfo(shoe.lien);legacy.push({merchant:m.name,key:m.key,link:shoe.lien,price:null,sizes:[],gender:'unisex',legacy:true});}
-  const used=new Set(); if(primary)used.add(primary.key);
-  let second=offers.filter(o=>!used.has(o.key)).sort((a,b)=>{
-    const ar=(!a.sizes?.length || sizeDistance(a,target)<=1.0001)?0:1;
-    const br=(!b.sizes?.length || sizeDistance(b,target)<=1.0001)?0:1;
-    if(ar!==br)return ar-br;
-    return a.price-b.price;
-  })[0]||null;
-  if(!primary){ primary=legacy[0]||offers.sort((a,b)=>a.price-b.price)[0]||null; if(primary)used.add(primary.key); }
-  if(!second){ second=legacy.find(o=>!used.has(o.key))||null; }
-  return [primary,second].filter(Boolean);
+  const used=new Set();
+  const result=[];
+  for(const o of ranked){ if(!used.has(o.key)){result.push(o);used.add(o.key);} if(result.length===2)break; }
+  if(result.length<2){
+    legacy.sort((a,b)=>merchantFallbackPriority(a.key)-merchantFallbackPriority(b.key));
+    for(const o of legacy){if(!used.has(o.key)){result.push(o);used.add(o.key);} if(result.length===2)break;}
+  }
+  return result;
 }
 function formatSizes(o,target){
   if(!o.sizes?.length)return "Pointures à vérifier";
   const sizes=[...new Set(o.sizes.map(Number))].sort((a,b)=>a-b);
   const exact=sizes.some(s=>Math.abs(s-target)<0.001);
   if(exact) return `✓ Ta pointure ${String(target).replace('.',',')} est disponible`;
-  const near=sizes.filter(s=>Math.abs(s-target)<=1.0001);
+  const near=sizes.filter(s=>Math.abs(s-target)<=0.5001);
   const shown=(near.length?near:sizes.slice(0,5)).map(s=>String(s).replace('.',','));
   return `${shown.length>1?'Pointures proches disponibles':'Pointure proche disponible'} : ${shown.join(' · ')}`;
 }
