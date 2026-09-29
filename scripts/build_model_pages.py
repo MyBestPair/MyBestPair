@@ -8,7 +8,6 @@ from pathlib import Path
 from xml.sax.saxutils import escape as xml_escape
 
 ROOT = Path(__file__).resolve().parents[1]
-CSS = re.search(r"<style>(.*?)</style>", (ROOT / "running/route/modeles/asics-novablast-6/index.html").read_text(), re.S).group(1)
 SPECS = {
     "route": ("running/route", "Running Route", ["amorti", "dynamisme", "stabilite", "confort", "durabilite", "legerete"]),
     "trail": ("running/trail", "Running Trail", ["accroche", "amorti", "stabilite", "protection", "dynamisme", "confort"]),
@@ -47,6 +46,10 @@ def score(value):
     return ("%g" % value).replace(".", ",") + "/10"
 
 
+def display_value(value):
+    return str(value).capitalize() if str(value).isupper() else str(value)
+
+
 def display_name(shoe, sport):
     name = shoe.get("modele", shoe.get("name"))
     if sport == "basket" and not name.casefold().startswith(shoe["brand"].casefold() + " "):
@@ -55,6 +58,7 @@ def display_name(shoe, sport):
 
 
 def render(shoe, sport, base, category, fields):
+    root_link = "../../../" if sport == "basket" else "../../../../"
     name = display_name(shoe, sport)
     notes = scores(shoe, sport, fields)
     ranked = sorted(notes, key=lambda key: (-notes[key], fields.index(key)))
@@ -62,7 +66,7 @@ def render(shoe, sport, base, category, fields):
     modest = ", ".join(label(key).lower() for key in sorted(notes, key=lambda key: (notes[key], fields.index(key)))[:2])
     url = f"https://mybestpair.fr/{base}/modeles/{slug(name)}/"
     description = f"{name} : notes MyBestPair en {strengths}, caractéristiques de la base {category} et accès au questionnaire pour tester ton profil."
-    rows = "\n".join(f'<div class="score"><span>{h(label(key))}</span><strong>{score(notes[key])}</strong></div>' for key in fields)
+    rows = "\n".join(f'<div class="score" style="--score:{notes[key] * 10:g}%"><span>{h(label(key))}</span><strong>{score(notes[key])}</strong></div>' for key in fields)
     if sport == "basket":
         details = [("Surface enregistrée", shoe["surface"]), ("Type de pied enregistré", shoe["foot"]), ("Prix indicatif de la base", f'{shoe["price"]:g} €')]
         use = f"La base associe ce modèle aux surfaces {h(shoe['surface'].lower())} et à un pied {h(shoe['foot'].lower())}."
@@ -84,7 +88,9 @@ def render(shoe, sport, base, category, fields):
             factors = "ton objectif, ton budget, ton poids, ta distance, ton type de pied, ton attaque et tes priorités"
             fragment = "questionnaire"
         fragment = "questionnaire"
-    specs = "\n".join(f"<div><dt>{h(key)}</dt><dd>{h(value)}</dd></div>" for key, value in details)
+    specs = "\n".join(f"<div><dt>{h(key)}</dt><dd>{h(display_value(value))}</dd></div>" for key, value in details)
+    context = f"{display_value(shoe['type'])} · {shoe['distance']}" if sport != "basket" else f"{display_value(shoe['surface'])} · {display_value(shoe['foot'])}"
+    key_point = f"{label(ranked[0])} : {score(notes[ranked[0]])}"
     return f'''<!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -92,27 +98,25 @@ def render(shoe, sport, base, category, fields):
   <meta name="theme-color" content="#124f9c">
   <title>{h(name)} : caractéristiques et profil | MyBestPair</title>
   <meta name="description" content="{h(description)}">
-  <link rel="canonical" href="{url}"><link rel="icon" href="../../../../favicon.png">
+  <link rel="canonical" href="{url}"><link rel="icon" href="{root_link}favicon.png">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-8CZ831W067"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments)}}gtag('js',new Date());gtag('config','G-8CZ831W067');</script>
-  <style>{CSS}</style>
+  <link rel="stylesheet" href="{root_link}modeles.css">
 </head>
 <body>
-  <nav class="topbar" aria-label="Navigation principale"><a class="brand" href="../../../../">MYBESTPAIR</a><a href="../../#{fragment}">Questionnaire {h(category)}</a></nav>
+  <nav class="topbar" aria-label="Navigation principale"><a class="brand" href="{root_link}">MYBESTPAIR</a><a href="../../#{fragment}">Questionnaire {h(category)}</a></nav>
   <main>
-    <nav class="crumbs" aria-label="Fil d'Ariane"><a href="../../../../">Accueil</a> › <a href="../../">{h(category)}</a> › <a href="../">Modèles</a> › {h(name)}</nav>
-    <header class="hero"><div class="eyebrow">Fiche modèle · {h(category)}</div><h1>{h(name)} : pour quel profil ?</h1><p>Caractéristiques enregistrées dans la base MyBestPair et notes utilisées pour comparer les modèles selon ton profil.</p></header>
+    <nav class="crumbs" aria-label="Fil d'Ariane"><a href="{root_link}">Accueil</a> › <a href="../../">{h(category)}</a> › <a href="../">Modèles</a> › {h(name)}</nav>
+    <header class="hero"><div class="eyebrow">MyBestPair / {h(category)}</div><h1>{h(name)}</h1><p>Une première lecture de la paire, avant de vérifier si elle correspond vraiment à ton profil.</p><div class="hero-meta"><span>{h(context)}</span><span>{h(key_point)}</span></div><a class="cta" href="../../#{fragment}">Vérifier avec mon profil →</a></header>
     <div class="layout"><div>
-      <section class="card"><h2>En bref</h2><p>{use} Ses notes les plus élevées dans MyBestPair concernent {h(strengths)}. Ses notes les plus basses dans cette base concernent {h(modest)}. Ces écarts aident à situer la paire selon tes priorités, sans prédire ton ressenti personnel.</p>
-      <p class="note"><strong>Pas de score universel :</strong> le classement est recalculé pour chaque profil. Les notes ci-dessous sont des évaluations internes à MyBestPair, pas des résultats d'un essai indépendant.</p>
-      <div class="scores" aria-label="Notes internes MyBestPair sur 10">{rows}</div></section>
-      <section class="card"><h2>À quel usage la base l'associe-t-elle ?</h2><p>{use}</p><h3>À considérer avant de choisir</h3><p>{caveat}</p></section>
-      <section class="card"><h2>Comment MyBestPair la compare</h2><p>Le questionnaire prend en compte {factors}. Une même chaussure peut donc ressortir ou non dans le Top 3 selon les réponses. Les liens marchands n'influencent pas le classement.</p><p><a href="../">Comparer les autres modèles {h(category)}</a>.</p></section>
+      <section class="card"><h2>L'essentiel sur cette paire</h2><p class="lede">{use}</p><div class="verdict"><div><span>Ses atouts dans notre base</span><strong>{h(strengths.capitalize())}</strong></div><div><span>À regarder de plus près</span><strong>{h(modest.capitalize())}</strong></div></div><p class="note">Ces indications viennent des données MyBestPair. Elles permettent de comparer les modèles, mais ne remplacent pas un essai de la chaussure.</p></section>
+      <section class="card"><h2>Ses notes MyBestPair</h2><p class="muted">Évaluations internes sur 10 utilisées par le questionnaire, et non notes issues d'un test terrain indépendant.</p><div class="scores" aria-label="Notes internes MyBestPair sur 10">{rows}</div></section>
+      <section class="card"><h2>Avant de choisir</h2><p>{caveat}</p><p>Le questionnaire tient aussi compte de {factors}. Le classement change donc selon ton profil.</p><p><a href="../">Voir toutes les chaussures {h(category)} →</a></p></section>
     </div><aside>
-      <section class="card"><h2>Caractéristiques dans la base</h2><dl class="specs">{specs}</dl><p class="muted" style="margin-top:16px">Données indicatives enregistrées dans la base MyBestPair. Vérifie les caractéristiques exactes de la référence et de la pointure auprès du fabricant ou du vendeur.</p></section>
+      <section class="card"><h2>Repères techniques</h2><dl class="specs">{specs}</dl><p class="muted" style="margin-top:16px">Données indicatives de notre base. Les caractéristiques exactes peuvent varier selon la version et la pointure : vérifie-les auprès du fabricant.</p></section>
       <section class="card"><h2>Est-ce ta paire ?</h2><p>Renseigne ton profil pour voir si {h(name)} ressort parmi tes recommandations et quels autres modèles lui sont comparés.</p><a class="cta" href="../../#{fragment}" id="questionnaireLink">Tester mon profil gratuitement</a><small>Prix et disponibilité peuvent évoluer : vérifie-les chez le marchand.</small></section>
     </aside></div>
-  </main><footer>© 2026 MyBestPair · <a href="../../../../confidentialite.html">Confidentialité</a></footer>
+  </main><footer>© 2026 MyBestPair · <a href="{root_link}confidentialite.html">Confidentialité</a></footer>
   <script>document.getElementById('questionnaireLink').addEventListener('click',function(){{if(typeof gtag==='function')gtag('event','model_page_questionnaire_click',{{sport:'{sport}',model:{json.dumps(name, ensure_ascii=False)}}})}});</script>
 </body></html>
 '''
@@ -136,8 +140,15 @@ def main():
             if not (sport == "route" and path == "asics-novablast-6"):
                 page.write_text(render(shoe, sport, base, category, fields))
             all_urls.append(f"https://mybestpair.fr/{base}/modeles/{path}/")
-        links = "\n".join(f'<li><a href="{h(path)}/">{h(name)}</a></li>' for name, path in zip(names, slugs))
-        index = f'''<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Chaussures {h(category)} : {len(shoes)} fiches modèles | MyBestPair</title><meta name="description" content="Parcours les {len(shoes)} modèles {h(category)} de la base MyBestPair, consulte leurs caractéristiques et teste ton profil."><link rel="canonical" href="https://mybestpair.fr/{base}/modeles/"><link rel="icon" href="../../../favicon.png"><style>{CSS}</style></head><body><nav class="topbar"><a class="brand" href="../../../">MYBESTPAIR</a><a href="../">Questionnaire {h(category)}</a></nav><main><nav class="crumbs"><a href="../../../">Accueil</a> › <a href="../">{h(category)}</a> › Modèles</nav><header class="hero"><div class="eyebrow">Catalogue MyBestPair</div><h1>Chaussures {h(category)} : les {len(shoes)} modèles de la base</h1><p>Explore les caractéristiques et les notes internes des paires, puis teste ton profil pour obtenir un classement personnalisé.</p></header><section class="card"><h2>Toutes les fiches</h2><ul style="columns:2;column-width:250px">{links}</ul><p>Les fiches décrivent la base MyBestPair. Les caractéristiques et disponibilités peuvent évoluer.</p></section><p><a class="cta" href="../">Tester mon profil gratuitement</a></p></main><footer>© 2026 MyBestPair · <a href="../../../confidentialite.html">Confidentialité</a></footer></body></html>'''
+        tiles = []
+        for shoe, name, path in zip(shoes, names, slugs):
+            brand = shoe.get("brand", name.split()[0])
+            model = name[len(brand):].strip() if name.lower().startswith(brand.lower()) else name
+            meta = f"{display_value(shoe['type'])} · {shoe['distance']}" if sport != "basket" else f"{display_value(shoe['surface'])} · {display_value(shoe['foot'])}"
+            tiles.append(f'<a class="model-tile" href="{h(path)}/"><span class="tile-brand">{h(brand)}</span><strong>{h(model)}</strong><span class="tile-meta">{h(meta)}</span><span class="tile-link">Voir la fiche →</span></a>')
+        links = "\n".join(tiles)
+        hub_root = "../../" if sport == "basket" else "../../../"
+        index = f'''<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Chaussures {h(category)} : {len(shoes)} fiches modèles | MyBestPair</title><meta name="description" content="Parcours les {len(shoes)} modèles {h(category)} de la base MyBestPair, consulte leurs caractéristiques et teste ton profil."><link rel="canonical" href="https://mybestpair.fr/{base}/modeles/"><link rel="icon" href="{hub_root}favicon.png"><link rel="stylesheet" href="{hub_root}modeles.css"></head><body><nav class="topbar"><a class="brand" href="{hub_root}">MYBESTPAIR</a><a href="../">Questionnaire {h(category)}</a></nav><main><nav class="crumbs"><a href="{hub_root}">Accueil</a> › <a href="../">{h(category)}</a> › Modèles</nav><header class="hero"><div class="eyebrow">Catalogue MyBestPair / {h(category)}</div><h1>Une paire pour chaque profil.</h1><p>Explore les {len(shoes)} modèles de notre base {h(category)}, puis trouve ceux qui correspondent à ta pratique.</p><a class="cta" href="../">Trouver ma paire →</a></header><div class="catalogue-toolbar"><h2>Explorer les modèles</h2><p>{len(shoes)} fiches · caractéristiques et notes MyBestPair</p></div><div class="catalogue-grid">{links}</div><p class="muted" style="margin-top:24px">Les données présentées sont indicatives et les disponibilités peuvent évoluer.</p></main><footer>© 2026 MyBestPair · <a href="{hub_root}confidentialite.html">Confidentialité</a></footer></body></html>'''
         (dest / "index.html").write_text(index)
         all_urls.append(f"https://mybestpair.fr/{base}/modeles/")
         category_page = ROOT / base / "index.html"
