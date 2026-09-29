@@ -8,6 +8,7 @@ from pathlib import Path
 from xml.sax.saxutils import escape as xml_escape
 
 ROOT = Path(__file__).resolve().parents[1]
+PHOTOS = json.loads((ROOT / "scripts/model_photos.json").read_text())
 SPECS = {
     "route": ("running/route", "Running Route", ["amorti", "dynamisme", "stabilite", "confort", "durabilite", "legerete"]),
     "trail": ("running/trail", "Running Trail", ["accroche", "amorti", "stabilite", "protection", "dynamisme", "confort"]),
@@ -59,10 +60,12 @@ def display_name(shoe, sport):
 
 def image_for(name, offers):
     """Use an exact-model product photo from the existing merchant offer data."""
+    if name in PHOTOS:
+        return PHOTOS[name]["image"], PHOTOS[name]["source"]
     for offer in offers.get(name, []):
         image = offer.get("image")
         if image and image.startswith("https://"):
-            return image
+            return image, offer.get("merchant", "catalogue marchand")
     return None
 
 
@@ -100,7 +103,7 @@ def render(shoe, sport, base, category, fields, photo=None):
     specs = "\n".join(f"<div><dt>{h(key)}</dt><dd>{h(display_value(value))}</dd></div>" for key, value in details)
     context = f"{display_value(shoe['type'])} · {shoe['distance']}" if sport != "basket" else f"{display_value(shoe['surface'])} · {display_value(shoe['foot'])}"
     key_point = f"{label(ranked[0])} : {score(notes[ranked[0]])}"
-    visual = f'<figure class="product-photo"><img src="{h(photo)}" alt="{h(name)} — visuel marchand" loading="lazy" decoding="async"><figcaption>Photo produit du catalogue marchand · le coloris peut varier</figcaption></figure>' if photo else ""
+    visual = f'<figure class="product-photo"><img src="{h(photo[0])}" alt="{h(name)} — visuel marchand" loading="lazy" decoding="async"><figcaption>Photo produit du catalogue {h(photo[1])} · le coloris peut varier</figcaption></figure>' if photo else ""
     return f'''<!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -158,7 +161,7 @@ def main():
             model = name[len(brand):].strip() if name.lower().startswith(brand.lower()) else name
             meta = f"{display_value(shoe['type'])} · {shoe['distance']}" if sport != "basket" else f"{display_value(shoe['surface'])} · {display_value(shoe['foot'])}"
             photo = image_for(name, offers)
-            visual = f'<span class="tile-photo"><img src="{h(photo)}" alt="" loading="lazy" decoding="async"></span>' if photo else ''
+            visual = f'<span class="tile-photo"><img src="{h(photo[0])}" alt="" loading="lazy" decoding="async"></span>' if photo else ''
             tiles.append(f'<a class="model-tile" href="{h(path)}/">{visual}<span class="tile-brand">{h(brand)}</span><strong>{h(model)}</strong><span class="tile-meta">{h(meta)}</span><span class="tile-link">Voir la fiche →</span></a>')
         links = "\n".join(tiles)
         hub_root = "../../" if sport == "basket" else "../../../"
