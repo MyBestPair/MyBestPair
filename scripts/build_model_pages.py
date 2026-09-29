@@ -14,7 +14,7 @@ SPECS = {
     "trail": ("running/trail", "Running Trail", ["accroche", "amorti", "stabilite", "protection", "dynamisme", "confort"]),
     "basket": ("basket", "Basket", ["traction", "amorti", "reactivite", "stabilite", "maintien", "legerete", "confort", "durabilite"]),
 }
-LABELS = {"reactivite": "Réactivité", "stabilite": "Stabilité", "legerete": "Légèreté"}
+LABELS = {"reactivite": "Réactivité", "stabilite": "Stabilité", "legerete": "Légèreté", "durabilite": "Durabilité"}
 
 
 def h(value):
@@ -78,7 +78,8 @@ def render(shoe, sport, base, category, fields):
             factors = "ton terrain, ta distance, ton budget, ton poids, ton type de pied, ton attaque et tes priorités"
         else:
             details.append(("Allure enregistrée", shoe["allure"]))
-            use = f"Dans la base Route, {h(name)} est classée {h(shoe['type'].lower())}, pour les distances {h(shoe['distance'].lower())} et les allures {h(shoe['allure'].lower())}."
+            allure = "quelle que soit l'allure" if shoe["allure"] == "TOUTES" else f"aux allures {h(shoe['allure'].lower())}"
+            use = f"Dans la base Route, {h(name)} est classée {h(shoe['type'].lower())}, pour les distances {h(shoe['distance'].lower())} et {allure}."
             caveat = "Vérifie que la distance et l'allure de tes sorties correspondent à ces indications. La largeur et le maintien se confirment à l'essayage."
             factors = "ton objectif, ton budget, ton poids, ta distance, ton type de pied, ton attaque et tes priorités"
             fragment = "questionnaire"
