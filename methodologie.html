@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#061d45">
+  <title>Méthodologie des notes et recommandations | MyBestPair</title>
+  <meta name="description" content="Comment MyBestPair note les chaussures et calcule ses recommandations Route, Trail et Basket : critères, pondérations, sources et limites.">
+  <link rel="canonical" href="https://mybestpair.fr/methodologie.html">
+  <link rel="icon" href="favicon.png">
+  <style>
+    :root{--navy:#061d45;--ink:#122544;--muted:#52627b;--line:#dce5f0;--blue:#1266c3;--orange:#ef8750}
+    *{box-sizing:border-box}
+    body{margin:0;background:#f5f8fc;color:var(--ink);font:16px/1.65 Arial,Helvetica,sans-serif}
+    a{color:var(--blue)}a:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+    .topbar{background:var(--navy);color:#fff;padding:16px max(22px,calc((100vw - 1060px)/2));display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-size:1.3rem;font-weight:900;font-style:italic;letter-spacing:-.04em}
+    .brand img{width:62px;height:36px;object-fit:contain}
+    .topbar .back{color:#e1ebfa;font-size:.9rem;text-decoration:none}
+    main{width:min(1060px,calc(100% - 36px));margin:30px auto 70px}
+    .crumbs{font-size:.85rem;color:var(--muted);margin-bottom:16px}
+    .crumbs a{color:inherit}
+    .hero{background:linear-gradient(120deg,#071d40,#0c3b77);color:#fff;border-radius:22px;padding:clamp(28px,5vw,56px);box-shadow:0 20px 48px #09254c18}
+    .eyebrow{color:#96cafa;text-transform:uppercase;letter-spacing:.16em;font-size:.75rem;font-weight:800}
+    h1{font-size:clamp(2rem,5vw,3.4rem);line-height:1.12;letter-spacing:-.035em;margin:12px 0 14px}
+    .hero p{max-width:720px;font-size:1.08rem;color:#dce9fb;margin:0 0 18px}
+    .date{display:inline-block;border:1px solid #ffffff55;border-radius:100px;padding:5px 13px;font-size:.83rem;color:#f0f6ff}
+    .layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(250px,.48fr);gap:22px;align-items:start;margin-top:22px}
+    .card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:clamp(22px,3.4vw,34px);margin-bottom:20px;box-shadow:0 8px 25px #10224308}
+    h2{font-size:1.42rem;letter-spacing:-.025em;margin:0 0 13px}
+    h3{font-size:1.05rem;margin:22px 0 8px}
+    p{margin:0 0 14px}p:last-child{margin-bottom:0}
+    ul{margin:0;padding-left:22px}li{margin:6px 0}
+    .muted{color:var(--muted)}
+    .callout{background:#eaf3ff;border-left:4px solid var(--blue);border-radius:0 10px 10px 0;padding:15px 18px;margin:17px 0}
+    .table-wrap{overflow-x:auto}
+    table{width:100%;border-collapse:collapse;font-size:.93rem}
+    th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line)}
+    th{color:#375a84;font-size:.83rem}
+    td:not(:first-child),th:not(:first-child){text-align:right;white-space:nowrap}
+    tfoot td{font-weight:800;border:0;padding-top:13px}
+    .small{font-size:.87rem;color:var(--muted)}
+    footer{background:var(--navy);color:#d7e3f5;text-align:center;padding:25px}
+    footer a{color:#fff}
+    @media(max-width:760px){.layout{grid-template-columns:1fr}.topbar .back{font-size:.8rem}.brand{font-size:1.1rem}.brand img{width:50px;height:30px}}
+  </style>
+</head>
+<body>
+  <nav class="topbar" aria-label="Navigation principale">
+    <a class="brand" href="./"><img src="shoe-realistic.webp" alt="" width="62" height="36">MyBestPair</a>
+    <a class="back" href="./">← Retour à l’accueil</a>
+  </nav>
+  <main>
+    <nav class="crumbs" aria-label="Fil d’Ariane"><a href="./">Accueil</a> › Méthodologie</nav>
+    <header class="hero">
+      <div class="eyebrow">Comprendre les recommandations</div>
+      <h1>Notre méthodologie, en clair.</h1>
+      <p>MYBESTPAIR compare les caractéristiques enregistrées pour chaque chaussure avec ton profil. Les notes des fiches sont des évaluations internes : elles servent à comparer les modèles dans notre sélection et ne proviennent pas de tests terrain indépendants.</p>
+      <span class="date">Page mise à jour le 29 septembre 2026</span>
+    </header>
+    <div class="layout">
+      <div>
+        <section class="card">
+          <h2>Ce que mesurent les notes</h2>
+          <p>Chaque modèle reçoit des notes sur 10 dans la base MYBESTPAIR. Elles décrivent des critères différents selon la pratique :</p>
+          <ul>
+            <li><strong>Route :</strong> amorti, dynamisme, stabilité, confort, durabilité et légèreté.</li>
+            <li><strong>Trail :</strong> accroche, amorti, stabilité, protection, dynamisme et confort.</li>
+            <li><strong>Basket :</strong> traction, amorti, réactivité, stabilité, maintien, légèreté, confort et durabilité.</li>
+          </ul>
+          <div class="callout">Ces notes sont attribuées dans notre base. Elles ne constituent ni une mesure de laboratoire ni une moyenne d’avis utilisateurs. Une note élevée sur un critère ne garantit pas qu’une chaussure te conviendra.</div>
+        </section>
+        <section class="card">
+          <h2>Comment est calculé ton classement</h2>
+          <p>Le questionnaire combine ces notes avec tes réponses. Le score affiché sur 100 mesure une <strong>compatibilité avec ton profil</strong>, pas une qualité absolue. Les trois priorités que tu choisis renforcent le poids des critères correspondants : première × 1,5, deuxième × 1,25, troisième × 1,1.</p>
+          <h3>Poids des composantes du score final</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Composante</th><th>Route</th><th>Trail</th><th>Basket</th></tr></thead>
+              <tbody>
+                <tr><td>Notes adaptées à tes priorités</td><td>45 %</td><td>50 %</td><td>62 %</td></tr>
+                <tr><td>Objectif de pratique / type de modèle</td><td>13 %</td><td>10 %</td><td>—</td></tr>
+                <tr><td>Budget</td><td>22 %</td><td>8 %</td><td>15 %</td></tr>
+                <tr><td>Poids du pratiquant</td><td>3 %</td><td>3 %</td><td>—</td></tr>
+                <tr><td>Distance</td><td>8 %</td><td>10 %</td><td>—</td></tr>
+                <tr><td>Allure / terrain / surface</td><td>4 %</td><td>10 %</td><td>10 %</td></tr>
+                <tr><td>Type de pied</td><td>2 %</td><td>3 %</td><td>8 %</td></tr>
+                <tr><td>Attaque du pied</td><td>2 %</td><td>3 %</td><td>—</td></tr>
+                <tr><td>Préférence de marque</td><td>1 %</td><td>3 %</td><td>5 %</td></tr>
+              </tbody>
+              <tfoot><tr><td>Total</td><td>100 %</td><td>100 %</td><td>100 %</td></tr></tfoot>
+            </table>
+          </div>
+          <p class="small">En Basket, le style de jeu ajuste aussi le poids des critères techniques à l’intérieur de la part de 62 %. Le budget et certaines incompatibilités peuvent modifier l’ordre des résultats. Ces poids décrivent le calcul actuel des questionnaires.</p>
+        </section>
+        <section class="card">
+          <h2>Sources et mise à jour des données</h2>
+          <p>Les fiches reprennent les données de notre base interne : catégorie du modèle, prix indicatif, caractéristiques techniques et notes attribuées par MYBESTPAIR. Des fiches fabricant et des catalogues marchands, notamment i-Run pour les visuels disponibles, peuvent aider à documenter les modèles ; les liens source figurent sur une fiche lorsqu’ils ont été renseignés.</p>
+          <p>Nous ne disposons pas d’une source vérifiée et datée pour chaque valeur de chaque modèle. Les prix, les coloris et la disponibilité peuvent évoluer ; le poids ou le drop peuvent varier selon la version et la pointure. Vérifie ces éléments sur le site du fabricant ou du marchand avant l’achat.</p>
+          <p><strong>Mise à jour de cette page :</strong> 29 septembre 2026. Cette date concerne l’explication de la méthode et ne garantit pas que toutes les fiches modèles ont été revérifiées ce jour-là.</p>
+        </section>
+      </div>
+      <aside>
+        <section class="card">
+          <h2>Ce que le score ne dit pas</h2>
+          <p>Le confort ressenti, le chaussant, l’accroche réelle et l’usure dépendent de ta morphologie et de ton usage. Un essai reste la meilleure façon de confirmer ton choix.</p>
+          <p>Les modèles absents de notre sélection ne sont pas comparés. Le classement n’est donc pas un palmarès de toutes les chaussures du marché.</p>
+        </section>
+        <section class="card">
+          <h2>Liens commerciaux</h2>
+          <p>Certains liens vers des marchands peuvent générer une commission pour MYBESTPAIR. La commission ne fait pas partie du calcul du score. Le prix et la disponibilité sont à vérifier chez le marchand.</p>
+        </section>
+        <section class="card">
+          <h2>Explorer les modèles</h2>
+          <p><a href="running/route/modeles/">Chaussures de route →</a></p>
+          <p><a href="running/trail/modeles/">Chaussures de trail →</a></p>
+          <p><a href="basket/modeles/">Chaussures de basket →</a></p>
+        </section>
+      </aside>
+    </div>
+  </main>
+  <footer>© 2026 MyBestPair · <a href="./">Accueil</a> · <a href="confidentialite.html">Confidentialité</a></footer>
+</body>
+</html>
