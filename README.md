@@ -61,7 +61,7 @@ https://mybestpair.fr
 
 ## Contact
 
-myshoesfr.contact@gmail.com
+Coordonnées de contact : voir les mentions légales sur https://mybestpair.fr/mentions-legales.html
 
 ---
 
