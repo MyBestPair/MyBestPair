@@ -33,12 +33,6 @@
     ul{margin:0;padding-left:22px}li{margin:6px 0}
     .muted{color:var(--muted)}
     .callout{background:#eaf3ff;border-left:4px solid var(--blue);border-radius:0 10px 10px 0;padding:15px 18px;margin:17px 0}
-    .table-wrap{overflow-x:auto}
-    table{width:100%;border-collapse:collapse;font-size:.93rem}
-    th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line)}
-    th{color:#375a84;font-size:.83rem}
-    td:not(:first-child),th:not(:first-child){text-align:right;white-space:nowrap}
-    tfoot td{font-weight:800;border:0;padding-top:13px}
     .small{font-size:.87rem;color:var(--muted)}
     footer{background:var(--navy);color:#d7e3f5;text-align:center;padding:25px}
     footer a{color:#fff}
@@ -71,27 +65,15 @@
           <div class="callout">Ces notes sont attribuées dans notre base. Elles ne constituent ni une mesure de laboratoire ni une moyenne d’avis utilisateurs. Une note élevée sur un critère ne garantit pas qu’une chaussure te conviendra.</div>
         </section>
         <section class="card">
-          <h2>Comment est calculé ton classement</h2>
-          <p>Le questionnaire combine ces notes avec tes réponses. Le score affiché sur 100 mesure une <strong>compatibilité avec ton profil</strong>, pas une qualité absolue. Les trois priorités que tu choisis renforcent le poids des critères correspondants : première × 1,5, deuxième × 1,25, troisième × 1,1.</p>
-          <h3>Poids des composantes du score final</h3>
-          <div class="table-wrap">
-            <table>
-              <thead><tr><th>Composante</th><th>Route</th><th>Trail</th><th>Basket</th></tr></thead>
-              <tbody>
-                <tr><td>Notes adaptées à tes priorités</td><td>45 %</td><td>50 %</td><td>62 %</td></tr>
-                <tr><td>Objectif de pratique / type de modèle</td><td>13 %</td><td>10 %</td><td>—</td></tr>
-                <tr><td>Budget</td><td>22 %</td><td>8 %</td><td>15 %</td></tr>
-                <tr><td>Poids du pratiquant</td><td>3 %</td><td>3 %</td><td>—</td></tr>
-                <tr><td>Distance</td><td>8 %</td><td>10 %</td><td>—</td></tr>
-                <tr><td>Allure / terrain / surface</td><td>4 %</td><td>10 %</td><td>10 %</td></tr>
-                <tr><td>Type de pied</td><td>2 %</td><td>3 %</td><td>8 %</td></tr>
-                <tr><td>Attaque du pied</td><td>2 %</td><td>3 %</td><td>—</td></tr>
-                <tr><td>Préférence de marque</td><td>1 %</td><td>3 %</td><td>5 %</td></tr>
-              </tbody>
-              <tfoot><tr><td>Total</td><td>100 %</td><td>100 %</td><td>100 %</td></tr></tfoot>
-            </table>
-          </div>
-          <p class="small">En Basket, le style de jeu ajuste aussi le poids des critères techniques à l’intérieur de la part de 62 %. Le budget et certaines incompatibilités peuvent modifier l’ordre des résultats. Ces poids décrivent le calcul actuel des questionnaires.</p>
+          <h2>Comment est établi ton classement</h2>
+          <p>Le questionnaire combine les caractéristiques des chaussures avec tes réponses. Le score affiché sur 100 mesure une <strong>compatibilité avec ton profil</strong>, pas une qualité absolue. Les trois priorités que tu choisis pèsent davantage que les autres critères.</p>
+          <h3>Ce qui compte selon ton sport</h3>
+          <ul>
+            <li><strong>Route :</strong> tes priorités techniques jouent un rôle majeur. Ton budget, ton objectif et ta distance complètent le classement ; ton allure, ton poids, ton pied, ton attaque et ta préférence de marque sont également pris en compte.</li>
+            <li><strong>Trail :</strong> tes priorités techniques jouent un rôle majeur. Le terrain, la distance, l’objectif et le budget complètent le classement ; ton poids, ton pied, ton attaque et ta préférence de marque entrent aussi en jeu.</li>
+            <li><strong>Basket :</strong> les critères techniques adaptés à ton style de jeu jouent un rôle majeur. Le budget, la surface, le type de pied et la préférence de marque complètent le classement.</li>
+          </ul>
+          <p class="small">Le budget et certaines incompatibilités peuvent modifier l’ordre des résultats. Les liens commerciaux ne participent pas au calcul.</p>
         </section>
         <section class="card">
           <h2>Sources et mise à jour des données</h2>
