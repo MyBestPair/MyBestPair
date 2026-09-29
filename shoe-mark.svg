@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 44" role="img" aria-labelledby="title">
-  <title id="title">Chaussure MyBestPair</title>
-  <path d="M5 29c4.4-1.4 8.2-4 10.4-8.7l5.1-10.8 8.5 1.8 4.3 8.5c2.4 1.8 5.1 2.8 8.2 3.2l14.2 2c4.5.6 8 2.7 10.6 6.2 1.2 1.7 1.6 3.4 1.3 5.3H4.3c-.5-2.6-.3-5.6.7-7.5Z" fill="#fff" stroke="#071d3f" stroke-width="2.5" stroke-linejoin="round"/>
-  <path d="M5 29c5.2-1.6 9.5-5.2 12.3-11.4l3.2-8.1 8.5 1.8 4.3 8.5c2.4 1.8 5.1 2.8 8.2 3.2l14.2 2c4.5.6 8 2.7 10.6 6.2H4.7c.1-1.1.2-2.2.3-3.2Z" fill="#f6fbff"/>
-  <path d="M4.3 35.4h63.3c.1 2.5-1.3 4.5-3.8 4.5H8.1c-2.4 0-3.8-1.6-3.8-4.5Z" fill="#1681ff" stroke="#071d3f" stroke-width="2.5" stroke-linejoin="round"/>
-  <path d="M17.5 17.3c2.3 2.8 5.3 5.1 9.3 6.9M21.5 11.2l6.3 9.5" fill="none" stroke="#1681ff" stroke-width="3" stroke-linecap="round"/>
-  <path d="m29.4 14.3-7.7 2.1m10.1 2.4-7.4 2.2m10.6 2.1-7.1 2" fill="none" stroke="#071d3f" stroke-width="1.7" stroke-linecap="round"/>
-  <path d="M43 29.2h19" stroke="#b6dffe" stroke-width="2.4" stroke-linecap="round"/>
-</svg>
