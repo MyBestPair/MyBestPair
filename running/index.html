@@ -48,12 +48,16 @@
     }
 
     .logo{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
       font-size:22px;
       font-weight:950;
       letter-spacing:.2px;
       text-decoration:none;
       color:var(--navy);
     }
+    .logo img{width:34px;height:24px;display:block}
 
     .logo span{color:var(--blue)}
 
@@ -401,7 +405,7 @@
 <body>
 
   <nav class="topbar">
-    <a class="logo" href="../">🏃 MYBEST<span>PAIR</span></a>
+    <a class="logo" href="../"><img src="../shoe-mark.svg" alt="" width="34" height="24">MYBEST<span>PAIR</span></a>
     <a class="home" href="../">Accueil</a>
   </nav>
 
