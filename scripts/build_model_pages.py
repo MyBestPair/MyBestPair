@@ -9,6 +9,7 @@ from xml.sax.saxutils import escape as xml_escape
 
 ROOT = Path(__file__).resolve().parents[1]
 PHOTOS = json.loads((ROOT / "scripts/model_photos.json").read_text())
+ENRICHED = json.loads((ROOT / "scripts/fiches_enrichies.json").read_text())
 SPECS = {
     "route": ("running/route", "Running Route", ["amorti", "dynamisme", "stabilite", "confort", "durabilite", "legerete"]),
     "trail": ("running/trail", "Running Trail", ["accroche", "amorti", "stabilite", "protection", "dynamisme", "confort"]),
@@ -92,6 +93,19 @@ def json_ld(obj):
 def breadcrumb(items_list):
     return {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
         {"@type": "ListItem", "position": i + 1, "name": name, "item": url} for i, (name, url) in enumerate(items_list)]}
+
+
+def enriched_html(name):
+    data = ENRICHED.get(name)
+    if not data:
+        return ""
+    points = "".join(f"<li>{h(item)}</li>" for item in data["nouveautes"])
+    sources = " · ".join(f'<a href="{h(url)}" target="_blank" rel="noopener">{h(label)}</a>' for label, url in data["sources"])
+    return (f'\n      <section class="card"><h2>Ce qu\'il faut savoir sur la {h(name)}</h2>'
+            f'<h3>Pour quel coureur ?</h3><p>{h(data["pour_qui"])}</p>'
+            f'<h3>Ce qui change sur cette version</h3><ul>{points}</ul>'
+            f'<h3>Face à ses rivales</h3><p>{h(data["rivales"])}</p>'
+            f'<p class="muted">Caractéristiques issues des annonces fabricant et des tests publiés. Sources : {sources}.</p></section>')
 
 
 def price_of(shoe):
@@ -184,7 +198,7 @@ def render(shoe, sport, base, category, fields, photo=None, related=""):
     <nav class="crumbs" aria-label="Fil d'Ariane"><a href="{root_link}">Accueil</a> › <a href="../../">{h(category)}</a> › <a href="../">Modèles</a> › {h(name)}</nav>
     <header class="hero"><div class="eyebrow">MyBestPair / {h(category)}</div><h1>{h(name)}</h1><p>Une première lecture de la paire, avant de vérifier si elle correspond vraiment à ton profil.</p><div class="hero-meta"><span>{h(context)}</span><span>{h(key_point)}</span></div><a class="cta" href="../../#{fragment}">Vérifier avec mon profil →</a></header>
     <div class="layout"><div>
-      <section class="card"><h2>L'essentiel sur cette paire</h2><p class="lede">{use}</p><div class="verdict"><div><span>Ses atouts dans notre base</span><strong>{h(strengths.capitalize())}</strong></div><div><span>À regarder de plus près</span><strong>{h(modest.capitalize())}</strong></div></div><p class="note">Ces indications viennent des données MyBestPair. Elles permettent de comparer les modèles, mais ne remplacent pas un essai de la chaussure.</p></section>
+      <section class="card"><h2>L'essentiel sur cette paire</h2><p class="lede">{use}</p><div class="verdict"><div><span>Ses atouts dans notre base</span><strong>{h(strengths.capitalize())}</strong></div><div><span>À regarder de plus près</span><strong>{h(modest.capitalize())}</strong></div></div><p class="note">Ces indications viennent des données MyBestPair. Elles permettent de comparer les modèles, mais ne remplacent pas un essai de la chaussure.</p></section>{enriched_html(name)}
       <section class="card"><h2>Ses notes MyBestPair</h2><p class="muted">Évaluations internes sur 10 utilisées par le questionnaire, et non notes issues d'un test terrain indépendant. <a href="{root_link}methodologie.html">Comprendre notre méthodologie</a>.</p><div class="scores" aria-label="Notes internes MyBestPair sur 10">{rows}</div></section>
       <section class="card"><h2>Avant de choisir</h2><p>{caveat}</p><p>Le questionnaire tient aussi compte de {factors}. Le classement change donc selon ton profil.</p><p><a href="../">Voir toutes les chaussures {h(category)} →</a></p></section>
       {related}
