@@ -69,7 +69,38 @@ def image_for(name, offers):
     return None
 
 
-def render(shoe, sport, base, category, fields, photo=None):
+def price_of(shoe):
+    return float(shoe.get("prix", shoe.get("price", 0)) or 0)
+
+
+def alternatives(shoe, shoes, sport, fields, count=4):
+    """Closest models in the same base: similar scores, same category, similar price."""
+    notes = scores(shoe, sport, fields)
+    group = shoe.get("surface") if sport == "basket" else shoe.get("type")
+    ranked = []
+    for other in shoes:
+        if other is shoe:
+            continue
+        other_notes = scores(other, sport, fields)
+        distance = sum((notes[key] - other_notes[key]) ** 2 for key in fields) ** 0.5
+        distance += abs(price_of(shoe) - price_of(other)) / 40
+        other_group = other.get("surface") if sport == "basket" else other.get("type")
+        if other_group != group:
+            distance += 1.5
+        ranked.append((distance, display_name(other, sport), other))
+    ranked.sort(key=lambda item: (item[0], item[1]))
+    return [(name, other) for _, name, other in ranked[:count]]
+
+
+def alternatives_html(shoe, shoes, sport, fields):
+    links = []
+    for name, other in alternatives(shoe, shoes, sport, fields):
+        meta = f"{display_value(other['surface'])} · " + f"{price_of(other):g}".replace(".", ",") + " €" if sport == "basket" else f"{display_value(other['type'])} · {other['distance']}"
+        links.append(f'<li><a href="../{slug(name)}/">{h(name)}</a> <span class="muted">· {h(meta)}</span></li>')
+    return f'<section class="card"><h2>Modèles proches à comparer</h2><p class="muted">Paires dont les notes, la catégorie et le prix se rapprochent le plus dans notre base.</p><ul>{"".join(links)}</ul></section>'
+
+
+def render(shoe, sport, base, category, fields, photo=None, related=""):
     root_link = "../../../" if sport == "basket" else "../../../../"
     name = display_name(shoe, sport)
     notes = scores(shoe, sport, fields)
@@ -124,6 +155,7 @@ def render(shoe, sport, base, category, fields, photo=None):
       <section class="card"><h2>L'essentiel sur cette paire</h2><p class="lede">{use}</p><div class="verdict"><div><span>Ses atouts dans notre base</span><strong>{h(strengths.capitalize())}</strong></div><div><span>À regarder de plus près</span><strong>{h(modest.capitalize())}</strong></div></div><p class="note">Ces indications viennent des données MyBestPair. Elles permettent de comparer les modèles, mais ne remplacent pas un essai de la chaussure.</p></section>
       <section class="card"><h2>Ses notes MyBestPair</h2><p class="muted">Évaluations internes sur 10 utilisées par le questionnaire, et non notes issues d'un test terrain indépendant. <a href="{root_link}methodologie.html">Comprendre notre méthodologie</a>.</p><div class="scores" aria-label="Notes internes MyBestPair sur 10">{rows}</div></section>
       <section class="card"><h2>Avant de choisir</h2><p>{caveat}</p><p>Le questionnaire tient aussi compte de {factors}. Le classement change donc selon ton profil.</p><p><a href="../">Voir toutes les chaussures {h(category)} →</a></p></section>
+      {related}
     </div><aside>{visual}
       <section class="card"><h2>Repères techniques</h2><dl class="specs">{specs}</dl><p class="muted" style="margin-top:16px">Données indicatives de notre base. Les caractéristiques exactes peuvent varier selon la version et la pointure : vérifie-les auprès du fabricant.</p></section>
       <section class="card"><h2>Est-ce ta paire ?</h2><p>Renseigne ton profil pour voir si {h(name)} ressort parmi tes recommandations et quels autres modèles lui sont comparés.</p><a class="cta" href="../../#{fragment}" id="questionnaireLink">Tester mon profil gratuitement</a><small>Prix et disponibilité peuvent évoluer : vérifie-les chez le marchand.</small></section>
@@ -151,8 +183,14 @@ def main():
             page = dest / path / "index.html"
             page.parent.mkdir(exist_ok=True)
             # Keep the hand-edited pilot fiche with its manufacturer sources.
+            if sport == "route" and path == "asics-novablast-6":
+                pilot = page.read_text()
+                block = alternatives_html(shoe, shoes, sport, fields)
+                pilot = re.sub(r'\n        <section class="card"><h2>Modèles proches à comparer</h2>.*?</section>', "", pilot, flags=re.S)
+                marker = '\n      </div>\n      <aside>'
+                page.write_text(pilot.replace(marker, "\n        " + block + marker, 1))
             if not (sport == "route" and path == "asics-novablast-6"):
-                page.write_text(render(shoe, sport, base, category, fields, image_for(name, offers)))
+                page.write_text(render(shoe, sport, base, category, fields, image_for(name, offers), alternatives_html(shoe, shoes, sport, fields)))
             all_urls.append(f"https://mybestpair.fr/{base}/modeles/{path}/")
         tiles = []
         for shoe, name, path in zip(shoes, names, slugs):
