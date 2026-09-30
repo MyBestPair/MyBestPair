@@ -133,7 +133,12 @@ def render(shoe, sport, base, category, fields, photo=None, related=""):
     strengths = ", ".join(label(key).lower() for key in ranked[:3])
     modest = ", ".join(label(key).lower() for key in sorted(notes, key=lambda key: (notes[key], fields.index(key)))[:2])
     url = f"https://mybestpair.fr/{base}/modeles/{slug(name)}/"
-    description = f"{name} : notes MyBestPair en {strengths}, caractéristiques de la base {category} et accès au questionnaire pour tester ton profil."
+    title = f"{name} : notes et profil | MyBestPair"
+    if len(title) > 60:
+        title = f"{name} : notes et profil"
+    description = f"{name} : notes MyBestPair en {strengths}. Caractéristiques clés et test gratuit pour savoir si c'est ta paire."
+    if len(description) > 155:
+        description = f"{name} : notes MyBestPair en {strengths}. Teste gratuitement si c'est ta paire."
     rows = "\n".join(f'<div class="score" style="--score:{notes[key] * 10:g}%"><span>{h(label(key))}</span><strong>{score(notes[key])}</strong></div>' for key in fields)
     if sport == "basket":
         details = [("Surface enregistrée", shoe["surface"]), ("Type de pied enregistré", shoe["foot"]), ("Prix indicatif de la base", f'{shoe["price"]:g} €')]
@@ -165,10 +170,10 @@ def render(shoe, sport, base, category, fields, photo=None, related=""):
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#124f9c">
-  <title>{h(name)} : caractéristiques et profil | MyBestPair</title>
+  <title>{h(title)}</title>
   <meta name="description" content="{h(description)}">
   <link rel="canonical" href="{url}"><link rel="icon" href="{root_link}favicon.png">
-  {head_extras(f"{name} : caractéristiques et profil | MyBestPair", description, url)}
+  {head_extras(title, description, url)}
   {json_ld(breadcrumb([("Accueil", "https://mybestpair.fr/"), (category, f"https://mybestpair.fr/{base}/"), ("Modèles", f"https://mybestpair.fr/{base}/modeles/"), (name, url)]))}
   <script src="{root_link}analytics-consent.js"></script>
   <link rel="stylesheet" href="{root_link}modeles.css">
@@ -232,7 +237,7 @@ def main():
             model = name[len(brand):].strip() if name.lower().startswith(brand.lower()) else name
             meta = f"{display_value(shoe['type'])} · {shoe['distance']}" if sport != "basket" else f"{display_value(shoe['surface'])} · {display_value(shoe['foot'])}"
             photo = image_for(name, offers)
-            visual = f'<span class="tile-photo"><img src="{h(photo[0])}" alt="" loading="lazy" decoding="async"></span>' if photo else ''
+            visual = f'<span class="tile-photo"><img src="{h(photo[0])}" alt="{h(name)}" loading="lazy" decoding="async"></span>' if photo else ''
             tiles.append(f'<a class="model-tile" href="{h(path)}/">{visual}<span class="tile-brand">{h(brand)}</span><strong>{h(model)}</strong><span class="tile-meta">{h(meta)}</span><span class="tile-link">Voir la fiche →</span></a>')
         links = "\n".join(tiles)
         hub_root = "../../" if sport == "basket" else "../../../"
