@@ -69,6 +69,22 @@ def image_for(name, offers):
     return None
 
 
+OG_IMAGE = "https://mybestpair.fr/images/og-mybestpair.jpg"
+FONTS_URL = "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap"
+
+
+def head_extras(title, description, url):
+    """Social sharing tags and non-blocking web fonts, shared by every generated page."""
+    return (
+        f'<meta property="og:type" content="website"><meta property="og:site_name" content="MyBestPair"><meta property="og:locale" content="fr_FR">'
+        f'<meta property="og:title" content="{h(title)}"><meta property="og:description" content="{h(description)}"><meta property="og:url" content="{url}">'
+        f'<meta property="og:image" content="{OG_IMAGE}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">'
+        f'<meta name="twitter:card" content="summary_large_image">'
+        f'<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
+        f'<link rel="preload" as="style" href="{FONTS_URL}" onload="this.onload=null;this.rel=\'stylesheet\'"><noscript><link rel="stylesheet" href="{FONTS_URL}"></noscript>'
+    )
+
+
 def price_of(shoe):
     return float(shoe.get("prix", shoe.get("price", 0)) or 0)
 
@@ -143,6 +159,7 @@ def render(shoe, sport, base, category, fields, photo=None, related=""):
   <title>{h(name)} : caractéristiques et profil | MyBestPair</title>
   <meta name="description" content="{h(description)}">
   <link rel="canonical" href="{url}"><link rel="icon" href="{root_link}favicon.png">
+  {head_extras(f"{name} : caractéristiques et profil | MyBestPair", description, url)}
   <script src="{root_link}analytics-consent.js"></script>
   <link rel="stylesheet" href="{root_link}modeles.css">
 </head>
@@ -185,6 +202,10 @@ def main():
             # Keep the hand-edited pilot fiche with its manufacturer sources.
             if sport == "route" and path == "asics-novablast-6":
                 pilot = page.read_text()
+                if 'property="og:title"' not in pilot:
+                    title = re.search(r"<title>(.*?)</title>", pilot).group(1)
+                    desc = html.unescape(re.search(r'<meta name="description" content="(.*?)">', pilot).group(1))
+                    pilot = pilot.replace('<link rel="icon"', head_extras(html.unescape(title), desc, f"https://mybestpair.fr/{base}/modeles/{path}/") + '\n  <link rel="icon"', 1)
                 block = alternatives_html(shoe, shoes, sport, fields)
                 pilot = re.sub(r'\n        <section class="card"><h2>Modèles proches à comparer</h2>.*?</section>', "", pilot, flags=re.S)
                 marker = '\n      </div>\n      <aside>'
@@ -202,7 +223,7 @@ def main():
             tiles.append(f'<a class="model-tile" href="{h(path)}/">{visual}<span class="tile-brand">{h(brand)}</span><strong>{h(model)}</strong><span class="tile-meta">{h(meta)}</span><span class="tile-link">Voir la fiche →</span></a>')
         links = "\n".join(tiles)
         hub_root = "../../" if sport == "basket" else "../../../"
-        index = f'''<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Chaussures {h(category)} : {len(shoes)} fiches modèles | MyBestPair</title><meta name="description" content="Parcours les {len(shoes)} modèles {h(category)} de la base MyBestPair, consulte leurs caractéristiques et teste ton profil."><link rel="canonical" href="https://mybestpair.fr/{base}/modeles/"><link rel="icon" href="{hub_root}favicon.png"><script src="{hub_root}analytics-consent.js"></script><link rel="stylesheet" href="{hub_root}modeles.css"></head><body><nav class="topbar"><a class="brand" href="{hub_root}">MYBESTPAIR</a><a href="../">Questionnaire {h(category)}</a></nav><main><nav class="crumbs"><a href="{hub_root}">Accueil</a> › <a href="../">{h(category)}</a> › Modèles</nav><header class="hero"><div class="eyebrow">Catalogue MyBestPair / {h(category)}</div><h1>Une paire pour chaque profil.</h1><p>Explore les {len(shoes)} modèles de notre base {h(category)}, puis trouve ceux qui correspondent à ta pratique.</p><a class="cta" href="../">Trouver ma paire →</a></header><div class="catalogue-toolbar"><h2>Explorer les modèles</h2><p>{len(shoes)} fiches · caractéristiques et notes MyBestPair</p></div><div class="catalogue-grid">{links}</div><p class="muted" style="margin-top:24px">Les données présentées sont indicatives et les disponibilités peuvent évoluer.</p></main><footer>© 2026 MyBestPair · <a href="{hub_root}conditions-utilisation.html">Conditions d’utilisation</a> · <a href="{hub_root}methodologie.html">Méthodologie</a> · <a href="{hub_root}confidentialite.html">Confidentialité</a></footer></body></html>'''
+        index = f'''<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Chaussures {h(category)} : {len(shoes)} fiches modèles | MyBestPair</title><meta name="description" content="Parcours les {len(shoes)} modèles {h(category)} de la base MyBestPair, consulte leurs caractéristiques et teste ton profil."><link rel="canonical" href="https://mybestpair.fr/{base}/modeles/"><link rel="icon" href="{hub_root}favicon.png">{head_extras(f"Chaussures {category} : {len(shoes)} fiches modèles | MyBestPair", f"Parcours les {len(shoes)} modèles {category} de la base MyBestPair, consulte leurs caractéristiques et teste ton profil.", f"https://mybestpair.fr/{base}/modeles/")}<script src="{hub_root}analytics-consent.js"></script><link rel="stylesheet" href="{hub_root}modeles.css"></head><body><nav class="topbar"><a class="brand" href="{hub_root}">MYBESTPAIR</a><a href="../">Questionnaire {h(category)}</a></nav><main><nav class="crumbs"><a href="{hub_root}">Accueil</a> › <a href="../">{h(category)}</a> › Modèles</nav><header class="hero"><div class="eyebrow">Catalogue MyBestPair / {h(category)}</div><h1>Une paire pour chaque profil.</h1><p>Explore les {len(shoes)} modèles de notre base {h(category)}, puis trouve ceux qui correspondent à ta pratique.</p><a class="cta" href="../">Trouver ma paire →</a></header><div class="catalogue-toolbar"><h2>Explorer les modèles</h2><p>{len(shoes)} fiches · caractéristiques et notes MyBestPair</p></div><div class="catalogue-grid">{links}</div><p class="muted" style="margin-top:24px">Les données présentées sont indicatives et les disponibilités peuvent évoluer.</p></main><footer>© 2026 MyBestPair · <a href="{hub_root}conditions-utilisation.html">Conditions d’utilisation</a> · <a href="{hub_root}methodologie.html">Méthodologie</a> · <a href="{hub_root}confidentialite.html">Confidentialité</a></footer></body></html>'''
         (dest / "index.html").write_text(index)
         all_urls.append(f"https://mybestpair.fr/{base}/modeles/")
         category_page = ROOT / base / "index.html"
