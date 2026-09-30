@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build static catalogue pages from the shoe data embedded in the questionnaires."""
+"""Build static catalogue pages from the shoe data of the questionnaires (shoes.js, route-app.js, trail-app.js)."""
 import html
 import json
 import re
@@ -137,7 +137,7 @@ def render(shoe, sport, base, category, fields, photo=None):
 def main():
     all_urls = []
     for sport, (base, category, fields) in SPECS.items():
-        source = (ROOT / ("shoes.js" if sport == "basket" else f"{base}/index.html")).read_text()
+        source = (ROOT / ("shoes.js" if sport == "basket" else f"{base}/{sport}-app.js")).read_text()
         shoes = items(source)
         offers_match = re.search(r"const MERCHANT_OFFERS = (\{.*?\});", source, re.S)
         offers = json.loads(offers_match.group(1)) if offers_match else {}
@@ -164,7 +164,7 @@ def main():
             tiles.append(f'<a class="model-tile" href="{h(path)}/">{visual}<span class="tile-brand">{h(brand)}</span><strong>{h(model)}</strong><span class="tile-meta">{h(meta)}</span><span class="tile-link">Voir la fiche →</span></a>')
         links = "\n".join(tiles)
         hub_root = "../../" if sport == "basket" else "../../../"
-        index = f'''<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Chaussures {h(category)} : {len(shoes)} fiches modèles | MyBestPair</title><meta name="description" content="Parcours les {len(shoes)} modèles {h(category)} de la base MyBestPair, consulte leurs caractéristiques et teste ton profil."><link rel="canonical" href="https://mybestpair.fr/{base}/modeles/"><link rel="icon" href="{hub_root}favicon.png"><link rel="stylesheet" href="{hub_root}modeles.css"></head><body><nav class="topbar"><a class="brand" href="{hub_root}">MYBESTPAIR</a><a href="../">Questionnaire {h(category)}</a></nav><main><nav class="crumbs"><a href="{hub_root}">Accueil</a> › <a href="../">{h(category)}</a> › Modèles</nav><header class="hero"><div class="eyebrow">Catalogue MyBestPair / {h(category)}</div><h1>Une paire pour chaque profil.</h1><p>Explore les {len(shoes)} modèles de notre base {h(category)}, puis trouve ceux qui correspondent à ta pratique.</p><a class="cta" href="../">Trouver ma paire →</a></header><div class="catalogue-toolbar"><h2>Explorer les modèles</h2><p>{len(shoes)} fiches · caractéristiques et notes MyBestPair</p></div><div class="catalogue-grid">{links}</div><p class="muted" style="margin-top:24px">Les données présentées sont indicatives et les disponibilités peuvent évoluer.</p></main><footer>© 2026 MyBestPair · <a href="{hub_root}conditions-utilisation.html">Conditions d’utilisation</a> · <a href="{hub_root}methodologie.html">Méthodologie</a> · <a href="{hub_root}confidentialite.html">Confidentialité</a></footer></body></html>'''
+        index = f'''<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Chaussures {h(category)} : {len(shoes)} fiches modèles | MyBestPair</title><meta name="description" content="Parcours les {len(shoes)} modèles {h(category)} de la base MyBestPair, consulte leurs caractéristiques et teste ton profil."><link rel="canonical" href="https://mybestpair.fr/{base}/modeles/"><link rel="icon" href="{hub_root}favicon.png"><script src="{hub_root}analytics-consent.js"></script><link rel="stylesheet" href="{hub_root}modeles.css"></head><body><nav class="topbar"><a class="brand" href="{hub_root}">MYBESTPAIR</a><a href="../">Questionnaire {h(category)}</a></nav><main><nav class="crumbs"><a href="{hub_root}">Accueil</a> › <a href="../">{h(category)}</a> › Modèles</nav><header class="hero"><div class="eyebrow">Catalogue MyBestPair / {h(category)}</div><h1>Une paire pour chaque profil.</h1><p>Explore les {len(shoes)} modèles de notre base {h(category)}, puis trouve ceux qui correspondent à ta pratique.</p><a class="cta" href="../">Trouver ma paire →</a></header><div class="catalogue-toolbar"><h2>Explorer les modèles</h2><p>{len(shoes)} fiches · caractéristiques et notes MyBestPair</p></div><div class="catalogue-grid">{links}</div><p class="muted" style="margin-top:24px">Les données présentées sont indicatives et les disponibilités peuvent évoluer.</p></main><footer>© 2026 MyBestPair · <a href="{hub_root}conditions-utilisation.html">Conditions d’utilisation</a> · <a href="{hub_root}methodologie.html">Méthodologie</a> · <a href="{hub_root}confidentialite.html">Confidentialité</a></footer></body></html>'''
         (dest / "index.html").write_text(index)
         all_urls.append(f"https://mybestpair.fr/{base}/modeles/")
         category_page = ROOT / base / "index.html"
