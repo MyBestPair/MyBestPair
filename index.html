@@ -534,7 +534,23 @@
       text-decoration:underline;
     }
 
-  </style>
+  
+    .models-hub { margin:36px 0 10px; padding:28px 24px; border:1px solid rgba(255,255,255,.12); border-radius:14px; background:rgba(6,29,69,.72); scroll-margin-top:20px; }
+    .models-hub h2 { margin:0 0 8px; font-size:26px; text-transform:uppercase; }
+    .models-hub > p { margin:0 0 20px; color:#dce7fb; font-size:14px; line-height:1.6; }
+    .hub-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    .hub-col { border:1px solid rgba(255,255,255,.14); border-radius:12px; padding:18px; background:rgba(11,42,97,.55); }
+    .hub-col h3 { margin:0 0 12px; font-size:17px; }
+    .hub-col h3 a { color:#fff; text-decoration:none; }
+    .hub-col ul { list-style:none; margin:0 0 14px; padding:0; display:grid; gap:8px; }
+    .hub-col li a { color:#dce7fb; font-size:14px; text-decoration:none; }
+    .hub-col li a:hover, .hub-all:hover { text-decoration:underline; }
+    .hub-all { color:#fff; font-weight:800; font-size:14px; text-decoration:none; }
+    .card-models { display:block; margin-top:12px; text-align:center; color:#dce7fb; font-size:14px; text-decoration:underline; }
+    .top-links { display:flex; gap:16px; font-size:13px; font-weight:800; text-transform:uppercase; }
+    .top-links a { color:#dce7fb; text-decoration:none; }
+    @media(max-width:900px) { .hub-grid { grid-template-columns:1fr; } }
+</style>
 </head>
 
 <body>
@@ -548,6 +564,7 @@
         </span>
       </a>
       <div class="topline">Trouve la meilleure paire pour ton sport</div>
+      <nav class="top-links" aria-label="Accès rapide"><a href="#fiches-modeles">Fiches modèles</a><a href="methodologie.html">Méthodologie</a></nav>
     </div>
 
     <section class="hero">
@@ -599,6 +616,7 @@
           </div>
 
           <a class="cta" href="basket/">Découvrir Basketball <span>→</span></a>
+          <a class="card-models" href="basket/modeles/">Voir les 30 fiches modèles basket</a>
         </div>
       </article>
 
@@ -615,6 +633,7 @@
           </div>
 
           <a class="cta" href="running/route/">Découvrir Running Route <span>→</span></a>
+          <a class="card-models" href="running/route/modeles/">Voir les 50 fiches modèles route</a>
         </div>
       </article>
 
@@ -625,15 +644,56 @@
           <p>Accroche, amorti, stabilité et protection : trouve la paire adaptée à ton terrain et tes distances.</p>
 
           <div class="facts">
-            <div class="fact"><span class="check">✓</span> 50 modèles analysés</div>
+            <div class="fact"><span class="check">✓</span> 51 modèles analysés</div>
             <div class="fact"><span class="check">✓</span> Moteur Trail personnalisé</div>
             <div class="fact"><span class="check">✓</span> Recommandations détaillées</div>
           </div>
 
           <a class="cta" href="running/trail/">Découvrir Trail <span>→</span></a>
+          <a class="card-models" href="running/trail/modeles/">Voir les 51 fiches modèles trail</a>
         </div>
       </article>
 
+    </section>
+
+    <section id="fiches-modeles" class="models-hub">
+      <h2>Fiches modèles</h2>
+      <p>Consulte les caractéristiques et les notes de chaque paire avant de lancer le questionnaire : 131 fiches pour la route, le trail et le basket.</p>
+      <div class="hub-grid">
+        <div class="hub-col">
+          <h3><a href="running/route/modeles/">🏃 Running Route</a></h3>
+          <ul>
+            <li><a href="running/route/modeles/asics-novablast-6/">ASICS Novablast 6</a></li>
+            <li><a href="running/route/modeles/nike-pegasus-42/">Nike Pegasus 42</a></li>
+            <li><a href="running/route/modeles/hoka-clifton-11/">HOKA Clifton 11</a></li>
+            <li><a href="running/route/modeles/brooks-ghost-17/">Brooks Ghost 17</a></li>
+            <li><a href="running/route/modeles/asics-gel-nimbus-28/">ASICS Gel-Nimbus 28</a></li>
+          </ul>
+          <a class="hub-all" href="running/route/modeles/">Les 50 fiches route →</a>
+        </div>
+        <div class="hub-col">
+          <h3><a href="running/trail/modeles/">⛰️ Trail</a></h3>
+          <ul>
+            <li><a href="running/trail/modeles/hoka-speedgoat-7/">HOKA Speedgoat 7</a></li>
+            <li><a href="running/trail/modeles/salomon-speedcross-6/">Salomon Speedcross 6</a></li>
+            <li><a href="running/trail/modeles/saucony-peregrine-16/">Saucony Peregrine 16</a></li>
+            <li><a href="running/trail/modeles/nike-pegasus-trail-5/">Nike Pegasus Trail 5</a></li>
+            <li><a href="running/trail/modeles/hoka-mafate-5/">HOKA Mafate 5</a></li>
+          </ul>
+          <a class="hub-all" href="running/trail/modeles/">Les 51 fiches trail →</a>
+        </div>
+        <div class="hub-col">
+          <h3><a href="basket/modeles/">🏀 Basketball</a></h3>
+          <ul>
+            <li><a href="basket/modeles/nike-sabrina-3/">Nike Sabrina 3</a></li>
+            <li><a href="basket/modeles/nike-kobe-ix-elite-low-protro/">Nike Kobe IX Elite Low Protro</a></li>
+            <li><a href="basket/modeles/jordan-luka-5/">Jordan Luka 5</a></li>
+            <li><a href="basket/modeles/nike-ja-3/">Nike Ja 3</a></li>
+            <li><a href="basket/modeles/under-armour-curry-13/">Under Armour Curry 13</a></li>
+          </ul>
+          <a class="hub-all" href="basket/modeles/">Les 30 fiches basket →</a>
+        </div>
+      </div>
     </section>
 
     <section class="how">
@@ -721,8 +781,11 @@
     <footer class="legal-footer">
       <span>© MYBESTPAIR</span>
       <a href="#a-propos">À propos</a>
-      <a href="conditions-utilisation.html">Conditions d’utilisation</a> · <a href="methodologie.html">Méthodologie</a>
-      <a href="conditions-utilisation.html">Conditions d'utilisation</a>
+      <a href="running/route/modeles/">Fiches Route</a>
+      <a href="running/trail/modeles/">Fiches Trail</a>
+      <a href="basket/modeles/">Fiches Basket</a>
+      <a href="methodologie.html">Méthodologie</a>
+      <a href="conditions-utilisation.html">Conditions d’utilisation</a>
       <a href="confidentialite.html">Politique de confidentialité</a>
       <a href="#cookies" id="manageCookies">Gérer mes cookies</a>
       <a href="mailto:myshoesfr.contact@gmail.com">Contact</a>
