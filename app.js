@@ -245,7 +245,7 @@ function budgetStatus(price, budget) {
   if (price <= budget) {
 
     return {
-      text: "✅ Dans le budget",
+      text: mbpIcon("check", "ico-ok") + " Dans le budget",
       key: "in"
     };
 
@@ -255,7 +255,7 @@ function budgetStatus(price, budget) {
   if (price <= budget + FLEX_BUDGET) {
 
     return {
-      text: "❤️ Coup de cœur",
+      text: mbpIcon("heart", "ico-heart") + " Coup de cœur",
       key: "heart"
     };
 
@@ -263,7 +263,7 @@ function budgetStatus(price, budget) {
 
 
   return {
-    text: "⚠️ Hors budget",
+    text: mbpIcon("alert", "ico-warn") + " Hors budget",
     key: "out"
   };
 
@@ -309,7 +309,7 @@ function weakestMessage(scores) {
   if (min >= 8) {
 
     return {
-      text: "💚 Profil très équilibré",
+      text: mbpIcon("check", "ico-ok") + " Profil très équilibré",
       balanced: true
     };
 
@@ -324,16 +324,16 @@ function weakestMessage(scores) {
   const specific = {
 
     LEGERETE:
-      "⚠️ Modèle plutôt lourd",
+      mbpIcon("alert") + " Modèle plutôt lourd",
 
     DURABILITE:
-      "⚠️ Durabilité plus limitée",
+      mbpIcon("alert") + " Durabilité plus limitée",
 
     AMORTI:
-      "⚠️ Amorti plutôt ferme",
+      mbpIcon("alert") + " Amorti plutôt ferme",
 
     CONFORT:
-      "⚠️ Confort un peu en retrait"
+      mbpIcon("alert") + " Confort un peu en retrait"
 
   };
 
@@ -342,7 +342,7 @@ function weakestMessage(scores) {
 
     text:
       specific[c] ||
-      `⚠️ ${
+      `${mbpIcon("alert")} ${
         titleCriterion(c)
           .replace(/^./, x => x.toUpperCase())
       } en retrait`,
@@ -634,17 +634,17 @@ function surfaceFit(v) {
 
   return v >= 90
 
-    ? "✅ Idéale"
+    ? mbpIcon("check", "ico-ok") + " Idéale"
 
     : v >= 75
 
-    ? "👍 Très adaptée"
+    ? mbpIcon("thumb", "ico-ok") + " Très adaptée"
 
     : v >= 60
 
-    ? "🟡 Compatible"
+    ? '<span class="dot dot-mid"></span> Compatible'
 
-    : "⚠️ Peu adaptée";
+    : mbpIcon("alert", "ico-warn") + " Peu adaptée";
 
 }
 
@@ -677,20 +677,7 @@ function cardHTML(r, idx) {
 
 
   const medal =
-
-    rank === 1
-
-      ? "🥇"
-
-      : rank === 2
-
-      ? "🥈"
-
-      : rank === 3
-
-      ? "🥉"
-
-      : "👟";
+    mbpRank(rank);
 
 
   const label =
@@ -720,7 +707,7 @@ function cardHTML(r, idx) {
           target="_blank"
           rel="noopener noreferrer"
         >
-          👟 Voir les coloris & disponibilités
+          ${mbpIcon("shoe")} Voir les coloris & disponibilités
         </a>`
 
       : `<span class="product-link disabled">
@@ -734,7 +721,7 @@ function cardHTML(r, idx) {
 
       <div class="card-top">
 
-        <div class="rank-label">
+        <div class="rank-label with-ico">
           ${medal} ${label}
         </div>
 
@@ -743,7 +730,7 @@ function cardHTML(r, idx) {
         </div>
 
         <div class="score">
-          ⭐ Score MYBESTPAIR :
+          ${mbpIcon("star", "ico-gold")} Score MYBESTPAIR :
           ${Math.round(r.final)} / 100
         </div>
 
@@ -757,7 +744,7 @@ function cardHTML(r, idx) {
 
           <div class="info">
 
-            💰
+            ${mbpIcon("euro")}
             <strong>
               ${euro(r.price)}
             </strong>
@@ -771,7 +758,7 @@ function cardHTML(r, idx) {
 
           <div class="info">
 
-            🏠 Surface :
+            ${mbpIcon("court")} Surface :
 
             <strong>
               ${surfaceText(r.surface)}
@@ -788,7 +775,7 @@ function cardHTML(r, idx) {
 
           <div class="info">
 
-            👟 Pied :
+            ${mbpIcon("footprints")} Pied :
 
             <strong>
               ${footText(
@@ -801,7 +788,7 @@ function cardHTML(r, idx) {
 
           <div class="info">
 
-            🏷️ Marque :
+            ${mbpIcon("tag")} Marque :
 
             <strong>
               ${r.brand.toUpperCase()}
@@ -812,7 +799,7 @@ function cardHTML(r, idx) {
 
           <div class="info">
 
-            ⭐ Affinité marque :
+            ${mbpIcon("heart")} Affinité marque :
 
             <strong>
 
@@ -840,7 +827,7 @@ function cardHTML(r, idx) {
           <div class="strengths">
 
             <strong>
-              ✅ POINTS FORTS
+              ${mbpIcon("check", "ico-ok")} POINTS FORTS
             </strong>
 
             <br>
@@ -876,7 +863,7 @@ function cardHTML(r, idx) {
           <div class="why">
 
             <strong>
-              💡 Pourquoi cette chaussure ?
+              ${mbpIcon("bulb", "ico-gold")} Pourquoi cette chaussure ?
             </strong>
 
             <br>
@@ -1238,6 +1225,15 @@ $("profile-form")
         true;
 
 
+      mbpLoader({
+        steps: [
+          "Analyse de ton profil de joueur",
+          `Comparaison des ${SHOES.length} modèles basket`,
+          "Calcul de ton Top 3"
+        ]
+      }, () => {
+
+
       /* =====================================================
          CALCUL ET CLASSEMENT
          ===================================================== */
@@ -1414,6 +1410,8 @@ $("profile-form")
 
           }
         );
+
+      });
 
     }
   );

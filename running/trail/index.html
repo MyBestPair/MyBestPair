@@ -328,7 +328,8 @@
     .smart-offer{margin-top:10px}.smart-offer-label{font-size:.76rem;font-weight:900;letter-spacing:.05em;margin-bottom:4px;color:#475569}.smart-offer-meta{font-size:.88rem;margin:0 0 6px;color:#334155}.smart-offer .shoe-link{margin-top:0}
     </style>
   <script src="../../analytics-consent.js"></script>
-    </head>
+      <link rel="stylesheet" href="../../ui.css">
+</head>
     <body>
 
     <div class="topbar">
@@ -352,7 +353,7 @@
 
     <main class="wrap">
     <section class="panel" id="questionnaire">
-    <div class="panel-head"><span class="badge">⛰️ RUNNING • TRAIL</span><h2>Ton profil de traileur</h2><p class="intro">Renseigne ton profil pour obtenir ton Top 3 personnalisé.</p></div>
+    <div class="panel-head"><span class="badge"><svg class="ico" aria-hidden="true"><use href="../../icons.svg#mountain"></use></svg> RUNNING • TRAIL</span><h2>Ton profil de traileur</h2><p class="intro">Renseigne ton profil pour obtenir ton Top 3 personnalisé.</p></div>
     <div class="form">
     <div class="question" data-key="budget"><div class="question-title">Quel est ton budget ?</div><input id="budget" class="number-input" type="number" min="50" max="500" placeholder="Ex : 180 €"></div>
 
@@ -407,11 +408,11 @@
     <button class="option" data-value="THE NORTH FACE">THE NORTH FACE</button>
     <button class="option" data-value="TOPO">TOPO</button></div></div>
 
-    <button id="recommendBtn" class="recommend-btn">🔎 VOIR MES RECOMMANDATIONS</button>
+    <button id="recommendBtn" class="recommend-btn"><svg class="ico" aria-hidden="true"><use href="../../icons.svg#search"></use></svg> VOIR MES RECOMMANDATIONS</button>
     <div id="errorBox" class="error"></div>
     </div></section>
 
-    <section id="results" class="results"><h2 class="results-title">🏆 Ton Top 3 MYBESTPAIR Trail</h2><p id="resultsSub" class="results-sub"></p><div id="podium" class="podium"></div><button id="restartBtn" class="restart">↻ Modifier mon profil</button><p><a href="../../methodologie.html">Comprendre notre méthodologie</a></p></section>
+    <section id="results" class="results"><h2 class="results-title"><svg class="ico ico-gold" aria-hidden="true"><use href="../../icons.svg#trophy"></use></svg> Ton Top 3 MYBESTPAIR Trail</h2><p id="resultsSub" class="results-sub"></p><div id="podium" class="podium"></div><button id="restartBtn" class="restart"><svg class="ico" aria-hidden="true"><use href="../../icons.svg#rotate"></use></svg> Modifier mon profil</button><p><a href="../../methodologie.html">Comprendre notre méthodologie</a></p></section>
     <section class="seo-guide" aria-labelledby="guide-trail-title">
     <h2 id="guide-trail-title">Comment choisir ses chaussures de trail ?</h2>
     <p>Choisir une chaussure de trail ne dépend pas seulement de la marque ou du prix. Le terrain, la distance, ton poids, ton type de pied, ton attaque et tes priorités peuvent changer le type de chaussure qui te conviendra le mieux.</p>
@@ -466,5 +467,6 @@
     </section>
 
 
-    <script src="trail-app.js"></script>
+    <script src="../../ui.js"></script>
+<script src="trail-app.js"></script>
     </body></html>
