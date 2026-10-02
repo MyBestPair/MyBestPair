@@ -79,14 +79,14 @@ function validateProfile(p) {
   if (!p.budget || !p.objectif || !p.distance || !p.allure || !p.poids ||
       !p.typePied || !p.attaque || !p.pointure || !p.rayon || !p.priorite1 || !p.priorite2 ||
       !p.priorite3 || !p.marque) {
-    return "⚠️ Merci de compléter toutes les informations avant de lancer le calcul.";
+    return "Merci de compléter toutes les informations avant de lancer le calcul.";
   }
   if (new Set([p.priorite1,p.priorite2,p.priorite3]).size !== 3) {
-    return "⚠️ Les priorités n°1, n°2 et n°3 doivent être différentes.";
+    return "Les priorités n°1, n°2 et n°3 doivent être différentes.";
   }
-  if (p.budget < 50 || p.budget > 500) return "⚠️ Entre un budget compris entre 50 € et 500 €.";
-  if (p.poids < 40 || p.poids > 200) return "⚠️ Entre un poids compris entre 40 kg et 200 kg.";
-  if (p.pointure < 35 || p.pointure > 50 || Math.abs(p.pointure * 2 - Math.round(p.pointure * 2)) > 0.001) return "⚠️ Entre une pointure comprise entre 35 et 50, par demi-pointure.";
+  if (p.budget < 50 || p.budget > 500) return "Entre un budget compris entre 50 € et 500 €.";
+  if (p.poids < 40 || p.poids > 200) return "Entre un poids compris entre 40 kg et 200 kg.";
+  if (p.pointure < 35 || p.pointure > 50 || Math.abs(p.pointure * 2 - Math.round(p.pointure * 2)) > 0.001) return "Entre une pointure comprise entre 35 et 50, par demi-pointure.";
   return "";
 }
 
@@ -210,9 +210,9 @@ function calculate(shoe,p) {
 }
 
 function budgetLabel(shoe,p) {
-  if (shoe.prix <= p.budget) return '<span class="budget-ok">✅ DANS LE BUDGET</span>';
-  if (shoe.prix <= p.budget + 20) return '<span class="budget-heart">❤️ COUP DE CŒUR</span>';
-  return '<span class="budget-out">⚠️ HORS BUDGET</span>';
+  if (shoe.prix <= p.budget) return '<span class="budget-ok">'+mbpIcon("check")+' DANS LE BUDGET</span>';
+  if (shoe.prix <= p.budget + 20) return '<span class="budget-heart">'+mbpIcon("heart")+' COUP DE CŒUR</span>';
+  return '<span class="budget-out">'+mbpIcon("alert")+' HORS BUDGET</span>';
 }
 
 function topStrengths(shoe) {
@@ -345,27 +345,27 @@ function smartMerchantHTML(shoe,p,rank){
 
 function merchantInfo(url){
   const u=(url||"").toLowerCase();
-  if(u.includes("click.linksynergy.com") || u.includes("decathlon.fr")) return {name:"DECATHLON",key:"decathlon",icon:"🛒"};
-  if(u.includes("endurance-store.fr")) return {name:"ENDURANCE-STORE",key:"endurance-store",icon:"🛒"};
-  if(u.includes("i-run.fr")) return {name:"I-RUN",key:"i-run",icon:"🏃"};
-  if(u.includes("ekosport.fr")) return {name:"EKOSPORT",key:"ekosport",icon:"🛒"};
-  return {name:"LE REVENDEUR",key:"autre",icon:"🛒"};
+  if(u.includes("click.linksynergy.com") || u.includes("decathlon.fr")) return {name:"DECATHLON",key:"decathlon",icon:"cart"};
+  if(u.includes("endurance-store.fr")) return {name:"ENDURANCE-STORE",key:"endurance-store",icon:"cart"};
+  if(u.includes("i-run.fr")) return {name:"I-RUN",key:"i-run",icon:"footprints"};
+  if(u.includes("ekosport.fr")) return {name:"EKOSPORT",key:"ekosport",icon:"cart"};
+  return {name:"LE REVENDEUR",key:"autre",icon:"cart"};
 }
 function merchantLink(url,shoe,rank,extraClass=""){
   if(!url)return "";
   const m=merchantInfo(url);
-  return `<a class="shoe-link${extraClass?` ${extraClass}`:""}" href="${url}" target="_blank" rel="noopener noreferrer" data-product-name="${shoe.modele}" data-product-brand="${shoe.marque}" data-rank="${rank}" data-merchant="${m.key}">${m.icon} VOIR CHEZ ${m.name}</a>`;
+  return `<a class="shoe-link${extraClass?` ${extraClass}`:""}" href="${url}" target="_blank" rel="noopener noreferrer" data-product-name="${shoe.modele}" data-product-brand="${shoe.marque}" data-rank="${rank}" data-merchant="${m.key}">${mbpIcon(m.icon)} VOIR CHEZ ${m.name}</a>`;
 }
 
 function cardHTML(shoe,index,p) {
-  const medals=["🥇","🥈","🥉"];
+  const medals=[1,2,3].map(mbpRank);
   const point=weakPoint(shoe);
-  const carbon=shoe.carbone==="OUI" ? " • 🧩 Plaque carbone" : "";
+  const carbon=shoe.carbone==="OUI" ? ` • ${mbpIcon("layers")} Plaque carbone` : "";
   return `
     <article class="shoe-card rank-${index+1}">
       <div class="rank-head">
-        <span>${medals[index]} ${index+1}${index===0?"re":"e"} RECOMMANDATION</span>
-        <span>⭐ ${Math.round(shoe.final)} / 100</span>
+        <span class="with-ico">${medals[index]} ${index+1}${index===0?"re":"e"} RECOMMANDATION</span>
+        <span class="with-ico">${mbpIcon("star","ico-gold")} ${Math.round(shoe.final)} / 100</span>
       </div>
       <div class="shoe-body">
         <h3 class="shoe-name">${shoe.modele}</h3>
@@ -377,20 +377,20 @@ function cardHTML(shoe,index,p) {
         </div>
 
         <div class="meta">
-          <span class="pill">💰 ${shoe.prix.toFixed(0)} €</span>
+          <span class="pill">${mbpIcon("euro")} ${shoe.prix.toFixed(0)} €</span>
           <span class="pill">${budgetLabel(shoe,p)}</span>
-          <span class="pill">⚖️ ${shoe.poidsChaussure.toFixed(0)} g</span>
-          <span class="pill">📏 ${shoe.distance}</span>
-          <span class="pill">🏃 ${shoe.allure}</span>
-          <span class="pill">${shoe.carbone==="OUI"?"🟢":"⚪"} Carbone : ${shoe.carbone}</span>
+          <span class="pill">${mbpIcon("scale")} ${shoe.poidsChaussure.toFixed(0)} g</span>
+          <span class="pill">${mbpIcon("ruler")} ${shoe.distance}</span>
+          <span class="pill">${mbpIcon("gauge")} ${shoe.allure}</span>
+          <span class="pill"><span class="dot ${shoe.carbone==="OUI"?"dot-on":"dot-off"}"></span> Carbone : ${shoe.carbone}</span>
         </div>
 
-        <div class="detail"><strong>✅ POINTS FORTS :</strong> ${topStrengths(shoe)}</div>
-        ${point ? `<div class="detail"><strong>⚠️ POINT À SAVOIR :</strong> ${point}</div>` : ""}
-        <div class="detail"><strong>🎯 TES PRIORITÉS :</strong> ${prettyCriterion(p.priorite1)} · ${prettyCriterion(p.priorite2)} · ${prettyCriterion(p.priorite3)}</div>
-        <div class="detail"><strong>💡 Pourquoi cette chaussure ?</strong><br>${whyText(shoe,p)}</div>
+        <div class="detail"><strong>${mbpIcon("check","ico-ok")} POINTS FORTS :</strong> ${topStrengths(shoe)}</div>
+        ${point ? `<div class="detail"><strong>${mbpIcon("alert","ico-warn")} POINT À SAVOIR :</strong> ${point}</div>` : ""}
+        <div class="detail"><strong>${mbpIcon("target","ico-info")} TES PRIORITÉS :</strong> ${prettyCriterion(p.priorite1)} · ${prettyCriterion(p.priorite2)} · ${prettyCriterion(p.priorite3)}</div>
+        <div class="detail"><strong>${mbpIcon("bulb","ico-gold")} Pourquoi cette chaussure ?</strong><br>${whyText(shoe,p)}</div>
 
-        <div class="merchant-label">🛒 Où trouver cette chaussure ?</div>
+        <div class="merchant-label">${mbpIcon("cart")} Où trouver cette chaussure ?</div>
         <div class="merchant-offers">
           ${smartMerchantHTML(shoe,p,index+1)}
         </div>
@@ -422,7 +422,7 @@ function showResults(p) {
 
   if (clearlyOverBudget.length >= 2) {
     budgetNotice.innerHTML = `
-      💡 <strong>Ton budget limite les options pour ton profil.</strong><br>
+      ${mbpIcon("bulb","ico-gold")} <strong>Ton budget limite les options pour ton profil.</strong><br>
       Les modèles les plus adaptés dépassent actuellement ton budget de <strong>${p.budget} €</strong>.
       MYBESTPAIR privilégie la compatibilité avec ta pratique et tes priorités plutôt que de te recommander
       une chaussure moins adaptée uniquement pour respecter ton budget.
@@ -431,7 +431,7 @@ function showResults(p) {
   } else if (overBudget.length >= 1) {
     budgetNotice.classList.add("is-soft");
     budgetNotice.innerHTML = `
-      💡 <strong>Certaines recommandations dépassent légèrement ton budget.</strong><br>
+      ${mbpIcon("bulb","ico-gold")} <strong>Certaines recommandations dépassent légèrement ton budget.</strong><br>
       Ton budget est bien pris en compte, mais un modèle un peu plus cher peut apparaître dans ton Top 3
       lorsqu'il correspond mieux à ton profil.
     `;
@@ -526,12 +526,15 @@ $("#recommendBtn").addEventListener("click",()=>{
   const error=validateProfile(p);
   const box=$("#errorBox");
   if(error){
-    box.textContent=error;
+    box.innerHTML=mbpIcon("alert")+" ";
+    box.append(error);
     box.style.display="block";
     return;
   }
   box.style.display="none";
-  showResults(p);
+  mbpLoader({
+    steps:["Analyse de ton profil de coureur","Comparaison des 50 modèles Route","Calcul de ton Top 3"]
+  },()=>showResults(p));
 });
 
 $("#restartBtn").addEventListener("click",()=>{

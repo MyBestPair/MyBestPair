@@ -360,6 +360,7 @@ h2{margin:10px 0 7px;font-size:25px}
 
 .smart-offer{margin-top:10px}.smart-offer-label{font-size:.76rem;font-weight:900;letter-spacing:.05em;margin-bottom:4px;color:#475569}.smart-offer-meta{font-size:.88rem;margin:0 0 6px;color:#334155}.smart-offer .shoe-link{margin-top:0}
 </style>
+  <link rel="stylesheet" href="../../ui.css">
 </head>
 <body>
 
@@ -385,7 +386,7 @@ h2{margin:10px 0 7px;font-size:25px}
 <main class="wrap">
     <section class="panel" id="questionnaire">
       <div class="panel-head">
-        <span class="badge">🏃 RUNNING • ROUTE</span>
+        <span class="badge"><svg class="ico" aria-hidden="true"><use href="../../icons.svg#footprints"></use></svg> RUNNING • ROUTE</span>
         <h2>Ton profil de coureur</h2>
         <p class="intro">Renseigne ton profil pour obtenir ton Top 3 personnalisé.</p>
       </div>
@@ -519,17 +520,17 @@ h2{margin:10px 0 7px;font-size:25px}
           </div>
         </div>
 
-        <button class="recommend-btn" id="recommendBtn">🔎 VOIR MES RECOMMANDATIONS</button>
+        <button class="recommend-btn" id="recommendBtn"><svg class="ico" aria-hidden="true"><use href="../../icons.svg#search"></use></svg> VOIR MES RECOMMANDATIONS</button>
         <div class="error" id="errorBox"></div>
       </div>
     </section>
 
     <section class="results" id="results">
-      <h2 class="results-title">🏆 Ton Top 3 MYBESTPAIR</h2>
+      <h2 class="results-title"><svg class="ico ico-gold" aria-hidden="true"><use href="../../icons.svg#trophy"></use></svg> Ton Top 3 MYBESTPAIR</h2>
       <p class="results-sub" id="resultsSub"></p>
       <div class="budget-notice" id="budgetNotice" aria-live="polite"></div>
       <div class="podium" id="podium"></div>
-      <button class="restart" id="restartBtn">↻ Modifier mon profil</button>
+      <button class="restart" id="restartBtn"><svg class="ico" aria-hidden="true"><use href="../../icons.svg#rotate"></use></svg> Modifier mon profil</button>
       <p class="engine-note">Le classement est calculé par le moteur MYBESTPAIR. Les recommandations restent une aide au choix : le ressenti personnel et l'essayage restent importants. <a href="../../methodologie.html">Comprendre notre méthodologie</a>.</p>
     </section>
 
@@ -595,6 +596,7 @@ h2{margin:10px 0 7px;font-size:25px}
   <div class="trust-item"><strong>ACCÈS DIRECT</strong>Vers les modèles sélectionnés</div>
 </section>
 
+<script src="../../ui.js"></script>
 <script src="route-app.js"></script>
 </body>
 </html>
