@@ -209,3 +209,13 @@ body.mbp-loading { overflow:hidden; }
 /* Espace entre l'icône et le texte dans les boutons en flex */
 .product-link,
 .shoe-link { gap:.45em; }
+
+/* Illustrations 3D couleur (remplacent les icônes au trait) */
+.ico.ico3d {
+  width:1.4em;
+  height:1.4em;
+  vertical-align:-.35em;
+  object-fit:contain;
+  filter:drop-shadow(0 2px 3px rgba(0,0,0,.15));
+}
+.ico3d.rank-medal { width:2em; height:2em; vertical-align:-.6em; }

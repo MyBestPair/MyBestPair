@@ -3,15 +3,31 @@
   const base = new URL(".", document.currentScript.src).href;
   const sprite = base + "icons.svg";
 
-  /* Icône SVG du sprite, ex. mbpIcon("trophy") ou mbpIcon("alert", "ico-warn"). */
-  window.mbpIcon = function (name, extraClass) {
+  /* Illustrations 3D couleur (images/icons/*.webp, Fluent Emoji 3D – licence MIT). */
+  const IMAGES = new Set([
+    "alert", "basketball", "bulb", "cart", "chart", "check", "clipboard", "compass",
+    "cookie", "court", "euro", "footprints", "gauge", "heart", "layers", "map",
+    "mountain", "route", "ruler", "scale", "search", "shield", "shoe", "star",
+    "tag", "target", "thumb", "tree", "trophy"
+  ]);
+
+  /* Icône SVG du sprite (traits, couleur héritée). */
+  window.mbpSvg = function (name, extraClass) {
     return `<svg class="ico${extraClass ? " " + extraClass : ""}" aria-hidden="true" focusable="false"><use href="${sprite}#${name}"></use></svg>`;
   };
 
-  /* Pastille de classement 1 / 2 / 3. */
+  /* Icône du site : illustration 3D si elle existe, sinon SVG. */
+  window.mbpIcon = function (name, extraClass) {
+    if (!IMAGES.has(name)) return window.mbpSvg(name, extraClass);
+    return `<img class="ico ico3d${extraClass ? " " + extraClass : ""}" src="${base}images/icons/${name}.webp" alt="" width="96" height="96" decoding="async">`;
+  };
+
+  /* Médaille 1 / 2 / 3 (pastille numérotée au-delà). */
   window.mbpRank = function (n) {
-    const variant = n >= 1 && n <= 3 ? n : "n";
-    return `<span class="rank-badge rank-badge-${variant}" aria-hidden="true">${n}</span>`;
+    if (n >= 1 && n <= 3) {
+      return `<img class="ico ico3d rank-medal" src="${base}images/icons/medal${n}.webp" alt="" width="96" height="96" decoding="async">`;
+    }
+    return `<span class="rank-badge rank-badge-n" aria-hidden="true">${n}</span>`;
   };
 
   let running = false;
@@ -51,7 +67,7 @@
         <p class="mbp-loader-sub">${opts.subtitle || "MyBestPair compare ton profil à chaque modèle."}</p>
         <div class="mbp-loader-bar"><span></span></div>
         <ul class="mbp-loader-steps">
-          ${steps.map(s => `<li>${window.mbpIcon("check")}<span>${s}</span></li>`).join("")}
+          ${steps.map(s => `<li>${window.mbpSvg("check")}<span>${s}</span></li>`).join("")}
         </ul>
       </div>`;
 
