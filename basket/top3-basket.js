@@ -16,6 +16,10 @@
   const FEET_SHORT = { ETROIT: "Étroit", STANDARD: "Standard", LARGE: "Large", UNIVERSEL: "Tous pieds" };
   const SURFACES = { INDOOR: "Indoor", OUTDOOR: "Outdoor", "INDOOR/OUTDOOR": "Indoor + outdoor" };
 
+  /* Photos produit (marchands). Sinon : image Decathlon du catalogue, sinon la marque en grand. */
+  const PHOTOS = {"G.T. Cut Academy 2": "https://cdn2.basket4ballers.com/319062-large_default/nike-gt-cut-academy-2-purple-dinasty-hv9774-104.jpg", "Giannis Immortality 5": "https://cdn2.basket4ballers.com/324385-medium_default/giannis-immortality-5-white-volt-black-im5130-100.jpg", "LeBron Witness 9": "https://cdn2.basket4ballers.com/314006-large_default/nike-lebron-witness-9-bronny-james-pe-io7381-600.jpg", "Ja 3": "https://cdn1.basket4ballers.com/323300-medium_default/ja-3-x-kool-aid-lemon-venom-lt-photo-blue-lt-green-spark-iw1159-700.jpg", "Sabrina 3": "https://cdn2.basket4ballers.com/323697-medium_default/nike-sabrina-3-ny-liberty-big-ellie-hf2881-303.jpg", "Luka 5": "https://cdn1.basket4ballers.com/338101-medium_default/jordan-luka-5-black-varsity-maize-purple-venom-hv8082-005.jpg", "Tatum 4": "https://cdn2.basket4ballers.com/321581-large_default/jordan-tatum-4-black-knight-hq4614-004.jpg", "KD19": "https://cdn2.basket4ballers.com/325658-medium_default/nike-kd-19-purple-stuff-ih1117-500.jpg", "Kobe IX Elite Low Protro": "https://cdn1.basket4ballers.com/286414-large_default/nike-kobe-9-elite-low-protro-white-purple-ih1401-100.jpg", "Book 2": "https://cdn2.basket4ballers.com/310810-large_default/nike-book-2-the-phoenix-ib6687-700.jpg", "Harden Volume 10": "https://cdn.blazimg.com/300/product/a/d/adidas_ki1605_1_footwear_photography_side_lateral_center_view_white.webp", "Curry 13": "https://cdn.blazimg.com/300/product/u/n/under-armour-6007670-790-taxi-taxi-taxi-69f35d35903ed-1.webp", "D. Fox 2": "https://cdn2.basket4ballers.com/293271-medium_default/under-armour-curry-fox-2-wildcat-6001646-400.jpg", "TWO WXY V5": "https://www.shinzo.paris/96495-thickbox_default/new-balance-two-wxy-v5.jpg", "Giannis Freak 7": "https://cdn1.basket4ballers.com/313466-large_default/nike-giannis-freak-7-laser-orange-hf3450-007.jpg", "Nike G.T. Future": "https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto,u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/449f446a-a093-424a-95ed-d6c752c21f3e/G.T.+FUTURE.png", "Way of Wade 12": "https://www.wayofwade.com/cdn/shop/files/1_9fcc99f3-3de4-4616-aec1-415d0844dcc7.jpg?v=1789975396&width=600", "Way of Wade All City 14": "https://www.wayofwade.com/cdn/shop/files/1_dc23ad72-0978-491f-8ce0-1dff66ee5feb.jpg?v=1769421105&width=600", "Wade 808 5 Ultra": "https://www.wayofwade.com/cdn/shop/files/1_25d0c2c7-69ad-4e80-9d7a-56638ddfbc5b.jpg?v=1759129231&width=600", "ANTA KAI 3": "https://eu.anta.com/cdn/shop/files/ANTA-KAI-3-Calcite-Media-1_600x.jpg?v=1774951392"};
+  const photoOf = (r) => PHOTOS[r.name] || r.decathlonImage || "";
+
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const num = (n, d = 1) => Number(n).toFixed(d).replace(/\.0+$/, "").replace(".", ",");
   const price = (n) => (Number.isInteger(n) ? String(n) : Number(n).toFixed(2).replace(".", ",")) + " €";
@@ -82,10 +86,11 @@
         ? `<a class="product-link t3-cta" href="${esc(r.link)}" target="_blank" rel="noopener noreferrer sponsored">Voir chez ${esc(shop)} ${ARROW}</a>`
         : `<span class="product-link disabled t3-cta">Lien bientôt disponible</span>`;
       return `<article class="t3-card" id="t3-panel" role="tabpanel" aria-label="${esc(fullName(r))}">
-        <div class="t3-plate t3-plate-text r${Math.min(i + 1, 3)}">
+        <div class="t3-plate t3-plate-text r${Math.min(i + 1, 3)}${photoOf(r) ? "" : " t3-noimg"}">
           <span class="t3-tag">${CHECK}${esc(tag)}</span>
           ${budgetChip(r, p)}
           <div class="t3-plate-brand">${BALL}<span>${esc(r.brand.toUpperCase())}</span></div>
+          ${photoOf(r) ? `<img src="${esc(photoOf(r))}" alt="${esc(fullName(r))}" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('t3-noimg');this.remove()">` : ""}
         </div>
         <div class="t3-body">
           <div class="t3-head">
@@ -147,6 +152,7 @@
         .map((c) => `<span class="t3-chip">${esc(c)}</span>`).join("");
       const tabs = list.map((r, i) => `<button type="button" class="t3-tab" role="tab" aria-selected="${i === sel}" aria-controls="t3-panel" data-t3="${i}">
           <span class="t3-medal ${i < 3 ? "r" + (i + 1) : "rx"}">${i + 1}</span>
+          ${photoOf(r) ? `<img src="${esc(photoOf(r))}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">` : ""}
           <span class="t3-tab-brand">${esc(r.brand.toUpperCase())}</span>
           <span class="t3-tab-name">${esc(shortName(r))}</span>
           <span class="t3-tab-price">${price(r.price)}</span>

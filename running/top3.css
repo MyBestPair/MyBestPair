@@ -96,3 +96,6 @@
 .t3 .product-link.disabled.t3-cta{display:flex;align-items:center;justify-content:center;min-height:52px;border-radius:14px;background:#e8ebf0;color:#8b93a1}
 #results-section .results-heading h2{color:#111a2e}
 #results-section .results-heading p{color:#5a6680}
+.t3-plate-text .t3-plate-brand{display:none}
+.t3-plate-text.t3-noimg .t3-plate-brand{display:flex}
+.t3-plate-text img{max-width:80%;max-height:180px;object-fit:contain;mix-blend-mode:multiply}
