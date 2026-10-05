@@ -501,7 +501,7 @@ $("#podium").addEventListener("click", event => {
   const merchant = link.dataset.merchant || "";
   const isRakuten = href.includes("click.linksynergy.com");
   const isAwin = href.includes("awin1.com");
-  const isKwanko = href.includes("zof.endurance-store.fr") || href.includes("fsx.i-run.fr") || href.includes("kwanko.com");
+  const isKwanko = href.includes("zof.endurance-store.fr") || href.includes("fsx.i-run.fr") || href.includes("iza.ekosport.fr") || href.includes("kwanko.com");
   const isAffiliate = isRakuten || isAwin || isKwanko;
   const affiliateNetwork = isKwanko ? "kwanko" : (isRakuten ? "rakuten" : (isAwin ? "awin" : ""));
 
