@@ -80,3 +80,19 @@
   .results-sub{color:#5a6680}
   .results .restart{color:#195cff}
 }
+
+/* --- Basket (basket/top3-basket.js) --- */
+#cards > .t3{grid-column:1 / -1}
+.t3-basket .t3-tab{min-height:0;padding:14px 6px 12px}
+.t3-tab-price{font-size:12px;font-weight:800;color:#3b4660}
+.t3-medal.rx{background:#e3e8f3}
+.t3-plate-text{flex-direction:column;gap:10px;color:#0b1a33}
+.t3-plate-brand{display:flex;flex-direction:column;align-items:center;gap:10px;opacity:.85}
+.t3-plate-brand svg{color:#195cff}
+.t3-plate-brand span{font-size:34px;font-weight:950;letter-spacing:4px}
+.t3 .t3-trk.shoe-card{background:#f4f6fa;border-radius:18px;box-shadow:none;overflow:visible;transform:none}
+.t3 a.product-link.t3-cta{margin:0;width:auto;padding:0 12px;background:#0b1a33;font-size:15px}
+.t3 a.product-link.t3-cta:hover{background:#195cff}
+.t3 .product-link.disabled.t3-cta{display:flex;align-items:center;justify-content:center;min-height:52px;border-radius:14px;background:#e8ebf0;color:#8b93a1}
+#results-section .results-heading h2{color:#111a2e}
+#results-section .results-heading p{color:#5a6680}
