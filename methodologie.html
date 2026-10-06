@@ -9,14 +9,14 @@
   <meta property="og:site_name" content="MyBestPair">
   <meta property="og:locale" content="fr_FR">
   <meta property="og:title" content="Méthodologie des notes et recommandations | MyBestPair">
-  <meta property="og:description" content="Comment MyBestPair note les chaussures et calcule ses recommandations Route, Trail et Basket : critères, pondérations, sources et limites.">
+  <meta property="og:description" content="Comment MyBestPair calcule ses recommandations Route, Trail et Basket : critères, barème de notation, sources et limites.">
   <meta property="og:url" content="https://mybestpair.fr/methodologie.html">
   <meta property="og:image" content="https://mybestpair.fr/images/og-mybestpair.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
 
-  <meta name="description" content="Comment MyBestPair note les chaussures et calcule ses recommandations Route, Trail et Basket : critères, pondérations, sources et limites.">
+  <meta name="description" content="Comment MyBestPair calcule ses recommandations Route, Trail et Basket : critères, barème de notation, sources et limites.">
   <link rel="canonical" href="https://mybestpair.fr/methodologie.html">
   <link rel="icon" href="favicon.png">
   <style>
@@ -41,13 +41,21 @@
     h2{font-size:1.42rem;letter-spacing:-.025em;margin:0 0 13px}
     h3{font-size:1.05rem;margin:22px 0 8px}
     p{margin:0 0 14px}p:last-child{margin-bottom:0}
-    ul{margin:0;padding-left:22px}li{margin:6px 0}
+    ul,ol{margin:0 0 14px;padding-left:22px}li{margin:6px 0}
     .muted{color:var(--muted)}
     .callout{background:#eaf3ff;border-left:4px solid var(--blue);border-radius:0 10px 10px 0;padding:15px 18px;margin:17px 0}
     .small{font-size:.87rem;color:var(--muted)}
+    .formula{background:#f5f8fc;border:1px solid var(--line);border-radius:10px;padding:12px 15px;font-size:.95rem;margin:0 0 14px}
+    .tabs{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 16px}
+    .tabs a{border:1px solid var(--line);border-radius:100px;padding:5px 13px;font-size:.88rem;text-decoration:none;color:var(--ink)}
+    .table-wrap{overflow-x:auto;margin:0 0 14px}
+    table{width:100%;border-collapse:collapse;font-size:.93rem}
+    th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+    th{background:#f5f8fc;font-size:.82rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+    td.num{white-space:nowrap;font-weight:700;color:var(--blue)}
     footer{background:var(--navy);color:#d7e3f5;text-align:center;padding:25px}
     footer a{color:#fff}
-    @media(max-width:760px){.layout{grid-template-columns:1fr}.topbar .back{font-size:.8rem}.brand{font-size:1.1rem}.brand img{width:50px;height:30px}}
+    @media(max-width:760px){.layout{grid-template-columns:1fr}th,td{padding:7px 6px}table{font-size:.86rem}.topbar .back{font-size:.8rem}.brand{font-size:1.1rem}.brand img{width:50px;height:30px}}
   </style>
   <script src="analytics-consent.js"></script>
 </head>
@@ -61,37 +69,112 @@
     <header class="hero">
       <div class="eyebrow">Comprendre les recommandations</div>
       <h1>Notre méthodologie, en clair.</h1>
-      <p>MYBESTPAIR compare les caractéristiques enregistrées pour chaque chaussure avec ton profil. Les notes des fiches sont des évaluations internes : elles servent à comparer les modèles dans notre sélection et ne proviennent pas de tests terrain indépendants.</p>
-      <span class="date">Page mise à jour le 29 septembre 2026</span>
+      <p>Ton classement est calculé par un algorithme, le même pour tout le monde : il compare les caractéristiques de chaque chaussure avec tes réponses. Personne ne choisit les résultats à la main, et les commissions n’entrent pas dans le calcul.</p>
+      <span class="date">Page mise à jour le 6 octobre 2026</span>
     </header>
     <div class="layout">
       <div>
-        <section class="card">
-          <h2>Ce que mesurent les notes</h2>
-          <p>Chaque modèle reçoit des notes sur 10 dans la base MYBESTPAIR. Elles décrivent des critères différents selon la pratique :</p>
+        <section class="card" id="notes">
+          <h2>1. Les critères notés sur 10</h2>
+          <p>Chaque modèle de notre sélection reçoit une note sur 10 pour chaque critère de son sport :</p>
           <ul>
-            <li><strong>Route :</strong> amorti, dynamisme, stabilité, confort, durabilité et légèreté.</li>
-            <li><strong>Trail :</strong> accroche, amorti, stabilité, protection, dynamisme et confort.</li>
-            <li><strong>Basket :</strong> traction, amorti, réactivité, stabilité, maintien, légèreté, confort et durabilité.</li>
+            <li><strong>Route (50 modèles) :</strong> amorti, dynamisme, stabilité, confort, durabilité, légèreté.</li>
+            <li><strong>Trail (51 modèles) :</strong> accroche, amorti, stabilité, protection, dynamisme, confort.</li>
+            <li><strong>Basket (30 modèles) :</strong> traction, amorti, réactivité, stabilité, maintien, légèreté, confort, durabilité.</li>
           </ul>
-          <div class="callout">Ces notes sont attribuées dans notre base. Elles ne constituent ni une mesure de laboratoire ni une moyenne d’avis utilisateurs. Une note élevée sur un critère ne garantit pas qu’une chaussure te conviendra.</div>
+          <div class="callout">Ces notes sont des évaluations internes, attribuées dans notre base pour comparer les modèles entre eux. Ce ne sont ni des mesures de laboratoire, ni des tests terrain, ni une moyenne d’avis d’utilisateurs.</div>
         </section>
-        <section class="card">
-          <h2>Comment est établi ton classement</h2>
-          <p>Le questionnaire combine les caractéristiques des chaussures avec tes réponses. Le score affiché sur 100 mesure une <strong>compatibilité avec ton profil</strong>, pas une qualité absolue. Les trois priorités que tu choisis pèsent davantage que les autres critères.</p>
-          <h3>Ce qui compte selon ton sport</h3>
+
+        <section class="card" id="bareme">
+          <h2>2. Le barème : comment est calculé ton score sur 100</h2>
+          <p>Le score affiché mesure la <strong>compatibilité d’une chaussure avec ton profil</strong>, pas une qualité absolue. Il se calcule en deux étapes.</p>
+
+          <h3>Étape 1 : la note technique, adaptée à tes priorités</h3>
+          <p>Tu choisis 3 critères prioritaires. Ils comptent plus que les autres dans la moyenne des notes :</p>
+          <div class="formula">Priorité n° 1 × 1,5 · priorité n° 2 × 1,25 · priorité n° 3 × 1,1 · autres critères × 1</div>
+          <p>Cette moyenne pondérée, ramenée sur 100, donne la note technique. En basket, ton style de jeu ajuste aussi le poids de chaque critère.</p>
+
+          <h3>Étape 2 : le score final</h3>
+          <p>La note technique est combinée avec tes autres réponses. Chaque élément est noté de 0 à 100, puis pondéré :</p>
+          <nav class="tabs" aria-label="Choisir un sport"><a href="#route">Route</a><a href="#trail">Trail</a><a href="#basket">Basket</a></nav>
+
+          <h3 id="route">Route</h3>
+          <div class="table-wrap"><table>
+            <thead><tr><th>Élément</th><th>Poids</th><th>Comment il est noté</th></tr></thead>
+            <tbody>
+              <tr><td>Note technique</td><td class="num">45 %</td><td>Étape 1</td></tr>
+              <tr><td>Budget</td><td class="num">22 %</td><td>Voir le barème du budget ci-dessous</td></tr>
+              <tr><td>Objectif</td><td class="num">13 %</td><td>Adéquation entre ton objectif et le type de chaussure (ex. compétition + chaussure de course = 100 ; compétition + chaussure très amortie = 25)</td></tr>
+              <tr><td>Distance</td><td class="num">8 %</td><td>La distance que tu prépares est dans la plage prévue pour la chaussure</td></tr>
+              <tr><td>Allure</td><td class="num">4 %</td><td>Polyvalence de la chaussure selon les allures</td></tr>
+              <tr><td>Ton poids</td><td class="num">3 %</td><td>100 dans la plage idéale du modèle, puis 90, 70, 40 ou 0 en s’éloignant par paliers de 5 kg</td></tr>
+              <tr><td>Type de pied</td><td class="num">2 %</td><td>100 si compatible, 50 sinon</td></tr>
+              <tr><td>Attaque du pied</td><td class="num">2 %</td><td>De 60 à 100 selon l’écart entre ton attaque et celle visée par la chaussure ; 100 si tu ne sais pas</td></tr>
+              <tr><td>Marque préférée</td><td class="num">1 %</td><td>100 si aucune préférence ou même marque, 50 sinon</td></tr>
+            </tbody>
+          </table></div>
+
+          <h3 id="trail">Trail</h3>
+          <div class="table-wrap"><table>
+            <thead><tr><th>Élément</th><th>Poids</th><th>Comment il est noté</th></tr></thead>
+            <tbody>
+              <tr><td>Note technique</td><td class="num">50 %</td><td>Étape 1</td></tr>
+              <tr><td>Objectif</td><td class="num">10 %</td><td>Adéquation entre ton objectif et le type de chaussure</td></tr>
+              <tr><td>Distance</td><td class="num">10 %</td><td>Ta distance (moins de 10 km, 10–30, 30–50, plus de 50 km, ultra) comparée à celles prévues pour la chaussure</td></tr>
+              <tr><td>Terrain</td><td class="num">10 %</td><td>Ton terrain (roulant, mixte, technique, montagne) comparé à celui de la chaussure ; la boue compte comme technique</td></tr>
+              <tr><td>Budget</td><td class="num">8 %</td><td>Voir le barème du budget ci-dessous</td></tr>
+              <tr><td>Ton poids</td><td class="num">3 %</td><td>Mêmes paliers qu’en route</td></tr>
+              <tr><td>Type de pied</td><td class="num">3 %</td><td>100 si compatible, 50 sinon</td></tr>
+              <tr><td>Attaque du pied</td><td class="num">3 %</td><td>100 si elle correspond ou si tu ne sais pas, 50 sinon</td></tr>
+              <tr><td>Marque préférée</td><td class="num">3 %</td><td>100 si aucune préférence ou même marque, 50 sinon</td></tr>
+            </tbody>
+          </table></div>
+
+          <h3 id="basket">Basket</h3>
+          <div class="table-wrap"><table>
+            <thead><tr><th>Élément</th><th>Poids</th><th>Comment il est noté</th></tr></thead>
+            <tbody>
+              <tr><td>Note technique</td><td class="num">62 %</td><td>Étape 1, avec le style de jeu</td></tr>
+              <tr><td>Budget</td><td class="num">15 %</td><td>Voir le barème du budget ci-dessous</td></tr>
+              <tr><td>Surface</td><td class="num">10 %</td><td>100 si la chaussure convient à ta surface (indoor, outdoor ou les deux), 0 sinon</td></tr>
+              <tr><td>Type de pied</td><td class="num">8 %</td><td>100 si compatible, 50 sinon</td></tr>
+              <tr><td>Marque préférée</td><td class="num">5 %</td><td>100 si aucune préférence ou même marque, 0 sinon</td></tr>
+            </tbody>
+          </table></div>
+
+          <h3>Le barème du budget</h3>
+          <p>Le budget compare ton budget au <strong>prix catalogue</strong> du modèle, pas au prix d’une promotion ponctuelle : une remise sur une seule pointure ne doit pas changer ton classement.</p>
+          <div class="table-wrap"><table>
+            <thead><tr><th>Prix par rapport à ton budget</th><th>Route</th><th>Trail</th><th>Basket</th></tr></thead>
+            <tbody>
+              <tr><td>Dans le budget</td><td>100</td><td>100</td><td>100</td></tr>
+              <tr><td>Jusqu’à +10 €</td><td>90</td><td>90</td><td rowspan="2">de 100 à 80</td></tr>
+              <tr><td>Jusqu’à +20 €</td><td>75</td><td>75</td></tr>
+              <tr><td>Jusqu’à +30 €</td><td>45</td><td>55</td><td rowspan="2">baisse rapide : −40 points par tranche de 20 €</td></tr>
+              <tr><td>Jusqu’à +50 €</td><td>15</td><td>30</td></tr>
+              <tr><td>Au-delà</td><td>0</td><td>0</td><td>jusqu’à 0</td></tr>
+            </tbody>
+          </table></div>
+          <p class="small">Jusqu’à 20 € au-dessus de ton budget, une chaussure est étiquetée « Coup de cœur » ; au-delà, « Hors budget ».</p>
+
+          <h3>Exclusions et égalités</h3>
           <ul>
-            <li><strong>Route :</strong> tes priorités techniques jouent un rôle majeur. Ton budget, ton objectif et ta distance complètent le classement ; ton allure, ton poids, ton pied, ton attaque et ta préférence de marque sont également pris en compte.</li>
-            <li><strong>Trail :</strong> tes priorités techniques jouent un rôle majeur. Le terrain, la distance, l’objectif et le budget complètent le classement ; ton poids, ton pied, ton attaque et ta préférence de marque entrent aussi en jeu.</li>
-            <li><strong>Basket :</strong> les critères techniques adaptés à ton style de jeu jouent un rôle majeur. Le budget, la surface, le type de pied et la préférence de marque complètent le classement.</li>
+            <li><strong>Exclusion :</strong> en route et en trail, un modèle est écarté si ton poids dépasse le poids maximal prévu pour lui.</li>
+            <li><strong>Égalités en route et trail :</strong> on compare le score au dixième, puis ta priorité n° 1, n° 2, n° 3, puis le prix.</li>
+            <li><strong>Égalités en basket :</strong> à moins de 0,1 point d’écart, on départage par le budget, puis la surface, puis le pied.</li>
           </ul>
-          <p class="small">Le budget et certaines incompatibilités peuvent modifier l’ordre des résultats. Les liens commerciaux ne participent pas au calcul.</p>
         </section>
-        <section class="card">
-          <h2>Sources et mise à jour des données</h2>
-          <p>Les fiches reprennent les données de notre base interne : catégorie du modèle, prix indicatif, caractéristiques techniques et notes attribuées par MYBESTPAIR. Des fiches fabricant et des catalogues marchands, notamment i-Run pour les visuels disponibles, peuvent aider à documenter les modèles ; les liens source figurent sur une fiche lorsqu’ils ont été renseignés.</p>
-          <p>Les fiches indiquent leurs sources lorsqu’elles ont été renseignées. Les prix, les coloris et la disponibilité peuvent évoluer ; le poids ou le drop peuvent varier selon la version et la pointure. Vérifie ces éléments sur le site du fabricant ou du marchand avant l’achat.</p>
-          <p><strong>Mise à jour de cette page :</strong> 29 septembre 2026. Cette date concerne l’explication de la méthode et ne garantit pas que toutes les fiches modèles ont été revérifiées ce jour-là.</p>
+
+        <section class="card" id="sources">
+          <h2>3. Sources utilisées</h2>
+          <ul>
+            <li><strong>Fiches des fabricants</strong> (Nike, Asics, Hoka, Salomon, Adidas…) : catégorie, caractéristiques techniques, usage prévu.</li>
+            <li><strong>Catalogues des marchands</strong> : i-Run, Ekosport, Endurance Store et Decathlon pour le running ; Basket4Ballers, Basket Center et Decathlon pour le basket. Ils servent aux prix, pointures disponibles et visuels.</li>
+            <li><strong>Fiches enrichies :</strong> quand une fiche modèle a été documentée en détail, ses sources sont citées en bas de la fiche.</li>
+          </ul>
+          <p>Les prix, coloris et disponibilités changent souvent ; le poids ou le drop peuvent varier selon la version et la pointure. Vérifie-les chez le marchand avant l’achat.</p>
+          <h3>Ordre des offres marchands</h3>
+          <p>En running, sous chaque recommandation, les offres sont classées d’abord selon ta pointure (pointure exacte, puis à une demi-pointure près), puis par prix. Le montant de la commission ne joue pas sur cet ordre.</p>
         </section>
       </div>
       <aside>
@@ -102,7 +185,11 @@
         </section>
         <section class="card">
           <h2>Liens commerciaux</h2>
-          <p>Certains liens vers des marchands peuvent générer une commission pour MYBESTPAIR. La commission ne fait pas partie du calcul du score. Le prix et la disponibilité sont à vérifier chez le marchand.</p>
+          <p>Certains liens vers les marchands sont des liens d’affiliation (réseaux Kwanko, Awin et Rakuten) : un achat peut rapporter une commission à MyBestPair, sans surcoût pour toi. La commission ne fait pas partie du calcul du score.</p>
+        </section>
+        <section class="card">
+          <h2>Qui fait MyBestPair ?</h2>
+          <p>Romain, joueur de basket, a créé le site pour répondre à sa propre question : quelle paire choisir ? <a href="qui-sommes-nous.html">En savoir plus →</a></p>
         </section>
         <section class="card">
           <h2>Explorer les modèles</h2>
@@ -113,6 +200,6 @@
       </aside>
     </div>
   </main>
-  <footer>© 2026 MyBestPair · <a href="./">Accueil</a> · <a href="conditions-utilisation.html">Conditions d’utilisation</a> · <a href="methodologie.html" aria-current="page">Méthodologie</a> · <a href="confidentialite.html">Confidentialité</a> · <a href="mentions-legales.html">Mentions légales</a></footer>
+  <footer>© 2026 MyBestPair · <a href="./">Accueil</a> · <a href="qui-sommes-nous.html">Qui sommes-nous</a> · <a href="methodologie.html" aria-current="page">Méthodologie</a> · <a href="conditions-utilisation.html">Conditions d’utilisation</a> · <a href="confidentialite.html">Confidentialité</a> · <a href="mentions-legales.html">Mentions légales</a></footer>
 </body>
 </html>
