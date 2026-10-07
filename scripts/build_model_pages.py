@@ -75,15 +75,24 @@ def display_name(shoe, sport):
     return name
 
 
-def image_for(name, offers):
-    """Use an exact-model product photo from the existing merchant offer data."""
+def image_for(name, offers, shoe=None):
+    """Use an exact-model product photo from the existing merchant offer data.
+    Returns (image, source, credit): credit is the brand when the photo comes from its official site."""
     if name in PHOTOS:
-        return PHOTOS[name]["image"], PHOTOS[name]["source"]
+        return PHOTOS[name]["image"], PHOTOS[name]["source"], None
     for offer in offers.get(name, []):
         image = offer.get("image")
         if image and image.startswith("https://"):
-            return image, offer.get("merchant", "catalogue marchand")
+            return image, offer.get("merchant", "catalogue marchand"), None
+    if shoe and shoe.get("photoCredit") and str(shoe.get("photo", "")).startswith("https://"):
+        return shoe["photo"], shoe["photoCredit"], shoe["photoCredit"]
     return None
+
+
+def photo_caption(photo):
+    if photo[2]:
+        return f"Photo : © {h(photo[2])} · le coloris peut varier"
+    return f"Photo produit du catalogue {h(photo[1])} · le coloris peut varier"
 
 
 OG_IMAGE = "https://mybestpair.fr/images/og-mybestpair.jpg"
@@ -228,7 +237,7 @@ def render(shoe, sport, base, category, fields, photo=None, related=""):
     specs = "\n".join(f"<div><dt>{h(key)}</dt><dd>{h(display_value(value))}</dd></div>" for key, value in details)
     context = f"Semelle {sole_text(shoe).lower()} · {display_value(shoe['foot'])}" if sport == "padel" else f"Crampons {STUDS.get(shoe['studs'], 'à confirmer')} · {display_value(shoe['foot'])}" if sport == "rugby" else meta_of(shoe, sport)
     key_point = f"{label(ranked[0])} : {score(notes[ranked[0]])}"
-    visual = f'<figure class="product-photo"><img src="{h(photo[0])}" alt="{h(name)} — visuel marchand" loading="lazy" decoding="async"><figcaption>Photo produit du catalogue {h(photo[1])} · le coloris peut varier</figcaption></figure>' if photo else ""
+    visual = f'<figure class="product-photo"><img src="{h(photo[0])}" alt="{h(name)} — {'photo ' + h(photo[2]) if photo[2] else 'visuel marchand'}" loading="lazy" decoding="async"><figcaption>{photo_caption(photo)}</figcaption></figure>' if photo else ""
     return f'''<!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -296,15 +305,16 @@ def main():
                 marker = '\n      </div>\n      <aside>'
                 page.write_text(pilot.replace(marker, "\n        " + block + marker, 1))
             if not (sport == "route" and path == "asics-novablast-6"):
-                page.write_text(render(shoe, sport, base, category, fields, image_for(name, offers), alternatives_html(shoe, shoes, sport, fields)))
+                page.write_text(render(shoe, sport, base, category, fields, image_for(name, offers, shoe), alternatives_html(shoe, shoes, sport, fields)))
             all_urls.append(f"https://mybestpair.fr/{base}/modeles/{path}/")
         tiles = []
         for shoe, name, path in zip(shoes, names, slugs):
             brand = shoe.get("brand", name.split()[0])
             model = name[len(brand):].strip() if name.lower().startswith(brand.lower()) else name
             meta = meta_of(shoe, sport)
-            photo = image_for(name, offers)
-            visual = f'<span class="tile-photo"><img src="{h(photo[0])}" alt="{h(name)}" loading="lazy" decoding="async"></span>' if photo else ''
+            photo = image_for(name, offers, shoe)
+            credit = f'<span class="tile-credit">Photo : © {h(photo[2])}</span>' if photo and photo[2] else ''
+            visual = f'<span class="tile-photo"><img src="{h(photo[0])}" alt="{h(name)}" loading="lazy" decoding="async">{credit}</span>' if photo else ''
             tiles.append(f'<a class="model-tile" href="{h(path)}/">{visual}<span class="tile-brand">{h(brand)}</span><strong>{h(model)}</strong><span class="tile-meta">{h(meta)}</span><span class="tile-link">Voir la fiche →</span></a>')
         links = "\n".join(tiles)
         hub_root = "../../" if sport in FLAT else "../../../"

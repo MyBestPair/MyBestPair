@@ -99,3 +99,8 @@
 .t3-plate-text .t3-plate-brand{display:none}
 .t3-plate-text.t3-noimg .t3-plate-brand{display:flex}
 .t3-plate-text img{max-width:80%;max-height:180px;object-fit:contain;mix-blend-mode:multiply}
+/* Rugby : crédit des photos officielles des marques (rugby/top3-rugby.js) */
+.t3-credit{position:absolute;right:10px;bottom:8px;font-size:10px;font-weight:600;color:#5a6680;background:rgba(255,255,255,.75);padding:2px 6px;border-radius:6px}
+.t3-noimg .t3-credit{display:none}
+.t3-rugby .t3-tag,.t3-rugby .t3-budget,.t3-rugby .t3-credit{z-index:1}
+.t3-rugby .t3-plate img.t3-brand-photo{max-height:150px;border-radius:12px}
