@@ -1,9 +1,10 @@
-/* Base Padel MyBestPair — 30 modèles (relevé Decathlon du 7 octobre 2026).
+/* Base Padel MyBestPair — 36 modèles (relevé Decathlon du 7 octobre 2026, 6 ajouts du catalogue Rakuten).
  * Notes sur 10, dans l'ordre de CRITERIA. Toutes les notes sont des estimations MyBestPair
  * établies à partir des fiches fabricants et des tests publiés (voir methodologie.html).
  * sole : CHEVRONS / OMNI / MIXTE / A CONFIRMER · foot : ETROIT / STANDARD / LARGE
  * gender : HOMME / FEMME / MIXTE · link : lien marchand Decathlon (Rakuten), vide = « Lien bientôt disponible ».
  * Prix, liens et photos : catalogue Rakuten Decathlon (export du 7 octobre 2026), prix catalogue hors promotion.
+ * women : lien, prix et photo de la version femme, utilisés quand la joueuse choisit « Femme ».
  */
 const CRITERIA = [
   "ADHERENCE",
@@ -33,10 +34,15 @@ const SHOES = [
     ],
     "sole": "MIXTE",
     "foot": "STANDARD",
-    "gender": "HOMME",
+    "gender": "MIXTE",
     "scoreBrand": "KUIKMA",
     "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.448066740892562282761882&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-padel-kuikma-ps-pro%2F361002%2Fc382c121m8926635",
-    "photo": "https://contents.mediadecathlon.com/p2953888/k$38c168aff3ee5c35395d615d5ed668f5/picture.jpg"
+    "photo": "https://contents.mediadecathlon.com/p2953888/k$38c168aff3ee5c35395d615d5ed668f5/picture.jpg",
+    "women": {
+      "price": 94.99,
+      "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.448064784792571707008643&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-padel-kuikma-ps-pro%2F360981%2Fc143m8926638",
+      "photo": "https://contents.mediadecathlon.com/p2953697/k$c2bcb33b9edf92a26b6532b48de1c83d/picture.jpg"
+    }
   },
   {
     "name": "PS Stab",
@@ -243,10 +249,15 @@ const SHOES = [
     ],
     "sole": "CHEVRONS",
     "foot": "STANDARD",
-    "gender": "HOMME",
+    "gender": "MIXTE",
     "scoreBrand": "ASICS",
     "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.448062687369133921334274&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-padel-homme-asics-game-ff-gris-bleu-rose%2F367927%2Fm8949962",
-    "photo": "https://contents.mediadecathlon.com/p2816641/k$50a2c21f7701f3f6976fc6a8734d2a58/picture.jpg"
+    "photo": "https://contents.mediadecathlon.com/p2816641/k$50a2c21f7701f3f6976fc6a8734d2a58/picture.jpg",
+    "women": {
+      "price": 69.99,
+      "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.448069587540811268867556&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchausures-de-padel-femme-asics-game-ff-padel%2F381325%2Fm9001463",
+      "photo": "https://contents.mediadecathlon.com/p3039955/k$a397dd718f2ef5f428f36e3aa43aa70a/picture.jpg"
+    }
   },
   {
     "name": "Solution Swift FF Padel",
@@ -641,6 +652,137 @@ const SHOES = [
     "gender": "MIXTE",
     "scoreBrand": "NOX",
     "link": ""
+  },
+  {
+    "name": "Indiga W 26V",
+    "brand": "Bullpadel",
+    "price": 74.99,
+    "scores": [
+      8.0,
+      7.0,
+      7.0,
+      7.0,
+      7.5,
+      7.5,
+      8.5,
+      7.0
+    ],
+    "sole": "CHEVRONS",
+    "foot": "STANDARD",
+    "gender": "FEMME",
+    "scoreBrand": "BULLPADEL",
+    "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.448068456336545924662305&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-padel-femme-bullpadel-indiga-w-26v%2F381513%2Fm9001999",
+    "photo": "https://contents.mediadecathlon.com/p3219711/k$4f4cbff4a422cc706e3e45728e4e7e67/picture.jpg"
+  },
+  {
+    "name": "Spin Lady",
+    "brand": "Joma",
+    "price": 79.99,
+    "scores": [
+      7.5,
+      7.0,
+      8.0,
+      7.5,
+      7.0,
+      7.5,
+      7.5,
+      7.0
+    ],
+    "sole": "MIXTE",
+    "foot": "STANDARD",
+    "gender": "FEMME",
+    "scoreBrand": "JOMA",
+    "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.448066030737227428534479&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-padel-femme-joma-spin-lady-orange%2F395281%2Fm9077135",
+    "photo": "https://contents.mediadecathlon.com/p3239352/k$942a55ef103de8cf595a3d516583551c/picture.jpg"
+  },
+  {
+    "name": "Courtquick Padel",
+    "brand": "adidas",
+    "price": 79.99,
+    "scores": [
+      7.5,
+      7.5,
+      7.0,
+      7.0,
+      8.0,
+      8.0,
+      7.5,
+      7.5
+    ],
+    "sole": "MIXTE",
+    "foot": "STANDARD",
+    "gender": "MIXTE",
+    "scoreBrand": "ADIDAS",
+    "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.4480614637953484977070397&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-padel-homme-adidas-courtquick-padel%2F381363%2Fm9001589",
+    "photo": "https://contents.mediadecathlon.com/p3034865/k$172b15cff879cfeeb6f3ff207e8da56a/picture.jpg",
+    "women": {
+      "price": 79.99,
+      "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.4480617824909014766927930&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-padel-femme-adidas-courtquick%2F381364%2Fm9001593",
+      "photo": "https://contents.mediadecathlon.com/p3033185/k$c26ebf6ba5d079e46f322e37694c60bc/picture.jpg"
+    }
+  },
+  {
+    "name": "Movea 2",
+    "brand": "Babolat",
+    "price": 89.99,
+    "scores": [
+      8.0,
+      7.5,
+      8.0,
+      8.0,
+      7.0,
+      8.0,
+      8.5,
+      7.0
+    ],
+    "sole": "MIXTE",
+    "foot": "STANDARD",
+    "gender": "HOMME",
+    "scoreBrand": "BABOLAT",
+    "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.4480645167581628324641&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-padel-homme-babolat-movea-2-blanches%2F365368%2Fm8942113",
+    "photo": "https://contents.mediadecathlon.com/p2852246/k$95cc9006b2ec73ad1d5df04067c72f4b/picture.jpg"
+  },
+  {
+    "name": "Motion One LTD",
+    "brand": "HEAD",
+    "price": 69.99,
+    "scores": [
+      7.5,
+      7.0,
+      7.5,
+      7.5,
+      7.5,
+      7.5,
+      7.5,
+      7.5
+    ],
+    "sole": "MIXTE",
+    "foot": "STANDARD",
+    "gender": "HOMME",
+    "scoreBrand": "HEAD",
+    "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.4480617830542872473190793&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-padel-homme-head-motion-one-ltd%2F381287%2Fm9001594",
+    "photo": "https://contents.mediadecathlon.com/p3139826/k$32205bbbae08a910755a62569c14b912/picture.jpg"
+  },
+  {
+    "name": "Sprint Pro 4.0",
+    "brand": "HEAD",
+    "price": 70.99,
+    "scores": [
+      7.5,
+      7.5,
+      7.5,
+      8.0,
+      8.0,
+      8.0,
+      7.5,
+      8.0
+    ],
+    "sole": "MIXTE",
+    "foot": "STANDARD",
+    "gender": "HOMME",
+    "scoreBrand": "HEAD",
+    "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.44806268452679361736637&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-padel-homme-head-sprint-pro-4-0-bleu-vert%2F365315%2Fm8942682",
+    "photo": "https://contents.mediadecathlon.com/p2860136/k$8d1cf7323614169836c95ad9039e60f7/picture.jpg"
   }
 ];
 

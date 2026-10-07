@@ -404,7 +404,10 @@ $("profile-form").addEventListener("submit", e => {
 
   $("form-error").hidden = true;
 
-  const pool = SHOES.filter(s => matchesGender(s, p.gender));
+  /* « Femme » : la version femme (lien, prix, photo) remplace la version homme quand elle existe. */
+  const pool = SHOES
+    .filter(s => matchesGender(s, p.gender))
+    .map(s => (p.gender === "FEMME" && s.women ? { ...s, ...s.women } : s));
 
   mbpLoader({
     steps: [
