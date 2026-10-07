@@ -1,7 +1,7 @@
-/* Base Padel MyBestPair — 33 modèles de dernière génération (relevé Decathlon du 7 octobre 2026 et catalogue Rakuten).
+/* Base Padel MyBestPair — 32 modèles de dernière génération (relevé Decathlon du 7 octobre 2026 et catalogue Rakuten).
  * Notes sur 10, dans l'ordre de CRITERIA. Toutes les notes sont des estimations MyBestPair
  * établies à partir des fiches fabricants et des tests publiés (voir methodologie.html).
- * sole : CHEVRONS / OMNI / MIXTE / A CONFIRMER · foot : ETROIT / STANDARD / LARGE
+ * sole : CHEVRONS / OMNI / MIXTE · foot : ETROIT / STANDARD / LARGE
  * gender : HOMME / FEMME / MIXTE · link : lien marchand Decathlon (Rakuten), vide = « Lien bientôt disponible ».
  * Prix, liens et photos : catalogue Rakuten Decathlon (export du 7 octobre 2026), prix catalogue hors promotion.
  * women : lien, prix et photo de la version femme, utilisés quand la joueuse choisit « Femme ».
@@ -446,26 +446,6 @@ const SHOES = [
     "scoreBrand": "ADIDAS",
     "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.44806987467767689746609&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-padel-homme-adidas-crazyquick-ls-padel-rouge%2F365580%2Fm8942722",
     "photo": "https://contents.mediadecathlon.com/p2835247/k$4e97a6679e028468e84a60bf924019d0/picture.jpg"
-  },
-  {
-    "name": "Barricade 13",
-    "brand": "adidas",
-    "price": 160,
-    "scores": [
-      8.0,
-      7.0,
-      9.0,
-      9.0,
-      5.5,
-      7.5,
-      9.0,
-      7.0
-    ],
-    "sole": "A CONFIRMER",
-    "foot": "STANDARD",
-    "gender": "MIXTE",
-    "scoreBrand": "ADIDAS",
-    "link": ""
   },
   {
     "name": "Motion Team",
