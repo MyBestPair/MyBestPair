@@ -9,7 +9,7 @@
   <meta property="og:site_name" content="MyBestPair">
   <meta property="og:locale" content="fr_FR">
   <meta property="og:title" content="MyBestPair | Trouve la meilleure paire pour ton sport">
-  <meta property="og:description" content="MyBestPair analyse ton profil pour te recommander les chaussures de sport adaptées à ta pratique, ton budget et tes priorités : running, trail et basket.">
+  <meta property="og:description" content="MyBestPair analyse ton profil pour te recommander les chaussures de sport adaptées à ta pratique, ton budget et tes priorités : running, trail, basket et padel.">
   <meta property="og:url" content="https://mybestpair.fr/">
   <meta property="og:image" content="https://mybestpair.fr/images/og-mybestpair.jpg">
   <meta property="og:image:width" content="1200">
@@ -18,7 +18,7 @@
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mybestpair.fr/#organization","name":"MyBestPair","url":"https://mybestpair.fr/","logo":"https://mybestpair.fr/favicon.png","email":"contact@mybestpair.fr","sameAs":["https://www.instagram.com/mybestpair_officiel/","https://www.tiktok.com/@mybestpair_officiel"]},{"@type":"WebSite","@id":"https://mybestpair.fr/#website","name":"MyBestPair","url":"https://mybestpair.fr/","inLanguage":"fr-FR","publisher":{"@id":"https://mybestpair.fr/#organization"}}]}</script>
   <link rel="preload" as="image" href="images/accueil-hero.webp" fetchpriority="high">
 
-  <meta name="description" content="MyBestPair analyse ton profil pour te recommander les chaussures de sport adaptées à ta pratique, ton budget et tes priorités : running, trail et basket.">
+  <meta name="description" content="MyBestPair analyse ton profil pour te recommander les chaussures de sport adaptées à ta pratique, ton budget et tes priorités : running, trail, basket et padel.">
   <link rel="canonical" href="https://mybestpair.fr/">
   <link rel="icon" type="image/png" href="favicon.png">
 
@@ -48,6 +48,7 @@
       --blue:#1681ff;
       --orange:#ff6b2c;
       --green:#74b829;
+      --padel:#0f9168;
     }
 
     html { scroll-behavior:smooth; }
@@ -208,7 +209,7 @@
 
     .cards {
       display:grid;
-      grid-template-columns:repeat(3,1fr);
+      grid-template-columns:repeat(4,1fr);
       gap:16px;
     }
 
@@ -235,6 +236,7 @@
     .basket .card-image { background-image:url("images/carte-basket.webp"); }
     .route .card-image { background-image:url("images/carte-route.webp"); }
     .trail .card-image { background-image:url("images/carte-trail.webp"); }
+    .padel .card-image { background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect width='400' height='300' fill='%230b5fa8'/><g fill='none' stroke='%23ffffff' stroke-opacity='.85' stroke-width='3'><path d='M90 40h220l60 230H30z'/><path d='M62 152h276'/><path d='M76 98h248M48 210h304'/><path d='M200 98v112'/></g><path d='M62 152h276' stroke='%23061d45' stroke-width='6' stroke-opacity='.55'/><g transform='rotate(-28 250 120)'><ellipse cx='250' cy='110' rx='34' ry='38' fill='%23f4f7fb'/><g fill='%230b5fa8'><circle cx='240' cy='100' r='3'/><circle cx='255' cy='96' r='3'/><circle cx='262' cy='112' r='3'/><circle cx='246' cy='118' r='3'/><circle cx='232' cy='112' r='3'/></g><rect x='243' y='146' width='14' height='46' rx='6' fill='%23061d45'/></g><circle cx='150' cy='118' r='12' fill='%23d8f04a'/></svg>"); }
 
     .card-body { padding:22px; }
 
@@ -250,6 +252,7 @@
     .basket h2 .mini-icon { color:var(--orange); }
     .route h2 .mini-icon { color:var(--blue); }
     .trail h2 .mini-icon { color:var(--green); }
+    .padel h2 .mini-icon { color:var(--padel); }
 
     .card p {
       margin:0 0 18px;
@@ -286,6 +289,7 @@
     .basket .check { background:var(--orange); }
     .route .check { background:var(--blue); }
     .trail .check { background:var(--green); }
+    .padel .check { background:var(--padel); }
 
     .cta {
       display:flex;
@@ -302,6 +306,7 @@
     .basket .cta { background:var(--orange); }
     .route .cta { background:var(--blue); }
     .trail .cta { background:var(--green); }
+    .padel .cta { background:var(--padel); }
 
     .cta:hover { filter:brightness(1.08); transform:translateY(-1px); }
 
@@ -553,7 +558,8 @@
     .models-hub { margin:36px 0 10px; padding:28px 24px; border:1px solid rgba(255,255,255,.12); border-radius:14px; background:rgba(6,29,69,.72); scroll-margin-top:20px; }
     .models-hub h2 { margin:0 0 8px; font-size:26px; text-transform:uppercase; }
     .models-hub > p { margin:0 0 20px; color:#dce7fb; font-size:14px; line-height:1.6; }
-    .hub-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    .hub-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+    @media(min-width:901px) and (max-width:1100px) { .cards, .hub-grid { grid-template-columns:repeat(2,1fr); } }
     .hub-col { border:1px solid rgba(255,255,255,.14); border-radius:12px; padding:18px; background:rgba(11,42,97,.55); }
     .hub-col h3 { margin:0 0 12px; font-size:17px; }
     .hub-col h3 a { color:#fff; text-decoration:none; }
@@ -670,11 +676,28 @@
         </div>
       </article>
 
+      <article class="card padel">
+        <div class="card-image" role="img" aria-label="Terrain de padel vu du dessus, raquette et balle"></div>
+        <div class="card-body">
+          <h2><span class="mini-icon"><svg class="ico" aria-hidden="true"><use href="icons.svg#padel"></use></svg></span> Padel</h2>
+          <p>Semelle, adhérence, stabilité et durabilité : trouve la paire adaptée à ton terrain, ton niveau et ton jeu.</p>
+
+          <div class="facts">
+            <div class="fact"><span class="check">✓</span> 30 modèles analysés</div>
+            <div class="fact"><span class="check">✓</span> Semelle conseillée selon ton terrain</div>
+            <div class="fact"><span class="check">✓</span> Top 3 adapté à ton profil</div>
+          </div>
+
+          <a class="cta" href="padel/">Découvrir Padel <span>→</span></a>
+          <a class="card-models" href="padel/modeles/">Voir les 30 fiches modèles padel</a>
+        </div>
+      </article>
+
     </section>
 
     <section id="fiches-modeles" class="models-hub">
       <h2>Fiches modèles</h2>
-      <p>Consulte les caractéristiques et les notes de chaque paire avant de lancer le questionnaire : 131 fiches pour la route, le trail et le basket.</p>
+      <p>Consulte les caractéristiques et les notes de chaque paire avant de lancer le questionnaire : 161 fiches pour la route, le trail, le basket et le padel.</p>
       <div class="hub-grid">
         <div class="hub-col">
           <h3><a href="running/route/modeles/"><svg class="ico" aria-hidden="true"><use href="icons.svg#footprints"></use></svg> Running Route</a></h3>
@@ -708,6 +731,17 @@
             <li><a href="basket/modeles/under-armour-curry-13/">Under Armour Curry 13</a></li>
           </ul>
           <a class="hub-all" href="basket/modeles/">Les 30 fiches basket →</a>
+        </div>
+        <div class="hub-col">
+          <h3><a href="padel/modeles/"><svg class="ico" aria-hidden="true"><use href="icons.svg#padel"></use></svg> Padel</a></h3>
+          <ul>
+            <li><a href="padel/modeles/kuikma-ps-pro/">Kuikma PS PRO</a></li>
+            <li><a href="padel/modeles/asics-gel-challenger-15-padel/">ASICS Gel-Challenger 15 Padel</a></li>
+            <li><a href="padel/modeles/babolat-movea/">Babolat Movea</a></li>
+            <li><a href="padel/modeles/bullpadel-neuron-26v/">Bullpadel Neuron 26V</a></li>
+            <li><a href="padel/modeles/nox-nerbo/">NOX Nerbo</a></li>
+          </ul>
+          <a class="hub-all" href="padel/modeles/">Les 30 fiches padel →</a>
         </div>
       </div>
     </section>
@@ -763,7 +797,7 @@
 
       <p>
         MYBESTPAIR propose actuellement des recommandations pour le basketball,
-        le running route et le trail.
+        le running route, le trail et le padel.
       </p>
 
       <p>
@@ -800,6 +834,7 @@
       <a href="running/route/modeles/">Fiches Route</a>
       <a href="running/trail/modeles/">Fiches Trail</a>
       <a href="basket/modeles/">Fiches Basket</a>
+      <a href="padel/modeles/">Fiches Padel</a>
       <a href="methodologie.html">Méthodologie</a>
       <a href="conditions-utilisation.html">Conditions d’utilisation</a>
       <a href="confidentialite.html">Politique de confidentialité</a>
