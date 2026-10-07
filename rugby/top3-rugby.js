@@ -19,8 +19,9 @@
   const PUBLICS = { HOMME: "", FEMME: "Modèles femme et mixtes", ENFANT: "Modèles enfant" };
   const studsOf = (r) => STUDS[r.studs] || "À confirmer";
 
-  /* Pas encore de photos produit : la marque s'affiche en grand. */
+  /* Sans photo produit, la marque s'affiche en grand. Photo officielle d'une marque : crédit « Photo : © marque ». */
   const photoOf = (r) => r.photo || "";
+  const creditOf = (r) => (r.photo && r.photoCredit ? `<span class="t3-credit">Photo : © ${esc(r.photoCredit)}</span>` : "");
 
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const num = (n, d = 1) => Number(n).toFixed(d).replace(/\.0+$/, "").replace(".", ",");
@@ -85,7 +86,8 @@
           <span class="t3-tag">${CHECK}${esc(tag)}</span>
           ${budgetChip(r, p)}
           <div class="t3-plate-brand">${BALL}<span>${esc(r.brand.toUpperCase())}</span></div>
-          ${photoOf(r) ? `<img src="${esc(photoOf(r))}" alt="${esc(fullName(r))}" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('t3-noimg');this.remove()">` : ""}
+          ${photoOf(r) ? `<img${r.photoCredit ? ' class="t3-brand-photo"' : ""} src="${esc(photoOf(r))}" alt="${esc(fullName(r))}" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('t3-noimg');this.remove()">` : ""}
+          ${creditOf(r)}
         </div>
         <div class="t3-body">
           <div class="t3-head">

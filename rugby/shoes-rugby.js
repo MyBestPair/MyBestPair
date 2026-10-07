@@ -3,6 +3,7 @@
  * établies à partir des fiches fabricants et des tests publiés (voir methodologie.html).
  * studs : FER (vissés) / MOULES / HYBRIDE · foot : ETROIT / STANDARD / LARGE · public : ADULTE / FEMME / ENFANT
  * link : lien marchand Decathlon (Rakuten), vide = « Lien bientôt disponible ».
+ * photo + photoCredit : photo officielle du site de la marque (relevé du 7 octobre 2026), affichée avec « Photo : © marque ».
  * Prix : catalogue Rakuten Decathlon (export du 7 octobre 2026, hors promotion) ; priceIndicative = prix public constaté, sans marchand.
  */
 const CRITERIA = [
@@ -288,7 +289,9 @@ const SHOES = [
     "public": "ADULTE",
     "scoreBrand": "CANTERBURY",
     "link": "",
-    "priceIndicative": true
+    "priceIndicative": true,
+    "photo": "https://cdn.shopify.com/s/files/1/0783/7945/0580/files/Q-B000173BK8-B1_600x400_crop_center.jpg?v=1787917372",
+    "photoCredit": "Canterbury"
   },
   {
     "name": "Phoenix Genesis Pro SG",
@@ -309,7 +312,9 @@ const SHOES = [
     "public": "ADULTE",
     "scoreBrand": "CANTERBURY",
     "link": "",
-    "priceIndicative": true
+    "priceIndicative": true,
+    "photo": "https://cdn.shopify.com/s/files/1/0783/7945/0580/files/Q-B000135BB3-B1_600x400_crop_center.jpg?v=1787917470",
+    "photoCredit": "Canterbury"
   },
   {
     "name": "Phoenix Genesis Team FG",
@@ -351,7 +356,9 @@ const SHOES = [
     "public": "ADULTE",
     "scoreBrand": "CANTERBURY",
     "link": "",
-    "priceIndicative": true
+    "priceIndicative": true,
+    "photo": "https://cdn.shopify.com/s/files/1/0783/7945/0580/files/Q-F000010A89-B1_600x400_crop_center.jpg?v=1787925185",
+    "photoCredit": "Canterbury"
   },
   {
     "name": "Speed Junior Pro",
@@ -372,7 +379,9 @@ const SHOES = [
     "public": "ENFANT",
     "scoreBrand": "CANTERBURY",
     "link": "",
-    "priceIndicative": true
+    "priceIndicative": true,
+    "photo": "https://cdn.shopify.com/s/files/1/0783/7945/0580/files/Q-F000015A89-B1_600x400_crop_center.jpg?v=1787917593",
+    "photoCredit": "Canterbury"
   },
   {
     "name": "Kakari Elite SG",
@@ -456,7 +465,9 @@ const SHOES = [
     "public": "ADULTE",
     "scoreBrand": "MIZUNO",
     "link": "",
-    "priceIndicative": true
+    "priceIndicative": true,
+    "photo": "https://emea.mizuno.com/dw/image/v2/BDBS_PRD/on/demandware.static/-/Sites-masterCatalog_Mizuno/default/dw4b5d9008/SS26/Footwear/SH_P1GC264350_00.png?sw=600",
+    "photoCredit": "Mizuno"
   },
   {
     "name": "Waitangi II CL",
@@ -477,7 +488,9 @@ const SHOES = [
     "public": "ADULTE",
     "scoreBrand": "MIZUNO",
     "link": "",
-    "priceIndicative": true
+    "priceIndicative": true,
+    "photo": "https://emea.mizuno.com/dw/image/v2/BDBS_PRD/on/demandware.static/-/Sites-masterCatalog_Mizuno/default/dw08560cbe/AW26/Footwear/SH_R1GA261101_00.png?sw=600",
+    "photoCredit": "Mizuno"
   },
   {
     "name": "Sidestep Icon 8S",
@@ -498,7 +511,9 @@ const SHOES = [
     "public": "ADULTE",
     "scoreBrand": "GILBERT",
     "link": "",
-    "priceIndicative": true
+    "priceIndicative": true,
+    "photo": "https://cdn.shopify.com/s/files/1/0068/0227/6407/files/RSCA26Boots_20Sidestep_20Icon_208_20Stud_20Black_20Main_600x400_crop_center.jpg?v=1780658277",
+    "photoCredit": "Gilbert"
   },
   {
     "name": "Speedster 6S",
@@ -519,7 +534,9 @@ const SHOES = [
     "public": "ADULTE",
     "scoreBrand": "GILBERT",
     "link": "",
-    "priceIndicative": true
+    "priceIndicative": true,
+    "photo": "https://cdn.shopify.com/s/files/1/0068/0227/6407/files/RSBA26Boots_20Speedster_20Boot_20Aqua_206_20Stud_20Instep_600x400_crop_center.jpg?v=1780658223",
+    "photoCredit": "Gilbert"
   },
   {
     "name": "RS15 Avaglide",
@@ -582,7 +599,9 @@ const SHOES = [
     "public": "ADULTE",
     "scoreBrand": "CANTERBURY",
     "link": "",
-    "priceIndicative": true
+    "priceIndicative": true,
+    "photo": "https://cdn.shopify.com/s/files/1/0783/7945/0580/files/Q-B000174BK8-B1_600x400_crop_center.jpg?v=1789562130",
+    "photoCredit": "Canterbury"
   },
   {
     "name": "Speed Falcon 2.0 Team SG",
@@ -603,7 +622,9 @@ const SHOES = [
     "public": "ADULTE",
     "scoreBrand": "CANTERBURY",
     "link": "",
-    "priceIndicative": true
+    "priceIndicative": true,
+    "photo": "https://cdn.shopify.com/s/files/1/0783/7945/0580/files/Q-F000012A89-B1_600x400_crop_center.jpg?v=1787917458",
+    "photoCredit": "Canterbury"
   },
   {
     "name": "PWR X 8S V2 SG",
@@ -624,7 +645,9 @@ const SHOES = [
     "public": "ADULTE",
     "scoreBrand": "GILBERT",
     "link": "",
-    "priceIndicative": true
+    "priceIndicative": true,
+    "photo": "https://cdn.shopify.com/s/files/1/0068/0227/6407/files/RSAI25Boots_20Icon_20Power_20X_208_20Stud_20V2_20Black_20Instep_600x400_crop_center.jpg?v=1747232281",
+    "photoCredit": "Gilbert"
   },
   {
     "name": "Morelia Neo IV Pro SG",
@@ -645,7 +668,9 @@ const SHOES = [
     "public": "ADULTE",
     "scoreBrand": "MIZUNO",
     "link": "",
-    "priceIndicative": true
+    "priceIndicative": true,
+    "photo": "https://emea.mizuno.com/dw/image/v2/BDBS_PRD/on/demandware.static/-/Sites-masterCatalog_Mizuno/default/dw4491cce9/SS26/Footwear/SH_P1GC263450_00.png?sw=600",
+    "photoCredit": "Mizuno"
   }
 ];
 
