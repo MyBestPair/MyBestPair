@@ -15,6 +15,13 @@ SPECS = {
     "trail": ("running/trail", "Running Trail", ["accroche", "amorti", "stabilite", "protection", "dynamisme", "confort"]),
     "basket": ("basket", "Basket", ["traction", "amorti", "reactivite", "stabilite", "maintien", "legerete", "confort", "durabilite"]),
 }
+AFFILIATE_NOTE = "Certains liens vers les marchands sont des liens d’affiliation (Kwanko, Awin, Rakuten) : un achat peut rapporter une commission à MyBestPair, sans surcoût pour toi. Le classement n’en dépend pas."
+
+
+def affiliate_note(root):
+    return f'<p class="note affiliate-note">{h(AFFILIATE_NOTE)} <a href="{root}methodologie.html#liens-commerciaux">En savoir plus</a></p>'
+
+
 LABELS = {"reactivite": "Réactivité", "stabilite": "Stabilité", "legerete": "Légèreté", "durabilite": "Durabilité"}
 
 
@@ -197,6 +204,7 @@ def render(shoe, sport, base, category, fields, photo=None, related=""):
   <main>
     <nav class="crumbs" aria-label="Fil d'Ariane"><a href="{root_link}">Accueil</a> › <a href="../../">{h(category)}</a> › <a href="../">Modèles</a> › {h(name)}</nav>
     <header class="hero"><div class="eyebrow">MyBestPair / {h(category)}</div><h1>{h(name)}</h1><p>Une première lecture de la paire, avant de vérifier si elle correspond vraiment à ton profil.</p><div class="hero-meta"><span>{h(context)}</span><span>{h(key_point)}</span></div><a class="cta" href="../../#{fragment}">Vérifier avec mon profil →</a></header>
+    {affiliate_note(root_link)}
     <div class="layout"><div>
       <section class="card"><h2>L'essentiel sur cette paire</h2><p class="lede">{use}</p><div class="verdict"><div><span>Ses atouts dans notre base</span><strong>{h(strengths.capitalize())}</strong></div><div><span>À regarder de plus près</span><strong>{h(modest.capitalize())}</strong></div></div><p class="note">Ces indications viennent des données MyBestPair. Elles permettent de comparer les modèles, mais ne remplacent pas un essai de la chaussure.</p></section>{enriched_html(name)}
       <section class="card"><h2>Ses notes MyBestPair</h2><p class="muted">Évaluations internes sur 10 utilisées par le questionnaire, et non notes issues d'un test terrain indépendant. <a href="{root_link}methodologie.html">Comprendre notre méthodologie</a>.</p><div class="scores" aria-label="Notes internes MyBestPair sur 10">{rows}</div></section>
@@ -238,6 +246,8 @@ def main():
                 if '"BreadcrumbList"' not in pilot:
                     crumbs = json_ld(breadcrumb([("Accueil", "https://mybestpair.fr/"), (category, f"https://mybestpair.fr/{base}/"), ("Modèles", f"https://mybestpair.fr/{base}/modeles/"), (name, f"https://mybestpair.fr/{base}/modeles/{path}/")]))
                     pilot = pilot.replace('<link rel="icon"', crumbs + '\n  <link rel="icon"', 1)
+                if "affiliate-note" not in pilot:
+                    pilot = pilot.replace("</header>", "</header>\n    " + affiliate_note("../../../../"), 1)
                 block = alternatives_html(shoe, shoes, sport, fields)
                 pilot = re.sub(r'\n        <section class="card"><h2>Modèles proches à comparer</h2>.*?</section>', "", pilot, flags=re.S)
                 marker = '\n      </div>\n      <aside>'
@@ -259,7 +269,7 @@ def main():
             "@context": "https://schema.org", "@type": "ItemList", "name": f"Chaussures {category} : fiches modèles MyBestPair",
             "numberOfItems": len(names),
             "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": n, "url": f"https://mybestpair.fr/{base}/modeles/{sl}/"} for i, (n, sl) in enumerate(zip(names, slugs))]})
-        index = f'''<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Chaussures {h(category)} : {len(shoes)} fiches modèles | MyBestPair</title><meta name="description" content="Parcours les {len(shoes)} modèles {h(category)} de la base MyBestPair, consulte leurs caractéristiques et teste ton profil."><link rel="canonical" href="https://mybestpair.fr/{base}/modeles/"><link rel="icon" href="{hub_root}favicon.png">{head_extras(f"Chaussures {category} : {len(shoes)} fiches modèles | MyBestPair", f"Parcours les {len(shoes)} modèles {category} de la base MyBestPair, consulte leurs caractéristiques et teste ton profil.", f"https://mybestpair.fr/{base}/modeles/")}{catalogue_ld}<script src="{hub_root}analytics-consent.js"></script><link rel="stylesheet" href="{hub_root}modeles.css"></head><body><nav class="topbar"><a class="brand" href="{hub_root}">MYBESTPAIR</a><a href="../">Questionnaire {h(category)}</a></nav><main><nav class="crumbs"><a href="{hub_root}">Accueil</a> › <a href="../">{h(category)}</a> › Modèles</nav><header class="hero"><div class="eyebrow">Catalogue MyBestPair / {h(category)}</div><h1>Une paire pour chaque profil.</h1><p>Explore les {len(shoes)} modèles de notre base {h(category)}, puis trouve ceux qui correspondent à ta pratique.</p><a class="cta" href="../">Trouver ma paire →</a></header><div class="catalogue-toolbar"><h2>Explorer les modèles</h2><p>{len(shoes)} fiches · caractéristiques et notes MyBestPair</p></div><div class="catalogue-grid">{links}</div><p class="muted" style="margin-top:24px">Les données présentées sont indicatives et les disponibilités peuvent évoluer.</p></main><footer>© 2026 MyBestPair · <a href="{hub_root}conditions-utilisation.html">Conditions d’utilisation</a> · <a href="{hub_root}methodologie.html">Méthodologie</a> · <a href="{hub_root}confidentialite.html">Confidentialité</a></footer></body></html>'''
+        index = f'''<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Chaussures {h(category)} : {len(shoes)} fiches modèles | MyBestPair</title><meta name="description" content="Parcours les {len(shoes)} modèles {h(category)} de la base MyBestPair, consulte leurs caractéristiques et teste ton profil."><link rel="canonical" href="https://mybestpair.fr/{base}/modeles/"><link rel="icon" href="{hub_root}favicon.png">{head_extras(f"Chaussures {category} : {len(shoes)} fiches modèles | MyBestPair", f"Parcours les {len(shoes)} modèles {category} de la base MyBestPair, consulte leurs caractéristiques et teste ton profil.", f"https://mybestpair.fr/{base}/modeles/")}{catalogue_ld}<script src="{hub_root}analytics-consent.js"></script><link rel="stylesheet" href="{hub_root}modeles.css"></head><body><nav class="topbar"><a class="brand" href="{hub_root}">MYBESTPAIR</a><a href="../">Questionnaire {h(category)}</a></nav><main><nav class="crumbs"><a href="{hub_root}">Accueil</a> › <a href="../">{h(category)}</a> › Modèles</nav><header class="hero"><div class="eyebrow">Catalogue MyBestPair / {h(category)}</div><h1>Une paire pour chaque profil.</h1><p>Explore les {len(shoes)} modèles de notre base {h(category)}, puis trouve ceux qui correspondent à ta pratique.</p><a class="cta" href="../">Trouver ma paire →</a></header>{affiliate_note(hub_root)}<div class="catalogue-toolbar"><h2>Explorer les modèles</h2><p>{len(shoes)} fiches · caractéristiques et notes MyBestPair</p></div><div class="catalogue-grid">{links}</div><p class="muted" style="margin-top:24px">Les données présentées sont indicatives et les disponibilités peuvent évoluer.</p></main><footer>© 2026 MyBestPair · <a href="{hub_root}conditions-utilisation.html">Conditions d’utilisation</a> · <a href="{hub_root}methodologie.html">Méthodologie</a> · <a href="{hub_root}confidentialite.html">Confidentialité</a></footer></body></html>'''
         (dest / "index.html").write_text(index)
         all_urls.append(f"https://mybestpair.fr/{base}/modeles/")
         category_page = ROOT / base / "index.html"

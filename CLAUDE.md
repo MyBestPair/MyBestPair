@@ -27,6 +27,8 @@
 | SEO | `sitemap.xml`, `robots.txt` |
 
 Fiches actuelles : 131 (30 Basket, 50 Route, 51 Trail). Le script de génération est stable : le relancer sans changement de données ne modifie aucun fichier.
+Exception : la fiche `running/route/modeles/asics-novablast-6/` est rédigée à la main ; le script la conserve et n'y injecte que certains blocs (dont l'encart d'affiliation). Toute modification du gabarit des fiches doit aussi être prévue pour elle.
+L'encart d'affiliation (texte dans `AFFILIATE_NOTE`, `scripts/build_model_pages.py`) renvoie vers `methodologie.html#liens-commerciaux`.
 
 ## Barème (moteur `app.js`, `FINAL_WEIGHTS`)
 62 % critères techniques · 15 % budget · 10 % surface · 8 % pied · 5 % marque.
