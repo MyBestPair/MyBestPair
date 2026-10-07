@@ -27,7 +27,7 @@
 | Pages légales / méthode | `methodologie.html`, `confidentialite.html`, `mentions-legales.html`, `conditions-utilisation.html`, `qui-sommes-nous.html` |
 | SEO | `sitemap.xml`, `robots.txt` |
 
-Fiches actuelles : 167 (30 Basket, 50 Route, 51 Trail, 36 Padel). Le script de génération est stable : le relancer sans changement de données ne modifie aucun fichier.
+Fiches actuelles : 164 (30 Basket, 50 Route, 51 Trail, 33 Padel). Le script de génération est stable : le relancer sans changement de données ne modifie aucun fichier.
 Exception : la fiche `running/route/modeles/asics-novablast-6/` est rédigée à la main ; le script la conserve et n'y injecte que certains blocs (dont l'encart d'affiliation). Toute modification du gabarit des fiches doit aussi être prévue pour elle.
 L'encart d'affiliation (texte dans `AFFILIATE_NOTE`, `scripts/build_model_pages.py`) renvoie vers `methodologie.html#liens-commerciaux`.
 
@@ -44,7 +44,8 @@ Budget : marge « coup de cœur » de +20 € au-dessus du budget annoncé. Les 
   - questions : niveau (je débute / loisir régulier / compétition), fréquence (1×/sem. / 2-3× / 4× ou plus — plus c'est fréquent, plus la durabilité compte), surface (extérieur gazon sablé / indoor / je ne sais pas → type de semelle conseillé), style de jeu (attaquant au filet / défenseur au fond / polyvalent / je ne sais pas), type de pied, budget, marque préférée, 3 priorités, homme / femme / peu importe ;
   - livrables : page `/padel/` avec questionnaire, guide « Comment choisir ses chaussures de padel », FAQ avec données structurées (comme `basket/`), 30 fiches via `build_model_pages.py`, carte Padel sur l'accueil, `sitemap.xml` à jour, encart d'affiliation ;
   - tableau des 30 modèles validé par Romain le 7 oct. 2026, puis 6 modèles récents ajoutés depuis le catalogue Rakuten (Indiga W 26V, Spin Lady, Courtquick, Movea 2, Motion One LTD, Sprint Pro 4.0) ; toutes les notes sont des estimations (fiches fabricants + tests publiés) ;
-  - **ne proposer que des modèles récents** (dernière génération) : un joueur veut une paire actuelle ; écarter les anciennes générations quand une plus récente existe ;
+  - **ne proposer que des modèles récents** (dernière génération) : un joueur veut une paire actuelle ; écarter les anciennes générations quand une plus récente existe (retirés le 7 oct. 2026 : Kuikma PS 990 Dyn, ASICS Gel-Dedicate 8 Padel, Babolat Movea 1re version) ;
+  - le script de génération ne supprime pas les fiches des modèles retirés : supprimer à la main le dossier `padel/modeles/<modele>/` ;
   - versions femme : champ `women` (lien, prix, photo) utilisé quand on choisit « Femme » (PS PRO, Game FF, Courtquick) ;
   - prix, liens Rakuten et photos de 25 modèles repris du catalogue Rakuten Decathlon (export du 7 oct. 2026, script PowerShell de Romain `export-decathlon-padel.ps1`, API Product Search mid=44806) ; prix catalogue hors promotion, comme le dit la méthodologie ;
   - reste à faire : 5 modèles absents du catalogue Rakuten (ASICS Solution Swift FF Padel, adidas Barricade 13, HEAD Sprint Evo 4.0, Wilson Hurakn Pro V2, NOX Nerbo), semelle de la Barricade 13 à confirmer.
