@@ -3,6 +3,7 @@
  * établies à partir des fiches fabricants et des tests publiés (voir methodologie.html).
  * sole : CHEVRONS / OMNI / MIXTE / A CONFIRMER · foot : ETROIT / STANDARD / LARGE
  * gender : HOMME / FEMME / MIXTE · link : lien marchand Decathlon (Rakuten), vide = « Lien bientôt disponible ».
+ * Prix, liens et photos : catalogue Rakuten Decathlon (export du 7 octobre 2026), prix catalogue hors promotion.
  */
 const CRITERIA = [
   "ADHERENCE",
@@ -19,7 +20,7 @@ const SHOES = [
   {
     "name": "PS PRO",
     "brand": "Kuikma",
-    "price": 79.99,
+    "price": 94.99,
     "scores": [
       8.5,
       7.5,
@@ -34,12 +35,13 @@ const SHOES = [
     "foot": "STANDARD",
     "gender": "HOMME",
     "scoreBrand": "KUIKMA",
-    "link": ""
+    "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.448066740892562282761882&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-padel-kuikma-ps-pro%2F361002%2Fc382c121m8926635",
+    "photo": "https://contents.mediadecathlon.com/p2953888/k$38c168aff3ee5c35395d615d5ed668f5/picture.jpg"
   },
   {
     "name": "PS Stab",
     "brand": "Kuikma",
-    "price": 54.99,
+    "price": 79.99,
     "scores": [
       8.0,
       7.5,
@@ -54,7 +56,8 @@ const SHOES = [
     "foot": "STANDARD",
     "gender": "MIXTE",
     "scoreBrand": "KUIKMA",
-    "link": ""
+    "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.4480617293298340895039797&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-padel-kuikma-ps-stab-rouge%2F352574%2Fc146c380m8871079",
+    "photo": "https://contents.mediadecathlon.com/p2700144/k$3cbf3139c92af5c2e670b61766e4682f/picture.jpg"
   },
   {
     "name": "PS Dynamic",
@@ -74,7 +77,8 @@ const SHOES = [
     "foot": "STANDARD",
     "gender": "MIXTE",
     "scoreBrand": "KUIKMA",
-    "link": ""
+    "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.4480614333398193486184063&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-padel-ps-dynamic-bleu-clair%2F355400%2Fc406m8883471",
+    "photo": "https://contents.mediadecathlon.com/p3027591/k$3d2288e275bf06d53d4810235c7ca65e/picture.jpg"
   },
   {
     "name": "PS Team",
@@ -94,7 +98,8 @@ const SHOES = [
     "foot": "STANDARD",
     "gender": "HOMME",
     "scoreBrand": "KUIKMA",
-    "link": ""
+    "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.44806558728484720756134&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-padel-pour-homme-ps-team-bleu%2F347711%2Fc158c43c43m8948988",
+    "photo": "https://contents.mediadecathlon.com/p2951611/k$103c01fa83dc019096701ce3216982d7/picture.jpg"
   },
   {
     "name": "PS Comfort",
@@ -114,7 +119,8 @@ const SHOES = [
     "foot": "LARGE",
     "gender": "FEMME",
     "scoreBrand": "KUIKMA",
-    "link": ""
+    "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.448061717091583171456539&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-padel-femme-ps-comfort-bleu-clair%2F355874%2Fc155c158m8891469",
+    "photo": "https://contents.mediadecathlon.com/p2700147/k$4b70817a5770b223c8da8469b494c26f/picture.jpg"
   },
   {
     "name": "PS 990 Dyn",
@@ -134,12 +140,13 @@ const SHOES = [
     "foot": "STANDARD",
     "gender": "HOMME",
     "scoreBrand": "KUIKMA",
-    "link": ""
+    "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.4480617769829698875369528&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-padel-homme-kuikma-ps-990-dyn-vert%2F334632%2Fc345c345m8650365",
+    "photo": "https://contents.mediadecathlon.com/p2462840/k$6290a80e77109cabdfa517fd3266742a/picture.jpg"
   },
   {
     "name": "PS 500",
     "brand": "Kuikma",
-    "price": 34.99,
+    "price": 44.99,
     "scores": [
       7.0,
       7.0,
@@ -154,7 +161,8 @@ const SHOES = [
     "foot": "LARGE",
     "gender": "HOMME",
     "scoreBrand": "KUIKMA",
-    "link": ""
+    "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.448063115558676368338148&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-padel-homme-ps-500-noir-jaune%2F310385%2Fc382c132m8805268",
+    "photo": "https://contents.mediadecathlon.com/p2448110/k$438a3973598cce6306fbeb3d1b1bd1aa/picture.jpg"
   },
   {
     "name": "Comfort Lite",
@@ -174,12 +182,13 @@ const SHOES = [
     "foot": "STANDARD",
     "gender": "MIXTE",
     "scoreBrand": "KUIKMA",
-    "link": ""
+    "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.448069130966022588006583&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-tennis-padel-et-pickleball-homme-comfort-lite-terracota%2F365168%2Fc101c382m9019684",
+    "photo": "https://contents.mediadecathlon.com/p3117542/k$855531c85c47b9850573719a612d660b/picture.jpg"
   },
   {
     "name": "Gel-Dedicate 8 Padel",
     "brand": "ASICS",
-    "price": 44.99,
+    "price": 54.99,
     "scores": [
       7.5,
       7.0,
@@ -194,7 +203,8 @@ const SHOES = [
     "foot": "STANDARD",
     "gender": "MIXTE",
     "scoreBrand": "ASICS",
-    "link": ""
+    "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.448067758019231959347922&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-padel-homme-asics-gel-dedicate-8-blanc-orange%2FX8832457%2Fm8832457",
+    "photo": "https://contents.mediadecathlon.com/p2487715/k$51cf8babc8edad3fa5bc63131dd529c1/picture.jpg"
   },
   {
     "name": "Gel-Dedicate 9",
@@ -214,7 +224,8 @@ const SHOES = [
     "foot": "STANDARD",
     "gender": "HOMME",
     "scoreBrand": "ASICS",
-    "link": ""
+    "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.4480616367255597944003148&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-padel-homme-asics-gel-dedicate-9%2F386627%2Fm9030241",
+    "photo": "https://contents.mediadecathlon.com/p3173722/k$ab83530ca9cc05edc197d26ea09baa77/picture.jpg"
   },
   {
     "name": "Game FF",
@@ -234,7 +245,8 @@ const SHOES = [
     "foot": "STANDARD",
     "gender": "HOMME",
     "scoreBrand": "ASICS",
-    "link": ""
+    "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.448062687369133921334274&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-padel-homme-asics-game-ff-gris-bleu-rose%2F367927%2Fm8949962",
+    "photo": "https://contents.mediadecathlon.com/p2816641/k$50a2c21f7701f3f6976fc6a8734d2a58/picture.jpg"
   },
   {
     "name": "Solution Swift FF Padel",
@@ -259,7 +271,7 @@ const SHOES = [
   {
     "name": "Gel-Challenger 15 Padel",
     "brand": "ASICS",
-    "price": 107.95,
+    "price": 119.99,
     "scores": [
       8.5,
       8.0,
@@ -274,12 +286,13 @@ const SHOES = [
     "foot": "STANDARD",
     "gender": "HOMME",
     "scoreBrand": "ASICS",
-    "link": ""
+    "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.44806745693465105546124&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-padel-homme-asics-gel-challenguer-15-blanc-bleu%2F381323%2Fm9001456",
+    "photo": "https://contents.mediadecathlon.com/p3039965/k$2162f3a160c1b79adeb1f17fc4b9fbe4/picture.jpg"
   },
   {
     "name": "Sonicsmash FF",
     "brand": "ASICS",
-    "price": 109.99,
+    "price": 139.99,
     "scores": [
       8.0,
       7.5,
@@ -294,7 +307,8 @@ const SHOES = [
     "foot": "STANDARD",
     "gender": "HOMME",
     "scoreBrand": "ASICS",
-    "link": ""
+    "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.448064921583686734084084&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-padel-homme-asics-sonicsmash-ff-white-orange%2F381312%2Fm9049415",
+    "photo": "https://contents.mediadecathlon.com/p3212420/k$82705f8252c4e39f17f3706214b98674/picture.jpg"
   },
   {
     "name": "Movea",
@@ -314,7 +328,8 @@ const SHOES = [
     "foot": "STANDARD",
     "gender": "HOMME",
     "scoreBrand": "BABOLAT",
-    "link": ""
+    "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.448065399605687925501558&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-padel-homme-babolat-movea%2FX8815528%2Fc142c1m8815528",
+    "photo": "https://contents.mediadecathlon.com/p2466732/k$6ff8a8c338347875b45f4c202b0ad5ff/picture.jpg"
   },
   {
     "name": "Sensa 25",
@@ -334,7 +349,8 @@ const SHOES = [
     "foot": "STANDARD",
     "gender": "FEMME",
     "scoreBrand": "BABOLAT",
-    "link": ""
+    "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.448064526946384483165548&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-padel-femme-babolat-sensa-25-blanche%2F367016%2Fm8948121",
+    "photo": "https://contents.mediadecathlon.com/p2852067/k$3bf34defe4dc5edb52581829eb8c12cb/picture.jpg"
   },
   {
     "name": "Jet Viva",
@@ -354,12 +370,13 @@ const SHOES = [
     "foot": "ETROIT",
     "gender": "HOMME",
     "scoreBrand": "BABOLAT",
-    "link": ""
+    "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.4480611580387529285262133&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-padel-homme-babolat-jet-viva-blanc%2F365394%2Fm8941944",
+    "photo": "https://contents.mediadecathlon.com/p2816643/k$e09b8de425d44f954a9087dadce32037/picture.jpg"
   },
   {
     "name": "Premura 3 Juan Lebron",
     "brand": "Babolat",
-    "price": 114.95,
+    "price": 169.99,
     "scores": [
       8.5,
       7.5,
@@ -374,7 +391,8 @@ const SHOES = [
     "foot": "ETROIT",
     "gender": "MIXTE",
     "scoreBrand": "BABOLAT",
-    "link": ""
+    "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.4480614634464146526800284&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-padel-premura-3-juan-lebron-pour-homme%2F381314%2Fm9001489",
+    "photo": "https://contents.mediadecathlon.com/p2952052/k$82f2bf32f48000a4e7010c87bad23f68/picture.jpg"
   },
   {
     "name": "Bogun 25",
@@ -394,7 +412,8 @@ const SHOES = [
     "foot": "STANDARD",
     "gender": "HOMME",
     "scoreBrand": "BULLPADEL",
-    "link": ""
+    "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.4480610154853658275369429&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-padel-homme-bullpadel-bogun-25-noir-jaune%2F365313%2Fm8941938",
+    "photo": "https://contents.mediadecathlon.com/p2816648/k$24d7febfac49deb394d198eae515e3eb/picture.jpg"
   },
   {
     "name": "Binux",
@@ -414,7 +433,8 @@ const SHOES = [
     "foot": "STANDARD",
     "gender": "HOMME",
     "scoreBrand": "BULLPADEL",
-    "link": ""
+    "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.448069358136013169288314&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-padel-homme-bullpadel-binux-black%2F381511%2Fm9001992",
+    "photo": "https://contents.mediadecathlon.com/p3033250/k$04447916d42a75d46c862fba03bef696/picture.jpg"
   },
   {
     "name": "Neuron 26V",
@@ -434,7 +454,8 @@ const SHOES = [
     "foot": "STANDARD",
     "gender": "HOMME",
     "scoreBrand": "BULLPADEL",
-    "link": ""
+    "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.4480614752201594169353422&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-padel-homme-bullpadel-neuron-26v-grey%2F381427%2Fm9001994",
+    "photo": "https://contents.mediadecathlon.com/p3031108/k$e21b30870febaeefd673b882718d1217/picture.jpg"
   },
   {
     "name": "Vertex Vibram 26",
@@ -454,7 +475,8 @@ const SHOES = [
     "foot": "STANDARD",
     "gender": "HOMME",
     "scoreBrand": "BULLPADEL",
-    "link": ""
+    "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.4480612588568593961950133&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-padel-homme-bullpadel-vertex-vibram-26%2F381408%2Fm9001997",
+    "photo": "https://contents.mediadecathlon.com/p3031113/k$a914f156f953b9a9853ee8979338d838/picture.jpg"
   },
   {
     "name": "Crazyquick LS Padel",
@@ -474,7 +496,8 @@ const SHOES = [
     "foot": "STANDARD",
     "gender": "HOMME",
     "scoreBrand": "ADIDAS",
-    "link": ""
+    "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.44806987467767689746609&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-padel-homme-adidas-crazyquick-ls-padel-rouge%2F365580%2Fm8942722",
+    "photo": "https://contents.mediadecathlon.com/p2835247/k$4e97a6679e028468e84a60bf924019d0/picture.jpg"
   },
   {
     "name": "Barricade 13",
@@ -514,7 +537,8 @@ const SHOES = [
     "foot": "STANDARD",
     "gender": "HOMME",
     "scoreBrand": "HEAD",
-    "link": ""
+    "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.448062494409354153057949&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-padel-homme-head-motion-team-bleu%2F365400%2Fm8941947",
+    "photo": "https://contents.mediadecathlon.com/p2860142/k$7465e720b8704b4bcadc7ffe9b197c83/picture.jpg"
   },
   {
     "name": "Sprint Evo 4.0",
@@ -559,7 +583,7 @@ const SHOES = [
   {
     "name": "Bela Tour",
     "brand": "Wilson",
-    "price": 109.99,
+    "price": 159.99,
     "scores": [
       8.5,
       7.5,
@@ -574,7 +598,8 @@ const SHOES = [
     "foot": "STANDARD",
     "gender": "HOMME",
     "scoreBrand": "WILSON",
-    "link": ""
+    "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.448068987620541671657488&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-padel-homme-wilson-bela-tour-blanc-rouge%2F365525%2Fm8942655",
+    "photo": "https://contents.mediadecathlon.com/p2816184/k$9ed03eeb257a44d9896e44229957ae32/picture.jpg"
   },
   {
     "name": "Slam Pro",
@@ -594,7 +619,8 @@ const SHOES = [
     "foot": "STANDARD",
     "gender": "HOMME",
     "scoreBrand": "JOMA",
-    "link": ""
+    "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.448064583602075193780679&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-padel-slam-pro-pour-homme%2F381316%2Fm9001579",
+    "photo": "https://contents.mediadecathlon.com/p3133015/k$2c836ba709015aa3fc9c737978590832/picture.jpg"
   },
   {
     "name": "Nerbo",
