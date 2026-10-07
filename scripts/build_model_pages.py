@@ -14,7 +14,13 @@ SPECS = {
     "route": ("running/route", "Running Route", ["amorti", "dynamisme", "stabilite", "confort", "durabilite", "legerete"]),
     "trail": ("running/trail", "Running Trail", ["accroche", "amorti", "stabilite", "protection", "dynamisme", "confort"]),
     "basket": ("basket", "Basket", ["traction", "amorti", "reactivite", "stabilite", "maintien", "legerete", "confort", "durabilite"]),
+    "padel": ("padel", "Padel", ["adherence", "amorti", "stabilite", "maintien", "legerete", "confort", "durabilite", "reactivite"]),
 }
+SOURCES = {"basket": "shoes.js", "padel": "padel/shoes-padel.js"}
+# Basket and Padel share the same data layout: scores list, one folder deep.
+FLAT = ("basket", "padel")
+SOLES = {"CHEVRONS": "Chevrons", "OMNI": "Omni", "MIXTE": "Mixte"}
+GENDERS = {"HOMME": "Homme", "FEMME": "Femme", "MIXTE": "Homme et femme"}
 AFFILIATE_NOTE = "Certains liens vers les marchands sont des liens d’affiliation (Kwanko, Awin, Rakuten) : un achat peut rapporter une commission à MyBestPair, sans surcoût pour toi. Le classement n’en dépend pas."
 
 
@@ -22,7 +28,7 @@ def affiliate_note(root):
     return f'<p class="note affiliate-note">{h(AFFILIATE_NOTE)} <a href="{root}methodologie.html#liens-commerciaux">En savoir plus</a></p>'
 
 
-LABELS = {"reactivite": "Réactivité", "stabilite": "Stabilité", "legerete": "Légèreté", "durabilite": "Durabilité"}
+LABELS = {"adherence": "Adhérence", "reactivite": "Réactivité", "stabilite": "Stabilité", "legerete": "Légèreté", "durabilite": "Durabilité"}
 
 
 def h(value):
@@ -42,7 +48,7 @@ def items(source):
 
 
 def scores(shoe, sport, fields):
-    if sport == "basket":
+    if sport in FLAT:
         return dict(zip(fields, shoe["scores"]))
     return {key: shoe[key] for key in fields}
 
@@ -61,7 +67,7 @@ def display_value(value):
 
 def display_name(shoe, sport):
     name = shoe.get("modele", shoe.get("name"))
-    if sport == "basket" and not name.casefold().startswith(shoe["brand"].casefold() + " "):
+    if sport in FLAT and not name.casefold().startswith(shoe["brand"].casefold() + " "):
         return shoe["brand"] + " " + name
     return name
 
@@ -122,7 +128,7 @@ def price_of(shoe):
 def alternatives(shoe, shoes, sport, fields, count=4):
     """Closest models in the same base: similar scores, same category, similar price."""
     notes = scores(shoe, sport, fields)
-    group = shoe.get("surface") if sport == "basket" else shoe.get("type")
+    group = shoe.get("surface") if sport == "basket" else shoe.get("sole") if sport == "padel" else shoe.get("type")
     ranked = []
     for other in shoes:
         if other is shoe:
@@ -130,7 +136,7 @@ def alternatives(shoe, shoes, sport, fields, count=4):
         other_notes = scores(other, sport, fields)
         distance = sum((notes[key] - other_notes[key]) ** 2 for key in fields) ** 0.5
         distance += abs(price_of(shoe) - price_of(other)) / 40
-        other_group = other.get("surface") if sport == "basket" else other.get("type")
+        other_group = other.get("surface") if sport == "basket" else other.get("sole") if sport == "padel" else other.get("type")
         if other_group != group:
             distance += 1.5
         ranked.append((distance, display_name(other, sport), other))
@@ -138,16 +144,29 @@ def alternatives(shoe, shoes, sport, fields, count=4):
     return [(name, other) for _, name, other in ranked[:count]]
 
 
+def sole_text(shoe):
+    return SOLES.get(shoe.get("sole"), "À confirmer")
+
+
+def meta_of(shoe, sport):
+    """Short line under a model name in catalogue tiles and related models."""
+    if sport == "basket":
+        return f"{display_value(shoe['surface'])} · {display_value(shoe['foot'])}"
+    if sport == "padel":
+        return f"Semelle {sole_text(shoe).lower()} · " + f"{price_of(shoe):g}".replace(".", ",") + " €"
+    return f"{display_value(shoe['type'])} · {shoe['distance']}"
+
+
 def alternatives_html(shoe, shoes, sport, fields):
     links = []
     for name, other in alternatives(shoe, shoes, sport, fields):
-        meta = f"{display_value(other['surface'])} · " + f"{price_of(other):g}".replace(".", ",") + " €" if sport == "basket" else f"{display_value(other['type'])} · {other['distance']}"
+        meta = f"{display_value(other['surface'])} · " + f"{price_of(other):g}".replace(".", ",") + " €" if sport == "basket" else meta_of(other, sport)
         links.append(f'<li><a href="../{slug(name)}/">{h(name)}</a> <span class="muted">· {h(meta)}</span></li>')
     return f'<section class="card"><h2>Modèles proches à comparer</h2><p class="muted">Paires dont les notes, la catégorie et le prix se rapprochent le plus dans notre base.</p><ul>{"".join(links)}</ul></section>'
 
 
 def render(shoe, sport, base, category, fields, photo=None, related=""):
-    root_link = "../../../" if sport == "basket" else "../../../../"
+    root_link = "../../../" if sport in FLAT else "../../../../"
     name = display_name(shoe, sport)
     notes = scores(shoe, sport, fields)
     ranked = sorted(notes, key=lambda key: (-notes[key], fields.index(key)))
@@ -167,6 +186,15 @@ def render(shoe, sport, base, category, fields, photo=None, related=""):
         caveat = "En extérieur, la durabilité de la semelle mérite une attention particulière. Le maintien et la pointure se vérifient à l'essayage."
         factors = "ton budget, ton poste, ton style de jeu, la surface, ton type de pied et les priorités que tu classes"
         fragment = "profile-section"
+    elif sport == "padel":
+        details = [("Semelle enregistrée", sole_text(shoe)), ("Chaussant enregistré", shoe["foot"]), ("Modèle", GENDERS.get(shoe["gender"], shoe["gender"])), ("Prix indicatif de la base", f'{shoe["price"]:g} €'.replace(".", ","))]
+        use = {"CHEVRONS": "La base associe ce modèle à une semelle à chevrons, la plus adaptée au gazon synthétique sablé.",
+               "OMNI": "La base associe ce modèle à une semelle omni, plus adaptée aux terrains peu sablés.",
+               "MIXTE": "La base associe ce modèle à une semelle mixte, polyvalente entre terrains sablés et terrains couverts."}.get(shoe["sole"], "Le type de semelle de ce modèle reste à confirmer selon la version vendue.")
+        use += f" Son chaussant est enregistré comme {h(shoe['foot'].lower())}."
+        caveat = "Sur gazon très sablé, l'usure de la semelle mérite une attention particulière si tu joues souvent. Le maintien et la pointure se vérifient à l'essayage."
+        factors = "ton niveau, ta fréquence de jeu, ton terrain, ton style de jeu, ton type de pied, ton budget et les priorités que tu classes"
+        fragment = "profile-section"
     else:
         details = [("Catégorie dans la base", shoe["type"]), ("Distance enregistrée", shoe["distance"]), ("Poids indicatif dans la base", f'{shoe["poidsChaussure"]:g} g'), ("Drop dans la base", f'{shoe["drop"]:g} mm'), ("Plaque carbone enregistrée", shoe["carbone"]), ("Type de pied enregistré", shoe["typePied"])]
         if sport == "trail":
@@ -183,7 +211,7 @@ def render(shoe, sport, base, category, fields, photo=None, related=""):
             fragment = "questionnaire"
         fragment = "questionnaire"
     specs = "\n".join(f"<div><dt>{h(key)}</dt><dd>{h(display_value(value))}</dd></div>" for key, value in details)
-    context = f"{display_value(shoe['type'])} · {shoe['distance']}" if sport != "basket" else f"{display_value(shoe['surface'])} · {display_value(shoe['foot'])}"
+    context = meta_of(shoe, sport) if sport != "padel" else f"Semelle {sole_text(shoe).lower()} · {display_value(shoe['foot'])}"
     key_point = f"{label(ranked[0])} : {score(notes[ranked[0]])}"
     visual = f'<figure class="product-photo"><img src="{h(photo[0])}" alt="{h(name)} — visuel marchand" loading="lazy" decoding="async"><figcaption>Photo produit du catalogue {h(photo[1])} · le coloris peut varier</figcaption></figure>' if photo else ""
     return f'''<!DOCTYPE html>
@@ -223,7 +251,7 @@ def render(shoe, sport, base, category, fields, photo=None, related=""):
 def main():
     all_urls = []
     for sport, (base, category, fields) in SPECS.items():
-        source = (ROOT / ("shoes.js" if sport == "basket" else f"{base}/{sport}-app.js")).read_text()
+        source = (ROOT / SOURCES.get(sport, f"{base}/{sport}-app.js")).read_text()
         shoes = items(source)
         offers_match = re.search(r"const MERCHANT_OFFERS = (\{.*?\});", source, re.S)
         offers = json.loads(offers_match.group(1)) if offers_match else {}
@@ -259,12 +287,12 @@ def main():
         for shoe, name, path in zip(shoes, names, slugs):
             brand = shoe.get("brand", name.split()[0])
             model = name[len(brand):].strip() if name.lower().startswith(brand.lower()) else name
-            meta = f"{display_value(shoe['type'])} · {shoe['distance']}" if sport != "basket" else f"{display_value(shoe['surface'])} · {display_value(shoe['foot'])}"
+            meta = meta_of(shoe, sport)
             photo = image_for(name, offers)
             visual = f'<span class="tile-photo"><img src="{h(photo[0])}" alt="{h(name)}" loading="lazy" decoding="async"></span>' if photo else ''
             tiles.append(f'<a class="model-tile" href="{h(path)}/">{visual}<span class="tile-brand">{h(brand)}</span><strong>{h(model)}</strong><span class="tile-meta">{h(meta)}</span><span class="tile-link">Voir la fiche →</span></a>')
         links = "\n".join(tiles)
-        hub_root = "../../" if sport == "basket" else "../../../"
+        hub_root = "../../" if sport in FLAT else "../../../"
         catalogue_ld = json_ld(breadcrumb([("Accueil", "https://mybestpair.fr/"), (category, f"https://mybestpair.fr/{base}/"), ("Modèles", f"https://mybestpair.fr/{base}/modeles/")])) + json_ld({
             "@context": "https://schema.org", "@type": "ItemList", "name": f"Chaussures {category} : fiches modèles MyBestPair",
             "numberOfItems": len(names),
@@ -281,7 +309,7 @@ def main():
         print(sport, len(shoes))
     sitemap = ROOT / "sitemap.xml"
     old = sitemap.read_text()
-    old = re.sub(r'\s*<url>\s*<loc>https://mybestpair.fr/(?:running/(?:route|trail)/|basket/)modeles/[^<]*</loc>\s*</url>', '', old)
+    old = re.sub(r'\s*<url>\s*<loc>https://mybestpair.fr/(?:running/(?:route|trail)/|basket/|padel/)modeles/[^<]*</loc>\s*</url>', '', old)
     entries = "\n".join(f"  <url><loc>{xml_escape(url)}</loc></url>" for url in all_urls)
     sitemap.write_text(old.replace('</urlset>', entries + '\n</urlset>'))
 

@@ -2,7 +2,7 @@
 
 ## Contexte
 - Romain gère seul mybestpair.fr. Il n'est pas développeur : réponds-lui **en français**, de façon **concise**, et explique **ce qu'il doit vérifier** (sur le site, dans la PR), pas le code.
-- Le site recommande des chaussures de sport via un questionnaire qui donne un **Top 3 personnalisé**. Sports en ligne : Route, Trail, Basket. Padel en préparation.
+- Le site recommande des chaussures de sport via un questionnaire qui donne un **Top 3 personnalisé**. Sports : Route, Trail, Basket, Padel.
 - Site statique HTML/JS hébergé sur GitHub (pas de framework, pas de build hors `scripts/`).
 - Monétisation par affiliation : **Kwanko, Awin, Rakuten** (Decathlon passe par Rakuten).
 
@@ -20,13 +20,14 @@
 |---|---|
 | Accueil | `index.html` |
 | Basket : page + questionnaire | `basket/index.html`, moteur `app.js`, données `shoes.js`, affichage Top 3 `basket/top3-basket.js` |
+| Padel : page + questionnaire | `padel/index.html`, moteur `padel/padel-app.js` (copie adaptée de `app.js`, même barème), données `padel/shoes-padel.js`, Top 3 `padel/top3-padel.js` |
 | Route / Trail | `running/route/` (`route-app.js`), `running/trail/` (`trail-app.js`), Top 3 commun `running/top3.js` |
 | Fiches modèles + catalogues | `*/modeles/<modele>/index.html` et `*/modeles/index.html`, **générés** par `python3 scripts/build_model_pages.py` (ne pas les éditer à la main) |
 | Données des fiches | `scripts/fiches_enrichies.json`, `scripts/model_photos.json` |
 | Pages légales / méthode | `methodologie.html`, `confidentialite.html`, `mentions-legales.html`, `conditions-utilisation.html`, `qui-sommes-nous.html` |
 | SEO | `sitemap.xml`, `robots.txt` |
 
-Fiches actuelles : 131 (30 Basket, 50 Route, 51 Trail). Le script de génération est stable : le relancer sans changement de données ne modifie aucun fichier.
+Fiches actuelles : 161 (30 Basket, 50 Route, 51 Trail, 30 Padel). Le script de génération est stable : le relancer sans changement de données ne modifie aucun fichier.
 Exception : la fiche `running/route/modeles/asics-novablast-6/` est rédigée à la main ; le script la conserve et n'y injecte que certains blocs (dont l'encart d'affiliation). Toute modification du gabarit des fiches doit aussi être prévue pour elle.
 L'encart d'affiliation (texte dans `AFFILIATE_NOTE`, `scripts/build_model_pages.py`) renvoie vers `methodologie.html#liens-commerciaux`.
 
@@ -42,4 +43,5 @@ Budget : marge « coup de cœur » de +20 € au-dessus du budget annoncé. Les 
   - 8 critères notés sur 10 : adhérence, amorti, stabilité, maintien, légèreté, confort, durabilité, réactivité ;
   - questions : niveau (je débute / loisir régulier / compétition), fréquence (1×/sem. / 2-3× / 4× ou plus — plus c'est fréquent, plus la durabilité compte), surface (extérieur gazon sablé / indoor / je ne sais pas → type de semelle conseillé), style de jeu (attaquant au filet / défenseur au fond / polyvalent / je ne sais pas), type de pied, budget, marque préférée, 3 priorités, homme / femme / peu importe ;
   - livrables : page `/padel/` avec questionnaire, guide « Comment choisir ses chaussures de padel », FAQ avec données structurées (comme `basket/`), 30 fiches via `build_model_pages.py`, carte Padel sur l'accueil, `sitemap.xml` à jour, encart d'affiliation ;
-  - **ne rien coder avant que Romain ait validé le tableau des 30 modèles** (8 notes, semelle chevrons/omni/mixte, chaussant étroit/standard/large, sources ; notes estimées clairement signalées).
+  - tableau des 30 modèles validé par Romain le 7 oct. 2026 ; toutes les notes sont des estimations (fiches fabricants + tests publiés) ;
+  - reste à faire : liens Rakuten Decathlon des 30 modèles (`link` vide = « Lien bientôt disponible »), revérifier les prix (vendeurs tiers), confirmer la semelle de l'adidas Barricade 13, photos produit.
