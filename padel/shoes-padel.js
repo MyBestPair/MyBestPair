@@ -1,4 +1,4 @@
-/* Base Padel MyBestPair — 36 modèles (relevé Decathlon du 7 octobre 2026, 6 ajouts du catalogue Rakuten).
+/* Base Padel MyBestPair — 33 modèles de dernière génération (relevé Decathlon du 7 octobre 2026 et catalogue Rakuten).
  * Notes sur 10, dans l'ordre de CRITERIA. Toutes les notes sont des estimations MyBestPair
  * établies à partir des fiches fabricants et des tests publiés (voir methodologie.html).
  * sole : CHEVRONS / OMNI / MIXTE / A CONFIRMER · foot : ETROIT / STANDARD / LARGE
@@ -129,27 +129,6 @@ const SHOES = [
     "photo": "https://contents.mediadecathlon.com/p2700147/k$4b70817a5770b223c8da8469b494c26f/picture.jpg"
   },
   {
-    "name": "PS 990 Dyn",
-    "brand": "Kuikma",
-    "price": 39.99,
-    "scores": [
-      7.5,
-      6.5,
-      6.5,
-      6.5,
-      8.0,
-      7.0,
-      6.5,
-      7.5
-    ],
-    "sole": "CHEVRONS",
-    "foot": "STANDARD",
-    "gender": "HOMME",
-    "scoreBrand": "KUIKMA",
-    "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.4480617769829698875369528&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-padel-homme-kuikma-ps-990-dyn-vert%2F334632%2Fc345c345m8650365",
-    "photo": "https://contents.mediadecathlon.com/p2462840/k$6290a80e77109cabdfa517fd3266742a/picture.jpg"
-  },
-  {
     "name": "PS 500",
     "brand": "Kuikma",
     "price": 44.99,
@@ -190,27 +169,6 @@ const SHOES = [
     "scoreBrand": "KUIKMA",
     "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.448069130966022588006583&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-tennis-padel-et-pickleball-homme-comfort-lite-terracota%2F365168%2Fc101c382m9019684",
     "photo": "https://contents.mediadecathlon.com/p3117542/k$855531c85c47b9850573719a612d660b/picture.jpg"
-  },
-  {
-    "name": "Gel-Dedicate 8 Padel",
-    "brand": "ASICS",
-    "price": 54.99,
-    "scores": [
-      7.5,
-      7.0,
-      7.5,
-      7.5,
-      6.5,
-      7.5,
-      8.0,
-      6.5
-    ],
-    "sole": "CHEVRONS",
-    "foot": "STANDARD",
-    "gender": "MIXTE",
-    "scoreBrand": "ASICS",
-    "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.448067758019231959347922&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-padel-homme-asics-gel-dedicate-8-blanc-orange%2FX8832457%2Fm8832457",
-    "photo": "https://contents.mediadecathlon.com/p2487715/k$51cf8babc8edad3fa5bc63131dd529c1/picture.jpg"
   },
   {
     "name": "Gel-Dedicate 9",
@@ -320,27 +278,6 @@ const SHOES = [
     "scoreBrand": "ASICS",
     "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.448064921583686734084084&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-padel-homme-asics-sonicsmash-ff-white-orange%2F381312%2Fm9049415",
     "photo": "https://contents.mediadecathlon.com/p3212420/k$82705f8252c4e39f17f3706214b98674/picture.jpg"
-  },
-  {
-    "name": "Movea",
-    "brand": "Babolat",
-    "price": 63,
-    "scores": [
-      8.0,
-      7.5,
-      8.0,
-      8.0,
-      6.5,
-      8.0,
-      8.5,
-      6.5
-    ],
-    "sole": "MIXTE",
-    "foot": "STANDARD",
-    "gender": "HOMME",
-    "scoreBrand": "BABOLAT",
-    "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.448065399605687925501558&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-padel-homme-babolat-movea%2FX8815528%2Fc142c1m8815528",
-    "photo": "https://contents.mediadecathlon.com/p2466732/k$6ff8a8c338347875b45f4c202b0ad5ff/picture.jpg"
   },
   {
     "name": "Sensa 25",
