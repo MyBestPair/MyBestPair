@@ -9,7 +9,7 @@
   <meta property="og:site_name" content="MyBestPair">
   <meta property="og:locale" content="fr_FR">
   <meta property="og:title" content="MyBestPair | Trouve la meilleure paire pour ton sport">
-  <meta property="og:description" content="MyBestPair analyse ton profil pour te recommander les chaussures de sport adaptées à ta pratique, ton budget et tes priorités : running, trail, basket et padel.">
+  <meta property="og:description" content="MyBestPair analyse ton profil pour te recommander les chaussures de sport adaptées à ta pratique, ton budget et tes priorités : running, trail, basket, padel et rugby.">
   <meta property="og:url" content="https://mybestpair.fr/">
   <meta property="og:image" content="https://mybestpair.fr/images/og-mybestpair.jpg">
   <meta property="og:image:width" content="1200">
@@ -18,7 +18,7 @@
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mybestpair.fr/#organization","name":"MyBestPair","url":"https://mybestpair.fr/","logo":"https://mybestpair.fr/favicon.png","email":"contact@mybestpair.fr","sameAs":["https://www.instagram.com/mybestpair_officiel/","https://www.tiktok.com/@mybestpair_officiel"]},{"@type":"WebSite","@id":"https://mybestpair.fr/#website","name":"MyBestPair","url":"https://mybestpair.fr/","inLanguage":"fr-FR","publisher":{"@id":"https://mybestpair.fr/#organization"}}]}</script>
   <link rel="preload" as="image" href="images/accueil-hero.webp" fetchpriority="high">
 
-  <meta name="description" content="MyBestPair analyse ton profil pour te recommander les chaussures de sport adaptées à ta pratique, ton budget et tes priorités : running, trail, basket et padel.">
+  <meta name="description" content="MyBestPair analyse ton profil pour te recommander les chaussures de sport adaptées à ta pratique, ton budget et tes priorités : running, trail, basket, padel et rugby.">
   <link rel="canonical" href="https://mybestpair.fr/">
   <link rel="icon" type="image/png" href="favicon.png">
 
@@ -49,6 +49,7 @@
       --orange:#ff6b2c;
       --green:#74b829;
       --padel:#0f9168;
+      --rugby:#c0262d;
     }
 
     html { scroll-behavior:smooth; }
@@ -209,7 +210,7 @@
 
     .cards {
       display:grid;
-      grid-template-columns:repeat(4,1fr);
+      grid-template-columns:repeat(3,1fr);
       gap:16px;
     }
 
@@ -237,6 +238,7 @@
     .route .card-image { background-image:url("images/carte-route.webp"); }
     .trail .card-image { background-image:url("images/carte-trail.webp"); }
     .padel .card-image { background-image:url("images/carte-padel.webp"); }
+    .rugby .card-image { background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect width='400' height='300' fill='%232f7a3a'/><g fill='%23358a41'><rect y='0' width='400' height='30'/><rect y='60' width='400' height='30'/><rect y='120' width='400' height='30'/><rect y='180' width='400' height='30'/><rect y='240' width='400' height='30'/></g><g stroke='%23ffffff' stroke-opacity='.8' stroke-width='3' fill='none'><path d='M0 40h400M0 150h400M0 260h400'/><path d='M0 95h400M0 205h400' stroke-dasharray='14 12'/><path d='M170 40v-38M230 40v-38M170 14h60'/></g><g transform='rotate(-30 250 170)'><ellipse cx='250' cy='170' rx='52' ry='32' fill='%23f4f1ea'/><path d='M212 170h76' stroke='%23c0262d' stroke-width='4'/><path d='M240 160v20M250 160v20M260 160v20' stroke='%23061d45' stroke-width='3'/></g></svg>"); }
 
     .card-body { padding:22px; }
 
@@ -253,6 +255,7 @@
     .route h2 .mini-icon { color:var(--blue); }
     .trail h2 .mini-icon { color:var(--green); }
     .padel h2 .mini-icon { color:var(--padel); }
+    .rugby h2 .mini-icon { color:var(--rugby); }
 
     .card p {
       margin:0 0 18px;
@@ -290,6 +293,7 @@
     .route .check { background:var(--blue); }
     .trail .check { background:var(--green); }
     .padel .check { background:var(--padel); }
+    .rugby .check { background:var(--rugby); }
 
     .cta {
       display:flex;
@@ -307,6 +311,7 @@
     .route .cta { background:var(--blue); }
     .trail .cta { background:var(--green); }
     .padel .cta { background:var(--padel); }
+    .rugby .cta { background:var(--rugby); }
 
     .cta:hover { filter:brightness(1.08); transform:translateY(-1px); }
 
@@ -560,7 +565,7 @@
     .models-hub { margin:36px 0 10px; padding:28px 24px; border:1px solid rgba(255,255,255,.12); border-radius:14px; background:rgba(6,29,69,.72); scroll-margin-top:20px; }
     .models-hub h2 { margin:0 0 8px; font-size:26px; text-transform:uppercase; }
     .models-hub > p { margin:0 0 20px; color:#dce7fb; font-size:14px; line-height:1.6; }
-    .hub-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+    .hub-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
     @media(min-width:901px) and (max-width:1100px) { .cards, .hub-grid { grid-template-columns:repeat(2,1fr); } }
     .hub-col { border:1px solid rgba(255,255,255,.14); border-radius:12px; padding:18px; background:rgba(11,42,97,.55); }
     .hub-col h3 { margin:0 0 12px; font-size:17px; }
@@ -695,11 +700,28 @@
         </div>
       </article>
 
+      <article class="card rugby">
+        <div class="card-image" role="img" aria-label="Ballon de rugby sur un terrain"></div>
+        <div class="card-body">
+          <h2><span class="mini-icon"><svg class="ico" aria-hidden="true"><use href="icons.svg#rugby"></use></svg></span> Rugby</h2>
+          <p>Poste, style de jeu, gabarit et terrain : trouve les crampons adaptés à ton profil de joueur.</p>
+
+          <div class="facts">
+            <div class="fact"><span class="check">✓</span> 30 modèles analysés</div>
+            <div class="fact"><span class="check">✓</span> Crampons conseillés selon ton terrain</div>
+            <div class="fact"><span class="check">✓</span> Adultes, femmes et enfants</div>
+          </div>
+
+          <a class="cta" href="rugby/">Découvrir Rugby <span>→</span></a>
+          <a class="card-models" href="rugby/modeles/">Voir les 30 fiches modèles rugby</a>
+        </div>
+      </article>
+
     </section>
 
     <section id="fiches-modeles" class="models-hub">
       <h2>Fiches modèles</h2>
-      <p>Consulte les caractéristiques et les notes de chaque paire avant de lancer le questionnaire : 163 fiches pour la route, le trail, le basket et le padel.</p>
+      <p>Consulte les caractéristiques et les notes de chaque paire avant de lancer le questionnaire : 193 fiches pour la route, le trail, le basket, le padel et le rugby.</p>
       <div class="hub-grid">
         <div class="hub-col">
           <h3><a href="running/route/modeles/"><svg class="ico" aria-hidden="true"><use href="icons.svg#footprints"></use></svg> Running Route</a></h3>
@@ -744,6 +766,17 @@
             <li><a href="padel/modeles/nox-nerbo/">NOX Nerbo</a></li>
           </ul>
           <a class="hub-all" href="padel/modeles/">Les 32 fiches padel →</a>
+        </div>
+        <div class="hub-col">
+          <h3><a href="rugby/modeles/"><svg class="ico" aria-hidden="true"><use href="icons.svg#rugby"></use></svg> Rugby</a></h3>
+          <ul>
+            <li><a href="rugby/modeles/offload-impact-r500-sg8/">Offload Impact R500 SG8</a></li>
+            <li><a href="rugby/modeles/adidas-kakari-sg/">adidas Kakari SG</a></li>
+            <li><a href="rugby/modeles/adidas-rs15-sg-hybride/">adidas RS15 SG Hybride</a></li>
+            <li><a href="rugby/modeles/canterbury-stampede-pro-sg/">Canterbury Stampede Pro SG</a></li>
+            <li><a href="rugby/modeles/offload-advance-r500-sg/">Offload Advance R500 SG</a></li>
+          </ul>
+          <a class="hub-all" href="rugby/modeles/">Les 30 fiches rugby →</a>
         </div>
       </div>
     </section>
@@ -799,7 +832,7 @@
 
       <p>
         MYBESTPAIR propose actuellement des recommandations pour le basketball,
-        le running route, le trail et le padel.
+        le running route, le trail, le padel et le rugby.
       </p>
 
       <p>
@@ -837,6 +870,7 @@
       <a href="running/trail/modeles/">Fiches Trail</a>
       <a href="basket/modeles/">Fiches Basket</a>
       <a href="padel/modeles/">Fiches Padel</a>
+      <a href="rugby/modeles/">Fiches Rugby</a>
       <a href="methodologie.html">Méthodologie</a>
       <a href="conditions-utilisation.html">Conditions d’utilisation</a>
       <a href="confidentialite.html">Politique de confidentialité</a>
