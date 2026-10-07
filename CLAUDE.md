@@ -2,7 +2,7 @@
 
 ## Contexte
 - Romain gère seul mybestpair.fr. Il n'est pas développeur : réponds-lui **en français**, de façon **concise**, et explique **ce qu'il doit vérifier** (sur le site, dans la PR), pas le code.
-- Le site recommande des chaussures de sport via un questionnaire qui donne un **Top 3 personnalisé**. Sports : Route, Trail, Basket, Padel.
+- Le site recommande des chaussures de sport via un questionnaire qui donne un **Top 3 personnalisé**. Sports : Route, Trail, Basket, Padel, Rugby.
 - Site statique HTML/JS hébergé sur GitHub (pas de framework, pas de build hors `scripts/`).
 - Monétisation par affiliation : **Kwanko, Awin, Rakuten** (Decathlon passe par Rakuten).
 
@@ -21,13 +21,14 @@
 | Accueil | `index.html` |
 | Basket : page + questionnaire | `basket/index.html`, moteur `app.js`, données `shoes.js`, affichage Top 3 `basket/top3-basket.js` |
 | Padel : page + questionnaire | `padel/index.html`, moteur `padel/padel-app.js` (copie adaptée de `app.js`, même barème), données `padel/shoes-padel.js`, Top 3 `padel/top3-padel.js` |
+| Rugby : page + questionnaire | `rugby/index.html`, moteur `rugby/rugby-app.js` (même barème), données `rugby/shoes-rugby.js`, Top 3 `rugby/top3-rugby.js` |
 | Route / Trail | `running/route/` (`route-app.js`), `running/trail/` (`trail-app.js`), Top 3 commun `running/top3.js` |
 | Fiches modèles + catalogues | `*/modeles/<modele>/index.html` et `*/modeles/index.html`, **générés** par `python3 scripts/build_model_pages.py` (ne pas les éditer à la main) |
 | Données des fiches | `scripts/fiches_enrichies.json`, `scripts/model_photos.json` |
 | Pages légales / méthode | `methodologie.html`, `confidentialite.html`, `mentions-legales.html`, `conditions-utilisation.html`, `qui-sommes-nous.html` |
 | SEO | `sitemap.xml`, `robots.txt` |
 
-Fiches actuelles : 163 (30 Basket, 50 Route, 51 Trail, 32 Padel). Le script de génération est stable : le relancer sans changement de données ne modifie aucun fichier.
+Fiches actuelles : 193 (30 Basket, 50 Route, 51 Trail, 32 Padel, 30 Rugby). Le script de génération est stable : le relancer sans changement de données ne modifie aucun fichier.
 Exception : la fiche `running/route/modeles/asics-novablast-6/` est rédigée à la main ; le script la conserve et n'y injecte que certains blocs (dont l'encart d'affiliation). Toute modification du gabarit des fiches doit aussi être prévue pour elle.
 L'encart d'affiliation (texte dans `AFFILIATE_NOTE`, `scripts/build_model_pages.py`) renvoie vers `methodologie.html#liens-commerciaux`.
 
@@ -56,4 +57,6 @@ Budget : marge « coup de cœur » de +20 € au-dessus du budget annoncé. Les 
   - raisonner par **profil de joueur**, pas par étiquette « avant / trois-quarts » sur les chaussures : piliers et 2e ligne → accroche, stabilité, protection (tige plus épaisse, risque de se faire marcher sur les pieds) ; 3e ligne modernes et certains talonneurs → profils mobiles, crampons plus légers ; le style et le poids corrigent le poste ;
   - crampons « je ne sais pas » → déduits du terrain (gras : fer ou hybride ; sec : moulés ou hybride ; synthétique : moulés) ; fer sur synthétique : avertissement, souvent interdit ;
   - 8 critères proposés : accroche, stabilité, maintien, protection, légèreté, dynamisme, confort, durabilité (dynamisme à la place de l'amorti, sauf avis contraire de Romain) ;
-  - données : export Rakuten via `export-decathlon-rugby.ps1` (même principe que le padel) ; **ne rien coder avant que Romain ait validé le tableau des modèles** (récents uniquement, notes estimées signalées, type de crampons, chaussant, sources).
+  - données : export Rakuten via `export-decathlon-rugby.ps1` (même principe que le padel) ; le catalogue Rakuten Decathlon ne contient que 12 crampons de rugby (Offload, adidas RS15/Kakari, Mizuno Monarcida) ;
+  - tableau de 30 modèles validé par Romain le 7 oct. 2026 : 12 avec lien Decathlon + 18 références récentes sans lien (Canterbury, adidas, Mizuno, Gilbert ; prix public indicatif, champ `priceIndicative`) ; 24 adultes mixtes, 2 femmes (RS15 Avaglide, Kakari W), 4 enfants ; RS15 SG hybride en coloris standard (l'édition Antoine Dupont existe à 99,99 €) ;
+  - pas encore de 2e marchand rugby (choix de Romain) : à chercher plus tard dans Awin/Kwanko pour donner des liens aux 18 modèles ; pas encore de photo pour la carte et le haut de la page (illustration en attendant).
