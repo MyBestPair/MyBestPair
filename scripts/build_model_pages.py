@@ -252,6 +252,7 @@ def render(shoe, sport, base, category, fields, photo=None, related=""):
     specs = "\n".join(f"<div><dt>{h(key)}</dt><dd>{h(display_value(value))}</dd></div>" for key, value in details)
     context = f"Semelle {sole_text(shoe).lower()} · {display_value(shoe['foot'])}" if sport == "padel" else f"Crampons {STUDS.get(shoe['studs'], 'à confirmer')} · {display_value(shoe['foot'])}" if sport == "rugby" else f"Crampons {shoe.get('studsLabel') or FOOT_STUDS.get(shoe['studs'], 'à confirmer')} · {display_value(shoe['foot'])}" if sport == "foot" else meta_of(shoe, sport)
     key_point = f"{label(ranked[0])} : {score(notes[ranked[0]])}"
+    official = f'<p style="margin-top:12px"><a href="{h(shoe["link"])}" target="_blank" rel="noopener">{"Rechercher ce modèle" if "search?" in shoe["link"] else "Voir la fiche technique"} sur le site officiel {h(shoe["merchant"])} →</a></p>' if shoe.get("merchant") and shoe.get("link") else ""
     visual = f'<figure class="product-photo"><img src="{h(photo[0])}" alt="{h(name)} — {'photo ' + h(photo[2]) if photo[2] else 'visuel marchand'}" loading="lazy" decoding="async"><figcaption>{photo_caption(photo)}</figcaption></figure>' if photo else ""
     return f'''<!DOCTYPE html>
 <html lang="fr">
@@ -278,7 +279,7 @@ def render(shoe, sport, base, category, fields, photo=None, related=""):
       <section class="card"><h2>Avant de choisir</h2><p>{caveat}</p><p>Le questionnaire tient aussi compte de {factors}. Le classement change donc selon ton profil.</p><p><a href="../">Voir toutes les chaussures {h(category)} →</a></p></section>
       {related}
     </div><aside>{visual}
-      <section class="card"><h2>Repères techniques</h2><dl class="specs">{specs}</dl><p class="muted" style="margin-top:16px">Données indicatives de notre base. Les caractéristiques exactes peuvent varier selon la version et la pointure : vérifie-les auprès du fabricant.</p></section>
+      <section class="card"><h2>Repères techniques</h2><dl class="specs">{specs}</dl><p class="muted" style="margin-top:16px">Données indicatives de notre base. Les caractéristiques exactes peuvent varier selon la version et la pointure : vérifie-les auprès du fabricant.</p>{official}</section>
       <section class="card"><h2>Est-ce ta paire ?</h2><p>Renseigne ton profil pour voir si {h(name)} ressort parmi tes recommandations et quels autres modèles lui sont comparés.</p><a class="cta" href="../../#{fragment}" id="questionnaireLink">Tester mon profil gratuitement</a><small>Prix et disponibilité peuvent évoluer : vérifie-les chez le marchand.</small></section>
     </aside></div>
   </main><footer>© 2026 MyBestPair · <a href="{root_link}conditions-utilisation.html">Conditions d’utilisation</a> · <a href="{root_link}methodologie.html">Méthodologie</a> · <a href="{root_link}confidentialite.html">Confidentialité</a></footer>
