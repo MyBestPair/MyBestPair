@@ -919,5 +919,497 @@
         "https://www.nike.com/fr/t/chaussure-de-foot-basse-a-crampons-multi-surfaces-nike-jr-mercurial-vapor-17-academy-pour-ado-gmnQBxma"
       ]
     ]
+  },
+  "Puma Future 9 Match FG/AG": {
+    "resume": "La Future des meneurs de jeu à prix raisonnable : empeigne en mesh souple avec zones de grip, col tricoté mi-haut et semelle FG/AG pour l'herbe et le synthétique.",
+    "pour_qui": "Elle vise les milieux et attaquants créatifs qui jouent en loisir régulier ou en club et cherchent du contrôle plutôt que de la vitesse pure. Puma la décrit en coupe régulière à large avec un bout arrondi : elle convient aux pieds normaux et à beaucoup de pieds un peu larges. Sa semelle FG/AG couvre la pelouse naturelle et le synthétique.",
+    "profil": [
+      [
+        "Postes",
+        "Milieu, meneur de jeu, attaquant"
+      ],
+      [
+        "Style",
+        "Technique, contrôle, dribble"
+      ],
+      [
+        "Niveau",
+        "Loisir régulier, club"
+      ],
+      [
+        "Terrain",
+        "Herbe sèche et synthétique (FG/AG)"
+      ]
+    ],
+    "technique": [
+      [
+        "Tige",
+        "Mesh doux et léger, avec zones en relief pour le contrôle et revêtement texturé 3D dans les zones de frappe ; au moins 20 % de matériaux recyclés"
+      ],
+      [
+        "Col",
+        "Tricoté extensible, construction mi-haute, pour un maintien flexible"
+      ],
+      [
+        "Crampons",
+        "FG/AG : forme et position des crampons pensées pour pivoter à 360°, sur herbe naturelle ferme et gazon synthétique"
+      ],
+      [
+        "Fermeture",
+        "Lacets"
+      ],
+      [
+        "Chaussant",
+        "Coupe régulière à large, bout arrondi, talon plat"
+      ],
+      [
+        "Composition",
+        "Tige 79 % synthétique, 21 % textile ; semelle extérieure 100 % synthétique"
+      ],
+      [
+        "Prix officiel",
+        "95 € (prix barré puma.com, 8 octobre 2026) ; 94,99 € chez Decathlon"
+      ]
+    ],
+    "forts": [
+      "Bon toucher de balle pour son prix (8/10)",
+      "Semelle FG/AG polyvalente",
+      "Chaussant accueillant, adapté à beaucoup de pieds"
+    ],
+    "faibles": [
+      "Frappe et durabilité dans la moyenne (7/10)",
+      "Pas faite pour les joueurs de vitesse (légèreté 7/10)",
+      "Moins aboutie que la Pro (PWRTAPE, tige double couche)"
+    ],
+    "gamme": "La Future 9 se décline notamment en Pro (150 €), Match (celle-ci, 95 €) et Play (60 €). La Match garde les zones de grip et la semelle FG/AG de la Pro, avec une tige en mesh plus simple et un col tricoté mi-haut. C'est le bon compromis pour un joueur loisir régulier. Elle existe aussi en version enfant (Match Jr).",
+    "rivales": "La Nike Phantom 6 Academy MG (89,99 €) obtient des notes très proches dans notre base, avec la même orientation précision. La Nike Tiempo Maestro Academy MG (84,99 €) offre plus de confort. Si tu veux plus de toucher, l'adidas Copa Pure IV League FG (84,99 €) est mieux notée, mais en FG seulement.",
+    "faq": [
+      [
+        "Peut-on jouer sur synthétique avec la Future 9 Match ?",
+        "Oui, sa semelle FG/AG est prévue pour l'herbe naturelle ferme et le gazon synthétique."
+      ],
+      [
+        "Quelle différence avec la Future 9 Pro ?",
+        "La Pro a une tige double couche avec tricot technique et une bande PWRTAPE au milieu du pied. La Match est plus simple, avec un col tricoté mi-haut, pour environ 55 € de moins."
+      ],
+      [
+        "Convient-elle à un pied large ?",
+        "Puma la présente en coupe régulière à large avec un bout arrondi : elle convient à beaucoup de pieds un peu larges."
+      ]
+    ],
+    "sources": [
+      [
+        "PUMA – Future 9 Match FG/AG (fiche officielle)",
+        "https://eu.puma.com/fr/fr/pd/chaussures-de-football-future-9-match-fg-ag-unisexe/108713"
+      ]
+    ]
+  },
+  "Puma Future 9 Play TF": {
+    "resume": "La Future d'entrée de gamme pour le stabilisé et le synthétique ancien : empeigne légère, languette tricotée à enfiler et semelle à multiples petits crampons.",
+    "pour_qui": "Elle s'adresse aux joueurs loisir et aux débutants qui jouent surtout sur terrains durs : stabilisé, terre, gazon synthétique de première génération, ou five. Sa semelle à petits crampons ne convient pas à l'herbe grasse. Chaussant régulier à large, bout arrondi.",
+    "profil": [
+      [
+        "Postes",
+        "Tous postes"
+      ],
+      [
+        "Style",
+        "Technique, contrôle"
+      ],
+      [
+        "Niveau",
+        "Débutant, loisir"
+      ],
+      [
+        "Terrain",
+        "Stabilisé, terrain dur, synthétique 2G (TF)"
+      ]
+    ],
+    "technique": [
+      [
+        "Tige",
+        "Légère, 100 % synthétique, avec zones embossées pour le contrôle ; au moins 30 % de matériaux recyclés"
+      ],
+      [
+        "Languette",
+        "Tricotée, à enfiler, pour le confort et le maintien"
+      ],
+      [
+        "Semelle",
+        "Basse, à multiples crampons, adaptée aux terrains naturels durs et au gazon artificiel (2G)"
+      ],
+      [
+        "Fermeture",
+        "Lacets"
+      ],
+      [
+        "Chaussant",
+        "Coupe régulière à large, bout arrondi, talon plat"
+      ],
+      [
+        "Prix officiel",
+        "60 € (prix barré puma.com, 8 octobre 2026) ; 59,99 € chez Decathlon"
+      ]
+    ],
+    "forts": [
+      "Semelle adaptée aux terrains durs et au stabilisé",
+      "Chaussant accueillant",
+      "Prix accessible"
+    ],
+    "faibles": [
+      "Notes modestes dans notre base (6,5 à 7/10)",
+      "Ne convient pas à l'herbe grasse",
+      "Peu dynamique et peu légère (6,5/10)"
+    ],
+    "gamme": "La Play est le premier niveau de la Future 9, sous la Match (95 €) et la Pro (150 €). Elle existe en TT (terrains durs, celle-ci) et en FG/AG. Si tu joues surtout sur herbe, prends plutôt une Match FG/AG.",
+    "rivales": "Pour le stabilisé, la Kipsta Viralto IV Cuir Premium TF (59,99 €) obtient de meilleures notes dans notre base, surtout en toucher et en durabilité. Moins chère, l'adidas Copa Pure IV Club TF (54,99 €) offre un confort et une durabilité un peu supérieurs.",
+    "faq": [
+      [
+        "Sur quel terrain jouer avec la Future 9 Play TT ?",
+        "Sur terrains naturels durs, stabilisé et gazon artificiel de première génération (2G). Sur herbe grasse, ses petits crampons n'accrochent pas assez."
+      ],
+      [
+        "TT, TF : quelle différence ?",
+        "C'est la même famille : des semelles à multiples petits crampons pour terrains durs. Puma l'appelle TT, notre base la classe en TF (stabilisé)."
+      ],
+      [
+        "Convient-elle à un débutant ?",
+        "Oui : prix accessible, chaussant confortable et semelle polyvalente sur terrains durs."
+      ]
+    ],
+    "sources": [
+      [
+        "PUMA – Future 9 Play TT (fiche officielle)",
+        "https://eu.puma.com/fr/fr/pd/chaussures-de-football-future-9-play-tt-unisexe/108918"
+      ]
+    ]
+  },
+  "Puma Future 9 Match FG/AG Jr": {
+    "resume": "La Future 9 Match en taille enfant : mesh souple avec zones de grip, col tricoté mi-haut et bande de maintien, pour les jeunes joueurs techniques.",
+    "pour_qui": "Elle s'adresse aux enfants et ados de 8 à 16 ans (indication de Puma) qui jouent en club et aiment toucher le ballon. Sa semelle FG/AG convient à la pelouse naturelle comme au synthétique. Chaussant régulier à large, bout arrondi : bien pour la plupart des pieds.",
+    "profil": [
+      [
+        "Public",
+        "Enfant, ado (8 à 16 ans)"
+      ],
+      [
+        "Style",
+        "Technique, contrôle, dribble"
+      ],
+      [
+        "Niveau",
+        "Club, loisir régulier"
+      ],
+      [
+        "Terrain",
+        "Herbe sèche et synthétique (FG/AG)"
+      ]
+    ],
+    "technique": [
+      [
+        "Tige",
+        "Mesh doux et léger avec zones en relief pour le contrôle ; au moins 30 % de matériaux recyclés"
+      ],
+      [
+        "Col",
+        "Tricoté extensible, construction mi-haute"
+      ],
+      [
+        "Maintien",
+        "Bande de soutien sur le milieu du pied pour la stabilité"
+      ],
+      [
+        "Crampons",
+        "FG/AG : liberté de mouvement à 360°, sur herbe naturelle ferme et gazon synthétique"
+      ],
+      [
+        "Chaussant",
+        "Coupe régulière à large, bout arrondi, talon plat"
+      ],
+      [
+        "Prix officiel",
+        "70 € (prix barré puma.com, 8 octobre 2026) ; 69,99 € chez Decathlon"
+      ]
+    ],
+    "forts": [
+      "Bon toucher pour une chaussure enfant (7,5/10)",
+      "Semelle FG/AG polyvalente",
+      "Chaussant accueillant"
+    ],
+    "faibles": [
+      "Frappe et durabilité dans la moyenne (7/10)",
+      "Moins légère qu'une chaussure de vitesse",
+      "Prix plus élevé que les Kipsta enfant"
+    ],
+    "gamme": "La Future 9 Match existe en version enfant (celle-ci), en version enfant sans lacets et en version adulte (95 €). La Future 9 Play enfant, moins chère, convient aux débutants.",
+    "rivales": "Au même prix, la Nike Mercurial Vapor 17 Academy MG Jr et l'adidas F50 Hyperfast League FG/MG Jr (69,99 €) sont plus orientées vitesse, avec un chaussant plus étroit. L'adidas Predator 26 League FG Jr (74,99 €) mise sur la frappe. Pour un petit budget, la Kipsta Viralto I Easy FG Jr (29,99 €) est plus simple.",
+    "faq": [
+      [
+        "Pour quel âge est-elle faite ?",
+        "Puma la recommande pour les enfants et ados de 8 à 16 ans."
+      ],
+      [
+        "Peut-on jouer sur synthétique avec ?",
+        "Oui, sa semelle FG/AG est prévue pour l'herbe naturelle ferme et le gazon synthétique."
+      ],
+      [
+        "Quelle pointure prendre ?",
+        "Essaie avec les chaussettes de foot et laisse environ un demi-centimètre devant les orteils : assez pour grandir un peu, sans que le pied flotte."
+      ]
+    ],
+    "sources": [
+      [
+        "PUMA – Future 9 Match FG/AG Enfant et Adolescent (fiche officielle)",
+        "https://eu.puma.com/fr/fr/pd/chaussures-de-football-future-9-match-fg-ag-enfant-et-adolescent/108721"
+      ]
+    ]
+  },
+  "Puma Ultra 7 Pro FG": {
+    "resume": "La chaussure de vitesse de Puma (Ultra Nitro 7 sur puma.com) : tige double mesh légère, mousse NITROFOAM et semelle SPEEDSYSTEM 2.0 pour les accélérations, sur herbe sèche.",
+    "pour_qui": "Elle s'adresse aux ailiers et attaquants de profondeur qui jouent sur la vitesse, en club ou en compétition. Puma la présente en largeur étroite : un pied fin s'y sent tenu, un pied large risque d'être serré. Sa semelle FG est faite pour la pelouse naturelle sèche.",
+    "profil": [
+      [
+        "Postes",
+        "Ailier, attaquant"
+      ],
+      [
+        "Style",
+        "Vitesse, dribble"
+      ],
+      [
+        "Niveau",
+        "Club, compétition"
+      ],
+      [
+        "Terrain",
+        "Herbe naturelle sèche (FG)"
+      ]
+    ],
+    "technique": [
+      [
+        "Tige",
+        "Double mesh léger, construction profilée qui épouse le pied ; au moins 30 % de matériaux recyclés"
+      ],
+      [
+        "Amorti",
+        "Mousse NITROFOAM injectée à l'azote, pour la réactivité et l'amorti en restant légère"
+      ],
+      [
+        "Semelle",
+        "SPEEDSYSTEM 2.0, très réactive à chaque appui"
+      ],
+      [
+        "Crampons",
+        "FastTrax 2.0, avec des crampons plus arrondis ; pour terrain dur (FG)"
+      ],
+      [
+        "Chaussant",
+        "Étroit"
+      ],
+      [
+        "Nom chez Puma",
+        "ULTRA NITRO 7 PRO FG"
+      ],
+      [
+        "Prix officiel",
+        "150 € (prix barré puma.com, 8 octobre 2026) ; 149,99 € chez Decathlon"
+      ]
+    ],
+    "forts": [
+      "Légèreté et dynamisme très élevés (9/10)",
+      "Mousse NITROFOAM qui apporte un peu d'amorti, rare sur une chaussure de vitesse",
+      "Prix nettement inférieur aux Elite Nike et adidas"
+    ],
+    "faibles": [
+      "Durabilité en retrait (6,5/10)",
+      "Chaussant étroit",
+      "Maintien et confort moyens (7/10)"
+    ],
+    "gamme": "L'Ultra Nitro 7 existe en Pro (celle-ci, 150 €) et en Match (85 €), ainsi qu'en version enfant (Ultra 7 Match). La Pro garde le double mesh et la semelle SPEEDSYSTEM 2.0 ; la Match reprend la semelle intermédiaire NITRO et la semelle SPEEDSYSTEM 2.0, avec une semelle FG/AG.",
+    "rivales": "La Nike Mercurial Vapor 17 Elite FG (269,99 €) et l'adidas F50 Hyperfast Elite FG (260 €) visent le même joueur avec des notes un peu plus hautes, pour plus de 100 € de plus. Si tu veux plus de toucher et de confort, la Puma Future 9 Pro FG/AG coûte le même prix.",
+    "faq": [
+      [
+        "Ultra 7 ou Ultra Nitro 7 ?",
+        "C'est la même chaussure : Decathlon la vend sous le nom Ultra 7 Pro FG, Puma l'appelle Ultra Nitro 7 Pro FG, en référence à sa mousse NITROFOAM."
+      ],
+      [
+        "Convient-elle à un pied large ?",
+        "Puma l'indique en largeur étroite : avec un pied large, essaie-la avant d'acheter, ou regarde la Future 9 Pro, plus large."
+      ],
+      [
+        "Peut-on la porter sur synthétique ?",
+        "La version Pro FG est prévue pour les terrains durs en herbe naturelle. Pour le synthétique, l'Ultra 7 Match FG/AG est plus adaptée."
+      ]
+    ],
+    "sources": [
+      [
+        "PUMA – Ultra Nitro 7 Pro FG (fiche officielle)",
+        "https://eu.puma.com/fr/fr/pd/chaussures-de-football-ultra-nitro-7-pro-fg-unisexe/109232"
+      ]
+    ]
+  },
+  "Puma Ultra 7 Match FG/AG": {
+    "resume": "La chaussure de vitesse Puma à prix raisonnable : tige double mesh, semelle intermédiaire NITRO et semelle SPEEDSYSTEM 2.0, sur herbe comme sur synthétique.",
+    "pour_qui": "Elle vise les joueurs rapides (ailiers, attaquants) qui jouent en loisir régulier ou en club, sur pelouse naturelle ou synthétique. Puma l'indique en largeur étroite : un pied large risque d'être serré.",
+    "profil": [
+      [
+        "Postes",
+        "Ailier, attaquant"
+      ],
+      [
+        "Style",
+        "Vitesse, dribble"
+      ],
+      [
+        "Niveau",
+        "Loisir régulier, club"
+      ],
+      [
+        "Terrain",
+        "Herbe sèche et synthétique (FG/AG)"
+      ]
+    ],
+    "technique": [
+      [
+        "Tige",
+        "Double mesh léger, construction profilée qui épouse le pied"
+      ],
+      [
+        "Amorti",
+        "Semelle intermédiaire NITRO, pour la réactivité"
+      ],
+      [
+        "Semelle",
+        "SPEEDSYSTEM 2.0 pour les accélérations"
+      ],
+      [
+        "Crampons",
+        "FastTrax 2.0 avec crampons plus arrondis ; pour terrain dur et gazon artificiel (FG/AG)"
+      ],
+      [
+        "Chaussant",
+        "Étroit"
+      ],
+      [
+        "Nom chez Puma",
+        "ULTRA NITRO 7 MATCH FG/AG"
+      ],
+      [
+        "Prix officiel",
+        "85 € (puma.com, 8 octobre 2026) ; 84,99 € chez Decathlon"
+      ]
+    ],
+    "forts": [
+      "Légèreté et dynamisme élevés pour son prix (8/10)",
+      "Semelle FG/AG polyvalente",
+      "Semelle intermédiaire NITRO pour la réactivité"
+    ],
+    "faibles": [
+      "Durabilité et maintien en retrait (6,5/10)",
+      "Chaussant étroit",
+      "Toucher et frappe dans la moyenne (7/10)"
+    ],
+    "gamme": "La Match est le niveau intermédiaire de l'Ultra Nitro 7, sous la Pro (150 €). Elle garde la semelle SPEEDSYSTEM 2.0 et la semelle intermédiaire NITRO, avec une semelle FG/AG plus polyvalente. Une version enfant existe sous le nom Ultra 7 Match.",
+    "rivales": "La Nike Mercurial Vapor 17 Academy MG (89,99 €) et l'adidas F50 Hyperfast League FG/MG (89,99 €) visent le même joueur avec des notes quasi identiques dans notre base : départage-les au chaussant et au prix du moment.",
+    "faq": [
+      [
+        "Ultra 7 ou Ultra Nitro 7 ?",
+        "C'est la même famille : Decathlon l'appelle Ultra 7 Match FG/AG, Puma Ultra Nitro 7 Match, en référence à sa semelle intermédiaire NITRO."
+      ],
+      [
+        "Peut-on jouer sur synthétique avec ?",
+        "Oui, Puma la présente pour terrain dur et gazon artificiel."
+      ],
+      [
+        "Convient-elle à un pied large ?",
+        "Puma l'indique en largeur étroite : avec un pied large, essaie-la avant d'acheter."
+      ]
+    ],
+    "sources": [
+      [
+        "PUMA – Ultra Nitro 7 Match FG/AG (fiche officielle, coloris Advanced Level)",
+        "https://eu.puma.com/fr/fr/pd/chaussures-de-football-ultra-nitro-7-match-advanced-level-fg-ag-unisexe/109240"
+      ]
+    ]
+  },
+  "Puma King Liga FG/AG": {
+    "resume": "La King nouvelle génération : tige avec cuir de vache pour un toucher naturel, languette qui se moule au pied et semelle légère FG/AG.",
+    "pour_qui": "Elle convient aux joueurs qui cherchent le confort et le toucher d'une chaussure classique, à tous les postes : milieux, défenseurs, joueurs techniques, en loisir ou en club. Puma la décrit en largeur régulière avec un bout arrondi et un « fit universel » qui épouse le pied. Sa semelle FG/AG couvre la pelouse naturelle et le synthétique.",
+    "profil": [
+      [
+        "Postes",
+        "Milieu, défenseur, tous postes"
+      ],
+      [
+        "Style",
+        "Technique, contrôle"
+      ],
+      [
+        "Niveau",
+        "Loisir régulier, club"
+      ],
+      [
+        "Terrain",
+        "Herbe sèche et synthétique (FG/AG)"
+      ]
+    ],
+    "technique": [
+      [
+        "Tige",
+        "Pensée pour un toucher naturel : 73 % synthétique, 27 % cuir de vache ; au moins 20 % de matériaux recyclés"
+      ],
+      [
+        "Languette",
+        "Adaptable, elle se moule au pied"
+      ],
+      [
+        "Semelle intérieure",
+        "Légère, Ortholite"
+      ],
+      [
+        "Crampons",
+        "Semelle légère à crampons coniques, pour terrains durs et gazon synthétique (FG/AG)"
+      ],
+      [
+        "Chaussant",
+        "Largeur régulière, bout arrondi, talon plat ; « fit universel » qui épouse le pied"
+      ],
+      [
+        "Prix officiel",
+        "100 € (prix barré puma.com, 8 octobre 2026) ; 99,99 € chez Decathlon"
+      ]
+    ],
+    "forts": [
+      "Toucher et confort élevés (8,5/10)",
+      "Bonne durabilité (8/10)",
+      "Semelle FG/AG polyvalente"
+    ],
+    "faibles": [
+      "Peu légère et peu dynamique (6,5/10)",
+      "Pas faite pour les joueurs de vitesse",
+      "Frappe dans la moyenne (7,5/10)"
+    ],
+    "gamme": "La King Liga est la version de série de la King de Puma, en FG/AG et en TT (terrains durs). Elle reprend l'esprit des King classiques, avec du cuir sur la tige et un chaussant confortable.",
+    "rivales": "L'adidas Copa Pure IV League FG (84,99 €) obtient des notes identiques en toucher et en confort dans notre base. La Kipsta Viralto IV Cuir Premium FG (69,99 €) est une alternative en cuir moins chère. Plus haut de gamme, la Mizuno Morelia II Pro MG/AG (119,99 €) offre encore plus de confort.",
+    "faq": [
+      [
+        "La King Liga est-elle en cuir ?",
+        "Sa tige associe du synthétique et du cuir de vache (environ 27 % selon Puma), pour un toucher plus naturel."
+      ],
+      [
+        "Peut-on jouer sur synthétique avec ?",
+        "Oui, sa semelle FG/AG à crampons coniques est prévue pour les terrains durs et le gazon synthétique."
+      ],
+      [
+        "Pour quel poste est-elle faite ?",
+        "Elle convient à tous les postes, surtout aux joueurs qui privilégient le confort et le toucher plutôt que la vitesse."
+      ]
+    ],
+    "sources": [
+      [
+        "PUMA – King Liga FG/AG (fiche officielle)",
+        "https://eu.puma.com/fr/fr/pd/chaussures-de-football-king-liga-fg-ag-unisexe/109037"
+      ]
+    ]
   }
 }
