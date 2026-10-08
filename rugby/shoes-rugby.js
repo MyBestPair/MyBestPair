@@ -5,6 +5,7 @@
  * link : lien marchand Decathlon (Rakuten), vide = « Lien bientôt disponible ».
  * photo + photoCredit : photo officielle du site de la marque (relevé du 7 octobre 2026), affichée avec « Photo : © marque ».
  * Prix : catalogue Rakuten Decathlon (export du 7 octobre 2026, hors promotion) ; priceIndicative = prix public constaté, sans marchand.
+ * Canterbury : gamme et prix hors promotion de canterbury.com (boutique européenne, relevé du 8 octobre 2026) ; Phoenix Genesis remplacée par la Phoenix 2.0.
  */
 const CRITERIA = [
   "ACCROCHE",
@@ -294,9 +295,9 @@ const SHOES = [
     "photoCredit": "Canterbury"
   },
   {
-    "name": "Phoenix Genesis Pro SG",
+    "name": "Phoenix 2.0 Pro SG",
     "brand": "Canterbury",
-    "price": 160,
+    "price": 120,
     "scores": [
       8.5,
       8.5,
@@ -313,13 +314,13 @@ const SHOES = [
     "scoreBrand": "CANTERBURY",
     "link": "",
     "priceIndicative": true,
-    "photo": "https://cdn.shopify.com/s/files/1/0783/7945/0580/files/Q-B000135BB3-B1_600x400_crop_center.jpg?v=1787917470",
+    "photo": "https://cdn.shopify.com/s/files/1/0783/7945/0580/files/Q-B000180989-B1-1_600x400_crop_center.jpg?v=1787917376",
     "photoCredit": "Canterbury"
   },
   {
-    "name": "Phoenix Genesis Team FG",
+    "name": "Phoenix 2.0 Team FG",
     "brand": "Canterbury",
-    "price": 90,
+    "price": 98,
     "scores": [
       7.5,
       8.0,
@@ -335,12 +336,14 @@ const SHOES = [
     "public": "ADULTE",
     "scoreBrand": "CANTERBURY",
     "link": "",
-    "priceIndicative": true
+    "priceIndicative": true,
+    "photo": "https://cdn.shopify.com/s/files/1/0783/7945/0580/files/Q-B000183989-B1-2_600x400_crop_center.jpg?v=1787917374",
+    "photoCredit": "Canterbury"
   },
   {
     "name": "Speed Falcon 2.0 SG",
     "brand": "Canterbury",
-    "price": 180,
+    "price": 192,
     "scores": [
       8.5,
       7.5,
@@ -363,7 +366,7 @@ const SHOES = [
   {
     "name": "Speed Junior Pro",
     "brand": "Canterbury",
-    "price": 80,
+    "price": 66,
     "scores": [
       8.0,
       7.0,
@@ -583,7 +586,7 @@ const SHOES = [
   {
     "name": "Stampede Groundbreak Team SG",
     "brand": "Canterbury",
-    "price": 95,
+    "price": 98,
     "scores": [
       8.5,
       8.5,
@@ -606,7 +609,7 @@ const SHOES = [
   {
     "name": "Speed Falcon 2.0 Team SG",
     "brand": "Canterbury",
-    "price": 95,
+    "price": 98,
     "scores": [
       8.0,
       7.0,
