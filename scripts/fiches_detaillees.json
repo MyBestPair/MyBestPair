@@ -2110,7 +2110,7 @@
       "Crampons métal souvent interdits sur synthétique"
     ],
     "gamme": "L'Icon Power X existe en 8 crampons (celle-ci) et en junior. Chez Gilbert, la Sidestep Icon 8S (80 €) est l'alternative plus simple, en chaussant large.",
-    "rivales": "La Canterbury Stampede Pro SG (120 €) vise le même avant avec un chaussant large et plus de stabilité. L'adidas Kakari Elite SG (150 €) est encore plus accrocheuse dans notre base. Moins chère, la Mizuno Waitangi II CL (110 €) offre plus de confort.",
+    "rivales": "La Canterbury Stampede Pro SG (120 €) vise le même avant avec un chaussant large et plus de stabilité. L'adidas Kakari Elite SG (150 €) est encore plus accrocheuse dans notre base. La Mizuno Waitangi II CL (130 €), en chaussant très large, offre plus de confort.",
     "faq": [
       [
         "PWR X 8S V2 ou Icon Power X ?",
@@ -2129,6 +2129,342 @@
       [
         "Gilbert – Icon Power X 8 Stud (fiche officielle)",
         "https://www.gilbertrugby.com/en-eu/products/icon-power-x-8s-boots-black"
+      ]
+    ]
+  },
+  "Mizuno Morelia Neo IV Elite SG": {
+    "resume": "Une Morelia de haut de gamme en version terrain gras : empeigne en cuir de kangourou, tricot et mesh « pieds nus », semelle SI à crampons vissés. Le toucher de balle d'une chaussure de foot, pour les arrières et les buteurs.",
+    "pour_qui": "Mizuno la range dans ses chaussures de football, mais sa semelle à crampons vissés pour terrain souple en fait une option pour les trois-quarts qui veulent un toucher de balle fin : demis, centres, arrières et buteurs. Son cuir de kangourou épouse le pied et procure beaucoup de confort. Elle n'est pas pensée pour les impacts répétés des avants, et ses crampons métal sont souvent interdits sur synthétique.",
+    "profil": [
+      [
+        "Postes",
+        "Demi, centre, arrière, buteur"
+      ],
+      [
+        "Style",
+        "Polyvalent, jeu au pied"
+      ],
+      [
+        "Niveau",
+        "Club, compétition"
+      ],
+      [
+        "Terrain",
+        "Herbe souple à grasse (crampons vissés SI)"
+      ]
+    ],
+    "technique": [
+      [
+        "Tige",
+        "Cuir de kangourou K-Leather, la meilleure qualité de kangourou de Mizuno, pour le confort et un toucher naturel"
+      ],
+      [
+        "Col",
+        "BareFoot KNIT NEO : tricot autour de l'ouverture pour une sensation « pieds nus »"
+      ],
+      [
+        "Milieu de pied",
+        "BareFoot MESH NEO, mesh plus souple"
+      ],
+      [
+        "Laçage",
+        "Œillets repositionnés pour limiter les plis quand le pied fléchit"
+      ],
+      [
+        "Semelle",
+        "Modèle SI pour terrain souple (crampons vissés)"
+      ],
+      [
+        "Semelle intérieure",
+        "Surface en suède pour l'adhérence du pied"
+      ],
+      [
+        "Nom chez Mizuno",
+        "MORELIA NEO IV β ELITE SI"
+      ],
+      [
+        "Prix officiel",
+        "220 € (emea.mizuno.com, 8 octobre 2026)"
+      ]
+    ],
+    "forts": [
+      "Confort au sommet de notre base Rugby (9/10)",
+      "Accroche élevée (9/10) et bonne durabilité (8,5/10)",
+      "Toucher de balle d'une chaussure de foot haut de gamme, utile pour le jeu au pied"
+    ],
+    "faibles": [
+      "Prix élevé",
+      "Protection moyenne (7,5/10) : pas faite pour les avants",
+      "Cuir de kangourou à entretenir ; crampons métal souvent interdits sur synthétique"
+    ],
+    "gamme": "La Morelia Neo IV existe en β Japan (fabriquée au Japon), β Elite (celle-ci) et Pro (140 €), avec plusieurs semelles : FG (moulée), SI (vissée, celle-ci) et MIX (vissée et moulée). La Pro garde le cuir K-Leather avec une construction plus simple.",
+    "rivales": "L'adidas Adizero RS15 Pro SG (220 €) est plus légère et plus dynamique, mais moins confortable. La Mizuno Morelia Neo IV Pro SG (140 €) garde le cuir de kangourou pour 80 € de moins. Si tu joues devant, préfère une chaussure d'avant comme la Canterbury Stampede Pro SG.",
+    "faq": [
+      [
+        "Est-ce une chaussure de rugby ?",
+        "Mizuno la classe en football. Sa semelle à crampons vissés pour terrain souple la rend utilisable au rugby, surtout pour les trois-quarts et les buteurs qui cherchent le toucher de balle. Vérifie que ses crampons respectent le règlement de ta compétition."
+      ],
+      [
+        "Peut-on la porter sur synthétique ?",
+        "Non, en général : ses crampons sont vissés en métal, et beaucoup de clubs interdisent le métal sur synthétique. Vérifie le règlement de ton terrain, ou prends une paire à crampons moulés."
+      ],
+      [
+        "Comment entretenir le cuir de kangourou ?",
+        "Laisse-la sécher à l'air libre, loin d'une source de chaleur, avec du papier journal à l'intérieur, et nourris le cuir de temps en temps avec un produit adapté."
+      ]
+    ],
+    "sources": [
+      [
+        "Mizuno – Morelia Neo IV β Elite SI (fiche officielle, coloris actuel)",
+        "https://emea.mizuno.com/eu/en/morelia-neo-iv-%CE%B2-elite-si/P1GC264350.html"
+      ],
+      [
+        "Mizuno – Morelia Neo IV β Elite SI (description complète, coloris précédent)",
+        "https://emea.mizuno.com/eu/en-it/morelia-neo-iv-beta-elite-si/P1GC254337.html"
+      ]
+    ]
+  },
+  "Mizuno Morelia Neo IV Pro SG": {
+    "resume": "La Morelia en cuir de kangourou à prix plus raisonnable : semelle MIX (crampons vissés et moulés) pour terrain souple, sensation « pieds nus » et bonne durabilité.",
+    "pour_qui": "Comme la β Elite, Mizuno la range dans ses chaussures de football. Sa semelle MIX pour terrain souple convient aux trois-quarts qui veulent du toucher : demis, centres, arrières, buteurs. Chaussant standard. Elle n'est pas faite pour les contacts répétés des avants.",
+    "profil": [
+      [
+        "Postes",
+        "Demi, centre, arrière, buteur"
+      ],
+      [
+        "Style",
+        "Polyvalent, jeu au pied"
+      ],
+      [
+        "Niveau",
+        "Loisir régulier, club"
+      ],
+      [
+        "Terrain",
+        "Herbe souple (crampons hybrides MIX)"
+      ]
+    ],
+    "technique": [
+      [
+        "Tige",
+        "Cuir de kangourou K-Leather, pour une sensation « pieds nus » et la durabilité"
+      ],
+      [
+        "Laçage",
+        "Œillets repositionnés pour limiter les plis quand le pied fléchit"
+      ],
+      [
+        "Semelle",
+        "TPU, version MIX : crampons vissés et moulés, pour terrain naturel souple"
+      ],
+      [
+        "Semelle intérieure",
+        "ZEROGLIDE LITE, qui limite le glissement du pied"
+      ],
+      [
+        "Nom chez Mizuno",
+        "MORELIA NEO IV PRO MIX"
+      ],
+      [
+        "Prix officiel",
+        "140 € (emea.mizuno.com, 8 octobre 2026)"
+      ]
+    ],
+    "forts": [
+      "Légère et dynamique (8,5/10)",
+      "Confortable (8,5/10) grâce au cuir de kangourou",
+      "Bonne accroche (8,5/10) avec la semelle MIX"
+    ],
+    "faibles": [
+      "Protection modeste (7/10)",
+      "Stabilité moyenne (7,5/10)",
+      "Crampons métal souvent interdits sur synthétique"
+    ],
+    "gamme": "La Pro est le niveau intermédiaire de la Morelia Neo IV, sous la β Elite (220 €) et la β Japan. Elle garde le cuir K-Leather avec une construction plus simple et une semelle TPU.",
+    "rivales": "L'adidas RS15 Elite SG Hybride (129,99 €, chez Decathlon) offre des notes proches, avec plus de dynamisme. La Mizuno Monarcida Neo III (84,99 €) est une alternative hybride moins chère. La Canterbury Phoenix 2.0 Pro SG (120 €) est plus robuste pour un joueur polyvalent qui va au contact.",
+    "faq": [
+      [
+        "Est-ce une chaussure de rugby ?",
+        "Mizuno la classe en football. Sa semelle MIX pour terrain souple la rend utilisable au rugby, surtout pour les trois-quarts. Vérifie que ses crampons respectent le règlement de ta compétition."
+      ],
+      [
+        "Que veut dire MIX ?",
+        "C'est une semelle qui associe crampons vissés et crampons moulés, pour l'accroche sur terrain naturel souple."
+      ],
+      [
+        "Quelle différence avec la β Elite ?",
+        "La β Elite ajoute un col tricoté et un mesh plus souples pour une sensation encore plus « pieds nus », pour 80 € de plus."
+      ]
+    ],
+    "sources": [
+      [
+        "Mizuno – Morelia Neo IV Pro Mix (fiche officielle, coloris actuel)",
+        "https://emea.mizuno.com/eu/en/morelia-neo-iv-pro-mix/P1GC263450.html"
+      ],
+      [
+        "Mizuno – Morelia Neo IV Pro Mix (description complète, coloris précédent)",
+        "https://emea.mizuno.com/eu/en-nl/morelia-neo-iv-pro-mix/P1GC233450.html"
+      ]
+    ]
+  },
+  "Mizuno Waitangi II CL": {
+    "resume": "La chaussure d'avant de Mizuno : semelle à 6+2 crampons vissés, rainures de flexion pour la poussée en mêlée et forme « Super Wide » pour les pieds larges.",
+    "pour_qui": "Mizuno la conçoit pour les avants : piliers, talonneurs, deuxième ligne, troisième ligne de combat. Sa forme très large convient aux pieds larges et aux gabarits lourds. Avec ses crampons vissés, elle est faite pour les terrains souples ; elle est à éviter sur synthétique.",
+    "profil": [
+      [
+        "Postes",
+        "1re et 2e ligne, talonneur, 3e ligne"
+      ],
+      [
+        "Style",
+        "Impact, combat, mêlée"
+      ],
+      [
+        "Niveau",
+        "Loisir, club"
+      ],
+      [
+        "Terrain",
+        "Herbe souple à grasse (crampons vissés)"
+      ]
+    ],
+    "technique": [
+      [
+        "Tige",
+        "Synthétique légère"
+      ],
+      [
+        "Semelle",
+        "Rainures de flexion en diagonale pour la souplesse de l'avant-pied dans les mouvements de mêlée"
+      ],
+      [
+        "Crampons",
+        "Configuration 6+2 crampons vissés, pour l'accroche en terrain souple"
+      ],
+      [
+        "Chaussant",
+        "Forme « Super Wide », très large (2E)"
+      ],
+      [
+        "Nom chez Mizuno",
+        "Waitangi II CL ; « Waitangi Club » pour la version 2026 en Europe"
+      ],
+      [
+        "Prix officiel",
+        "130 € (Waitangi Club, emea.mizuno.com, 8 octobre 2026)"
+      ]
+    ],
+    "forts": [
+      "Accroche et stabilité élevées (8,5/10)",
+      "Très confortable (8,5/10) avec sa forme très large",
+      "Durable (8,5/10)"
+    ],
+    "faibles": [
+      "Peu dynamique et peu légère (6,5/10)",
+      "Forme très large, moins adaptée aux pieds fins",
+      "Crampons métal souvent interdits sur synthétique"
+    ],
+    "gamme": "La Waitangi est la chaussure de rugby de Mizuno. Elle existe en version Club (CL, celle-ci) et en version Pro, plus haut de gamme, elle aussi en forme très large.",
+    "rivales": "La Canterbury Stampede Pro SG (120 €) et la Gilbert Sidestep Icon 8S (80 €) visent le même avant, avec un chaussant large. L'adidas Kakari SG (89,99 €, chez Decathlon) est une alternative moins chère.",
+    "faq": [
+      [
+        "La Waitangi est-elle faite pour les avants ?",
+        "Oui : Mizuno la présente comme conçue pour les avants, avec des rainures de flexion pensées pour les mouvements de mêlée."
+      ],
+      [
+        "Convient-elle à un pied large ?",
+        "Oui, c'est son point fort : Mizuno annonce une forme « Super Wide »."
+      ],
+      [
+        "Peut-on la porter sur synthétique ?",
+        "Non, en général : ses crampons sont vissés en métal, et beaucoup de clubs interdisent le métal sur synthétique. Vérifie le règlement de ton terrain, ou prends une paire à crampons moulés."
+      ]
+    ],
+    "sources": [
+      [
+        "Mizuno – Waitangi Club (fiche officielle Europe, prix)",
+        "https://emea.mizuno.com/eu/en/waitangi-club/R1GA261101.html"
+      ],
+      [
+        "Mizuno Australie – Waitangi II CL SG (description officielle)",
+        "https://mizuno.com.au/products/waitangi-ii-cl-sg"
+      ]
+    ]
+  },
+  "Mizuno Monarcida Neo III Select JR": {
+    "resume": "Une chaussure d'initiation pour enfant, inspirée de la Morelia Neo : tige souple en cuir synthétique, chaussant large et semelle moulée tous terrains.",
+    "pour_qui": "Elle s'adresse aux enfants qui débutent, au rugby comme au foot. Mizuno la classe en football, mais ses crampons moulés et son chaussant large en font une bonne première paire pour l'école de rugby, notamment sur synthétique, où les crampons métal sont souvent interdits.",
+    "profil": [
+      [
+        "Public",
+        "Enfant"
+      ],
+      [
+        "Style",
+        "Polyvalent"
+      ],
+      [
+        "Niveau",
+        "Débutant, école de rugby"
+      ],
+      [
+        "Terrain",
+        "Tous terrains : herbe, synthétique, terre (moulés)"
+      ]
+    ],
+    "technique": [
+      [
+        "Tige",
+        "Cuir synthétique souple"
+      ],
+      [
+        "Chaussant",
+        "Large"
+      ],
+      [
+        "Semelle",
+        "Moulée (FG), adaptée à la terre, à l'herbe naturelle et au gazon synthétique 4G et 5G"
+      ],
+      [
+        "Semelle intérieure",
+        "ZERO GLIDE, environ 1,5 fois plus adhérente qu'une semelle classique selon Mizuno"
+      ],
+      [
+        "Prix officiel",
+        "65 € (emea.mizuno.com, 8 octobre 2026) ; 64,99 € chez Decathlon"
+      ]
+    ],
+    "forts": [
+      "Confortable (8/10) avec son chaussant large",
+      "Crampons moulés utilisables sur la plupart des terrains",
+      "Semelle intérieure qui tient bien le pied"
+    ],
+    "faibles": [
+      "Protection modeste (6,5/10)",
+      "Moins d'accroche que des crampons vissés sur terrain gras",
+      "Plus chère que les modèles enfant Offload"
+    ],
+    "gamme": "La Monarcida Neo III est la gamme d'entrée et de milieu de Mizuno, inspirée de la Morelia Neo. La Select Jr est la version enfant ; elle existe aussi en semelle AG pour les synthétiques.",
+    "rivales": "L'Offload R500 Enfant FG (29,99 €, chez Decathlon) est moins chère pour un premier essai. La Canterbury Speed Junior Pro (66 €) vise les jeunes trois-quarts rapides, mais avec des crampons métal.",
+    "faq": [
+      [
+        "Peut-elle servir au rugby ?",
+        "Mizuno la classe en football, mais ses crampons moulés conviennent à l'école de rugby, surtout sur synthétique. Vérifie le règlement de ton club."
+      ],
+      [
+        "Convient-elle à un pied large ?",
+        "Oui, Mizuno annonce un chaussant large."
+      ],
+      [
+        "Sur quels terrains ?",
+        "Mizuno l'indique pour la terre, l'herbe naturelle et le gazon synthétique 4G et 5G."
+      ]
+    ],
+    "sources": [
+      [
+        "Mizuno – Monarcida Neo III Select Jr (fiche officielle)",
+        "https://emea.mizuno.com/eu/en/monarcida-neo-iii-select-jr/P1GB252560.html"
       ]
     ]
   }
