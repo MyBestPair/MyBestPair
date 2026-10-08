@@ -705,7 +705,7 @@ const SHOES = [
     "link": "https://www.nike.com/fr/t/chaussure-de-foot-basse-a-crampons-pour-terrain-sec-nike-mercurial-vapor-17-elite-Qg9ZBlyn",
     "priceIndicative": true,
     "merchant": "Nike",
-    "photo": "https://static.nike.com/a/images/t_default/u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/7588fc38-e631-4517-a3ea-de3f43c2428a/VAPOR+17+ELITE+FG.png",
+    "photo": "https://static.nike.com/a/images/t_PDP_936_v1/f_auto,q_auto:eco/7588fc38-e631-4517-a3ea-de3f43c2428a/VAPOR+17+ELITE+FG.png",
     "photoCredit": "Nike"
   },
   {
@@ -730,7 +730,7 @@ const SHOES = [
     "link": "https://www.nike.com/fr/t/chaussure-de-foot-basse-a-crampons-multi-surfaces-nike-mercurial-vapor-17-academy-BMaBWAAH",
     "priceIndicative": true,
     "merchant": "Nike",
-    "photo": "https://static.nike.com/a/images/t_default/u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/d8a40d2f-4388-4368-a6a0-f1ead5e4485c/VAPOR+17+ACADEMY+FG%2FMG.png",
+    "photo": "https://static.nike.com/a/images/t_PDP_936_v1/f_auto,q_auto:eco/d8a40d2f-4388-4368-a6a0-f1ead5e4485c/VAPOR+17+ACADEMY+FG%2FMG.png",
     "photoCredit": "Nike"
   },
   {
@@ -755,7 +755,7 @@ const SHOES = [
     "link": "https://www.nike.com/fr/t/chaussure-de-foot-basse-a-crampons-multi-surfaces-nike-mercurial-vapor-17-club-hA8philz",
     "priceIndicative": true,
     "merchant": "Nike",
-    "photo": "https://static.nike.com/a/images/t_default/u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/edc00c74-2aeb-4389-aa4c-d96bda8764bf/VAPOR+17+CLUB+FG%2FMG.png",
+    "photo": "https://static.nike.com/a/images/t_PDP_936_v1/f_auto,q_auto:eco/edc00c74-2aeb-4389-aa4c-d96bda8764bf/VAPOR+17+CLUB+FG%2FMG.png",
     "photoCredit": "Nike"
   },
   {
@@ -780,7 +780,7 @@ const SHOES = [
     "link": "https://www.nike.com/fr/t/chaussure-de-foot-montante-a-crampons-multi-surfaces-nike-mercurial-superfly-11-academy-QIsaJWl5",
     "priceIndicative": true,
     "merchant": "Nike",
-    "photo": "https://static.nike.com/a/images/t_default/u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/5315f61d-069e-4584-88a2-e353b158c5d9/SUPERFLY+11+ACADEMY+FG%2FMG.png",
+    "photo": "https://static.nike.com/a/images/t_PDP_936_v1/f_auto,q_auto:eco/5315f61d-069e-4584-88a2-e353b158c5d9/SUPERFLY+11+ACADEMY+FG%2FMG.png",
     "photoCredit": "Nike"
   },
   {
@@ -805,7 +805,7 @@ const SHOES = [
     "link": "https://www.nike.com/fr/t/crampons-de-foot-nike-phantom-6-low-elite-pour-terrain-sec-vPs0Q9v9",
     "priceIndicative": true,
     "merchant": "Nike",
-    "photo": "https://static.nike.com/a/images/t_default/u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/58a7b2f6-ee9c-4911-99c7-bd24c251084d/PHANTOM+6+LOW+ELITE+FG.png",
+    "photo": "https://static.nike.com/a/images/t_PDP_936_v1/f_auto,q_auto:eco/58a7b2f6-ee9c-4911-99c7-bd24c251084d/PHANTOM+6+LOW+ELITE+FG.png",
     "photoCredit": "Nike"
   },
   {
@@ -830,7 +830,7 @@ const SHOES = [
     "link": "https://www.nike.com/fr/t/crampons-de-foot-multi-surfaces-nike-phantom-6-low-academy-cwJn5YN6/HJ4564-001",
     "priceIndicative": true,
     "merchant": "Nike",
-    "photo": "https://static.nike.com/a/images/t_default/u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/62c87333-0898-44c4-8021-cf1a51c7c54e/PHANTOM+6+LOW+ACAD+FG%2FMG.png",
+    "photo": "https://static.nike.com/a/images/t_PDP_936_v1/f_auto,q_auto:eco/62c87333-0898-44c4-8021-cf1a51c7c54e/PHANTOM+6+LOW+ACAD+FG%2FMG.png",
     "photoCredit": "Nike"
   },
   {
@@ -855,7 +855,7 @@ const SHOES = [
     "link": "https://www.nike.com/fr/t/chaussure-de-foot-basse-a-crampons-pour-terrain-sec-nike-tiempo-maestro-elite-IKNnwrKr",
     "priceIndicative": true,
     "merchant": "Nike",
-    "photo": "https://static.nike.com/a/images/t_default/u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/d20d03bb-f392-4475-a5ea-fdc537b98f33/TIEMPO+MAESTRO+ELITE+FG.png",
+    "photo": "https://static.nike.com/a/images/t_PDP_936_v1/f_auto,q_auto:eco/d20d03bb-f392-4475-a5ea-fdc537b98f33/TIEMPO+MAESTRO+ELITE+FG.png",
     "photoCredit": "Nike"
   },
   {
@@ -880,7 +880,7 @@ const SHOES = [
     "link": "https://www.nike.com/fr/t/chaussure-de-foot-basse-a-crampons-multi-surfaces-nike-tiempo-maestro-academy-D0RYxJ6W/IB1600-001",
     "priceIndicative": true,
     "merchant": "Nike",
-    "photo": "https://static.nike.com/a/images/t_default/u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/2e0e50e9-8936-4dbb-915a-ab868fcaace0/TIEMPO+MAESTRO+ACADEMY+FG%2FMG.png",
+    "photo": "https://static.nike.com/a/images/t_PDP_936_v1/f_auto,q_auto:eco/2e0e50e9-8936-4dbb-915a-ab868fcaace0/TIEMPO+MAESTRO+ACADEMY+FG%2FMG.png",
     "photoCredit": "Nike"
   },
   {
@@ -905,7 +905,7 @@ const SHOES = [
     "link": "https://www.nike.com/fr/t/chaussure-de-foot-basse-a-crampons-multi-surfaces-nike-jr-mercurial-vapor-17-academy-pour-ado-gmnQBxma",
     "priceIndicative": true,
     "merchant": "Nike",
-    "photo": "https://static.nike.com/a/images/t_default/u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/d47690ce-bbdc-4d45-9f0d-dbf74bf2caf3/JR+VAPOR+17+ACADEMY+FG%2FMG.png",
+    "photo": "https://static.nike.com/a/images/t_PDP_936_v1/f_auto,q_auto:eco/d47690ce-bbdc-4d45-9f0d-dbf74bf2caf3/JR+VAPOR+17+ACADEMY+FG%2FMG.png",
     "photoCredit": "Nike"
   },
   {
