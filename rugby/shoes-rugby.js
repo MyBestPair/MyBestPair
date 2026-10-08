@@ -6,6 +6,7 @@
  * photo + photoCredit : photo officielle du site de la marque (relevé du 7 octobre 2026), affichée avec « Photo : © marque ».
  * Prix : catalogue Rakuten Decathlon (export du 7 octobre 2026, hors promotion) ; priceIndicative = prix public constaté, sans marchand.
  * Canterbury : gamme et prix hors promotion de canterbury.com (boutique européenne, relevé du 8 octobre 2026) ; Phoenix Genesis remplacée par la Phoenix 2.0.
+ * Gilbert : prix de gilbertrugby.com/en-eu (relevé du 8 octobre 2026). Speed Falcon 2.0 et Speedster : crampons métal + moulés TPU = HYBRIDE ; Sidestep Icon 8S : chaussant large (Gilbert).
  */
 const CRITERIA = [
   "ACCROCHE",
@@ -354,7 +355,7 @@ const SHOES = [
       8.0,
       7.5
     ],
-    "studs": "FER",
+    "studs": "HYBRIDE",
     "foot": "STANDARD",
     "public": "ADULTE",
     "scoreBrand": "CANTERBURY",
@@ -498,7 +499,7 @@ const SHOES = [
   {
     "name": "Sidestep Icon 8S",
     "brand": "Gilbert",
-    "price": 150,
+    "price": 80,
     "scores": [
       8.5,
       8.5,
@@ -510,7 +511,7 @@ const SHOES = [
       8.0
     ],
     "studs": "FER",
-    "foot": "STANDARD",
+    "foot": "LARGE",
     "public": "ADULTE",
     "scoreBrand": "GILBERT",
     "link": "",
@@ -521,7 +522,7 @@ const SHOES = [
   {
     "name": "Speedster 6S",
     "brand": "Gilbert",
-    "price": 120,
+    "price": 100,
     "scores": [
       8.0,
       7.0,
@@ -532,7 +533,7 @@ const SHOES = [
       7.5,
       7.0
     ],
-    "studs": "FER",
+    "studs": "HYBRIDE",
     "foot": "STANDARD",
     "public": "ADULTE",
     "scoreBrand": "GILBERT",
@@ -620,7 +621,7 @@ const SHOES = [
       7.5,
       7.0
     ],
-    "studs": "FER",
+    "studs": "HYBRIDE",
     "foot": "STANDARD",
     "public": "ADULTE",
     "scoreBrand": "CANTERBURY",
@@ -632,7 +633,7 @@ const SHOES = [
   {
     "name": "PWR X 8S V2 SG",
     "brand": "Gilbert",
-    "price": 110,
+    "price": 120,
     "scores": [
       8.5,
       8.5,
