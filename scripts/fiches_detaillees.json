@@ -3,37 +3,921 @@
   "Nike Mercurial Vapor 17 Elite FG": {
     "resume": "La Mercurial la plus légère jamais conçue par Nike : une chaussure de vitesse pure, faite pour l'herbe sèche et les joueurs qui jouent sur les appuis.",
     "pour_qui": "Elle s'adresse aux ailiers, attaquants de profondeur et milieux offensifs qui vivent de leurs accélérations et de leurs changements de direction. Son chaussant est ajusté et plutôt étroit : un pied fin s'y sent tenu, un pied large risque d'être serré. C'est une chaussure de compétition, pensée pour des joueurs réguliers sur pelouse naturelle sèche ; pour un usage loisir ou un terrain synthétique fréquent, une version moins chère (Academy) est plus raisonnable.",
-    "profil": [["Postes", "Ailier, attaquant, milieu offensif"], ["Style", "Vitesse, dribble"], ["Niveau", "Club, compétition"], ["Terrain", "Herbe naturelle sèche (FG)"]],
-    "technique": [["Tige", "Atomknit, la version la plus légère du Flyknit de Nike, pour une sensation « pieds nus » au contact du ballon"], ["Semelle", "Plaque FlyLite, très fine mais rigide, qui allège la chaussure et structure l'appui"], ["Crampons", "FG, motif d'adhérence à lames et crampons à chevrons pour pivoter et changer de direction"], ["Coupe", "Basse"], ["Confort", "Semelle de propreté rembourrée"], ["Chaussant", "Ajusté : Nike conseille une demi-pointure au-dessus si tu préfères plus d'aisance"], ["Versions", "FG (herbe sèche), SG (terrain gras), AG (synthétique) ; Superfly 11 Elite en version montante"], ["Prix officiel", "269,99 € (hors promotion, nike.com/fr, 8 octobre 2026)"]],
-    "forts": ["Légèreté et dynamisme au sommet de notre base (9,5/10)", "Accroche précise sur herbe sèche pour les démarrages et les crochets", "Toucher de balle fin grâce à la tige Atomknit très mince"],
-    "faibles": ["Durabilité en retrait (6,5/10) : tige fine, semelle très légère", "Maintien moyen (7/10) et chaussant étroit, peu adapté aux pieds larges", "Prix élevé pour un joueur loisir"],
+    "profil": [
+      [
+        "Postes",
+        "Ailier, attaquant, milieu offensif"
+      ],
+      [
+        "Style",
+        "Vitesse, dribble"
+      ],
+      [
+        "Niveau",
+        "Club, compétition"
+      ],
+      [
+        "Terrain",
+        "Herbe naturelle sèche (FG)"
+      ]
+    ],
+    "technique": [
+      [
+        "Tige",
+        "Atomknit, la version la plus légère du Flyknit de Nike, pour une sensation « pieds nus » au contact du ballon"
+      ],
+      [
+        "Semelle",
+        "Plaque FlyLite, très fine mais rigide, qui allège la chaussure et structure l'appui"
+      ],
+      [
+        "Crampons",
+        "FG, motif d'adhérence à lames et crampons à chevrons pour pivoter et changer de direction"
+      ],
+      [
+        "Coupe",
+        "Basse"
+      ],
+      [
+        "Confort",
+        "Semelle de propreté rembourrée"
+      ],
+      [
+        "Chaussant",
+        "Ajusté : Nike conseille une demi-pointure au-dessus si tu préfères plus d'aisance"
+      ],
+      [
+        "Versions",
+        "FG (herbe sèche), SG (terrain gras), AG (synthétique) ; Superfly 11 Elite en version montante"
+      ],
+      [
+        "Prix officiel",
+        "269,99 € (hors promotion, nike.com/fr, 8 octobre 2026)"
+      ]
+    ],
+    "forts": [
+      "Légèreté et dynamisme au sommet de notre base (9,5/10)",
+      "Accroche précise sur herbe sèche pour les démarrages et les crochets",
+      "Toucher de balle fin grâce à la tige Atomknit très mince"
+    ],
+    "faibles": [
+      "Durabilité en retrait (6,5/10) : tige fine, semelle très légère",
+      "Maintien moyen (7/10) et chaussant étroit, peu adapté aux pieds larges",
+      "Prix élevé pour un joueur loisir"
+    ],
     "gamme": "La Vapor 17 existe en quatre niveaux : Elite (celle-ci, 269,99 €), Pro, Academy (89,99 €) et Club (64,99 €). L'Elite concentre les technologies les plus légères (Atomknit, plaque FlyLite). L'Academy garde la forme et le style Mercurial avec des matériaux plus simples et une semelle multi-surfaces : c'est le meilleur choix pour un joueur loisir. La Club vise les débutants et les petits budgets. Si tu préfères un col montant, la même famille existe en Superfly 11.",
     "rivales": "Sa grande rivale est l'adidas F50 Hyperfast Elite FG, construite pour le même joueur : notes quasi identiques dans notre base (vitesse et légèreté à 9,5), à toi de départager au chaussant. Plus abordable, la Puma Ultra 7 Pro FG (149,99 €) reste très légère (9/10) avec un chaussant lui aussi étroit. Si tu cherches plus de toucher et de frappe que de vitesse, regarde la Nike Phantom 6 Elite FG, au même prix.",
-    "faq": [["La Mercurial Vapor 17 Elite taille-t-elle petit ?", "Nike indique une tenue ajustée et conseille de prendre une demi-pointure au-dessus si tu préfères plus d'aisance. Avec un pied large, essaie-la avant d'acheter."], ["Peut-on la porter sur terrain synthétique ?", "La version FG est conçue pour l'herbe naturelle sèche. Pour jouer souvent sur synthétique, Nike propose une version AG de la Vapor 17 Elite, ou l'Academy MG multi-surfaces."], ["Quelle différence entre la Vapor 17 et la Superfly 11 ?", "C'est la même famille Mercurial : la Vapor a une coupe basse, la Superfly un col montant en chaussette qui enveloppe la cheville."], ["La version Elite vaut-elle le prix pour un joueur loisir ?", "Rarement : sa légèreté se paie en durabilité. Pour deux matchs par semaine en loisir, la Vapor 17 Academy (89,99 €) garde l'essentiel pour trois fois moins cher."]],
-    "sources": [["Nike – Mercurial Vapor 17 Elite FG (fiche officielle)", "https://www.nike.com/fr/t/chaussure-de-foot-basse-a-crampons-pour-terrain-sec-nike-mercurial-vapor-17-elite-Qg9ZBlyn"]]
+    "faq": [
+      [
+        "La Mercurial Vapor 17 Elite taille-t-elle petit ?",
+        "Nike indique une tenue ajustée et conseille de prendre une demi-pointure au-dessus si tu préfères plus d'aisance. Avec un pied large, essaie-la avant d'acheter."
+      ],
+      [
+        "Peut-on la porter sur terrain synthétique ?",
+        "La version FG est conçue pour l'herbe naturelle sèche. Pour jouer souvent sur synthétique, Nike propose une version AG de la Vapor 17 Elite, ou l'Academy MG multi-surfaces."
+      ],
+      [
+        "Quelle différence entre la Vapor 17 et la Superfly 11 ?",
+        "C'est la même famille Mercurial : la Vapor a une coupe basse, la Superfly un col montant en chaussette qui enveloppe la cheville."
+      ],
+      [
+        "La version Elite vaut-elle le prix pour un joueur loisir ?",
+        "Rarement : sa légèreté se paie en durabilité. Pour deux matchs par semaine en loisir, la Vapor 17 Academy (89,99 €) garde l'essentiel pour trois fois moins cher."
+      ]
+    ],
+    "sources": [
+      [
+        "Nike – Mercurial Vapor 17 Elite FG (fiche officielle)",
+        "https://www.nike.com/fr/t/chaussure-de-foot-basse-a-crampons-pour-terrain-sec-nike-mercurial-vapor-17-elite-Qg9ZBlyn"
+      ]
+    ]
   },
   "Puma Future 9 Pro FG/AG": {
     "resume": "La chaussure des meneurs de jeu chez Puma : une tige qui épouse le pied, des zones d'adhérence pour le contrôle et une semelle FG/AG qui passe de l'herbe au synthétique.",
     "pour_qui": "Elle vise les milieux et attaquants créatifs : ceux qui touchent beaucoup de ballons, combinent et dribblent dans les petits espaces. Puma la décrit avec une coupe régulière à large et un bout arrondi : elle convient aux pieds normaux et à beaucoup de pieds un peu larges. Sa semelle FG/AG en fait une bonne paire unique pour un joueur de club qui alterne pelouse naturelle et synthétique.",
-    "profil": [["Postes", "Milieu, meneur de jeu, attaquant"], ["Style", "Technique, contrôle, dribble"], ["Niveau", "Loisir régulier, club"], ["Terrain", "Herbe sèche et synthétique (FG/AG)"]],
-    "technique": [["Tige", "Double couche repensée : doublure en tricot technique multi-texturé et maille avec zones de grip 3D pour le contrôle du ballon"], ["Maintien", "Bande PWRTAPE au milieu du pied, pour la stabilité sans gêner les mouvements"], ["Crampons", "FG/AG : forme et position des crampons pensées pour pivoter à 360°, sur herbe naturelle ferme et gazon synthétique"], ["Fermeture", "Lacets"], ["Semelle intérieure", "Amovible, légère, avec technologie Nano Grip"], ["Chaussant", "Coupe régulière à large, bout arrondi, talon plat"], ["Composition", "Tige 77 % synthétique, 23 % textile ; semelle extérieure 100 % synthétique"], ["Prix officiel", "150 € (prix barré puma.com, 8 octobre 2026) ; 149,99 € chez Decathlon"]],
-    "forts": ["Toucher de balle parmi les meilleurs de sa gamme de prix (8,5/10)", "Semelle FG/AG polyvalente, herbe naturelle et synthétique", "Chaussant accueillant, adapté à plus de pieds que la plupart des modèles de vitesse"],
-    "faibles": ["Frappe et durabilité correctes sans plus (7,5/10)", "Moins légère qu'une chaussure de vitesse pure (7,5/10)", "Le maintien passe par la tige souple : moins verrouillé qu'un modèle à tige rigide"],
+    "profil": [
+      [
+        "Postes",
+        "Milieu, meneur de jeu, attaquant"
+      ],
+      [
+        "Style",
+        "Technique, contrôle, dribble"
+      ],
+      [
+        "Niveau",
+        "Loisir régulier, club"
+      ],
+      [
+        "Terrain",
+        "Herbe sèche et synthétique (FG/AG)"
+      ]
+    ],
+    "technique": [
+      [
+        "Tige",
+        "Double couche repensée : doublure en tricot technique multi-texturé et maille avec zones de grip 3D pour le contrôle du ballon"
+      ],
+      [
+        "Maintien",
+        "Bande PWRTAPE au milieu du pied, pour la stabilité sans gêner les mouvements"
+      ],
+      [
+        "Crampons",
+        "FG/AG : forme et position des crampons pensées pour pivoter à 360°, sur herbe naturelle ferme et gazon synthétique"
+      ],
+      [
+        "Fermeture",
+        "Lacets"
+      ],
+      [
+        "Semelle intérieure",
+        "Amovible, légère, avec technologie Nano Grip"
+      ],
+      [
+        "Chaussant",
+        "Coupe régulière à large, bout arrondi, talon plat"
+      ],
+      [
+        "Composition",
+        "Tige 77 % synthétique, 23 % textile ; semelle extérieure 100 % synthétique"
+      ],
+      [
+        "Prix officiel",
+        "150 € (prix barré puma.com, 8 octobre 2026) ; 149,99 € chez Decathlon"
+      ]
+    ],
+    "forts": [
+      "Toucher de balle parmi les meilleurs de sa gamme de prix (8,5/10)",
+      "Semelle FG/AG polyvalente, herbe naturelle et synthétique",
+      "Chaussant accueillant, adapté à plus de pieds que la plupart des modèles de vitesse"
+    ],
+    "faibles": [
+      "Frappe et durabilité correctes sans plus (7,5/10)",
+      "Moins légère qu'une chaussure de vitesse pure (7,5/10)",
+      "Le maintien passe par la tige souple : moins verrouillé qu'un modèle à tige rigide"
+    ],
     "gamme": "La Future 9 se décline notamment en Pro (celle-ci), Match et Play. La Pro reprend l'essentiel de la tige double couche et du PWRTAPE pour 150 €. La Match (94,99 €) simplifie les matériaux et garde la semelle FG/AG : c'est le bon choix loisir. La Play TF (59,99 €) est faite pour le stabilisé et les petits budgets.",
     "rivales": "Dans le même esprit « contrôle », la Nike Phantom 6 Academy MG (89,99 €) coûte moins cher mais obtient des notes un peu plus basses dans notre base. La Mizuno Morelia II Pro MG/AG (119,99 €) offre plus de confort dans notre base (9/10) et un chaussant large. Si tu veux plus de frappe que de dribble, l'adidas Predator 26 League FG (94,99 €) est mieux placée.",
-    "faq": [["Peut-on jouer sur synthétique avec la Future 9 Pro ?", "Oui, sa semelle FG/AG est prévue pour l'herbe naturelle ferme et le gazon synthétique. Sur terrain très gras, préfère des crampons vissés (SG)."], ["Convient-elle à un pied large ?", "Puma la présente en coupe régulière à large avec un bout arrondi : elle convient à beaucoup de pieds un peu larges. Avec un pied très large, essaie-la avant d'acheter."], ["Quelle différence entre la Future 9 Pro et la Future 9 Match ?", "La Pro a une tige plus élaborée (tricot technique, zones de grip 3D) et un meilleur toucher. La Match garde la même semelle FG/AG avec des matériaux plus simples, pour environ 55 € de moins."]],
-    "sources": [["PUMA – Future 9 Pro FG/AG (fiche officielle)", "https://eu.puma.com/fr/fr/pd/chaussures-de-football-future-9-pro-fg-ag-unisexe/108712"]]
+    "faq": [
+      [
+        "Peut-on jouer sur synthétique avec la Future 9 Pro ?",
+        "Oui, sa semelle FG/AG est prévue pour l'herbe naturelle ferme et le gazon synthétique. Sur terrain très gras, préfère des crampons vissés (SG)."
+      ],
+      [
+        "Convient-elle à un pied large ?",
+        "Puma la présente en coupe régulière à large avec un bout arrondi : elle convient à beaucoup de pieds un peu larges. Avec un pied très large, essaie-la avant d'acheter."
+      ],
+      [
+        "Quelle différence entre la Future 9 Pro et la Future 9 Match ?",
+        "La Pro a une tige plus élaborée (tricot technique, zones de grip 3D) et un meilleur toucher. La Match garde la même semelle FG/AG avec des matériaux plus simples, pour environ 55 € de moins."
+      ]
+    ],
+    "sources": [
+      [
+        "PUMA – Future 9 Pro FG/AG (fiche officielle)",
+        "https://eu.puma.com/fr/fr/pd/chaussures-de-football-future-9-pro-fg-ag-unisexe/108712"
+      ]
+    ]
   },
   "Canterbury Stampede Pro SG": {
     "resume": "La chaussure des avants chez Canterbury : semelle rigide, huit crampons vissés de 18 mm et talon verrouillé, pour pousser en mêlée et tenir les impacts sur terrain gras.",
     "pour_qui": "Elle est pensée pour les « power players » : piliers, talonneurs, deuxième ligne et troisième ligne de combat, surtout les gabarits lourds qui cherchent de l'appui et de la stabilité plutôt que de la vitesse. Son chaussant large convient bien aux pieds larges. Avec ses crampons vissés, elle est faite pour l'herbe grasse ; elle est à éviter sur synthétique, où les crampons en métal sont souvent interdits.",
-    "profil": [["Postes", "1re et 2e ligne, talonneur, 3e ligne"], ["Style", "Impact, combat, mêlée"], ["Niveau", "Club, compétition"], ["Terrain", "Herbe grasse (crampons vissés SG)"]],
-    "technique": [["Semelle", "Flight Beam en TPU, plus rigide, pour mieux transmettre la poussée et stabiliser le pied"], ["Crampons", "8 crampons vissés de 18 mm pour l'accroche en terrain souple"], ["Languette", "En néoprène, « à ailes », pour la tenue, le soutien et le confort du pied"], ["Talon", "Câble de suspension en relief pour verrouiller le talon et stabiliser le pied"], ["Chaussant", "Large"], ["Gamme", "Stampede Groundbreak Elite, Pro (celle-ci) et Team"], ["Prix officiel", "120 € (canterbury.com, boutique européenne, 8 octobre 2026)"]],
-    "forts": ["Accroche et stabilité au sommet de notre base Rugby (9/10)", "Talon verrouillé et semelle rigide pour la poussée en mêlée", "Durabilité élevée (8,5/10)"],
-    "faibles": ["Lourde et peu dynamique (6/10) : pas faite pour courir", "Crampons vissés : souvent interdits sur synthétique", "Chaussant large, moins adapté aux pieds fins"],
+    "profil": [
+      [
+        "Postes",
+        "1re et 2e ligne, talonneur, 3e ligne"
+      ],
+      [
+        "Style",
+        "Impact, combat, mêlée"
+      ],
+      [
+        "Niveau",
+        "Club, compétition"
+      ],
+      [
+        "Terrain",
+        "Herbe grasse (crampons vissés SG)"
+      ]
+    ],
+    "technique": [
+      [
+        "Semelle",
+        "Flight Beam en TPU, plus rigide, pour mieux transmettre la poussée et stabiliser le pied"
+      ],
+      [
+        "Crampons",
+        "8 crampons vissés de 18 mm pour l'accroche en terrain souple"
+      ],
+      [
+        "Languette",
+        "En néoprène, « à ailes », pour la tenue, le soutien et le confort du pied"
+      ],
+      [
+        "Talon",
+        "Câble de suspension en relief pour verrouiller le talon et stabiliser le pied"
+      ],
+      [
+        "Chaussant",
+        "Large"
+      ],
+      [
+        "Gamme",
+        "Stampede Groundbreak Elite, Pro (celle-ci) et Team"
+      ],
+      [
+        "Prix officiel",
+        "120 € (canterbury.com, boutique européenne, 8 octobre 2026)"
+      ]
+    ],
+    "forts": [
+      "Accroche et stabilité au sommet de notre base Rugby (9/10)",
+      "Talon verrouillé et semelle rigide pour la poussée en mêlée",
+      "Durabilité élevée (8,5/10)"
+    ],
+    "faibles": [
+      "Lourde et peu dynamique (6/10) : pas faite pour courir",
+      "Crampons vissés : souvent interdits sur synthétique",
+      "Chaussant large, moins adapté aux pieds fins"
+    ],
     "gamme": "La Stampede Groundbreak existe en trois niveaux. L'Elite est la plus aboutie. La Pro (celle-ci) garde la semelle Flight Beam rigide, les 8 crampons de 18 mm et le talon verrouillé pour 120 €. La Team (98 €) simplifie la construction pour un usage loisir ou un premier achat.",
     "rivales": "L'adidas Kakari Elite SG (150 €) vise le même joueur, avec des notes très proches dans notre base. Moins chère, l'Offload Impact R500 SG8 (49,99 € chez Decathlon) garde une très bonne accroche (8,5/10) et un chaussant large, pour un budget serré. Pour un avant plus mobile (3e ligne qui court beaucoup), une chaussure hybride comme la Canterbury Phoenix ou l'adidas RS15 Elite sera plus dynamique.",
-    "faq": [["La Stampede Pro est-elle faite pour les avants ?", "Oui : Canterbury la présente comme une chaussure de « power player », avec une semelle rigide pour la poussée et un talon verrouillé. C'est un profil de pilier, de deuxième ligne ou de troisième ligne de combat."], ["Peut-on la porter sur synthétique ?", "Non, en général : ses crampons sont vissés, et beaucoup de clubs interdisent le métal sur synthétique. Vérifie le règlement de ton terrain, ou prends une paire à crampons moulés."], ["Quelle différence entre la Stampede Pro et la Stampede Team ?", "La Pro a une semelle Flight Beam plus rigide et un talon verrouillé par câble ; la Team est plus simple et moins chère, pour le loisir ou un premier achat."]],
-    "sources": [["Canterbury – Stampede Groundbreak Pro SG (fiche officielle)", "https://www.canterbury.com/en-eu/products/adult-unisex-stampede-groundbreak-pro-soft-ground-boots-black-grey-qb000173bk8"]]
+    "faq": [
+      [
+        "La Stampede Pro est-elle faite pour les avants ?",
+        "Oui : Canterbury la présente comme une chaussure de « power player », avec une semelle rigide pour la poussée et un talon verrouillé. C'est un profil de pilier, de deuxième ligne ou de troisième ligne de combat."
+      ],
+      [
+        "Peut-on la porter sur synthétique ?",
+        "Non, en général : ses crampons sont vissés, et beaucoup de clubs interdisent le métal sur synthétique. Vérifie le règlement de ton terrain, ou prends une paire à crampons moulés."
+      ],
+      [
+        "Quelle différence entre la Stampede Pro et la Stampede Team ?",
+        "La Pro a une semelle Flight Beam plus rigide et un talon verrouillé par câble ; la Team est plus simple et moins chère, pour le loisir ou un premier achat."
+      ]
+    ],
+    "sources": [
+      [
+        "Canterbury – Stampede Groundbreak Pro SG (fiche officielle)",
+        "https://www.canterbury.com/en-eu/products/adult-unisex-stampede-groundbreak-pro-soft-ground-boots-black-grey-qb000173bk8"
+      ]
+    ]
+  },
+  "Nike Mercurial Vapor 17 Academy MG": {
+    "resume": "La Mercurial de vitesse à prix raisonnable : empeigne NikeSkin, plaque légère et semelle multi-surfaces, pour sprinter sur herbe comme sur synthétique.",
+    "pour_qui": "Elle vise les ailiers, attaquants et milieux offensifs qui jouent sur la vitesse, en loisir régulier ou en club. Sa semelle MG lui permet d'alterner pelouse naturelle et synthétique, ce qui en fait une bonne paire unique pour la semaine. Comme toutes les Mercurial, son chaussant est ajusté et plutôt étroit : un pied large risque d'être serré.",
+    "profil": [
+      [
+        "Postes",
+        "Ailier, attaquant, milieu offensif"
+      ],
+      [
+        "Style",
+        "Vitesse, dribble"
+      ],
+      [
+        "Niveau",
+        "Loisir régulier, club"
+      ],
+      [
+        "Terrain",
+        "Herbe naturelle et synthétique (MG)"
+      ]
+    ],
+    "technique": [
+      [
+        "Tige",
+        "NikeSkin, souple, pour un contrôle précis du ballon et une sensation « pieds nus »"
+      ],
+      [
+        "Semelle",
+        "Plaque légère qui accroche le terrain pour les sprints dans les petits espaces"
+      ],
+      [
+        "Crampons",
+        "MG multi-surfaces : crampons à chevrons au talon et à l'avant-pied, crampons coniques pour pivoter"
+      ],
+      [
+        "Coupe",
+        "Basse"
+      ],
+      [
+        "Chaussant",
+        "Ajusté : Nike conseille une demi-pointure au-dessus si tu préfères plus d'aisance"
+      ],
+      [
+        "Versions",
+        "MG (multi-surfaces), SG (terrain gras), AG (synthétique), TF et IC (salle) ; Superfly 11 Academy en version montante"
+      ],
+      [
+        "Prix officiel",
+        "89,99 € (hors promotion, nike.com/fr, 8 octobre 2026)"
+      ]
+    ],
+    "forts": [
+      "Légèreté et dynamisme élevés pour son prix (8/10)",
+      "Semelle MG polyvalente, herbe et synthétique",
+      "Garde le style et la forme de la Mercurial Elite pour trois fois moins cher"
+    ],
+    "faibles": [
+      "Maintien moyen (6,5/10)",
+      "Chaussant étroit, peu adapté aux pieds larges",
+      "Toucher et frappe corrects sans plus (7/10)"
+    ],
+    "gamme": "La Vapor 17 existe en Elite (269,99 €), Pro, Academy (celle-ci, 89,99 €) et Club (64,99 €). L'Academy remplace l'Atomknit et la plaque FlyLite de l'Elite par une empeigne NikeSkin et une plaque légère plus simple, mais garde le profil de vitesse. La Club, en cuir synthétique, vise les débutants. Pour un col montant, prends la Superfly 11 Academy (94,99 €).",
+    "rivales": "L'adidas F50 Hyperfast League FG/MG (89,99 €) et la Puma Ultra 7 Match FG/AG (84,99 €) visent le même joueur au même prix, avec des notes quasi identiques dans notre base : départage-les au chaussant. Si tu veux plus de toucher que de vitesse, la Nike Phantom 6 Academy MG coûte le même prix.",
+    "faq": [
+      [
+        "La Vapor 17 Academy convient-elle au synthétique ?",
+        "Oui, la version MG est conçue pour les surfaces naturelles et synthétiques. Pour un synthétique à poils longs utilisé très souvent, Nike propose aussi une version AG."
+      ],
+      [
+        "Quelle différence avec la Vapor 17 Elite ?",
+        "L'Elite utilise l'Atomknit et la plaque FlyLite, plus légers et plus fins. L'Academy garde la même forme avec des matériaux plus simples, pour 180 € de moins."
+      ],
+      [
+        "Taille-t-elle petit ?",
+        "Nike indique une tenue ajustée et conseille une demi-pointure au-dessus si tu préfères plus d'aisance."
+      ]
+    ],
+    "sources": [
+      [
+        "Nike – Mercurial Vapor 17 Academy MG (fiche officielle)",
+        "https://www.nike.com/fr/t/chaussure-de-foot-basse-a-crampons-multi-surfaces-nike-mercurial-vapor-17-academy-BMaBWAAH"
+      ]
+    ]
+  },
+  "Nike Mercurial Vapor 17 Club MG": {
+    "resume": "L'entrée de gamme Mercurial : une chaussure de vitesse simple et solide, en cuir synthétique, pour débuter sur herbe ou synthétique.",
+    "pour_qui": "Elle s'adresse aux joueurs qui débutent ou jouent de temps en temps, attirés par le style Mercurial et un profil rapide. Sa semelle MG passe de la pelouse au synthétique. Son chaussant est ajusté et plutôt étroit. Pour un joueur qui progresse et joue plusieurs fois par semaine, l'Academy apporte nettement plus.",
+    "profil": [
+      [
+        "Postes",
+        "Ailier, attaquant"
+      ],
+      [
+        "Style",
+        "Vitesse, dribble"
+      ],
+      [
+        "Niveau",
+        "Débutant, loisir"
+      ],
+      [
+        "Terrain",
+        "Herbe naturelle et synthétique (MG)"
+      ]
+    ],
+    "technique": [
+      [
+        "Tige",
+        "Cuir synthétique, pour la résistance pendant les sprints"
+      ],
+      [
+        "Col",
+        "En maille, pour une tenue ajustée"
+      ],
+      [
+        "Semelle",
+        "Plaque légère pour les accélérations dans les petits espaces"
+      ],
+      [
+        "Crampons",
+        "MG multi-surfaces : crampons à chevrons au talon et à l'avant-pied, crampons coniques pour pivoter"
+      ],
+      [
+        "Coupe",
+        "Basse"
+      ],
+      [
+        "Chaussant",
+        "Ajusté : Nike conseille une demi-pointure au-dessus si tu préfères plus d'aisance"
+      ],
+      [
+        "Prix officiel",
+        "64,99 € (hors promotion, nike.com/fr, 8 octobre 2026)"
+      ]
+    ],
+    "forts": [
+      "Prix accessible pour une Mercurial",
+      "Semelle MG polyvalente, herbe et synthétique",
+      "Cuir synthétique résistant"
+    ],
+    "faibles": [
+      "Notes modestes dans notre base (6 à 7/10)",
+      "Maintien limité (6/10)",
+      "Chaussant étroit"
+    ],
+    "gamme": "La Club est le premier niveau de la Vapor 17, sous l'Academy (89,99 €), la Pro et l'Elite (269,99 €). Elle garde la silhouette Mercurial avec une tige en cuir synthétique et une semelle plus simple. Si ton budget le permet, l'Academy gagne en toucher, en dynamisme et en maintien.",
+    "rivales": "À ce prix, la Kipsta Viralto III 3D Air Mesh MG/AG (49,99 €) obtient de meilleures notes dans notre base, avec un chaussant standard. La Kipsta Traxium Edge AG/FG (58,99 €) offre plus d'accroche et de légèreté. La Mercurial Club reste le choix de ceux qui veulent une Nike avant tout.",
+    "faq": [
+      [
+        "La Vapor 17 Club est-elle adaptée à un débutant ?",
+        "Oui, c'est sa cible : prix accessible, tige résistante et semelle multi-surfaces. Un joueur qui s'entraîne plusieurs fois par semaine sera mieux servi par l'Academy."
+      ],
+      [
+        "Peut-on jouer sur synthétique avec ?",
+        "Oui, la semelle MG est conçue pour les surfaces naturelles et synthétiques."
+      ],
+      [
+        "Taille-t-elle petit ?",
+        "Nike indique une tenue ajustée et conseille une demi-pointure au-dessus si tu préfères plus d'aisance."
+      ]
+    ],
+    "sources": [
+      [
+        "Nike – Mercurial Vapor 17 Club MG (fiche officielle)",
+        "https://www.nike.com/fr/t/chaussure-de-foot-basse-a-crampons-multi-surfaces-nike-mercurial-vapor-17-club-hA8philz"
+      ]
+    ]
+  },
+  "Nike Mercurial Superfly 11 Academy MG": {
+    "resume": "La Mercurial à col montant : empeigne NikeSkin, col Dynamic Fit qui tient la cheville et semelle multi-surfaces, pour sprinter en espace ouvert.",
+    "pour_qui": "Elle vise les joueurs rapides (ailiers, attaquants de profondeur) qui aiment sentir le pied enveloppé jusqu'à la cheville. Le col montant ne protège pas comme une chaussure de rugby, mais il donne une sensation de tenue appréciée par beaucoup de joueurs. Chaussant ajusté et plutôt étroit ; semelle MG pour l'herbe et le synthétique.",
+    "profil": [
+      [
+        "Postes",
+        "Ailier, attaquant"
+      ],
+      [
+        "Style",
+        "Vitesse, dribble"
+      ],
+      [
+        "Niveau",
+        "Loisir régulier, club"
+      ],
+      [
+        "Terrain",
+        "Herbe naturelle et synthétique (MG)"
+      ]
+    ],
+    "technique": [
+      [
+        "Tige",
+        "NikeSkin souple et légère, pour le contrôle en dribble à grande vitesse"
+      ],
+      [
+        "Col",
+        "Dynamic Fit montant, en maille, qui garde le pied bien maintenu"
+      ],
+      [
+        "Semelle",
+        "Plaque légère, plus légère que la version précédente selon Nike"
+      ],
+      [
+        "Crampons",
+        "MG multi-surfaces : crampons à chevrons au talon et à l'avant-pied, crampons coniques pour pivoter"
+      ],
+      [
+        "Confort",
+        "Semelle de propreté rembourrée"
+      ],
+      [
+        "Chaussant",
+        "Ajusté : Nike conseille une demi-pointure au-dessus si tu préfères plus d'aisance"
+      ],
+      [
+        "Prix officiel",
+        "94,99 € (hors promotion, nike.com/fr, 8 octobre 2026)"
+      ]
+    ],
+    "forts": [
+      "Dynamisme élevé (8/10)",
+      "Meilleur maintien que la Vapor Academy (7,5 contre 6,5/10) grâce au col",
+      "Semelle MG polyvalente"
+    ],
+    "faibles": [
+      "Col montant qui ne plaît pas à tout le monde : à essayer",
+      "Chaussant étroit",
+      "Toucher et frappe dans la moyenne (7/10)"
+    ],
+    "gamme": "La Superfly 11 est la version montante de la famille Mercurial ; la Vapor 17 en est la version basse. En Academy, elles partagent l'empeigne NikeSkin et la plaque légère : la Superfly coûte 5 € de plus (94,99 €) pour le col Dynamic Fit. La Superfly existe aussi en Elite et en Club.",
+    "rivales": "Sa jumelle basse, la Nike Mercurial Vapor 17 Academy MG (89,99 €), est un peu plus légère mais moins maintenue. Au même prix, l'adidas F50 Hyperfast League FG/MG et la Puma Ultra 7 Match FG/AG visent aussi la vitesse, en coupe basse.",
+    "faq": [
+      [
+        "Quelle différence entre la Superfly 11 et la Vapor 17 ?",
+        "Ce sont deux versions de la Mercurial : la Superfly a un col montant en maille qui enveloppe la cheville, la Vapor a une coupe basse."
+      ],
+      [
+        "Le col montant protège-t-il la cheville ?",
+        "Il améliore la sensation de tenue, mais ce n'est pas une protection contre les entorses. Choisis-le pour le confort que tu ressens à l'essayage."
+      ],
+      [
+        "Peut-on jouer sur synthétique avec ?",
+        "Oui, la version MG est conçue pour les surfaces naturelles et synthétiques."
+      ]
+    ],
+    "sources": [
+      [
+        "Nike – Mercurial Superfly 11 Academy MG (fiche officielle)",
+        "https://www.nike.com/fr/t/chaussure-de-foot-montante-a-crampons-multi-surfaces-nike-mercurial-superfly-11-academy-QIsaJWl5"
+      ]
+    ]
+  },
+  "Nike Phantom 6 Elite FG": {
+    "resume": "La chaussure de précision de Nike : empeigne Gripknit ultra-adhérente pour le contrôle et les frappes, plaque Cyclone 360 pour tourner vite, sur herbe sèche.",
+    "pour_qui": "Elle s'adresse aux milieux et attaquants qui font la différence par la qualité de leurs passes, de leurs frappes et de leurs contrôles : meneurs, numéros 10, joueurs de coups de pied arrêtés. Son chaussant est plus standard que celui des Mercurial. C'est une chaussure de compétition pour la pelouse naturelle sèche ; pour un usage loisir ou multi-surfaces, l'Academy MG est plus adaptée.",
+    "profil": [
+      [
+        "Postes",
+        "Milieu, meneur de jeu, attaquant"
+      ],
+      [
+        "Style",
+        "Technique, frappe, contrôle"
+      ],
+      [
+        "Niveau",
+        "Club, compétition"
+      ],
+      [
+        "Terrain",
+        "Herbe naturelle sèche (FG)"
+      ]
+    ],
+    "technique": [
+      [
+        "Tige",
+        "Gripknit, texture ultra-adhérente qui accroche le ballon par temps sec ou humide"
+      ],
+      [
+        "Forme",
+        "Structure plus anatomique, notamment à la pointe, qui épouse le pied"
+      ],
+      [
+        "Semelle",
+        "Motif d'adhérence circulaire Cyclone 360 à l'avant-pied, pour la stabilité et les rotations"
+      ],
+      [
+        "Crampons",
+        "FG, pour pelouse naturelle sèche"
+      ],
+      [
+        "Coupe",
+        "Basse (Phantom 6 Low) ; existe aussi en version montante (High)"
+      ],
+      [
+        "Confort",
+        "Semelle de propreté rembourrée"
+      ],
+      [
+        "Prix officiel",
+        "269,99 € (hors promotion, nike.com/fr, 8 octobre 2026)"
+      ]
+    ],
+    "forts": [
+      "Toucher et frappe parmi les meilleurs de notre base (9/10)",
+      "Bon maintien et bon confort (8/10)",
+      "Chaussant plus accueillant que les Mercurial"
+    ],
+    "faibles": [
+      "Prix élevé",
+      "Durabilité correcte sans plus (7/10)",
+      "Version FG réservée à l'herbe sèche"
+    ],
+    "gamme": "La Phantom 6 existe en coupe basse (Low) et montante (High), en Elite (celle-ci, 269,99 €), Pro et Academy (89,99 €). L'Elite a l'empeigne Gripknit ; l'Academy la remplace par une zone de contact NikeSkin et garde la forme anatomique. Pour un joueur loisir, l'Academy MG est le meilleur rapport qualité-prix.",
+    "rivales": "L'adidas Predator 26 Elite FG (280 €) vise aussi la frappe, avec une note de 9,5/10 dans notre base et un meilleur maintien. La Nike Tiempo Maestro Elite FG (249,99 €) mise davantage sur le confort et le toucher doux. Si tu cherches la vitesse avant tout, regarde la Mercurial Vapor 17 Elite, au même prix.",
+    "faq": [
+      [
+        "À quoi sert l'empeigne Gripknit ?",
+        "C'est une texture adhérente qui accroche le ballon pour plus de contrôle et de précision ; Nike indique qu'elle adhère par temps sec comme humide."
+      ],
+      [
+        "Phantom 6 Low ou High ?",
+        "La Low a une coupe basse classique, la High un col montant en chaussette. Les notes de notre base concernent la Low."
+      ],
+      [
+        "Peut-on la porter sur synthétique ?",
+        "La version FG est conçue pour la pelouse naturelle sèche. Pour le synthétique, prends une version AG ou l'Academy MG."
+      ]
+    ],
+    "sources": [
+      [
+        "Nike – Phantom 6 Low Elite FG (fiche officielle)",
+        "https://www.nike.com/fr/t/crampons-de-foot-nike-phantom-6-low-elite-pour-terrain-sec-vPs0Q9v9"
+      ]
+    ]
+  },
+  "Nike Phantom 6 Academy MG": {
+    "resume": "La Phantom de précision à prix raisonnable : zone de contact NikeSkin pour le toucher, forme anatomique et semelle multi-surfaces.",
+    "pour_qui": "Elle vise les milieux et attaquants techniques, en loisir régulier ou en club, qui veulent une chaussure orientée contrôle et passes plutôt que vitesse pure. Son chaussant est standard. Sa semelle MG lui permet de jouer sur pelouse naturelle comme sur synthétique.",
+    "profil": [
+      [
+        "Postes",
+        "Milieu, meneur de jeu, attaquant"
+      ],
+      [
+        "Style",
+        "Technique, contrôle, passes"
+      ],
+      [
+        "Niveau",
+        "Loisir régulier, club"
+      ],
+      [
+        "Terrain",
+        "Herbe naturelle et synthétique (MG)"
+      ]
+    ],
+    "technique": [
+      [
+        "Tige",
+        "Zone de contact NikeSkin élargie avec mesh technique, pour le contrôle en dribble et en passe, par temps sec ou pluvieux"
+      ],
+      [
+        "Forme",
+        "Structure plus anatomique, notamment à la pointe, qui épouse le pied"
+      ],
+      [
+        "Semelle",
+        "Motif d'adhérence circulaire Cyclone 360 à l'avant-pied"
+      ],
+      [
+        "Crampons",
+        "MG, pour surfaces naturelles et synthétiques"
+      ],
+      [
+        "Coupe",
+        "Basse (Phantom 6 Low)"
+      ],
+      [
+        "Confort",
+        "Semelle de propreté rembourrée"
+      ],
+      [
+        "Prix officiel",
+        "89,99 € (hors promotion, nike.com/fr, 8 octobre 2026)"
+      ]
+    ],
+    "forts": [
+      "Bon toucher de balle pour son prix (8/10)",
+      "Chaussant standard, plus accueillant que les Mercurial",
+      "Semelle MG polyvalente"
+    ],
+    "faibles": [
+      "Peu légère et peu dynamique (7/10)",
+      "Maintien correct sans plus (7/10)",
+      "Moins précise que l'Elite, qui a l'empeigne Gripknit"
+    ],
+    "gamme": "L'Academy est le niveau intermédiaire de la Phantom 6, sous la Pro et l'Elite (269,99 €). Elle garde la forme anatomique et le motif Cyclone 360, mais remplace le Gripknit par une zone de contact NikeSkin. Elle existe aussi en version montante (High Academy, 94,99 €).",
+    "rivales": "La Nike Tiempo Maestro Academy MG (84,99 €) offre plus de confort et de maintien, avec la même orientation contrôle. La Puma Future 9 Match FG/AG (94,99 €) obtient des notes très proches dans notre base. Si la frappe compte le plus pour toi, l'adidas Predator 26 League FG (94,99 €) est mieux placée.",
+    "faq": [
+      [
+        "Quelle différence avec la Phantom 6 Elite ?",
+        "L'Elite a l'empeigne Gripknit ultra-adhérente et une semelle FG de compétition. L'Academy utilise une zone NikeSkin et une semelle multi-surfaces, pour 180 € de moins."
+      ],
+      [
+        "Peut-on jouer sur synthétique avec ?",
+        "Oui, la version MG est conçue pour les surfaces naturelles et synthétiques."
+      ],
+      [
+        "Convient-elle à un pied large ?",
+        "Son chaussant est plus standard que celui des Mercurial. Avec un pied très large, essaie-la avant d'acheter."
+      ]
+    ],
+    "sources": [
+      [
+        "Nike – Phantom 6 Low Academy MG (fiche officielle)",
+        "https://www.nike.com/fr/t/crampons-de-foot-multi-surfaces-nike-phantom-6-low-academy-cwJn5YN6/HJ4564-001"
+      ]
+    ]
+  },
+  "Nike Tiempo Maestro Elite FG": {
+    "resume": "La chaussure du contrôle et du confort chez Nike : empeigne TECHLEATHER plus douce que le cuir naturel et plaque flexible Maestro360, pour un ajustement « comme un gant ».",
+    "pour_qui": "Elle s'adresse aux joueurs qui veulent du toucher et du confort avant tout : milieux, défenseurs relanceurs, joueurs techniques qui passent beaucoup de temps sur le terrain. Son chaussant est standard. C'est une chaussure de compétition pour la pelouse naturelle sèche.",
+    "profil": [
+      [
+        "Postes",
+        "Milieu, défenseur, meneur de jeu"
+      ],
+      [
+        "Style",
+        "Technique, contrôle"
+      ],
+      [
+        "Niveau",
+        "Club, compétition"
+      ],
+      [
+        "Terrain",
+        "Herbe naturelle sèche (FG)"
+      ]
+    ],
+    "technique": [
+      [
+        "Tige",
+        "TECHLEATHER, matériau ultra-doux, au toucher plus uniforme que le cuir naturel par temps sec ou humide ; lignes moulées pour la qualité du toucher"
+      ],
+      [
+        "Semelle",
+        "Plaque fendue Maestro360, flexible, à l'avant-pied et au talon, qui laisse l'empeigne envelopper la voûte plantaire"
+      ],
+      [
+        "Crampons",
+        "FG : crampons à lamelles au talon et à l'avant-pied, crampons coniques torsadés pour pivoter"
+      ],
+      [
+        "Coupe",
+        "Basse"
+      ],
+      [
+        "Confort",
+        "Semelle de propreté rembourrée"
+      ],
+      [
+        "Prix officiel",
+        "249,99 € (hors promotion, nike.com/fr, 8 octobre 2026)"
+      ]
+    ],
+    "forts": [
+      "Toucher et confort au sommet de notre base (9/10)",
+      "Ajustement enveloppant grâce à la plaque Maestro360",
+      "Polyvalente : bonnes notes partout (8 à 9/10)"
+    ],
+    "faibles": [
+      "Prix élevé",
+      "Durabilité correcte (7,5/10)",
+      "Moins légère et dynamique qu'une Mercurial (8/10)"
+    ],
+    "gamme": "La Tiempo Maestro existe en Elite (celle-ci, 249,99 €), Pro et Academy (84,99 €). L'Elite a l'empeigne TECHLEATHER et la plaque Maestro360 ; l'Academy utilise une empeigne FlyTouch et une semelle multi-surfaces, pour un joueur loisir.",
+    "rivales": "La Nike Phantom 6 Elite FG (269,99 €) apporte plus de frappe et de précision, la Tiempo plus de confort. Classique du genre, l'adidas Copa Mundial FG (179,99 €) offre un toucher et un confort comparables dans notre base, avec un chaussant large, mais elle est plus lourde. La Mizuno Morelia II Pro MG/AG (119,99 €) est une alternative confortable moins chère.",
+    "faq": [
+      [
+        "Qu'est-ce que le TECHLEATHER ?",
+        "C'est le matériau de l'empeigne de la Tiempo Maestro Elite. Nike le présente comme plus doux que le cuir naturel, avec un toucher plus uniforme par temps sec ou humide."
+      ],
+      [
+        "La Tiempo convient-elle à un défenseur ?",
+        "Oui : son confort, son maintien (8/10) et sa frappe (8,5/10) conviennent bien aux défenseurs qui relancent proprement."
+      ],
+      [
+        "Peut-on la porter sur synthétique ?",
+        "La version FG est conçue pour la pelouse naturelle sèche. Pour le synthétique, préfère une version AG ou l'Academy MG."
+      ]
+    ],
+    "sources": [
+      [
+        "Nike – Tiempo Maestro Elite FG (fiche officielle)",
+        "https://www.nike.com/fr/t/chaussure-de-foot-basse-a-crampons-pour-terrain-sec-nike-tiempo-maestro-elite-IKNnwrKr"
+      ]
+    ]
+  },
+  "Nike Tiempo Maestro Academy MG": {
+    "resume": "La Tiempo pour tous les jours : empeigne FlyTouch souple qui s'adapte au pied, semelle multi-surfaces et beaucoup de confort pour 85 €.",
+    "pour_qui": "Elle convient aux joueurs loisir ou de club qui cherchent une chaussure confortable et un toucher doux, quel que soit leur poste : milieux, défenseurs, joueurs techniques. Son chaussant est standard. Sa semelle MG passe de la pelouse naturelle au synthétique.",
+    "profil": [
+      [
+        "Postes",
+        "Milieu, défenseur, tous postes"
+      ],
+      [
+        "Style",
+        "Technique, contrôle"
+      ],
+      [
+        "Niveau",
+        "Loisir régulier, club"
+      ],
+      [
+        "Terrain",
+        "Herbe naturelle et synthétique (MG)"
+      ]
+    ],
+    "technique": [
+      [
+        "Tige",
+        "FlyTouch légère et souple, au toucher uniforme par temps sec ou humide ; s'adapte à la forme du pied sans se déformer"
+      ],
+      [
+        "Crampons",
+        "MG : crampons à lamelles au talon et à l'avant-pied, crampons coniques pour pivoter, sur surfaces naturelles et synthétiques"
+      ],
+      [
+        "Coupe",
+        "Basse"
+      ],
+      [
+        "Confort",
+        "Semelle de propreté rembourrée"
+      ],
+      [
+        "Prix officiel",
+        "84,99 € (hors promotion, nike.com/fr, 8 octobre 2026)"
+      ]
+    ],
+    "forts": [
+      "Confort et toucher élevés pour son prix (8/10)",
+      "Bon maintien (7,5/10) et bonne durabilité (7,5/10)",
+      "Semelle MG polyvalente"
+    ],
+    "faibles": [
+      "Peu légère et peu dynamique (6,5/10)",
+      "Pas faite pour les joueurs de vitesse",
+      "Moins aboutie que l'Elite (TECHLEATHER, plaque Maestro360)"
+    ],
+    "gamme": "L'Academy est la Tiempo Maestro accessible, sous la Pro et l'Elite (249,99 €). Elle remplace le TECHLEATHER de l'Elite par une empeigne FlyTouch et utilise une semelle multi-surfaces. Elle existe aussi en versions SG (terrain gras), AG (synthétique) et TF (stabilisé).",
+    "rivales": "L'adidas Copa Pure IV League FG (84,99 €) offre un toucher et un confort encore plus élevés dans notre base, en FG. La Kipsta Viralto IV Cuir Premium FG (69,99 €), en cuir, est une alternative confortable et durable moins chère. La Nike Phantom 6 Academy MG, au même niveau de prix, est plus orientée précision.",
+    "faq": [
+      [
+        "La Tiempo Maestro Academy est-elle en cuir ?",
+        "Son empeigne est en FlyTouch, que Nike décrit comme une matière souple qui s'adapte au pied. Pour le TECHLEATHER, il faut monter à l'Elite."
+      ],
+      [
+        "Peut-on jouer sur synthétique avec ?",
+        "Oui, la version MG est conçue pour les surfaces naturelles et synthétiques."
+      ],
+      [
+        "Pour quel poste est-elle faite ?",
+        "Elle convient à tous les postes, surtout aux joueurs qui privilégient le confort et le contrôle plutôt que la vitesse."
+      ]
+    ],
+    "sources": [
+      [
+        "Nike – Tiempo Maestro Academy MG (fiche officielle)",
+        "https://www.nike.com/fr/t/chaussure-de-foot-basse-a-crampons-multi-surfaces-nike-tiempo-maestro-academy-D0RYxJ6W/IB1600-001"
+      ]
+    ]
+  },
+  "Nike Mercurial Vapor 17 Academy MG Jr": {
+    "resume": "La Mercurial des jeunes joueurs : même empeigne NikeSkin et même profil de vitesse que la version adulte, avec une semelle multi-surfaces.",
+    "pour_qui": "Elle est faite pour les enfants et ados qui jouent en club et aiment la vitesse et le dribble. Sa semelle MG convient à la pelouse naturelle comme au synthétique, ce qui couvre la plupart des terrains de club. Son chaussant est ajusté et plutôt étroit : avec un pied large, mieux vaut l'essayer.",
+    "profil": [
+      [
+        "Public",
+        "Enfant, ado"
+      ],
+      [
+        "Style",
+        "Vitesse, dribble"
+      ],
+      [
+        "Niveau",
+        "Club, loisir régulier"
+      ],
+      [
+        "Terrain",
+        "Herbe naturelle et synthétique (MG)"
+      ]
+    ],
+    "technique": [
+      [
+        "Tige",
+        "NikeSkin, pour un contrôle précis et une sensation « pieds nus »"
+      ],
+      [
+        "Semelle",
+        "Plaque légère pour les accélérations dans les petits espaces"
+      ],
+      [
+        "Crampons",
+        "MG multi-surfaces : crampons à chevrons au talon et à l'avant-pied, crampons coniques pour pivoter"
+      ],
+      [
+        "Fermeture",
+        "Lacets classiques"
+      ],
+      [
+        "Coupe",
+        "Basse"
+      ],
+      [
+        "Prix officiel",
+        "64,99 € (hors promotion, nike.com/fr, 8 octobre 2026)"
+      ]
+    ],
+    "forts": [
+      "Légèreté et dynamisme élevés (8/10)",
+      "Mêmes matériaux que la Vapor 17 Academy adulte",
+      "Semelle MG polyvalente"
+    ],
+    "faibles": [
+      "Durabilité en retrait (6,5/10) : un enfant qui grandit vite ne l'usera pas forcément",
+      "Maintien moyen (6,5/10)",
+      "Chaussant étroit"
+    ],
+    "gamme": "La Vapor 17 existe pour les jeunes en Academy (celle-ci) et en Club (moins chère, plus simple), ainsi qu'en version montante (Superfly 11 Academy Jr). L'Academy Jr reprend l'empeigne NikeSkin de la version adulte.",
+    "rivales": "L'adidas F50 Hyperfast League FG/MG Jr (69,99 €) vise exactement le même jeune joueur, avec des notes identiques dans notre base. La Puma Future 9 Match FG/AG Jr (69,99 €) est plus orientée contrôle, avec un chaussant standard. Pour un petit budget, la Kipsta Viralto I Easy FG Jr (29,99 €) est plus simple et plus confortable.",
+    "faq": [
+      [
+        "Quelle pointure prendre pour un enfant ?",
+        "Essaie avec les chaussettes de foot et laisse environ un demi-centimètre devant les orteils : assez pour grandir un peu, sans que le pied flotte."
+      ],
+      [
+        "Peut-on jouer sur synthétique avec ?",
+        "Oui, la version MG est conçue pour les surfaces naturelles et synthétiques."
+      ],
+      [
+        "Est-ce la même chaussure que la version adulte ?",
+        "Elle reprend l'empeigne NikeSkin et la plaque légère de la Vapor 17 Academy adulte, en tailles enfant et ado."
+      ]
+    ],
+    "sources": [
+      [
+        "Nike – Jr. Mercurial Vapor 17 Academy MG (fiche officielle)",
+        "https://www.nike.com/fr/t/chaussure-de-foot-basse-a-crampons-multi-surfaces-nike-jr-mercurial-vapor-17-academy-pour-ado-gmnQBxma"
+      ]
+    ]
   }
 }
