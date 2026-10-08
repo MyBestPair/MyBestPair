@@ -32,6 +32,7 @@
 Fiches actuelles : 234 (30 Basket, 50 Route, 51 Trail, 32 Padel, 30 Rugby, 41 Foot). Le script de génération est stable : le relancer sans changement de données ne modifie aucun fichier.
 Exception : la fiche `running/route/modeles/asics-novablast-6/` est rédigée à la main ; le script la conserve et n'y injecte que certains blocs (dont l'encart d'affiliation). Toute modification du gabarit des fiches doit aussi être prévue pour elle.
 L'encart d'affiliation (texte dans `AFFILIATE_NOTE`, `scripts/build_model_pages.py`) renvoie vers `methodologie.html#liens-commerciaux`.
+Fiches détaillées Rugby / Foot (demande de Romain du 8 oct. 2026 : fiches trop sommaires) : contenu rédigé par modèle dans `scripts/fiches_detaillees.json` (résumé, pour quel joueur, profil, fiche technique d'après le site officiel de la marque, points forts / faibles, gamme et rivales, FAQ avec données structurées, sources). Photo dans l'en-tête. Ne rien écrire d'invérifiable. **Pilote** de 3 fiches (Nike Mercurial Vapor 17 Elite FG, Puma Future 9 Pro FG/AG, Canterbury Stampede Pro SG) à valider par Romain avant de rédiger les autres par lots ; autres sports : pas pour l'instant (choix de Romain). Decathlon et adidas bloquent les robots : pour leurs modèles, il faudra une autre source (par ex. descriptions de l'export Rakuten).
 
 ## Barème (moteur `app.js`, `FINAL_WEIGHTS`)
 62 % critères techniques · 15 % budget · 10 % surface · 8 % pied · 5 % marque.
