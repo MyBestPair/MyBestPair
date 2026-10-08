@@ -6,6 +6,7 @@
  * photo + photoCredit : photo officielle du site de la marque (relevé du 7 octobre 2026), affichée avec « Photo : © marque ».
  * Prix : catalogue Rakuten Decathlon (export du 7 octobre 2026, hors promotion) ; priceIndicative = prix public constaté, sans marchand.
  * Canterbury : gamme et prix hors promotion de canterbury.com (boutique européenne, relevé du 8 octobre 2026) ; Phoenix Genesis remplacée par la Phoenix 2.0.
+ * Mizuno : prix de emea.mizuno.com/eu (Waitangi II CL = « Waitangi Club » 2026) ; Monarcida Neo III Select Jr : chaussant large (Mizuno).
  * Gilbert : prix de gilbertrugby.com/en-eu (relevé du 8 octobre 2026). Speed Falcon 2.0 et Speedster : crampons métal + moulés TPU = HYBRIDE ; Sidestep Icon 8S : chaussant large (Gilbert).
  */
 const CRITERIA = [
@@ -266,7 +267,7 @@ const SHOES = [
       7.0
     ],
     "studs": "MOULES",
-    "foot": "STANDARD",
+    "foot": "LARGE",
     "public": "ENFANT",
     "scoreBrand": "MIZUNO",
     "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.4480611867596825236753881&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-rugby-enfant-monarcida-neo-3-select-jr-fg-noir-et-rouge%2F386653%2Fm9030253",
@@ -476,7 +477,7 @@ const SHOES = [
   {
     "name": "Waitangi II CL",
     "brand": "Mizuno",
-    "price": 110,
+    "price": 130,
     "scores": [
       8.5,
       8.5,
