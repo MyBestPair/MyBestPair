@@ -16,13 +16,15 @@ SPECS = {
     "basket": ("basket", "Basket", ["traction", "amorti", "reactivite", "stabilite", "maintien", "legerete", "confort", "durabilite"]),
     "padel": ("padel", "Padel", ["adherence", "amorti", "stabilite", "maintien", "legerete", "confort", "durabilite", "reactivite"]),
     "rugby": ("rugby", "Rugby", ["accroche", "stabilite", "maintien", "protection", "legerete", "dynamisme", "confort", "durabilite"]),
+    "foot": ("foot", "Foot", ["accroche", "toucher", "frappe", "legerete", "dynamisme", "maintien", "confort", "durabilite"]),
 }
-SOURCES = {"basket": "shoes.js", "padel": "padel/shoes-padel.js", "rugby": "rugby/shoes-rugby.js"}
+SOURCES = {"basket": "shoes.js", "padel": "padel/shoes-padel.js", "rugby": "rugby/shoes-rugby.js", "foot": "foot/shoes-foot.js"}
 # Basket and Padel share the same data layout: scores list, one folder deep.
-FLAT = ("basket", "padel", "rugby")
+FLAT = ("basket", "padel", "rugby", "foot")
 SOLES = {"CHEVRONS": "Chevrons", "OMNI": "Omni", "MIXTE": "Mixte"}
 GENDERS = {"HOMME": "Homme", "FEMME": "Femme", "MIXTE": "Homme et femme"}
 STUDS = {"FER": "fer (vissés)", "MOULES": "moulés", "HYBRIDE": "hybrides"}
+FOOT_STUDS = {"FG": "moulés FG", "MG": "multi-terrain", "SG": "vissés SG", "TF": "stabilisé TF"}
 PUBLICS = {"ADULTE": "Adulte (homme et femme)", "FEMME": "Femme", "ENFANT": "Enfant"}
 AFFILIATE_NOTE = "Certains liens vers les marchands sont des liens d’affiliation (Kwanko, Awin, Rakuten) : un achat peut rapporter une commission à MyBestPair, sans surcoût pour toi. Le classement n’en dépend pas."
 
@@ -31,7 +33,7 @@ def affiliate_note(root):
     return f'<p class="note affiliate-note">{h(AFFILIATE_NOTE)} <a href="{root}methodologie.html#liens-commerciaux">En savoir plus</a></p>'
 
 
-LABELS = {"adherence": "Adhérence", "reactivite": "Réactivité", "stabilite": "Stabilité", "legerete": "Légèreté", "durabilite": "Durabilité"}
+LABELS = {"adherence": "Adhérence", "reactivite": "Réactivité", "stabilite": "Stabilité", "legerete": "Légèreté", "durabilite": "Durabilité", "toucher": "Toucher de balle"}
 
 
 def h(value):
@@ -140,7 +142,7 @@ def price_of(shoe):
 def alternatives(shoe, shoes, sport, fields, count=4):
     """Closest models in the same base: similar scores, same category, similar price."""
     notes = scores(shoe, sport, fields)
-    group = shoe.get("surface") if sport == "basket" else shoe.get("sole") if sport == "padel" else shoe.get("studs") if sport == "rugby" else shoe.get("type")
+    group = shoe.get("surface") if sport == "basket" else shoe.get("sole") if sport == "padel" else shoe.get("studs") if sport in ("rugby", "foot") else shoe.get("type")
     ranked = []
     for other in shoes:
         if other is shoe:
@@ -148,7 +150,7 @@ def alternatives(shoe, shoes, sport, fields, count=4):
         other_notes = scores(other, sport, fields)
         distance = sum((notes[key] - other_notes[key]) ** 2 for key in fields) ** 0.5
         distance += abs(price_of(shoe) - price_of(other)) / 40
-        other_group = other.get("surface") if sport == "basket" else other.get("sole") if sport == "padel" else other.get("studs") if sport == "rugby" else other.get("type")
+        other_group = other.get("surface") if sport == "basket" else other.get("sole") if sport == "padel" else other.get("studs") if sport in ("rugby", "foot") else other.get("type")
         if other_group != group:
             distance += 1.5
         ranked.append((distance, display_name(other, sport), other))
@@ -168,6 +170,8 @@ def meta_of(shoe, sport):
         return f"Semelle {sole_text(shoe).lower()} · " + f"{price_of(shoe):g}".replace(".", ",") + " €"
     if sport == "rugby":
         return f"Crampons {STUDS.get(shoe['studs'], 'à confirmer')} · " + ("≈ " if shoe.get("priceIndicative") else "") + f"{price_of(shoe):g}".replace(".", ",") + " €"
+    if sport == "foot":
+        return f"Crampons {shoe.get('studsLabel') or FOOT_STUDS.get(shoe['studs'], 'à confirmer')} · " + ("≈ " if shoe.get("priceIndicative") else "") + f"{price_of(shoe):g}".replace(".", ",") + " €"
     return f"{display_value(shoe['type'])} · {shoe['distance']}"
 
 
@@ -219,6 +223,17 @@ def render(shoe, sport, base, category, fields, photo=None, related=""):
         caveat = "Vérifie le règlement de ton club : les crampons fer sont souvent interdits sur synthétique. Le maintien et la pointure se confirment à l'essayage."
         factors = "ton poste, ton style de jeu, ton gabarit, ton terrain, tes crampons, ton niveau, ton type de pied, ton budget et les priorités que tu classes"
         fragment = "profile-section"
+    elif sport == "foot":
+        price_label = "Prix public indicatif" if shoe.get("priceIndicative") else "Prix indicatif de la base"
+        details = [("Crampons enregistrés", shoe.get("studsLabel") or FOOT_STUDS.get(shoe["studs"], "à confirmer")), ("Chaussant enregistré", shoe["foot"]), ("Public", PUBLICS.get(shoe["public"], shoe["public"])), (price_label, f'{shoe["price"]:g} €'.replace(".", ","))]
+        use = {"FG": "La base associe ce modèle à des crampons moulés FG, faits pour l'herbe naturelle sèche.",
+               "MG": "La base associe ce modèle à des crampons multi-terrain, qui passent de l'herbe naturelle au synthétique.",
+               "SG": "La base associe ce modèle à des crampons vissés SG, les plus accrocheurs dans l'herbe grasse.",
+               "TF": "La base associe ce modèle à une semelle stabilisé (TF), pour la terre et les terrains durs."}.get(shoe["studs"], "Le type de crampons de ce modèle reste à confirmer.")
+        use += f" Son chaussant est enregistré comme {h(shoe['foot'].lower())}."
+        caveat = "Vérifie le règlement de ton club : les crampons vissés sont souvent interdits sur synthétique. Le chaussant et la pointure se confirment à l'essayage."
+        factors = "ton poste, ton style de jeu, ton terrain, tes crampons, ton niveau, ton type de pied, ton budget et les priorités que tu classes"
+        fragment = "profile-section"
     else:
         details = [("Catégorie dans la base", shoe["type"]), ("Distance enregistrée", shoe["distance"]), ("Poids indicatif dans la base", f'{shoe["poidsChaussure"]:g} g'), ("Drop dans la base", f'{shoe["drop"]:g} mm'), ("Plaque carbone enregistrée", shoe["carbone"]), ("Type de pied enregistré", shoe["typePied"])]
         if sport == "trail":
@@ -235,7 +250,7 @@ def render(shoe, sport, base, category, fields, photo=None, related=""):
             fragment = "questionnaire"
         fragment = "questionnaire"
     specs = "\n".join(f"<div><dt>{h(key)}</dt><dd>{h(display_value(value))}</dd></div>" for key, value in details)
-    context = f"Semelle {sole_text(shoe).lower()} · {display_value(shoe['foot'])}" if sport == "padel" else f"Crampons {STUDS.get(shoe['studs'], 'à confirmer')} · {display_value(shoe['foot'])}" if sport == "rugby" else meta_of(shoe, sport)
+    context = f"Semelle {sole_text(shoe).lower()} · {display_value(shoe['foot'])}" if sport == "padel" else f"Crampons {STUDS.get(shoe['studs'], 'à confirmer')} · {display_value(shoe['foot'])}" if sport == "rugby" else f"Crampons {shoe.get('studsLabel') or FOOT_STUDS.get(shoe['studs'], 'à confirmer')} · {display_value(shoe['foot'])}" if sport == "foot" else meta_of(shoe, sport)
     key_point = f"{label(ranked[0])} : {score(notes[ranked[0]])}"
     visual = f'<figure class="product-photo"><img src="{h(photo[0])}" alt="{h(name)} — {'photo ' + h(photo[2]) if photo[2] else 'visuel marchand'}" loading="lazy" decoding="async"><figcaption>{photo_caption(photo)}</figcaption></figure>' if photo else ""
     return f'''<!DOCTYPE html>
@@ -334,7 +349,7 @@ def main():
         print(sport, len(shoes))
     sitemap = ROOT / "sitemap.xml"
     old = sitemap.read_text()
-    old = re.sub(r'\s*<url>\s*<loc>https://mybestpair.fr/(?:running/(?:route|trail)/|basket/|padel/|rugby/)modeles/[^<]*</loc>\s*</url>', '', old)
+    old = re.sub(r'\s*<url>\s*<loc>https://mybestpair.fr/(?:running/(?:route|trail)/|basket/|padel/|rugby/|foot/)modeles/[^<]*</loc>\s*</url>', '', old)
     entries = "\n".join(f"  <url><loc>{xml_escape(url)}</loc></url>" for url in all_urls)
     sitemap.write_text(old.replace('</urlset>', entries + '\n</urlset>'))
 

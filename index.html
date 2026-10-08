@@ -9,7 +9,7 @@
   <meta property="og:site_name" content="MyBestPair">
   <meta property="og:locale" content="fr_FR">
   <meta property="og:title" content="MyBestPair | Trouve la meilleure paire pour ton sport">
-  <meta property="og:description" content="MyBestPair analyse ton profil pour te recommander les chaussures de sport adaptées à ta pratique, ton budget et tes priorités : running, trail, basket, padel et rugby.">
+  <meta property="og:description" content="MyBestPair analyse ton profil pour te recommander les chaussures de sport adaptées à ta pratique, ton budget et tes priorités : running, trail, basket, padel, rugby et foot.">
   <meta property="og:url" content="https://mybestpair.fr/">
   <meta property="og:image" content="https://mybestpair.fr/images/og-mybestpair.jpg">
   <meta property="og:image:width" content="1200">
@@ -18,7 +18,7 @@
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mybestpair.fr/#organization","name":"MyBestPair","url":"https://mybestpair.fr/","logo":"https://mybestpair.fr/favicon.png","email":"contact@mybestpair.fr","sameAs":["https://www.instagram.com/mybestpair_officiel/","https://www.tiktok.com/@mybestpair_officiel"]},{"@type":"WebSite","@id":"https://mybestpair.fr/#website","name":"MyBestPair","url":"https://mybestpair.fr/","inLanguage":"fr-FR","publisher":{"@id":"https://mybestpair.fr/#organization"}}]}</script>
   <link rel="preload" as="image" href="images/accueil-hero.webp" fetchpriority="high">
 
-  <meta name="description" content="MyBestPair analyse ton profil pour te recommander les chaussures de sport adaptées à ta pratique, ton budget et tes priorités : running, trail, basket, padel et rugby.">
+  <meta name="description" content="MyBestPair analyse ton profil pour te recommander les chaussures de sport adaptées à ta pratique, ton budget et tes priorités : running, trail, basket, padel, rugby et foot.">
   <link rel="canonical" href="https://mybestpair.fr/">
   <link rel="icon" type="image/png" href="favicon.png">
 
@@ -50,6 +50,7 @@
       --green:#74b829;
       --padel:#0f9168;
       --rugby:#c0262d;
+      --foot:#13804a;
     }
 
     html { scroll-behavior:smooth; }
@@ -221,6 +222,7 @@
     .trail .card-image { background-image:url("images/carte-trail.webp"); }
     .padel .card-image { background-image:url("images/carte-padel.webp"); }
     .rugby .card-image { background-image:url("images/carte-rugby.webp"); background-position:center 60%; }
+    .foot .card-image { background-image:url("images/carte-foot.webp"); }
 
     .card-body { padding:22px; }
 
@@ -238,6 +240,7 @@
     .trail h2 .mini-icon { color:var(--green); }
     .padel h2 .mini-icon { color:var(--padel); }
     .rugby h2 .mini-icon { color:var(--rugby); }
+    .foot h2 .mini-icon { color:var(--foot); }
 
     .card p {
       margin:0 0 18px;
@@ -276,6 +279,7 @@
     .trail .check { background:var(--green); }
     .padel .check { background:var(--padel); }
     .rugby .check { background:var(--rugby); }
+    .foot .check { background:var(--foot); }
 
     .cta {
       display:flex;
@@ -294,6 +298,7 @@
     .trail .cta { background:var(--green); }
     .padel .cta { background:var(--padel); }
     .rugby .cta { background:var(--rugby); }
+    .foot .cta { background:var(--foot); }
 
     .cta:hover { filter:brightness(1.08); transform:translateY(-1px); }
 
@@ -696,11 +701,28 @@
         </div>
       </article>
 
+      <article class="card foot">
+        <div class="card-image" role="img" aria-label="Terrain de football vu du dessus"></div>
+        <div class="card-body">
+          <h2><span class="mini-icon"><svg class="ico" aria-hidden="true"><use href="icons.svg#foot"></use></svg></span> Foot</h2>
+          <p>Poste, style de jeu, terrain et crampons : trouve la paire adaptée à ton jeu, du synthétique à l’herbe grasse.</p>
+
+          <div class="facts">
+            <div class="fact"><span class="check">✓</span> 41 modèles analysés</div>
+            <div class="fact"><span class="check">✓</span> Crampons conseillés selon ton terrain</div>
+            <div class="fact"><span class="check">✓</span> Adultes, femmes et enfants</div>
+          </div>
+
+          <a class="cta" href="foot/">Découvrir Foot <span>→</span></a>
+          <a class="card-models" href="foot/modeles/">Voir les 41 fiches modèles foot</a>
+        </div>
+      </article>
+
     </section>
 
     <section id="fiches-modeles" class="models-hub">
       <h2>Fiches modèles</h2>
-      <p>Consulte les caractéristiques et les notes de chaque paire avant de lancer le questionnaire : 193 fiches pour la route, le trail, le basket, le padel et le rugby.</p>
+      <p>Consulte les caractéristiques et les notes de chaque paire avant de lancer le questionnaire : 234 fiches pour la route, le trail, le basket, le padel, le rugby et le foot.</p>
       <div class="hub-grid">
         <div class="hub-col">
           <h3><a href="running/route/modeles/"><svg class="ico" aria-hidden="true"><use href="icons.svg#footprints"></use></svg> Running Route</a></h3>
@@ -757,6 +779,17 @@
           </ul>
           <a class="hub-all" href="rugby/modeles/">Les 30 fiches rugby →</a>
         </div>
+        <div class="hub-col">
+          <h3><a href="foot/modeles/"><svg class="ico" aria-hidden="true"><use href="icons.svg#foot"></use></svg> Foot</a></h3>
+          <ul>
+            <li><a href="foot/modeles/kipsta-viralto-iv-cuir-premium-fg/">Kipsta Viralto IV Cuir Premium FG</a></li>
+            <li><a href="foot/modeles/adidas-predator-26-league-fg/">adidas Predator 26 League FG</a></li>
+            <li><a href="foot/modeles/puma-future-9-match-fg-ag/">Puma Future 9 Match FG/AG</a></li>
+            <li><a href="foot/modeles/nike-mercurial-vapor-17-academy-mg/">Nike Mercurial Vapor 17 Academy MG</a></li>
+            <li><a href="foot/modeles/adidas-f50-hyperfast-league-fg-mg/">adidas F50 Hyperfast League FG/MG</a></li>
+          </ul>
+          <a class="hub-all" href="foot/modeles/">Les 41 fiches foot →</a>
+        </div>
       </div>
     </section>
 
@@ -811,7 +844,7 @@
 
       <p>
         MYBESTPAIR propose actuellement des recommandations pour le basketball,
-        le running route, le trail, le padel et le rugby.
+        le running route, le trail, le padel, le rugby et le foot.
       </p>
 
       <p>
@@ -850,6 +883,7 @@
       <a href="basket/modeles/">Fiches Basket</a>
       <a href="padel/modeles/">Fiches Padel</a>
       <a href="rugby/modeles/">Fiches Rugby</a>
+      <a href="foot/modeles/">Fiches Foot</a>
       <a href="methodologie.html">Méthodologie</a>
       <a href="conditions-utilisation.html">Conditions d’utilisation</a>
       <a href="confidentialite.html">Politique de confidentialité</a>
