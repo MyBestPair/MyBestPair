@@ -103,4 +103,7 @@
 .t3-credit{position:absolute;right:10px;bottom:8px;font-size:10px;font-weight:600;color:#5a6680;background:rgba(255,255,255,.75);padding:2px 6px;border-radius:6px}
 .t3-noimg .t3-credit{display:none}
 .t3-rugby .t3-tag,.t3-rugby .t3-budget,.t3-rugby .t3-credit,.t3-foot .t3-tag,.t3-foot .t3-budget,.t3-foot .t3-credit{z-index:1}
-.t3-rugby .t3-plate img.t3-brand-photo,.t3-foot .t3-plate img.t3-brand-photo{max-height:150px;border-radius:12px}
+.t3-rugby .t3-plate img.t3-brand-photo{max-height:150px;border-radius:12px}
+/* Foot : photos Nike en portrait sur fond gris, recadrées sur la chaussure pour l'afficher en grand */
+.t3-foot .t3-plate img.t3-brand-photo{width:92%;max-width:440px;max-height:190px;aspect-ratio:4/3;object-fit:cover;border-radius:12px}
+@media (min-width:700px){.t3-foot .t3-plate img.t3-brand-photo{max-height:340px}}
