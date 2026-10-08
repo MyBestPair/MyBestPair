@@ -10,6 +10,8 @@ from xml.sax.saxutils import escape as xml_escape
 ROOT = Path(__file__).resolve().parents[1]
 PHOTOS = json.loads((ROOT / "scripts/model_photos.json").read_text())
 ENRICHED = json.loads((ROOT / "scripts/fiches_enrichies.json").read_text())
+# Rugby / Foot detailed fiches (pilot): written content per model, sourced from the brands' official pages.
+DETAILED = {k: v for k, v in json.loads((ROOT / "scripts/fiches_detaillees.json").read_text()).items() if not k.startswith("_")}
 SPECS = {
     "route": ("running/route", "Running Route", ["amorti", "dynamisme", "stabilite", "confort", "durabilite", "legerete"]),
     "trail": ("running/trail", "Running Trail", ["accroche", "amorti", "stabilite", "protection", "dynamisme", "confort"]),
@@ -95,6 +97,27 @@ def photo_caption(photo):
     if photo[2]:
         return f"Photo : © {h(photo[2])} · le coloris peut varier"
     return f"Photo produit du catalogue {h(photo[1])} · le coloris peut varier"
+
+
+def detailed_html(d, category, rows, root_link, caveat, factors, related):
+    """Main column of a detailed Rugby / Foot fiche (written content + notes)."""
+    li = lambda items: "".join(f"<li>{h(item)}</li>" for item in items)
+    profile = "".join(f"<div><dt>{h(k)}</dt><dd>{h(v)}</dd></div>" for k, v in d["profil"])
+    tech = "".join(f"<tr><th scope=\"row\">{h(k)}</th><td>{h(v)}</td></tr>" for k, v in d["technique"])
+    faq = "".join(f"<details><summary>{h(q)}</summary><p>{h(a)}</p></details>" for q, a in d["faq"])
+    sources = " · ".join(f'<a href="{h(url)}" target="_blank" rel="noopener">{h(label)}</a>' for label, url in d["sources"])
+    return f'''<section class="card"><h2>Points forts et points faibles</h2><div class="proscons"><div class="pros"><h3>Points forts</h3><ul>{li(d["forts"])}</ul></div><div class="cons"><h3>Points faibles</h3><ul>{li(d["faibles"])}</ul></div></div><p class="note" style="margin-top:18px">Les notes citées sont des évaluations internes MyBestPair sur 10, établies à partir des fiches fabricants et des tests publiés. Elles ne remplacent pas un essai de la chaussure.</p></section>
+      <section class="card"><h2>Pour quel joueur ?</h2><p class="lede">{h(d["pour_qui"])}</p><dl class="profile">{profile}</dl></section>
+      <section class="card"><h2>Ses notes MyBestPair</h2><p class="muted">Évaluations internes sur 10 utilisées par le questionnaire, et non notes issues d'un test terrain indépendant. <a href="{root_link}methodologie.html">Comprendre notre méthodologie</a>.</p><div class="scores" aria-label="Notes internes MyBestPair sur 10">{rows}</div></section>
+      <section class="card"><h2>Fiche technique</h2><table class="tech">{tech}</table><p class="muted" style="margin-top:14px">Caractéristiques annoncées par la marque. Sources : {sources}.</p></section>
+      <section class="card"><h2>Dans la gamme et face à ses rivales</h2><h3>Quelle version choisir ?</h3><p>{h(d["gamme"])}</p><h3>Face à ses rivales</h3><p>{h(d["rivales"])}</p></section>
+      <section class="card faq"><h2>Questions fréquentes</h2>{faq}</section>
+      <section class="card"><h2>Avant de choisir</h2><p>{caveat}</p><p>Le questionnaire tient aussi compte de {factors}. Le classement change donc selon ton profil.</p><p><a href="../">Voir toutes les chaussures {h(category)} →</a></p></section>
+      {related}'''
+
+
+def faq_ld(d):
+    return json_ld({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in d["faq"]]})
 
 
 OG_IMAGE = "https://mybestpair.fr/images/og-mybestpair.jpg"
@@ -254,6 +277,17 @@ def render(shoe, sport, base, category, fields, photo=None, related=""):
     key_point = f"{label(ranked[0])} : {score(notes[ranked[0]])}"
     official = f'<p style="margin-top:12px"><a href="{h(shoe["link"])}" target="_blank" rel="noopener">{"Rechercher ce modèle" if "search?" in shoe["link"] else "Voir la fiche technique"} sur le site officiel {h(shoe["merchant"])} →</a></p>' if shoe.get("merchant") and shoe.get("link") else ""
     visual = f'<figure class="product-photo"><img src="{h(photo[0])}" alt="{h(name)} — {'photo ' + h(photo[2]) if photo[2] else 'visuel marchand'}" loading="lazy" decoding="async"><figcaption>{photo_caption(photo)}</figcaption></figure>' if photo else ""
+    detail = DETAILED.get(name) if sport in ("rugby", "foot") else None
+    hero_text = h(detail["resume"]) if detail else "Une première lecture de la paire, avant de vérifier si elle correspond vraiment à ton profil."
+    main_col = "      " + detailed_html(detail, category, rows, root_link, caveat, factors, related) + "\n" if detail else f'''      <section class="card"><h2>L'essentiel sur cette paire</h2><p class="lede">{use}</p><div class="verdict"><div><span>Ses atouts dans notre base</span><strong>{h(strengths.capitalize())}</strong></div><div><span>À regarder de plus près</span><strong>{h(modest.capitalize())}</strong></div></div><p class="note">Ces indications viennent des données MyBestPair. Elles permettent de comparer les modèles, mais ne remplacent pas un essai de la chaussure.</p></section>{enriched_html(name)}
+      <section class="card"><h2>Ses notes MyBestPair</h2><p class="muted">Évaluations internes sur 10 utilisées par le questionnaire, et non notes issues d'un test terrain indépendant. <a href="{root_link}methodologie.html">Comprendre notre méthodologie</a>.</p><div class="scores" aria-label="Notes internes MyBestPair sur 10">{rows}</div></section>
+      <section class="card"><h2>Avant de choisir</h2><p>{caveat}</p><p>Le questionnaire tient aussi compte de {factors}. Le classement change donc selon ton profil.</p><p><a href="../">Voir toutes les chaussures {h(category)} →</a></p></section>
+      {related}
+'''
+    hero = f'''<header class="hero"><div class="eyebrow">MyBestPair / {h(category)}</div><h1>{h(name)}</h1><p>{hero_text}</p><div class="hero-meta"><span>{h(context)}</span><span>{h(key_point)}</span></div><a class="cta" href="../../#{fragment}">Vérifier avec mon profil →</a></header>'''
+    if detail and photo:
+        hero = f'''<header class="hero hero-split"><div><div class="eyebrow">MyBestPair / {h(category)}</div><h1>{h(name)}</h1><p>{hero_text}</p><div class="hero-meta"><span>{h(context)}</span><span>{h(key_point)}</span></div><a class="cta" href="../../#{fragment}">Vérifier avec mon profil →</a></div><figure class="hero-fig"><img src="{h(photo[0])}" alt="{h(name)} — {'photo ' + h(photo[2]) if photo[2] else 'visuel marchand'}" decoding="async"><figcaption>{photo_caption(photo)}</figcaption></figure></header>'''
+        visual = ""
     return f'''<!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -263,7 +297,7 @@ def render(shoe, sport, base, category, fields, photo=None, related=""):
   <meta name="description" content="{h(description)}">
   <link rel="canonical" href="{url}"><link rel="icon" href="{root_link}favicon.png">
   {head_extras(title, description, url)}
-  {json_ld(breadcrumb([("Accueil", "https://mybestpair.fr/"), (category, f"https://mybestpair.fr/{base}/"), ("Modèles", f"https://mybestpair.fr/{base}/modeles/"), (name, url)]))}
+  {json_ld(breadcrumb([("Accueil", "https://mybestpair.fr/"), (category, f"https://mybestpair.fr/{base}/"), ("Modèles", f"https://mybestpair.fr/{base}/modeles/"), (name, url)]))}{faq_ld(detail) if detail else ""}
   <script src="{root_link}analytics-consent.js"></script>
   <link rel="stylesheet" href="{root_link}modeles.css">
 </head>
@@ -271,14 +305,10 @@ def render(shoe, sport, base, category, fields, photo=None, related=""):
   <nav class="topbar" aria-label="Navigation principale"><a class="brand" href="{root_link}" aria-label="MyBestPair — accueil"><img src="{root_link}logo-mybestpair.webp" alt="MyBestPair" width="159" height="28"></a><a href="../../#{fragment}">Questionnaire {h(category)}</a></nav>
   <main>
     <nav class="crumbs" aria-label="Fil d'Ariane"><a href="{root_link}">Accueil</a> › <a href="../../">{h(category)}</a> › <a href="../">Modèles</a> › {h(name)}</nav>
-    <header class="hero"><div class="eyebrow">MyBestPair / {h(category)}</div><h1>{h(name)}</h1><p>Une première lecture de la paire, avant de vérifier si elle correspond vraiment à ton profil.</p><div class="hero-meta"><span>{h(context)}</span><span>{h(key_point)}</span></div><a class="cta" href="../../#{fragment}">Vérifier avec mon profil →</a></header>
+    {hero}
     {affiliate_note(root_link)}
     <div class="layout"><div>
-      <section class="card"><h2>L'essentiel sur cette paire</h2><p class="lede">{use}</p><div class="verdict"><div><span>Ses atouts dans notre base</span><strong>{h(strengths.capitalize())}</strong></div><div><span>À regarder de plus près</span><strong>{h(modest.capitalize())}</strong></div></div><p class="note">Ces indications viennent des données MyBestPair. Elles permettent de comparer les modèles, mais ne remplacent pas un essai de la chaussure.</p></section>{enriched_html(name)}
-      <section class="card"><h2>Ses notes MyBestPair</h2><p class="muted">Évaluations internes sur 10 utilisées par le questionnaire, et non notes issues d'un test terrain indépendant. <a href="{root_link}methodologie.html">Comprendre notre méthodologie</a>.</p><div class="scores" aria-label="Notes internes MyBestPair sur 10">{rows}</div></section>
-      <section class="card"><h2>Avant de choisir</h2><p>{caveat}</p><p>Le questionnaire tient aussi compte de {factors}. Le classement change donc selon ton profil.</p><p><a href="../">Voir toutes les chaussures {h(category)} →</a></p></section>
-      {related}
-    </div><aside>{visual}
+{main_col}    </div><aside>{visual}
       <section class="card"><h2>Repères techniques</h2><dl class="specs">{specs}</dl><p class="muted" style="margin-top:16px">Données indicatives de notre base. Les caractéristiques exactes peuvent varier selon la version et la pointure : vérifie-les auprès du fabricant.</p>{official}</section>
       <section class="card"><h2>Est-ce ta paire ?</h2><p>Renseigne ton profil pour voir si {h(name)} ressort parmi tes recommandations et quels autres modèles lui sont comparés.</p><a class="cta" href="../../#{fragment}" id="questionnaireLink">Tester mon profil gratuitement</a><small>Prix et disponibilité peuvent évoluer : vérifie-les chez le marchand.</small></section>
     </aside></div>

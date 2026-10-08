@@ -273,7 +273,7 @@ const SHOES = [
   {
     "name": "Stampede Pro SG",
     "brand": "Canterbury",
-    "price": 180,
+    "price": 120,
     "scores": [
       9.0,
       9.0,

@@ -23,3 +23,31 @@ ul{padding-left:21px;margin:8px 0}li{margin:7px 0}.cta{display:flex;justify-cont
 footer{border-top:1px solid var(--line);padding:27px 20px;text-align:center;color:var(--muted);font-size:.85rem}
 @media(max-width:850px){.layout{grid-template-columns:1fr}.catalogue-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:570px){main{padding:18px 15px 55px}.topbar{padding:13px 16px}.hero{border-radius:15px;padding:30px 23px}.card{padding:22px}.catalogue-grid,.verdict{grid-template-columns:1fr}.scores{gap:13px}.hero:after{right:-260px}}
+/* Fiches détaillées Rugby / Foot (scripts/fiches_detaillees.json) */
+.proscons{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.proscons>div{border-radius:13px;padding:17px 19px}
+.pros{background:#eef8f1;border:1px solid #cde8d5}
+.cons{background:#fff6ec;border:1px solid #f2dcc1}
+.proscons h3{margin:0 0 8px;font-size:.98rem}
+.proscons ul{list-style:none;padding:0;margin:0}
+.proscons li{position:relative;padding-left:22px;margin:9px 0;font-size:.94rem;line-height:1.45}
+.proscons li:before{position:absolute;left:0;top:0;font-weight:800}
+.pros li:before{content:"+";color:#1f8a4c}
+.cons li:before{content:"–";color:#c46a12}
+.profile{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:20px 0 0}
+.profile div{background:var(--soft);border-radius:11px;padding:12px 15px}
+.profile dt{color:var(--muted);font-size:.72rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase}
+.profile dd{margin:3px 0 0;font-weight:800;font-size:.93rem;line-height:1.35}
+.tech{width:100%;border-collapse:collapse;font-size:.93rem}
+.tech th,.tech td{text-align:left;vertical-align:top;padding:12px 0;border-bottom:1px solid var(--line);line-height:1.5}
+.tech th{width:30%;padding-right:16px;color:var(--muted);font-weight:700}
+.faq details{border-bottom:1px solid var(--line);padding:14px 0}
+.faq details:first-of-type{border-top:1px solid var(--line)}
+.faq summary{cursor:pointer;font-weight:800;line-height:1.4}
+.faq details p{margin:10px 0 0;color:#334760}
+@media(max-width:570px){.proscons{grid-template-columns:1fr}.tech th{width:36%}}
+.hero-split{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.95fr);gap:30px;align-items:center}
+.hero-fig{margin:0;background:#fff;border-radius:16px;padding:10px;text-align:center}
+.hero-fig img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px}
+.hero-fig figcaption{font-size:.72rem;color:var(--muted);margin:7px 0 1px}
+@media(max-width:850px){.hero-split{grid-template-columns:1fr;gap:22px}}
