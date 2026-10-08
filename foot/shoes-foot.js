@@ -4,9 +4,10 @@
  * studs (catégorie utilisée par le moteur) : FG (moulés, herbe sèche) / MG (multi-terrain : FG/MG, FG/AG, MG/AG, AG/FG)
  *   / SG (vissés, herbe grasse) / TF (stabilisé) ; studsLabel = indication exacte du fabricant.
  * foot : ETROIT / STANDARD / LARGE · public : ADULTE / FEMME / ENFANT
- * link : lien marchand Decathlon (Rakuten), vide = « Lien bientôt disponible ».
- * Prix : catalogue Rakuten Decathlon (export du 8 octobre 2026, hors promotion) ; priceIndicative = prix public constaté, sans marchand.
- * Nike n'est pas au catalogue Rakuten Decathlon : ses modèles sont gardés sans lien (choix de Romain).
+ * link : lien marchand Decathlon (Rakuten, affilié) ou, avec merchant, recherche du modèle sur le site officiel de la marque
+ *   (nike.com / adidas.fr, sans affiliation pour l'instant) ; vide = « Lien bientôt disponible ».
+ * Prix : catalogue Rakuten Decathlon (export du 8 octobre 2026, hors promotion) ; priceIndicative = prix public constaté.
+ * Nike n'est pas au catalogue Rakuten Decathlon : ses modèles renvoient vers nike.com (choix de Romain, 8 octobre 2026).
  */
 const CRITERIA = [
   "ACCROCHE",
@@ -699,8 +700,9 @@ const SHOES = [
     "foot": "ETROIT",
     "public": "ADULTE",
     "scoreBrand": "NIKE",
-    "link": "",
-    "priceIndicative": true
+    "link": "https://www.nike.com/fr/w?q=mercurial%20vapor%2017%20elite&vst=mercurial%20vapor%2017%20elite",
+    "priceIndicative": true,
+    "merchant": "Nike"
   },
   {
     "name": "Mercurial Vapor 17 Academy MG",
@@ -721,8 +723,9 @@ const SHOES = [
     "foot": "ETROIT",
     "public": "ADULTE",
     "scoreBrand": "NIKE",
-    "link": "",
-    "priceIndicative": true
+    "link": "https://www.nike.com/fr/w?q=mercurial%20vapor%2017%20academy&vst=mercurial%20vapor%2017%20academy",
+    "priceIndicative": true,
+    "merchant": "Nike"
   },
   {
     "name": "Mercurial Vapor 17 Club MG",
@@ -743,8 +746,9 @@ const SHOES = [
     "foot": "ETROIT",
     "public": "ADULTE",
     "scoreBrand": "NIKE",
-    "link": "",
-    "priceIndicative": true
+    "link": "https://www.nike.com/fr/w?q=mercurial%20vapor%2017%20club&vst=mercurial%20vapor%2017%20club",
+    "priceIndicative": true,
+    "merchant": "Nike"
   },
   {
     "name": "Mercurial Superfly 11 Academy MG",
@@ -765,8 +769,9 @@ const SHOES = [
     "foot": "ETROIT",
     "public": "ADULTE",
     "scoreBrand": "NIKE",
-    "link": "",
-    "priceIndicative": true
+    "link": "https://www.nike.com/fr/w?q=mercurial%20superfly%2011%20academy&vst=mercurial%20superfly%2011%20academy",
+    "priceIndicative": true,
+    "merchant": "Nike"
   },
   {
     "name": "Phantom 6 Elite FG",
@@ -787,8 +792,9 @@ const SHOES = [
     "foot": "STANDARD",
     "public": "ADULTE",
     "scoreBrand": "NIKE",
-    "link": "",
-    "priceIndicative": true
+    "link": "https://www.nike.com/fr/w?q=phantom%206%20elite&vst=phantom%206%20elite",
+    "priceIndicative": true,
+    "merchant": "Nike"
   },
   {
     "name": "Phantom 6 Academy MG",
@@ -809,8 +815,9 @@ const SHOES = [
     "foot": "STANDARD",
     "public": "ADULTE",
     "scoreBrand": "NIKE",
-    "link": "",
-    "priceIndicative": true
+    "link": "https://www.nike.com/fr/w?q=phantom%206%20academy&vst=phantom%206%20academy",
+    "priceIndicative": true,
+    "merchant": "Nike"
   },
   {
     "name": "Tiempo Maestro Elite FG",
@@ -831,8 +838,9 @@ const SHOES = [
     "foot": "STANDARD",
     "public": "ADULTE",
     "scoreBrand": "NIKE",
-    "link": "",
-    "priceIndicative": true
+    "link": "https://www.nike.com/fr/w?q=tiempo%20maestro%20elite&vst=tiempo%20maestro%20elite",
+    "priceIndicative": true,
+    "merchant": "Nike"
   },
   {
     "name": "Tiempo Maestro Academy MG",
@@ -853,8 +861,9 @@ const SHOES = [
     "foot": "STANDARD",
     "public": "ADULTE",
     "scoreBrand": "NIKE",
-    "link": "",
-    "priceIndicative": true
+    "link": "https://www.nike.com/fr/w?q=tiempo%20maestro%20academy&vst=tiempo%20maestro%20academy",
+    "priceIndicative": true,
+    "merchant": "Nike"
   },
   {
     "name": "Mercurial Vapor 17 Academy MG Jr",
@@ -875,8 +884,9 @@ const SHOES = [
     "foot": "ETROIT",
     "public": "ENFANT",
     "scoreBrand": "NIKE",
-    "link": "",
-    "priceIndicative": true
+    "link": "https://www.nike.com/fr/w?q=jr%20mercurial%20vapor%2017%20academy&vst=jr%20mercurial%20vapor%2017%20academy",
+    "priceIndicative": true,
+    "merchant": "Nike"
   },
   {
     "name": "Predator 26 Elite FG",
@@ -897,8 +907,9 @@ const SHOES = [
     "foot": "STANDARD",
     "public": "ADULTE",
     "scoreBrand": "ADIDAS",
-    "link": "",
-    "priceIndicative": true
+    "link": "https://www.adidas.fr/search?q=predator%20elite",
+    "priceIndicative": true,
+    "merchant": "adidas"
   },
   {
     "name": "F50 Hyperfast Elite FG",
@@ -919,8 +930,9 @@ const SHOES = [
     "foot": "ETROIT",
     "public": "ADULTE",
     "scoreBrand": "ADIDAS",
-    "link": "",
-    "priceIndicative": true
+    "link": "https://www.adidas.fr/search?q=f50%20hyperfast%20elite",
+    "priceIndicative": true,
+    "merchant": "adidas"
   }
 ];
 

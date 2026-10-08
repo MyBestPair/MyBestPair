@@ -32,11 +32,12 @@
   const CHECK = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>';
   const BALL = '<svg width="54" height="54" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m12 7 4.3 3.1-1.6 5H9.3l-1.6-5z"/><path d="M12 7V2.5M16.3 10.1l4.3-1.4M14.7 15.1l2.7 3.7M9.3 15.1l-2.7 3.7M7.7 10.1 3.4 8.7"/></svg>';
 
-  function shopName(url) {
-    const u = String(url || "").toLowerCase();
-    if (u.includes("linksynergy.com") || u.includes("decathlon.fr")) return "Decathlon";
+  /* Decathlon passe par Rakuten (lien affilié) ; les modèles absents de Decathlon renvoient vers le site officiel de la marque. */
+  function shopName(r) {
+    if (r.merchant) return r.merchant;
     return "Decathlon";
   }
+  const isAffiliate = (url) => /linksynergy\.com|awin1\.com|kwanko\.com/.test(String(url || ""));
   const fullName = (r) => (r.name.toUpperCase().startsWith(r.brand.toUpperCase() + " ") ? r.name : r.brand + " " + r.name);
   const shortName = (r) => (r.name.toUpperCase().startsWith(r.brand.toUpperCase() + " ") ? r.name.slice(r.brand.length).trim() : r.name);
   const note = (r, c) => r.scores[CRITERIA.indexOf(c)];
@@ -76,10 +77,10 @@
       const min = Math.min(...r.scores);
       const weak = min < 8 ? LABELS[CRITERIA[r.scores.indexOf(min)]] : "";
       const rankClass = i < 3 ? "rank" + (i + 1) : "other";
-      const shop = shopName(r.link);
+      const shop = shopName(r);
       const fiche = "modeles/" + slug(fullName(r)) + "/";
       const offer = r.link
-        ? `<a class="product-link t3-cta" href="${esc(r.link)}" target="_blank" rel="noopener noreferrer sponsored" data-product-brand="${esc(r.brand)}" data-merchant="${esc(shop)}">Voir chez ${esc(shop)} ${ARROW}</a>`
+        ? `<a class="product-link t3-cta" href="${esc(r.link)}" target="_blank" rel="noopener noreferrer${isAffiliate(r.link) ? " sponsored" : ""}" data-product-brand="${esc(r.brand)}" data-merchant="${esc(shop)}">Voir chez ${esc(shop)} ${ARROW}</a>`
         : `<span class="product-link disabled t3-cta">Lien bientôt disponible</span>`;
       return `<article class="t3-card" id="t3-panel" role="tabpanel" aria-label="${esc(fullName(r))}">
         <div class="t3-plate t3-plate-text r${Math.min(i + 1, 3)}${photoOf(r) ? "" : " t3-noimg"}">
@@ -106,7 +107,7 @@
           <div class="t3-offer shoe-card t3-trk ${rankClass}">
             <span class="shoe-name" hidden>${esc(r.name)}</span>
             <div class="t3-offer-top">
-              <div><div class="t3-offer-label">OÙ L'ACHETER</div><div class="t3-offer-meta">${r.link ? esc(shop) + " · coloris et pointures sur le site" : "Prix public indicatif · lien marchand bientôt disponible"}</div></div>
+              <div><div class="t3-offer-label">OÙ L'ACHETER</div><div class="t3-offer-meta">${r.link ? (r.merchant ? "Site officiel " + esc(shop) + " · prix public indicatif" : esc(shop) + " · coloris et pointures sur le site") : "Prix public indicatif · lien marchand bientôt disponible"}</div></div>
               <div class="t3-price">${r.priceIndicative ? "≈ " : ""}${price(r.price)}</div>
             </div>
             ${offer}
