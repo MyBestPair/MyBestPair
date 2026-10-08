@@ -26,7 +26,7 @@
     a{color:var(--blue)}a:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
     .topbar{background:var(--navy);color:#fff;padding:16px max(22px,calc((100vw - 1060px)/2));display:flex;align-items:center;justify-content:space-between;gap:20px}
     .brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-size:1.3rem;font-weight:900;font-style:italic;letter-spacing:-.04em}
-    .brand img{width:62px;height:36px;object-fit:contain}
+    .brand img{display:block;width:auto;height:32px}
     .topbar .back{color:#e1ebfa;font-size:.9rem;text-decoration:none}
     main{width:min(1060px,calc(100% - 36px));margin:30px auto 70px}
     .crumbs{font-size:.85rem;color:var(--muted);margin-bottom:16px}
@@ -55,13 +55,13 @@
     td.num{white-space:nowrap;font-weight:700;color:var(--blue)}
     footer{background:var(--navy);color:#d7e3f5;text-align:center;padding:25px}
     footer a{color:#fff}
-    @media(max-width:760px){.layout{grid-template-columns:1fr}th,td{padding:7px 6px}table{font-size:.86rem}.topbar .back{font-size:.8rem}.brand{font-size:1.1rem}.brand img{width:50px;height:30px}}
+    @media(max-width:760px){.layout{grid-template-columns:1fr}th,td{padding:7px 6px}table{font-size:.86rem}.topbar .back{font-size:.8rem}.brand{font-size:1.1rem}.brand img{height:28px}}
   </style>
   <script src="analytics-consent.js"></script>
 </head>
 <body>
   <nav class="topbar" aria-label="Navigation principale">
-    <a class="brand" href="./"><img src="shoe-realistic.webp" alt="" width="62" height="36">MyBestPair</a>
+    <a class="brand" href="./"><img src="logo-mybestpair.webp" alt="MyBestPair" width="182" height="32"></a>
     <a class="back" href="./">← Retour à l’accueil</a>
   </nav>
   <main>
