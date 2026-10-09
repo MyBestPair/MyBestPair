@@ -578,7 +578,7 @@
       "Version FG réservée à l'herbe sèche"
     ],
     "gamme": "La Phantom 6 existe en coupe basse (Low) et montante (High), en Elite (celle-ci, 269,99 €), Pro et Academy (89,99 €). L'Elite a l'empeigne Gripknit ; l'Academy la remplace par une zone de contact NikeSkin et garde la forme anatomique. Pour un joueur loisir, l'Academy MG est le meilleur rapport qualité-prix.",
-    "rivales": "L'adidas Predator 26 Elite FG (280 €) vise aussi la frappe, avec une note de 9,5/10 dans notre base et un meilleur maintien. La Nike Tiempo Maestro Elite FG (249,99 €) mise davantage sur le confort et le toucher doux. Si tu cherches la vitesse avant tout, regarde la Mercurial Vapor 17 Elite, au même prix.",
+    "rivales": "L'adidas Predator 26 Elite FG (270 €) vise aussi la frappe, avec une note de 9,5/10 dans notre base et un meilleur maintien. La Nike Tiempo Maestro Elite FG (249,99 €) mise davantage sur le confort et le toucher doux. Si tu cherches la vitesse avant tout, regarde la Mercurial Vapor 17 Elite, au même prix.",
     "faq": [
       [
         "À quoi sert l'empeigne Gripknit ?",
@@ -1226,7 +1226,7 @@
       "Maintien et confort moyens (7/10)"
     ],
     "gamme": "L'Ultra Nitro 7 existe en Pro (celle-ci, 150 €) et en Match (85 €), ainsi qu'en version enfant (Ultra 7 Match). La Pro garde le double mesh et la semelle SPEEDSYSTEM 2.0 ; la Match reprend la semelle intermédiaire NITRO et la semelle SPEEDSYSTEM 2.0, avec une semelle FG/AG.",
-    "rivales": "La Nike Mercurial Vapor 17 Elite FG (269,99 €) et l'adidas F50 Hyperfast Elite FG (260 €) visent le même joueur avec des notes un peu plus hautes, pour plus de 100 € de plus. Si tu veux plus de toucher et de confort, la Puma Future 9 Pro FG/AG coûte le même prix.",
+    "rivales": "La Nike Mercurial Vapor 17 Elite FG (269,99 €) et l'adidas F50 Hyperfast Elite FG (270 €) visent le même joueur avec des notes un peu plus hautes, pour plus de 100 € de plus. Si tu veux plus de toucher et de confort, la Puma Future 9 Pro FG/AG coûte le même prix.",
     "faq": [
       [
         "Ultra 7 ou Ultra Nitro 7 ?",
@@ -3549,6 +3549,882 @@
       [
         "World Rugby Shop – adidas RS15 Avaglide SG femme (description adidas)",
         "https://www.worldrugbyshop.com/products/womens-rs-15-sparkfusion-sg-off-white-grey-five-off-white"
+      ]
+    ]
+  },
+  "adidas Predator 26 League FG": {
+    "resume": "La Predator des buteurs à prix abordable : nouvelle semelle Strikeframe à crampons « fang », Powerspine pour la puissance de frappe et éléments de grip Nanostrike sur l'empeigne, avec languette repliable.",
+    "pour_qui": "Elle s'adresse aux attaquants et milieux qui aiment frapper au but ou de loin, en loisir régulier ou en club. Son chaussant est standard. Sa semelle FG est faite pour la pelouse naturelle sèche.",
+    "profil": [
+      [
+        "Postes",
+        "Attaquant, milieu offensif"
+      ],
+      [
+        "Style",
+        "Puissance, frappe"
+      ],
+      [
+        "Niveau",
+        "Loisir régulier, club"
+      ],
+      [
+        "Terrain",
+        "Herbe naturelle sèche (FG)"
+      ]
+    ],
+    "technique": [
+      [
+        "Semelle",
+        "Strikeframe (nouvelle génération 2026), légère, avec contrefort de talon ergonomique"
+      ],
+      [
+        "Crampons",
+        "Crampons « fang » agressifs, pour l'agilité ; FG (terrain sec)"
+      ],
+      [
+        "Frappe",
+        "Powerspine stabilisateur, qui limite la déformation du pied au contact du ballon pour mieux transmettre la puissance"
+      ],
+      [
+        "Empeigne",
+        "Technologie Nanostrike : éléments de grip caractéristiques de la Predator, pour la précision"
+      ],
+      [
+        "Languette",
+        "Repliable (« Fold-over Tongue », FT chez Decathlon)"
+      ],
+      [
+        "Chaussant",
+        "Standard"
+      ],
+      [
+        "Prix",
+        "94,99 € chez Decathlon"
+      ]
+    ],
+    "forts": [
+      "Frappe très bien notée pour son prix (8,5/10)",
+      "Semelle Strikeframe et Powerspine repris de la Predator Elite",
+      "Chaussant standard, qui convient au plus grand nombre"
+    ],
+    "faibles": [
+      "Peu légère et peu dynamique (6,5/10)",
+      "Pas faite pour le synthétique (FG)",
+      "Grip Nanostrike moins poussé que le Nanostrike+ en caoutchouc de l'Elite"
+    ],
+    "gamme": "La Predator 26 existe en League (celle-ci), Pro et Elite (270 €), avec ou sans languette repliable. L'Elite passe au Nanostrike+ avec des éléments de grip en caoutchouc. Une version enfant existe (Predator 26 League FG Jr, 74,99 €).",
+    "rivales": "La Nike Phantom 6 Academy MG (89,99 €) mise plus sur le toucher et joue aussi sur synthétique. Pour plus de confort et de toucher, l'adidas Copa Pure IV League FG (84,99 €) est mieux notée dans notre base. Si la frappe prime et que le budget le permet, la Predator 26 Elite FG (270 €) monte à 9,5/10.",
+    "faq": [
+      [
+        "Que veut dire « FT » chez Decathlon ?",
+        "FT signifie « Fold-over Tongue » : la languette se replie sur les lacets, comme sur les Predator historiques."
+      ],
+      [
+        "Est-ce la nouvelle Predator ?",
+        "Oui : c'est la génération 2026, avec la semelle Strikeframe et ses crampons « fang », présentée par adidas comme entièrement nouvelle."
+      ],
+      [
+        "Peut-on jouer sur synthétique avec ?",
+        "La version FG est prévue pour l'herbe naturelle sèche. Sur synthétique, une semelle AG ou MG est plus adaptée."
+      ]
+    ],
+    "sources": [
+      [
+        "ProDirect Soccer – adidas Predator League Tongue FG (description adidas reprise par le revendeur)",
+        "https://www.prodirectsport.ie/products/adidas-predator-league-tongue-firm-ground-ftwr-white-solar-turbo-core-black-adult-boots-4004148"
+      ]
+    ]
+  },
+  "adidas Predator 26 League FG Jr": {
+    "resume": "La Predator 2026 en taille enfant : semelle Strikeframe à crampons « fang », Powerspine pour la frappe et languette repliable, pour les jeunes buteurs.",
+    "pour_qui": "Elle convient aux enfants qui jouent en club ou en loisir et aiment tirer au but. Son chaussant est standard. Sa semelle FG est faite pour la pelouse naturelle sèche.",
+    "profil": [
+      [
+        "Public",
+        "Enfant"
+      ],
+      [
+        "Postes",
+        "Attaquant, milieu offensif"
+      ],
+      [
+        "Style",
+        "Puissance, frappe"
+      ],
+      [
+        "Terrain",
+        "Herbe naturelle sèche (FG)"
+      ]
+    ],
+    "technique": [
+      [
+        "Semelle",
+        "Strikeframe légère avec contrefort de talon ergonomique"
+      ],
+      [
+        "Crampons",
+        "Crampons « fang » ; FG (terrain sec)"
+      ],
+      [
+        "Frappe",
+        "Powerspine stabilisateur, pour mieux transmettre la puissance au ballon"
+      ],
+      [
+        "Empeigne",
+        "Éléments de grip Nanostrike, pour la précision"
+      ],
+      [
+        "Languette",
+        "Repliable (« Fold-over Tongue »)"
+      ],
+      [
+        "Chaussant",
+        "Standard"
+      ],
+      [
+        "Prix",
+        "74,99 € chez Decathlon"
+      ]
+    ],
+    "forts": [
+      "Frappe bien notée (8/10)",
+      "Mêmes technologies que la version adulte League",
+      "Chaussant standard"
+    ],
+    "faibles": [
+      "Peu légère et peu dynamique (6,5/10)",
+      "Durabilité moyenne (7/10), à surveiller vu le prix",
+      "FG uniquement"
+    ],
+    "gamme": "C'est la version enfant de la Predator 26 League FG (94,99 €). Elle reprend la semelle Strikeframe, le Powerspine et la languette repliable.",
+    "rivales": "L'adidas F50 Hyperfast League FG/MG Jr (69,99 €) et la Nike Mercurial Vapor 17 Academy MG Jr (64,99 €) misent sur la vitesse, avec un chaussant étroit. La Puma Future 9 Match FG/AG Jr (69,99 €) est plus polyvalente et joue aussi sur synthétique. Pour un petit budget, la Kipsta Viralto I Easy FG Jr (29,99 €) est plus confortable dans notre base.",
+    "faq": [
+      [
+        "Est-elle adaptée au synthétique ?",
+        "Non, c'est une semelle FG pour l'herbe naturelle sèche. Beaucoup de clubs jouent sur synthétique : dans ce cas, prends plutôt une semelle MG ou AG."
+      ],
+      [
+        "Quelle différence avec la version adulte ?",
+        "Les technologies sont les mêmes (Strikeframe, Powerspine, Nanostrike) ; elle est taillée et vendue en pointures enfant."
+      ]
+    ],
+    "sources": [
+      [
+        "ProDirect Soccer – adidas Kids Predator League Tongue FG (description adidas reprise par le revendeur)",
+        "https://www.prodirectsport.ie/products/adidas-kids-predator-league-tongue-firm-ground-ftwr-white-solar-turbo-core-black-junior-boots-4004163"
+      ]
+    ]
+  },
+  "adidas F50 Hyperfast League FG/MG": {
+    "resume": "La F50 de vitesse à prix accessible : semelle Speedsystem rigide et légère, tige Halofit qui enveloppe le pied, semelle FG/MG.",
+    "pour_qui": "Elle s'adresse aux ailiers et attaquants rapides, en loisir régulier ou en club. Son chaussant est étroit : un pied fin s'y sent tenu, un pied large risque d'être serré. Sa semelle FG/MG convient à l'herbe naturelle sèche et aux terrains mixtes.",
+    "profil": [
+      [
+        "Postes",
+        "Ailier, attaquant"
+      ],
+      [
+        "Style",
+        "Vitesse, dribble"
+      ],
+      [
+        "Niveau",
+        "Loisir régulier, club"
+      ],
+      [
+        "Terrain",
+        "Herbe naturelle sèche et terrains mixtes (FG/MG)"
+      ]
+    ],
+    "technique": [
+      [
+        "Semelle",
+        "Speedsystem légère mais rigide, pour une réponse immédiate"
+      ],
+      [
+        "Crampons",
+        "Configuration multidirectionnelle ; FG/MG (indication Decathlon)"
+      ],
+      [
+        "Tige",
+        "Système Halofit : base Haloshell+ en mesh haute performance et couche extérieure Haloskin à imprimé Sprintgrid 2D, pour le contrôle en dribble"
+      ],
+      [
+        "Languette",
+        "Flottante en synthétique premium, pour bien verrouiller le pied"
+      ],
+      [
+        "Chaussant",
+        "Étroit"
+      ],
+      [
+        "Prix",
+        "89,99 € chez Decathlon"
+      ]
+    ],
+    "forts": [
+      "Légère et dynamique (8/10)",
+      "Technologies Halofit et Speedsystem reprises de la gamme F50",
+      "Semelle FG/MG polyvalente"
+    ],
+    "faibles": [
+      "Maintien moyen (6,5/10)",
+      "Chaussant étroit",
+      "Toucher et frappe dans la moyenne (7/10)"
+    ],
+    "gamme": "La F50 Hyperfast existe en League (celle-ci), Pro et Elite (270 €). L'Elite passe à la semelle Speedsystem+ LX évidée, avec Lightstrike Pro dans la semelle de propreté. Une version SG (vissés, 89,99 €) et une version enfant (69,99 €) existent.",
+    "rivales": "La Nike Mercurial Vapor 17 Academy MG (89,99 €) et la Puma Ultra 7 Match FG/AG (84,99 €) visent le même joueur avec des notes quasi identiques dans notre base : départage-les au chaussant. Pour un peu plus de maintien, la Nike Mercurial Superfly 11 Academy MG (94,99 €) a une tige montante.",
+    "faq": [
+      [
+        "Convient-elle à un pied large ?",
+        "Son chaussant est étroit : avec un pied large, essaie-la avant d'acheter, ou regarde un modèle au chaussant standard comme la Predator 26 League."
+      ],
+      [
+        "Que veut dire FG/MG ?",
+        "FG = terrain sec en herbe naturelle ; MG = terrain mixte. Sur synthétique, une semelle AG reste préférable."
+      ],
+      [
+        "Quelle différence avec la version SG ?",
+        "La SG a des crampons vissés pour l'herbe grasse, avec la même tige ; elle est souvent interdite sur synthétique."
+      ]
+    ],
+    "sources": [
+      [
+        "ProDirect Soccer – adidas F50 Hyperfast League FG (description adidas reprise par le revendeur)",
+        "https://www.prodirectsport.ie/products/adidas-f50-hyperfast-league-firm-ground-solar-turbo-core-black-gold-met-adult-boots-1055488"
+      ]
+    ]
+  },
+  "adidas F50 Hyperfast League SG": {
+    "resume": "La F50 Hyperfast League en crampons vissés : même tige Halofit et semelle Speedsystem, pour la vitesse sur herbe grasse.",
+    "pour_qui": "Elle s'adresse aux joueurs rapides qui jouent souvent sur pelouse naturelle grasse ou détrempée, en club. Son chaussant est étroit. Les crampons vissés sont souvent interdits sur synthétique.",
+    "profil": [
+      [
+        "Postes",
+        "Ailier, attaquant"
+      ],
+      [
+        "Style",
+        "Vitesse, dribble"
+      ],
+      [
+        "Niveau",
+        "Club"
+      ],
+      [
+        "Terrain",
+        "Herbe naturelle grasse (SG)"
+      ]
+    ],
+    "technique": [
+      [
+        "Semelle",
+        "Speedsystem légère mais rigide, pour une réponse immédiate"
+      ],
+      [
+        "Crampons",
+        "Vissés (SG), configuration multidirectionnelle"
+      ],
+      [
+        "Tige",
+        "Système Halofit : base Haloshell+ en mesh haute performance et couche extérieure Haloskin à imprimé Sprintgrid 2D"
+      ],
+      [
+        "Languette",
+        "Flottante en synthétique premium"
+      ],
+      [
+        "Chaussant",
+        "Étroit"
+      ],
+      [
+        "Prix",
+        "89,99 € chez Decathlon"
+      ]
+    ],
+    "forts": [
+      "Meilleure accroche de la gamme League sur terrain gras (8/10)",
+      "Dynamique (8/10)",
+      "Même prix que la version FG/MG"
+    ],
+    "faibles": [
+      "Maintien moyen (6,5/10)",
+      "Chaussant étroit",
+      "Inutilisable sur la plupart des synthétiques"
+    ],
+    "gamme": "C'est la version vissée de la F50 Hyperfast League FG/MG (89,99 €). Au-dessus viennent la Pro et l'Elite (270 €, en FG).",
+    "rivales": "La Kipsta CLR 7 Elite SG (79,99 €) a une accroche encore meilleure dans notre base (8,5/10) et un chaussant standard. La Kipsta Viralto IV Cuir Premium SG (55 €) offre plus de toucher et de confort, pour moins de vitesse.",
+    "faq": [
+      [
+        "SG ou FG/MG ?",
+        "Prends la SG si tu joues surtout sur herbe grasse ou boueuse ; la FG/MG si le terrain est sec ou si tu changes souvent de surface."
+      ],
+      [
+        "Peut-on la porter sur synthétique ?",
+        "C'est déconseillé et souvent interdit : les crampons vissés abîment le revêtement et accrochent trop."
+      ]
+    ],
+    "sources": [
+      [
+        "ProDirect Soccer – adidas F50 Hyperfast League SG (description adidas reprise par le revendeur)",
+        "https://www.prodirectsport.ie/products/adidas-f50-hyperfast-league-soft-ground-ftwr-white-solar-purple-solar-turbo-adult-boots-4004193"
+      ]
+    ]
+  },
+  "adidas F50 Hyperfast League FG/MG Jr": {
+    "resume": "La F50 Hyperfast League en taille enfant : semelle Speedsystem, tige Halofit et languette flottante, pour les jeunes joueurs rapides.",
+    "pour_qui": "Elle convient aux enfants qui jouent sur la vitesse et le dribble. Son chaussant est étroit. Sa semelle FG/MG convient à l'herbe sèche et aux terrains mixtes.",
+    "profil": [
+      [
+        "Public",
+        "Enfant"
+      ],
+      [
+        "Postes",
+        "Ailier, attaquant"
+      ],
+      [
+        "Style",
+        "Vitesse, dribble"
+      ],
+      [
+        "Terrain",
+        "Herbe naturelle sèche et terrains mixtes (FG/MG)"
+      ]
+    ],
+    "technique": [
+      [
+        "Semelle",
+        "Speedsystem légère mais rigide"
+      ],
+      [
+        "Crampons",
+        "Configuration multidirectionnelle ; FG/MG (indication Decathlon)"
+      ],
+      [
+        "Tige",
+        "Système Halofit : base Haloshell+ en mesh et couche extérieure Haloskin à imprimé Sprintgrid 2D"
+      ],
+      [
+        "Languette",
+        "Flottante en synthétique premium"
+      ],
+      [
+        "Chaussant",
+        "Étroit"
+      ],
+      [
+        "Prix",
+        "69,99 € chez Decathlon"
+      ]
+    ],
+    "forts": [
+      "Légère et dynamique (8/10)",
+      "Mêmes technologies que la version adulte League",
+      "Semelle FG/MG polyvalente"
+    ],
+    "faibles": [
+      "Durabilité en retrait (6,5/10)",
+      "Maintien moyen (6,5/10)",
+      "Chaussant étroit"
+    ],
+    "gamme": "C'est la version enfant de la F50 Hyperfast League FG/MG (89,99 €).",
+    "rivales": "La Nike Mercurial Vapor 17 Academy MG Jr (64,99 €) vise exactement le même jeune joueur, avec des notes identiques dans notre base. La Predator 26 League FG Jr (74,99 €) est orientée frappe avec un chaussant standard ; la Puma Future 9 Match FG/AG Jr (69,99 €) est plus polyvalente.",
+    "faq": [
+      [
+        "Convient-elle à un pied large ?",
+        "Son chaussant est étroit : si ton enfant a le pied large, fais-la essayer avant d'acheter."
+      ],
+      [
+        "Peut-on jouer sur synthétique avec ?",
+        "La semelle FG/MG tolère les terrains mixtes, mais une semelle AG reste préférable sur synthétique."
+      ]
+    ],
+    "sources": [
+      [
+        "ProDirect Soccer – adidas Kids F50 Hyperfast League FG (description adidas reprise par le revendeur)",
+        "https://www.prodirectsport.ie/products/adidas-kids-f50-hyperfast-league-firm-ground-ftwr-white-solar-purple-solar-turbo-junior-boots-4004219"
+      ]
+    ]
+  },
+  "adidas Copa Pure IV League FG": {
+    "resume": "La Copa des joueurs techniques : tige Fusionfeel en cuir synthétique amélioré pour un toucher amorti, talon souple et semelle Comfortplate conçue pour les rotations.",
+    "pour_qui": "Elle s'adresse aux milieux et meneurs de jeu qui privilégient le contrôle, la passe et le confort, en loisir régulier ou en club. Son chaussant est standard. Sa semelle FG est faite pour la pelouse naturelle sèche.",
+    "profil": [
+      [
+        "Postes",
+        "Milieu, meneur de jeu, défenseur relanceur"
+      ],
+      [
+        "Style",
+        "Technique, contrôle"
+      ],
+      [
+        "Niveau",
+        "Loisir régulier, club"
+      ],
+      [
+        "Terrain",
+        "Herbe naturelle sèche (FG)"
+      ]
+    ],
+    "technique": [
+      [
+        "Tige",
+        "Fusionfeel renouvelée, en cuir synthétique amélioré : toucher amorti et sensation de maintien"
+      ],
+      [
+        "Talon",
+        "Zone souple et respirante qui verrouille le pied"
+      ],
+      [
+        "Semelle",
+        "Comfortplate légère"
+      ],
+      [
+        "Crampons",
+        "Forme et placement étudiés pour l'adhérence en rotation, en limitant la pression sous le pied ; FG"
+      ],
+      [
+        "Chaussant",
+        "Standard"
+      ],
+      [
+        "Prix",
+        "84,99 € chez Decathlon"
+      ]
+    ],
+    "forts": [
+      "Toucher et confort parmi les meilleurs de sa gamme de prix (8,5/10)",
+      "Semelle pensée pour les pivots",
+      "Chaussant standard"
+    ],
+    "faibles": [
+      "Peu légère et peu dynamique (6,5/10)",
+      "Pas faite pour le synthétique (FG)",
+      "Moins de frappe que la Predator (7,5/10)"
+    ],
+    "gamme": "La Copa Pure IV existe en League (celle-ci), Pro et Elite, ainsi qu'en Club TF (54,99 €) pour le stabilisé. La Copa Mundial (179,99 €), en cuir de kangourou, est la Copa historique.",
+    "rivales": "La Puma King Liga FG/AG (99,99 €) obtient des notes très proches dans notre base et joue aussi sur synthétique. La Kipsta Viralto IV Cuir Premium FG (69,99 €), en cuir, offre le même toucher et le même confort pour 15 € de moins. La Nike Tiempo Maestro Academy MG (84,99 €) est un peu moins bien notée mais joue sur synthétique.",
+    "faq": [
+      [
+        "Est-elle en cuir ?",
+        "Non, la tige est en cuir synthétique (Fusionfeel). Pour du vrai cuir, regarde la Copa Mundial ou la Kipsta Viralto IV Cuir Premium."
+      ],
+      [
+        "Peut-on jouer sur synthétique avec ?",
+        "La version FG est prévue pour l'herbe naturelle sèche. Sur synthétique, une semelle AG ou MG est plus adaptée."
+      ]
+    ],
+    "sources": [
+      [
+        "ProDirect Soccer – adidas Copa Pure 4 League FG (description adidas reprise par le revendeur)",
+        "https://www.prodirectsport.ie/products/adidas-copa-pure-iv-league-firm-ground-core-black-carbon-night-met-adult-boots-1047301"
+      ]
+    ]
+  },
+  "adidas Copa Pure IV Club TF": {
+    "resume": "La Copa Pure IV pour le stabilisé et le synthétique dur : cuir synthétique au toucher amorti, talon rembourré et semelle TF à picots serrés.",
+    "pour_qui": "Elle s'adresse aux joueurs qui jouent sur stabilisé, synthétique dur ou en foot à cinq en extérieur, en loisir. Son chaussant est standard. Les picots TF ne conviennent pas à l'herbe grasse.",
+    "profil": [
+      [
+        "Postes",
+        "Tous postes"
+      ],
+      [
+        "Style",
+        "Technique, contrôle"
+      ],
+      [
+        "Niveau",
+        "Débutant, loisir"
+      ],
+      [
+        "Terrain",
+        "Stabilisé, synthétique dur (TF)"
+      ]
+    ],
+    "technique": [
+      [
+        "Tige",
+        "Cuir synthétique amélioré, au toucher amorti et maintenant"
+      ],
+      [
+        "Talon",
+        "Rembourré, pour un chaussant ajusté"
+      ],
+      [
+        "Semelle",
+        "Gomme à motif multidirectionnel"
+      ],
+      [
+        "Crampons",
+        "Picots rapprochés (TF), qui limitent la pression sous le pied lors des rotations"
+      ],
+      [
+        "Chaussant",
+        "Standard"
+      ],
+      [
+        "Prix",
+        "54,99 € chez Decathlon"
+      ]
+    ],
+    "forts": [
+      "Confort et durabilité corrects (7,5/10)",
+      "Semelle TF adaptée au stabilisé",
+      "Prix contenu"
+    ],
+    "faibles": [
+      "Peu légère et peu dynamique (6/10)",
+      "Accroche limitée sur herbe",
+      "Frappe modeste (6,5/10)"
+    ],
+    "gamme": "C'est la version la plus accessible de la Copa Pure IV, en semelle Turf. La Copa Pure IV League FG (84,99 €) offre plus de toucher, pour l'herbe naturelle.",
+    "rivales": "La Puma Future 9 Play TF (59,99 €) obtient des notes très proches dans notre base. La Kipsta Viralto IV Cuir Premium TF (59,99 €), en cuir, est mieux notée en toucher, confort et durabilité.",
+    "faq": [
+      [
+        "Qu'est-ce qu'une semelle TF ?",
+        "TF (Turf) = semelle à petits picots en caoutchouc, pour le stabilisé, le synthétique dur et les terrains de foot à cinq."
+      ],
+      [
+        "Peut-on jouer sur herbe naturelle avec ?",
+        "Sur herbe sèche et rase, oui ponctuellement, mais l'accroche est faible ; sur herbe grasse, elle glisse."
+      ]
+    ],
+    "sources": [
+      [
+        "ProDirect Soccer – adidas Copa Pure 4 Club TF (description adidas reprise par le revendeur)",
+        "https://www.prodirectsport.ie/products/adidas-copa-pure-iv-club-turf-core-black-ftwr-white-lucid-red-adult-boots-1047295"
+      ]
+    ]
+  },
+  "adidas Copa Mundial FG": {
+    "resume": "La chaussure de foot la plus vendue de l'histoire : cuir de kangourou, semelle double densité, fabriquée en Allemagne et à peine modifiée depuis la Coupe du monde 1982.",
+    "pour_qui": "Elle s'adresse aux joueurs qui veulent un toucher de cuir et un confort de pantoufle, souvent milieux ou défenseurs, et aux pieds larges : c'est l'un des chaussants les plus larges de notre base. Sa semelle FG est faite pour la pelouse naturelle sèche.",
+    "profil": [
+      [
+        "Postes",
+        "Milieu, défenseur"
+      ],
+      [
+        "Style",
+        "Technique, contrôle"
+      ],
+      [
+        "Niveau",
+        "Loisir régulier, club"
+      ],
+      [
+        "Terrain",
+        "Herbe naturelle sèche (FG)"
+      ]
+    ],
+    "technique": [
+      [
+        "Tige",
+        "Cuir de kangourou premium, renforcée de cuir au talon pour la durabilité et la stabilité"
+      ],
+      [
+        "Semelle",
+        "Double densité"
+      ],
+      [
+        "Crampons",
+        "FG (terrain sec)"
+      ],
+      [
+        "Fabrication",
+        "Usine adidas de Scheinfeld, en Allemagne"
+      ],
+      [
+        "Histoire",
+        "Conçue pour la Coupe du monde 1982 en Espagne ; plus de 10 millions de paires vendues"
+      ],
+      [
+        "Chaussant",
+        "Large"
+      ],
+      [
+        "Prix",
+        "179,99 € chez Decathlon"
+      ]
+    ],
+    "forts": [
+      "Toucher et confort au sommet de notre base (9/10)",
+      "Durabilité élevée (8/10)",
+      "Chaussant large, rare chez adidas"
+    ],
+    "faibles": [
+      "Lourde et peu dynamique (6/10)",
+      "Prix élevé pour une conception ancienne",
+      "Cuir à entretenir"
+    ],
+    "gamme": "La Copa Mundial n'a pas de déclinaison League ou Elite : c'est un modèle unique. La Copa Pure IV (84,99 € en League FG) en est la version moderne, en cuir synthétique.",
+    "rivales": "La Mizuno Morelia II Pro MG/AG (119,99 €) offre le même toucher et le même confort dans notre base, avec un chaussant large, moins cher et plus léger. La Nike Tiempo Maestro Elite FG (249,99 €) est plus moderne et plus dynamique. Petit budget : la Kipsta Viralto IV Cuir Premium FG (69,99 €), en cuir.",
+    "faq": [
+      [
+        "Pourquoi est-elle si connue ?",
+        "Portée par Beckenbauer, Platini, Zico ou Rummenigge, elle a dépassé 10 millions de paires vendues et reste fabriquée en Allemagne depuis plus de quarante ans."
+      ],
+      [
+        "Convient-elle à un pied large ?",
+        "Oui, c'est l'un des chaussants les plus larges de notre base."
+      ],
+      [
+        "Le cuir se détend-il ?",
+        "Le cuir de kangourou épouse le pied avec le temps ; prends ta pointure habituelle et essaie-la si possible."
+      ]
+    ],
+    "sources": [
+      [
+        "ProDirect Soccer – adidas Copa Mundial FG (description adidas reprise par le revendeur)",
+        "https://www.prodirectsport.ie/products/adidas-copa-mundial-firm-ground-white-black-adult-boots-1018944"
+      ]
+    ]
+  },
+  "adidas Predator 26 Elite FG": {
+    "resume": "La Predator haut de gamme 2026 : semelle Strikeframe à crampons « fang », Powerspine pour transmettre la puissance et éléments de grip en caoutchouc Nanostrike+ pour la précision de frappe.",
+    "pour_qui": "Elle s'adresse aux buteurs et milieux frappeurs de niveau club ou compétition, qui veulent la meilleure chaussure de frappe de notre base. Son chaussant est standard. Sa semelle FG est faite pour la pelouse naturelle sèche.",
+    "profil": [
+      [
+        "Postes",
+        "Attaquant, milieu offensif"
+      ],
+      [
+        "Style",
+        "Puissance, frappe"
+      ],
+      [
+        "Niveau",
+        "Club, compétition"
+      ],
+      [
+        "Terrain",
+        "Herbe naturelle sèche (FG)"
+      ]
+    ],
+    "technique": [
+      [
+        "Semelle",
+        "Strikeframe (nouvelle génération 2026), légère, avec contrefort de talon ergonomique"
+      ],
+      [
+        "Crampons",
+        "Crampons « fang » agressifs, pour l'agilité ; FG (terrain sec)"
+      ],
+      [
+        "Frappe",
+        "Powerspine stabilisateur, qui limite la déformation du pied au contact du ballon"
+      ],
+      [
+        "Empeigne",
+        "Nanostrike+ intégré : éléments de grip en caoutchouc, pour contrôler la trajectoire"
+      ],
+      [
+        "Versions",
+        "À lacets, ou avec languette repliable (Elite Tongue)"
+      ],
+      [
+        "Chaussant",
+        "Standard"
+      ],
+      [
+        "Prix public",
+        "270 € (prix hors promotion ProDirect ; adidas.fr n'a pas pu être relevé)"
+      ]
+    ],
+    "forts": [
+      "Meilleure note de frappe de notre base (9,5/10)",
+      "Accroche, toucher et maintien de haut niveau (8,5/10)",
+      "Chaussant standard"
+    ],
+    "faibles": [
+      "Prix élevé",
+      "Légèreté et dynamisme en retrait des chaussures de vitesse (7,5/10)",
+      "FG uniquement"
+    ],
+    "gamme": "C'est le sommet de la Predator 26, au-dessus de la Pro et de la League (94,99 € chez Decathlon). La League garde la semelle Strikeframe et le Powerspine mais avec un grip Nanostrike sans caoutchouc.",
+    "rivales": "La Nike Phantom 6 Elite FG (269,99 €) est sa grande rivale : un peu plus légère et dynamique, un peu moins forte en frappe dans notre base. La Nike Tiempo Maestro Elite FG (249,99 €) mise sur le confort et le toucher. À prix bien plus bas, la Predator 26 League FG (94,99 €) garde 8,5/10 en frappe.",
+    "faq": [
+      [
+        "Quelle différence avec la Predator 26 League ?",
+        "L'Elite ajoute le Nanostrike+ avec des éléments de grip en caoutchouc, pour environ 175 € de plus."
+      ],
+      [
+        "À lacets ou avec languette ?",
+        "Les deux existent : la version Tongue a la languette repliable emblématique de la Predator, la version à lacets est plus épurée."
+      ],
+      [
+        "Où l'acheter ?",
+        "Elle n'est pas au catalogue Decathlon : le lien renvoie vers une recherche sur adidas.fr, sans commission pour MyBestPair."
+      ]
+    ],
+    "sources": [
+      [
+        "ProDirect Soccer – adidas Predator Elite FG (description adidas reprise par le revendeur)",
+        "https://www.prodirectsport.ie/products/adidas-predator-elite-firm-ground-ftwr-white-solar-turbo-core-black-adult-boots-4004139"
+      ]
+    ]
+  },
+  "adidas F50 Hyperfast Elite FG": {
+    "resume": "La chaussure de vitesse haut de gamme d'adidas : semelle Speedsystem+ LX évidée, Lightstrike Pro dans la semelle de propreté et tige Halofit avec languette tunnel.",
+    "pour_qui": "Elle s'adresse aux ailiers et attaquants de profondeur qui jouent sur la vitesse, en club ou en compétition. Son chaussant est étroit : un pied large risque d'être serré. Sa semelle FG est faite pour la pelouse naturelle sèche.",
+    "profil": [
+      [
+        "Postes",
+        "Ailier, attaquant"
+      ],
+      [
+        "Style",
+        "Vitesse, dribble"
+      ],
+      [
+        "Niveau",
+        "Club, compétition"
+      ],
+      [
+        "Terrain",
+        "Herbe naturelle sèche (FG)"
+      ]
+    ],
+    "technique": [
+      [
+        "Semelle",
+        "Speedsystem+ LX, légère mais rigide, évidée"
+      ],
+      [
+        "Crampons",
+        "Nouvelle configuration multidirectionnelle ; FG (terrain sec)"
+      ],
+      [
+        "Amorti",
+        "Lightstrike Pro dans la semelle de propreté, pour le confort et l'absorption des chocs"
+      ],
+      [
+        "Tige",
+        "Système Halofit : sous-couche TPU Halocage+ stabilisatrice, couche extérieure Haloskin+ à texture Sprintweb haute définition"
+      ],
+      [
+        "Languette",
+        "Tunnel Halobelt+, pour verrouiller le pied"
+      ],
+      [
+        "Chaussant",
+        "Étroit"
+      ],
+      [
+        "Prix public",
+        "270 € (prix hors promotion ProDirect ; adidas.fr n'a pas pu être relevé)"
+      ]
+    ],
+    "forts": [
+      "Légèreté et dynamisme au sommet de notre base (9,5/10)",
+      "Amorti Lightstrike Pro, rare sur une chaussure de vitesse",
+      "Bonne accroche (8,5/10)"
+    ],
+    "faibles": [
+      "Durabilité en retrait (6,5/10)",
+      "Chaussant étroit",
+      "Maintien et confort moyens (7/10)"
+    ],
+    "gamme": "C'est le sommet de la F50 Hyperfast, au-dessus de la Pro et de la League (89,99 € chez Decathlon). La League garde le système Halofit et une semelle Speedsystem, sans Lightstrike Pro.",
+    "rivales": "Sa grande rivale est la Nike Mercurial Vapor 17 Elite FG (269,99 €), construite pour le même joueur, avec des notes identiques dans notre base : départage-les au chaussant. Plus abordable, la Puma Ultra 7 Pro FG (149,99 €) reste très légère (9/10).",
+    "faq": [
+      [
+        "Quelle différence avec la F50 Hyperfast League ?",
+        "L'Elite a la semelle Speedsystem+ LX évidée, le Lightstrike Pro et une tige Halofit plus technique (Halocage+, Haloskin+, languette tunnel), pour environ 180 € de plus."
+      ],
+      [
+        "Convient-elle à un pied large ?",
+        "Son chaussant est étroit : avec un pied large, essaie-la avant d'acheter."
+      ],
+      [
+        "Où l'acheter ?",
+        "Elle n'est pas au catalogue Decathlon : le lien renvoie vers une recherche sur adidas.fr, sans commission pour MyBestPair."
+      ]
+    ],
+    "sources": [
+      [
+        "ProDirect Soccer – adidas F50 Hyperfast Elite FG (description adidas reprise par le revendeur)",
+        "https://www.prodirectsport.ie/products/adidas-f50-hyperfast-elite-firm-ground-solar-turbo-core-black-gold-met-adult-boots-1055482"
+      ]
+    ]
+  },
+  "New Balance Tekela Team v5 FG": {
+    "resume": "La New Balance des joueurs de contrôle : tige en microfibre à canaux embossés pour manier le ballon, col tricoté compressif et crampons Rim Stud pour les appuis.",
+    "pour_qui": "Elle s'adresse aux milieux et meneurs de jeu qui veulent une chaussure équilibrée, orientée contrôle, en loisir régulier ou en club. Son chaussant est standard. Sa semelle FG est faite pour la pelouse naturelle sèche.",
+    "profil": [
+      [
+        "Postes",
+        "Milieu, meneur de jeu"
+      ],
+      [
+        "Style",
+        "Technique, contrôle"
+      ],
+      [
+        "Niveau",
+        "Loisir régulier, club"
+      ],
+      [
+        "Terrain",
+        "Herbe naturelle sèche (FG)"
+      ]
+    ],
+    "technique": [
+      [
+        "Tige",
+        "Microfibre légère avec canaux embossés aux zones clés, pour manier le ballon et laisser le pied fléchir ; contient des matériaux recyclés"
+      ],
+      [
+        "Col",
+        "Tricot extensible et compressif, décalé au médio-pied pour soulager le dessus du pied"
+      ],
+      [
+        "Crampons",
+        "Rim Stud Technology : crampons transparents supplémentaires en bordure d'avant-pied, pour la stabilité en rotation ; FG"
+      ],
+      [
+        "Confort",
+        "Semelle de propreté en EVA, qui amortit les impacts"
+      ],
+      [
+        "Chaussant",
+        "Standard"
+      ],
+      [
+        "Prix",
+        "89,99 € chez Decathlon"
+      ]
+    ],
+    "forts": [
+      "Profil très équilibré, sans point faible (7 à 7,5/10)",
+      "Col tricoté et semelle EVA confortables",
+      "Chaussant standard"
+    ],
+    "faibles": [
+      "Aucun critère au-dessus de 7,5/10",
+      "Pas faite pour le synthétique (FG)",
+      "Moins de toucher qu'une Copa Pure IV au même prix"
+    ],
+    "gamme": "La Tekela V5 existe en Team (celle-ci) et en Pro, plus haut de gamme. Chez New Balance, la chaussure de vitesse est la Furon.",
+    "rivales": "L'adidas Copa Pure IV League FG (84,99 €) est mieux notée en toucher et confort dans notre base. La Nike Phantom 6 Academy MG (89,99 €) offre des notes proches et joue aussi sur synthétique.",
+    "faq": [
+      [
+        "À quoi servent les crampons transparents ?",
+        "Ce sont les Rim Studs : des crampons ajoutés en bordure de l'avant-pied, pour plus de stabilité et d'accroche dans les rotations."
+      ],
+      [
+        "Peut-on jouer sur synthétique avec ?",
+        "La version FG est prévue pour l'herbe naturelle sèche. Sur synthétique, une semelle AG ou MG est plus adaptée."
+      ]
+    ],
+    "sources": [
+      [
+        "ProDirect Soccer – New Balance Tekela V5 Team FG (description New Balance reprise par le revendeur)",
+        "https://www.prodirectsport.ie/products/new-balance-tekela-v5-team-firm-ground-metallic-blue-alkaline-green-team-navy-adult-boots-4001185"
       ]
     ]
   }
