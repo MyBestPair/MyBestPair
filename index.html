@@ -165,21 +165,17 @@
       aspect-ratio:1;
       margin:8px auto 18px;
     }
-    /* Horloge des 6 sports : cadran, graduations, aiguilles sur 10 h 10, chaussures en médaillons */
+    /* Horloge des 6 sports : cadran, logo au centre, chaussures en médaillons */
     .clock-dial {
       position:absolute; inset:13%;
       border-radius:50%;
       background:radial-gradient(circle at 50% 40%, #12407f 0%, #0a2a5c 55%, #071d45 100%);
       box-shadow:0 0 0 2px rgba(255,255,255,.14), 0 0 0 16px rgba(255,255,255,.04), 0 30px 60px rgba(0,0,0,.35);
     }
-    .clock-tick { position:absolute; width:4px; height:5%; border-radius:2px; background:rgba(255,255,255,.4); }
-    .clock-hand { position:absolute; left:50%; bottom:50%; transform-origin:50% 100%; border-radius:4px; }
-    .clock-hand.hour { width:6px; height:20%; margin-left:-3px; background:#fff; transform:rotate(-60deg); }
-    .clock-hand.minute { width:4px; height:27%; margin-left:-2px; background:#1f7cff; transform:rotate(60deg); }
-    .clock-center { position:absolute; left:50%; top:57%; width:27%; transform:translateX(-50%); text-align:center; }
-    .clock-center img { display:block; width:100%; height:auto; }
-    .clock-center span { display:block; margin-top:6px; font-size:11px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:#8fbaff; }
-    .clock-pin { position:absolute; left:50%; top:50%; width:14px; height:14px; margin:-7px 0 0 -7px; border-radius:50%; background:#1f7cff; box-shadow:0 0 0 3px #fff; }
+    .clock-center { position:absolute; left:50%; top:50%; width:34%; transform:translate(-50%,-50%); display:flex; flex-direction:column; align-items:center; gap:10px; text-align:center; }
+    .clock-center .mono { display:block; width:62%; height:auto; }
+    .clock-center .word { display:block; width:100%; height:auto; }
+    .clock-center span { display:block; font-size:12px; font-weight:800; letter-spacing:.18em; text-transform:uppercase; color:#8fbaff; }
     .clock-sport {
       position:absolute; width:24%; aspect-ratio:1;
       transform:translate(-50%,-50%);
@@ -636,7 +632,7 @@
         </div>
       </div>
 
-      <div class="hero-art"><div class="clock-dial" aria-hidden="true"></div><div aria-hidden="true"><i class="clock-tick" style="left:65.50%;top:23.15%;transform:translate(-50%,-50%) rotate(30deg)"></i><i class="clock-tick" style="left:81.00%;top:50.00%;transform:translate(-50%,-50%) rotate(90deg)"></i><i class="clock-tick" style="left:65.50%;top:76.85%;transform:translate(-50%,-50%) rotate(150deg)"></i><i class="clock-tick" style="left:34.50%;top:76.85%;transform:translate(-50%,-50%) rotate(210deg)"></i><i class="clock-tick" style="left:19.00%;top:50.00%;transform:translate(-50%,-50%) rotate(270deg)"></i><i class="clock-tick" style="left:34.50%;top:23.15%;transform:translate(-50%,-50%) rotate(330deg)"></i><i class="clock-hand hour"></i><i class="clock-hand minute"></i><i class="clock-pin"></i></div><div class="clock-center" aria-hidden="true"><img src="logo-mybestpair.webp" alt="" width="159" height="28"><span>6 sports</span></div><a class="clock-sport" href="basket/" style="left:50.00%;top:16.00%" aria-label="Basket : trouver ma paire"><img src="images/horloge/basket.webp" alt="" width="320" height="320" decoding="async"><span>Basket</span></a><a class="clock-sport" href="running/route/" style="left:79.44%;top:33.00%" aria-label="Route : trouver ma paire"><img src="images/horloge/route.webp" alt="" width="320" height="320" decoding="async"><span>Route</span></a><a class="clock-sport" href="running/trail/" style="left:79.44%;top:67.00%" aria-label="Trail : trouver ma paire"><img src="images/horloge/trail.webp" alt="" width="320" height="320" decoding="async"><span>Trail</span></a><a class="clock-sport" href="padel/" style="left:50.00%;top:84.00%" aria-label="Padel : trouver ma paire"><img src="images/horloge/padel.webp" alt="" width="320" height="320" decoding="async"><span>Padel</span></a><a class="clock-sport" href="rugby/" style="left:20.56%;top:67.00%" aria-label="Rugby : trouver ma paire"><img src="images/horloge/rugby.webp" alt="" width="320" height="320" decoding="async"><span>Rugby</span></a><a class="clock-sport" href="foot/" style="left:20.56%;top:33.00%" aria-label="Foot : trouver ma paire"><img src="images/horloge/foot.webp" alt="" width="320" height="320" decoding="async"><span>Foot</span></a></div>
+      <div class="hero-art"><div class="clock-dial" aria-hidden="true"></div><div class="clock-center" aria-hidden="true"><img class="mono" src="images/horloge/monogramme.webp" alt="" width="343" height="160"><img class="word" src="images/horloge/mybestpair.webp" alt="" width="545" height="42"><span>6 sports</span></div><a class="clock-sport" href="basket/" style="left:50.00%;top:16.00%" aria-label="Basket : trouver ma paire"><img src="images/horloge/basket.webp" alt="" width="320" height="320" decoding="async"><span>Basket</span></a><a class="clock-sport" href="running/route/" style="left:79.44%;top:33.00%" aria-label="Route : trouver ma paire"><img src="images/horloge/route.webp" alt="" width="320" height="320" decoding="async"><span>Route</span></a><a class="clock-sport" href="running/trail/" style="left:79.44%;top:67.00%" aria-label="Trail : trouver ma paire"><img src="images/horloge/trail.webp" alt="" width="320" height="320" decoding="async"><span>Trail</span></a><a class="clock-sport" href="padel/" style="left:50.00%;top:84.00%" aria-label="Padel : trouver ma paire"><img src="images/horloge/padel.webp" alt="" width="320" height="320" decoding="async"><span>Padel</span></a><a class="clock-sport" href="rugby/" style="left:20.56%;top:67.00%" aria-label="Rugby : trouver ma paire"><img src="images/horloge/rugby.webp" alt="" width="320" height="320" decoding="async"><span>Rugby</span></a><a class="clock-sport" href="foot/" style="left:20.56%;top:33.00%" aria-label="Foot : trouver ma paire"><img src="images/horloge/foot.webp" alt="" width="320" height="320" decoding="async"><span>Foot</span></a></div>
     </section>
 
     <div class="section-title">Choisis ton univers</div>
