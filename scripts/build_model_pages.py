@@ -68,7 +68,12 @@ def score(value):
     return ("%g" % value).replace(".", ",") + "/10"
 
 
+ACCENTS = {"ETROIT": "Étroit", "ETROITE": "Étroite"}
+
+
 def display_value(value):
+    if str(value) in ACCENTS:
+        return ACCENTS[str(value)]
     return str(value).capitalize() if str(value).isupper() else str(value)
 
 
@@ -83,7 +88,7 @@ def image_for(name, offers, shoe=None):
     """Use an exact-model product photo from the existing merchant offer data.
     Returns (image, source, credit): credit is the brand when the photo comes from its official site."""
     if name in PHOTOS:
-        return PHOTOS[name]["image"], PHOTOS[name]["source"], None
+        return PHOTOS[name]["image"], PHOTOS[name]["source"], PHOTOS[name].get("credit")
     for offer in offers.get(name, []):
         image = offer.get("image")
         if image and image.startswith("https://"):
@@ -222,8 +227,8 @@ def render(shoe, sport, base, category, fields, photo=None, related=""):
         description = f"{name} : notes MyBestPair en {strengths}. Teste gratuitement si c'est ta paire."
     rows = "\n".join(f'<div class="score" style="--score:{notes[key] * 10:g}%"><span>{h(label(key))}</span><strong>{score(notes[key])}</strong></div>' for key in fields)
     if sport == "basket":
-        details = [("Surface enregistrée", shoe["surface"]), ("Type de pied enregistré", shoe["foot"]), ("Prix indicatif de la base", f'{shoe["price"]:g} €')]
-        use = f"La base associe ce modèle aux surfaces {h(shoe['surface'].lower())} et à un pied {h(shoe['foot'].lower())}."
+        details = [("Surface enregistrée", shoe["surface"]), ("Type de pied enregistré", shoe["foot"]), ("Prix indicatif de la base", f'{shoe["price"]:g} €'.replace(".", ","))]
+        use = f"La base associe ce modèle aux surfaces {h(shoe['surface'].lower())} et à un pied {h(display_value(shoe['foot']).lower())}."
         caveat = "En extérieur, la durabilité de la semelle mérite une attention particulière. Le maintien et la pointure se vérifient à l'essayage."
         factors = "ton budget, ton poste, ton style de jeu, la surface, ton type de pied et les priorités que tu classes"
         fragment = "profile-section"
@@ -232,7 +237,7 @@ def render(shoe, sport, base, category, fields, photo=None, related=""):
         use = {"CHEVRONS": "La base associe ce modèle à une semelle à chevrons, la plus adaptée au gazon synthétique sablé.",
                "OMNI": "La base associe ce modèle à une semelle omni, plus adaptée aux terrains peu sablés.",
                "MIXTE": "La base associe ce modèle à une semelle mixte, polyvalente entre terrains sablés et terrains couverts."}.get(shoe["sole"], "Le type de semelle de ce modèle reste à confirmer selon la version vendue.")
-        use += f" Son chaussant est enregistré comme {h(shoe['foot'].lower())}."
+        use += f" Son chaussant est enregistré comme {h(display_value(shoe['foot']).lower())}."
         caveat = "Sur gazon très sablé, l'usure de la semelle mérite une attention particulière si tu joues souvent. Le maintien et la pointure se vérifient à l'essayage."
         factors = "ton niveau, ta fréquence de jeu, ton terrain, ton style de jeu, ton type de pied, ton budget et les priorités que tu classes"
         fragment = "profile-section"
@@ -242,7 +247,7 @@ def render(shoe, sport, base, category, fields, photo=None, related=""):
         use = {"FER": "La base associe ce modèle à des crampons fer (vissés), les plus accrocheurs sur terrain gras.",
                "MOULES": "La base associe ce modèle à des crampons moulés, adaptés aux terrains secs et aux synthétiques.",
                "HYBRIDE": "La base associe ce modèle à des crampons hybrides (moulés et vissés), polyvalents selon la saison."}.get(shoe["studs"], "Le type de crampons de ce modèle reste à confirmer.")
-        use += f" Son chaussant est enregistré comme {h(shoe['foot'].lower())}."
+        use += f" Son chaussant est enregistré comme {h(display_value(shoe['foot']).lower())}."
         caveat = "Vérifie le règlement de ton club : les crampons fer sont souvent interdits sur synthétique. Le maintien et la pointure se confirment à l'essayage."
         factors = "ton poste, ton style de jeu, ton gabarit, ton terrain, tes crampons, ton niveau, ton type de pied, ton budget et les priorités que tu classes"
         fragment = "profile-section"
@@ -253,7 +258,7 @@ def render(shoe, sport, base, category, fields, photo=None, related=""):
                "MG": "La base associe ce modèle à des crampons multi-terrain, qui passent de l'herbe naturelle au synthétique.",
                "SG": "La base associe ce modèle à des crampons vissés SG, les plus accrocheurs dans l'herbe grasse.",
                "TF": "La base associe ce modèle à une semelle stabilisé (TF), pour la terre et les terrains durs."}.get(shoe["studs"], "Le type de crampons de ce modèle reste à confirmer.")
-        use += f" Son chaussant est enregistré comme {h(shoe['foot'].lower())}."
+        use += f" Son chaussant est enregistré comme {h(display_value(shoe['foot']).lower())}."
         caveat = "Vérifie le règlement de ton club : les crampons vissés sont souvent interdits sur synthétique. Le chaussant et la pointure se confirment à l'essayage."
         factors = "ton poste, ton style de jeu, ton terrain, tes crampons, ton niveau, ton type de pied, ton budget et les priorités que tu classes"
         fragment = "profile-section"
