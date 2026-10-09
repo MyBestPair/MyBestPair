@@ -421,7 +421,7 @@ const SHOES = [
       7.5
     ],
     "surface": "INDOOR",
-    "foot": "ETROIT",
+    "foot": "STANDARD",
     "scoreBrand": "LI-NING",
     "link": "https://wayofwade.com/collections/way-of-wade-12"
   },
@@ -440,7 +440,7 @@ const SHOES = [
       9.0
     ],
     "surface": "INDOOR/OUTDOOR",
-    "foot": "ETROIT",
+    "foot": "STANDARD",
     "scoreBrand": "LI-NING",
     "link": "https://www.wayofwade.com/en-eu/collections/wade-all-city-14"
   },
@@ -459,7 +459,7 @@ const SHOES = [
       7.5
     ],
     "surface": "INDOOR",
-    "foot": "ETROIT",
+    "foot": "STANDARD",
     "scoreBrand": "LI-NING",
     "link": "https://www.wayofwade.com/en-eu/collections/wade-808-5-ultra?filter.v.availability=1"
   },
