@@ -7,7 +7,8 @@
  * link : lien marchand Decathlon (Rakuten, affilié) ou, avec merchant, page produit du site officiel de la marque
  *   (nike.com, sans affiliation ; adidas.fr : recherche du modèle, le site n'a pas pu être relevé) ; vide = « Lien bientôt disponible ».
  * Prix : catalogue Rakuten Decathlon (export du 8 octobre 2026, hors promotion) ; priceIndicative = prix public constaté
- *   (Nike : prix hors promotion de nike.com/fr, relevé du 8 octobre 2026).
+ *   (Nike : prix hors promotion de nike.com/fr, relevé du 8 octobre 2026 ; adidas Elite : prix hors promotion de
+ *   ProDirect, relevé du 9 octobre 2026, adidas.fr bloquant les robots).
  * photo + photoCredit : photo officielle du site de la marque (relevé du 8 octobre 2026), affichée avec « Photo : © marque ».
  * Nike n'est pas au catalogue Rakuten Decathlon : ses modèles renvoient vers nike.com (choix de Romain, 8 octobre 2026).
  */
@@ -911,7 +912,7 @@ const SHOES = [
   {
     "name": "Predator 26 Elite FG",
     "brand": "adidas",
-    "price": 280,
+    "price": 270,
     "scores": [
       8.5,
       8.5,
@@ -934,7 +935,7 @@ const SHOES = [
   {
     "name": "F50 Hyperfast Elite FG",
     "brand": "adidas",
-    "price": 260,
+    "price": 270,
     "scores": [
       8.5,
       8.0,
