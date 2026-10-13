@@ -14,6 +14,7 @@
    - à l'événement GA4 `affiliate_click` et à ses paramètres (modèle `product_name`, marque `brand`, rang `rank`, réseau `affiliate_network`, marchand `merchant`) ;
    - à `analytics-consent.js`.
 4. **Le classement ne dépend jamais de la commission** ni de la présence d'un lien d'affiliation.
+5. **Jamais de lien Kwanko en clair dans les fichiers du site** : des robots lisent les fichiers et génèrent de faux clics chez Kwanko (PR #65, 13 oct. 2026). Dans `route-app.js` / `trail-app.js`, écrire `ir:CODE` (i-Run), `es:CODE` (Endurance Store), `ek:CODE` (Ekosport) ; `kwankoLink()` reconstruit les adresses en mémoire et `isKwankoLink()` sert à la détection GA4. `scripts/update_irun_offers.py` écrit déjà ce format. Tout nouveau lien Kwanko (autre sport, fiche, page) doit suivre le même principe.
 
 ## Organisation du dépôt
 | Élément | Où |
