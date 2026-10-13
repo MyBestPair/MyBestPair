@@ -10,6 +10,7 @@ Pour chaque modèle des moteurs Route et Trail, le script :
     (voir ALIASES quand le nom i-Run diffère du nom MyBestPair) ;
   - remplace les anciennes offres i-Run par une offre par genre et par pointure (la moins chère) ;
   - met à jour le lien i-Run de secours (lienIRun) ;
+  - écrit les liens sous forme courte « ir:CODE » (voir short_link) ;
   - affiche les modèles introuvables chez i-Run.
 """
 
@@ -126,6 +127,20 @@ def titles_for(model, titles_by_norm):
     return found
 
 
+# Hôte Kwanko d'i-Run. Les moteurs stockent « ir:CODE » au lieu de l'adresse complète
+# pour que les robots qui lisent les fichiers n'y trouvent pas de lien à cliquer ;
+# kwankoLink() (route-app.js, trail-app.js) reconstruit l'adresse dans le navigateur.
+IRUN_HOST = "fsx.i-run.fr"
+
+
+def short_link(link):
+    """'https://<hôte i-Run>/?CODE' -> 'ir:CODE'."""
+    m = re.fullmatch(r"https://" + re.escape(IRUN_HOST) + r"/\?([A-Za-z0-9]+)", link)
+    if not m:
+        raise SystemExit(f"Lien i-Run inattendu (format https://{IRUN_HOST}/?CODE attendu) : {link}")
+    return "ir:" + m.group(1)
+
+
 def offers_for(rows):
     best = {}
     for r in rows:
@@ -134,7 +149,7 @@ def offers_for(rows):
             best[key] = r
     return [
         {"merchant": "I-RUN", "key": "i-run", "gender": g, "price": r["price"],
-         "link": r["link"], "sizes": [s]}
+         "link": short_link(r["link"]), "sizes": [s]}
         for (g, s), r in sorted(best.items())
     ]
 
@@ -143,7 +158,7 @@ def fallback_link(rows):
     """Lien de secours : de préférence un modèle homme proche du 42."""
     if not rows:
         return ""
-    return min(rows, key=lambda r: (r["gender"] != "male", abs(r["size"] - 42), r["price"]))["link"]
+    return short_link(min(rows, key=lambda r: (r["gender"] != "male", abs(r["size"] - 42), r["price"]))["link"])
 
 
 def replace_json(src, name, opener, value):
