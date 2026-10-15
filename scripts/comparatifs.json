@@ -1,0 +1,79 @@
+[
+  {
+    "slug": "asics-novablast-6-vs-nike-pegasus-42",
+    "sport": "route",
+    "updated": "2026-10-15",
+    "title": "ASICS Novablast 6 ou Nike Pegasus 42 : laquelle choisir ?",
+    "description": "Novablast 6 ou Pegasus 42 : poids, drop, amorti, prix et notes MyBestPair côte à côte, et notre verdict selon ton profil de coureur.",
+    "h1": "ASICS Novablast 6 ou Nike Pegasus 42 : laquelle choisir ?",
+    "lead": "La Novablast 6 est la plus amortie et la plus légère. La Pegasus 42 est plus ferme, plus durable et coûte 20 € de moins. Les deux visent l’entraînement sur route, de 5 à 30 km.",
+    "models": [
+      {
+        "name": "ASICS Novablast 6",
+        "short": "Novablast 6",
+        "fiche": "asics-novablast-6",
+        "photo": "https://contents.mediadecathlon.com/p3195187/k$a519d90276819c649f94ce699b2a577c/picture.jpg",
+        "offers": [
+          {"label": "i-Run", "key": "i-run", "link": "ir:P4572B58CB1F2B1S1UD413a450167247V4"},
+          {"label": "Endurance Store", "key": "endurance-store", "link": "es:P5133A358CB1F213S1UC413a11057862V4"}
+        ],
+        "forWho": [
+          "Tu cherches de l’amorti et du rebond pour tes footings et tes sorties longues, jusqu’au semi-marathon.",
+          "Tu veux une paire plus légère : 253 g annoncés par ASICS, contre près de 290 g pour la Pegasus 42 à pointure comparable.",
+          "Ton pied est plutôt large : notre base l’enregistre pour les pieds standard et larges."
+        ],
+        "limits": [
+          "Moins stable que la Novablast 5, selon les mesures de RunRepeat.",
+          "La mousse peut sembler molle à certains coureurs.",
+          "Pas idéale pour les séances rapides : ASICS propose la Superblast pour ça."
+        ]
+      },
+      {
+        "name": "Nike Pegasus 42",
+        "short": "Pegasus 42",
+        "fiche": "nike-pegasus-42",
+        "photo": "https://photo.i-run.fr/nike-pegasus-42-chaussures-homme-855256-1-gs.jpg",
+        "offers": [
+          {"label": "Endurance Store", "key": "endurance-store", "link": "es:P5133A358CB1F213S1UC413a11052122V4"},
+          {"label": "i-Run", "key": "i-run", "link": "ir:P4572B58CB1F2B1S1UD413a450207852V4"}
+        ],
+        "forWho": [
+          "Tu attaques par le talon et tu aimes un drop classique de 10 mm.",
+          "Tu préfères une sensation ferme et stable, avec une paire qui dure (durabilité 8,5/10 dans notre base).",
+          "Ton budget est serré : 140 € au prix habituel, et elle est souvent remisée."
+        ],
+        "limits": [
+          "Plus lourde : environ 30 g de plus que la Novablast 6 à pointure comparable.",
+          "La mousse ReactX rebondit moins que les mousses récentes, selon Road Trail Run.",
+          "Elle chausse un peu petit, selon Road Trail Run : essaie ta pointure habituelle et une demi-pointure au-dessus."
+        ]
+      }
+    ],
+    "specs": [
+      {"label": "Prix habituel", "a": "160 €", "b": "140 €", "win": "b"},
+      {"label": "Poids", "a": "253 g", "b": "≈ 286 g", "win": "a"},
+      {"label": "Drop", "a": "8 mm", "b": "10 mm"},
+      {"label": "Hauteur talon / avant-pied", "a": "41,5 / 33,5 mm", "b": "37 / 27 mm"},
+      {"label": "Mousse", "a": "FF Blast Max + capsule FF Turbo² à l’avant", "b": "ReactX + unité Air Zoom sur toute la longueur"},
+      {"label": "Plaque carbone", "a": "Non", "b": "Non"},
+      {"label": "Distances (notre base)", "a": "5 à 30 km", "b": "5 à 30 km"},
+      {"label": "Type de pied (notre base)", "a": "Standard ou large", "b": "Standard"}
+    ],
+    "specsNote": "Poids homme : 253 g annoncés par ASICS ; 286 g mesurés en US 9 par Road Trail Run pour la Pegasus 42 (Nike annonce environ 300 g en 44). Drop : ASICS et Nike. Hauteurs : The Running Channel (Novablast 6) et Road Trail Run (Pegasus 42). Le poids varie selon la pointure.",
+    "blackFriday": "La Pegasus 42 est déjà remisée : le 15 octobre 2026, nike.com l’affichait à 97,99 € au lieu de 139,99 €. Pour la Novablast 6, compare toute remise à son prix habituel de 160 €. Nous suivons les offres sur notre page Black Friday.",
+    "faq": [
+      {"q": "Quelle est la plus amortie, la Novablast 6 ou la Pegasus 42 ?", "a": "La Novablast 6. Elle est plus épaisse (41,5 mm au talon contre 37 mm) et notre base lui donne 8,5/10 en amorti, contre 8/10 pour la Pegasus 42."},
+      {"q": "Laquelle choisir pour débuter la course à pied ?", "a": "Les deux conviennent pour débuter sur route. Prends la Novablast 6 si tu privilégies le confort et la légèreté, la Pegasus 42 si tu veux une paire stable, durable et moins chère. Le questionnaire MyBestPair tient compte de ton poids, de ton pied et de ton budget."},
+      {"q": "Peut-on courir un marathon avec ?", "a": "Notre base les enregistre toutes les deux pour des distances de 5 à 30 km. Si tu prépares un marathon, compare-les aux modèles prévus pour 42 km dans le questionnaire."},
+      {"q": "Quelle différence de drop entre les deux ?", "a": "La Novablast 6 a un drop de 8 mm, la Pegasus 42 de 10 mm. Un drop plus élevé soulage souvent les coureurs qui attaquent par le talon."}
+    ],
+    "sources": [
+      {"label": "ASICS France : Novablast 6 homme", "url": "https://www.asics.com/fr/fr-fr/novablast-6/p/1011C243-002.html"},
+      {"label": "ASICS France : Novablast 6 femme", "url": "https://www.asics.com/fr/fr-fr/novablast-6/p/1012C008-250.html"},
+      {"label": "Nike France : Pegasus 42 homme", "url": "https://www.nike.com/fr/t/chaussure-de-running-sur-route-nike-pegasus-42-pour-homme-M9ckDyR3/IB1873-020"},
+      {"label": "The Running Channel : test de la Novablast 6", "url": "https://therunningchannel.com/asics-novablast-6-review/"},
+      {"label": "RunRepeat : mesures de la Novablast 6", "url": "https://runrepeat.com/asics-novablast-6"},
+      {"label": "Road Trail Run : test de la Pegasus 42", "url": "https://www.roadtrailrun.com/2026/03/nike-pegasus-42-review-4-comparisons.html"}
+    ]
+  }
+]
