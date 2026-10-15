@@ -1,0 +1,616 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>MyBestPair — vidéo 9:16</title>
+<!--
+  Vidéo promo 9:16 (1080 × 1920, 15 s). Source de l'animation :
+  - ouvrir ce fichier dans un navigateur = aperçu en boucle ;
+  - render.cjs (Playwright + ffmpeg) produit le MP4 image par image via window.render(t).
+  Top 3 affiché = vrai résultat du questionnaire Route (15 oct. 2026) pour le profil :
+  entraînement, semi-marathon, 5:00-6:00/km, 72 kg, pied standard, médio-pied, 150 €,
+  priorités amorti / dynamisme / confort, homme, aucune marque préférée.
+-->
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#000}
+body{min-height:100vh;display:flex;justify-content:center;align-items:flex-start;overflow:hidden}
+body.render{display:block}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;flex:none;
+  font-family:Inter,"Inter Display",Arial,Helvetica,sans-serif;color:#fff;background:#041634;transform-origin:top center}
+.abs{position:absolute;left:0;top:0}
+#bg{position:absolute;inset:0;background:
+  radial-gradient(1100px 1000px at 50% 40%,#0b2a61 0%,rgba(11,42,97,0) 72%),
+  linear-gradient(180deg,#061d45 0%,#041634 100%)}
+#grid{position:absolute;left:-60px;top:-60px;width:1200px;height:2040px;
+  background-image:radial-gradient(rgba(255,255,255,.10) 2px,transparent 2.6px);background-size:46px 46px;
+  -webkit-mask-image:radial-gradient(closest-side at 50% 50%,#000 25%,transparent 100%);
+          mask-image:radial-gradient(closest-side at 50% 50%,#000 25%,transparent 100%)}
+.glow{border-radius:50%;width:1000px;height:1000px}
+#glowG{background:radial-gradient(closest-side,rgba(116,184,41,.20),rgba(116,184,41,0))}
+#glowW{background:radial-gradient(closest-side,rgba(255,255,255,.08),rgba(255,255,255,0))}
+
+/* Titres */
+.hl{position:absolute;left:0;width:1080px;text-align:center;font-weight:900;letter-spacing:-.02em;line-height:1.08}
+.hl .w{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .02em .12em}
+.hl .w>i{display:inline-block;font-style:normal;will-change:transform}
+.green{color:#74b829}
+.kicker{display:inline-flex;align-items:center;gap:14px;padding:12px 26px;border:3px solid #74b829;border-radius:99px;
+  font:800 30px/1 Inter,Arial,sans-serif;letter-spacing:.24em;color:#74b829;white-space:nowrap;background:rgba(4,22,52,.6)}
+.kicker b{display:inline-block;width:12px;height:12px;border-radius:50%;background:#74b829}
+
+/* Médaillons (comme l'horloge de l'accueil) */
+.med{width:240px;height:240px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 26px 60px rgba(0,0,0,.45)}
+.med img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block}
+.med.photo img{width:88%;height:88%;border-radius:0;object-fit:contain}
+.med .lab{position:absolute;left:50%;top:100%;transform:translate(-50%,16px);font:800 34px/1 Inter,Arial,sans-serif;
+  padding:13px 26px;border-radius:99px;background:rgba(4,22,52,.92);border:2px solid rgba(255,255,255,.2);white-space:nowrap;color:#fff}
+
+/* Cadran */
+#dial{width:760px;height:760px}
+#dial .disc{position:absolute;left:100px;top:100px;width:560px;height:560px;border-radius:50%;
+  background:radial-gradient(circle at 50% 35%,#0b2a61,#061d45 70%);border:2px solid rgba(255,255,255,.14);
+  box-shadow:0 40px 120px rgba(0,0,0,.45),inset 0 0 0 14px rgba(255,255,255,.03)}
+#dial .orbit{position:absolute;inset:0;border-radius:50%;border:3px dashed rgba(255,255,255,.16)}
+#dial .center{position:absolute;left:0;top:0;width:760px;height:760px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px}
+#dial .mono{width:290px}
+#dial .word{width:330px}
+#dial .six{font:800 32px/1 Inter,Arial,sans-serif;letter-spacing:.32em;color:#74b829;margin-top:6px}
+
+/* Questionnaire */
+#card{width:920px;height:900px;border-radius:52px;background:#fff;color:#0a0f1a;
+  box-shadow:0 50px 120px rgba(0,0,0,.5),0 0 0 8px rgba(255,255,255,.06)}
+#card .h1{position:absolute;left:190px;top:56px;font:900 46px/1.1 Inter,Arial,sans-serif;letter-spacing:-.01em}
+#card .h2{position:absolute;left:190px;top:114px;font:600 32px/1.1 Inter,Arial,sans-serif;color:#6b7485}
+#card .track{position:absolute;left:50px;top:192px;width:820px;height:14px;border-radius:7px;background:#e5edf9;overflow:hidden}
+#card .fill{height:100%;width:0;border-radius:7px;background:#74b829}
+.q{position:absolute;left:50px;top:240px;width:820px;height:640px}
+.qt{font:900 50px/60px Inter,Arial,sans-serif;letter-spacing:-.01em;margin-bottom:30px;color:#0a0f1a}
+.opt{height:86px;border-radius:43px;border:3px solid #dfe5ef;margin-bottom:18px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 16px 0 40px;font:700 38px/1 Inter,Arial,sans-serif;color:#061d45;background:#fff}
+.opt .ck,.chip .ck{width:56px;height:56px;border-radius:50%;background:#74b829;color:#041634;display:flex;align-items:center;justify-content:center;
+  font:900 30px/1 Inter,Arial,sans-serif;opacity:0}
+.opt .ck svg{width:30px;height:30px}
+.budget{font:900 150px/1 Inter,Arial,sans-serif;letter-spacing:-.03em;color:#061d45;text-align:center;margin-top:20px;height:150px}
+.slider{position:absolute;left:30px;top:330px;width:760px;height:18px;border-radius:9px;background:#e5edf9}
+.slider .sf{position:absolute;left:0;top:0;height:18px;border-radius:9px;background:#74b829}
+.slider .kn{position:absolute;top:9px;left:0;width:64px;height:64px;margin:-32px 0 0 -32px;border-radius:50%;background:#061d45;border:8px solid #fff;
+  box-shadow:0 8px 24px rgba(4,22,52,.35)}
+.slider .mn,.slider .mx{position:absolute;top:44px;font:700 30px/1 Inter,Arial,sans-serif;color:#6b7485}
+.slider .mx{right:0}
+.chips{display:grid;grid-template-columns:400px 400px;gap:20px}
+.chip{height:100px;border-radius:26px;border:3px solid #dfe5ef;display:flex;align-items:center;justify-content:space-between;padding:0 18px 0 30px;
+  font:800 36px/1 Inter,Arial,sans-serif;color:#061d45;background:#fff}
+.go{position:absolute;left:0;top:480px;width:820px;height:110px;border-radius:55px;background:#74b829;color:#041634;
+  display:flex;align-items:center;justify-content:center;gap:18px;font:900 38px/1 Inter,Arial,sans-serif;letter-spacing:.02em;
+  box-shadow:0 18px 40px rgba(116,184,41,.35)}
+.go svg{width:40px;height:40px}
+
+/* Analyse */
+#black{position:absolute;inset:0;background:#05070c}
+#an{width:1080px;height:1920px}
+#an svg{position:absolute;left:330px;top:690px;width:420px;height:420px}
+#an .num{position:absolute;left:0;top:820px;width:1080px;text-align:center;font:900 170px/1 Inter,Arial,sans-serif;letter-spacing:-.04em}
+#an .lbl{position:absolute;left:0;top:1170px;width:1080px;text-align:center;font:800 54px/1.1 Inter,Arial,sans-serif}
+#an .pri{position:absolute;left:0;top:1260px;width:1080px;text-align:center;font:800 40px/1 Inter,Arial,sans-serif;color:#74b829;letter-spacing:.04em}
+#an .pri span{display:inline-block}
+
+/* Top 3 */
+.res{width:920px;height:250px;border-radius:40px;background:#fff;color:#0a0f1a;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.res .ph{position:absolute;left:30px;top:25px;width:330px;height:200px;object-fit:contain}
+.res .medal{position:absolute;left:18px;top:16px;width:72px;height:72px;border-radius:50%;background:#061d45;color:#fff;
+  display:flex;align-items:center;justify-content:center;font:900 38px/1 Inter,Arial,sans-serif;border:5px solid #fff;box-shadow:0 6px 16px rgba(4,22,52,.3)}
+.res.r1 .medal{background:#74b829;color:#041634}
+.res .br{position:absolute;left:385px;top:40px;font:800 28px/1 Inter,Arial,sans-serif;letter-spacing:.16em;color:#6b7485}
+.res .md{position:absolute;left:385px;top:80px;font:900 46px/1.1 Inter,Arial,sans-serif;letter-spacing:-.015em;white-space:nowrap}
+.res .tr{position:absolute;left:385px;top:178px;width:320px;height:16px;border-radius:8px;background:#e5edf9;overflow:hidden}
+.res .tf{height:100%;width:0;background:#74b829;border-radius:8px}
+.res .sc{position:absolute;left:728px;top:158px;font:900 46px/1 Inter,Arial,sans-serif;letter-spacing:-.02em;white-space:nowrap}
+.res .sc small{font:700 26px/1 Inter,Arial,sans-serif;color:#6b7485;letter-spacing:0}
+.pill{display:inline-flex;align-items:center;gap:16px;padding:20px 32px;border-radius:99px;background:rgba(255,255,255,.08);
+  border:2px solid rgba(255,255,255,.18);font:700 33px/1 Inter,Arial,sans-serif;white-space:nowrap}
+.pill svg{width:40px;height:40px;flex:none}
+
+/* Transitions */
+.wipe{width:1700px;height:2600px}
+#wG{background:#74b829}
+#wN{background:linear-gradient(180deg,#061d45,#041634)}
+
+/* CTA */
+.mini{width:140px;height:140px;border-radius:50%;background:#fff;overflow:hidden;box-shadow:0 18px 40px rgba(0,0,0,.45),0 0 0 5px rgba(255,255,255,.08)}
+.mini img{width:100%;height:100%;object-fit:cover;display:block}
+#cta{width:800px;height:156px;border-radius:78px;background:#74b829;color:#041634;display:flex;align-items:center;justify-content:center;gap:26px;
+  font:900 54px/1 Inter,Arial,sans-serif;letter-spacing:-.01em;overflow:hidden;box-shadow:0 24px 60px rgba(116,184,41,.35)}
+#cta .arr{width:88px;height:88px;border-radius:50%;background:#041634;display:flex;align-items:center;justify-content:center}
+#cta .arr svg{width:44px;height:44px}
+#cta .shine{position:absolute;top:-20px;left:0;width:140px;height:200px;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.55),rgba(255,255,255,0));transform:skewX(-20deg)}
+#pulse{width:800px;height:156px;border-radius:78px;border:6px solid #74b829}
+#url{font:900 64px/1 Inter,Arial,sans-serif;letter-spacing:-.01em;white-space:nowrap}
+#url span{color:#74b829}
+
+/* Doigt */
+#finger{width:96px;height:96px;border-radius:50%;background:rgba(255,255,255,.38);border:5px solid #fff;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+#ripple{width:96px;height:96px;border-radius:50%;border:5px solid #fff}
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="bg"></div>
+  <div id="glowG" class="abs glow"></div>
+  <div id="glowW" class="abs glow"></div>
+  <div id="grid"></div>
+
+  <!-- Scène 2 : cadran -->
+  <div id="dial" class="abs">
+    <div class="orbit"></div>
+    <div class="disc"></div>
+    <div class="center">
+      <img class="mono" src="../../images/horloge/monogramme.webp" alt="">
+      <img class="word" src="../../images/horloge/mybestpair.webp" alt="">
+      <div class="six">6 SPORTS</div>
+    </div>
+  </div>
+
+  <!-- Médaillons : scène 1 (pagaille) puis scène 2 (cadran) -->
+  <div id="x1" class="abs med photo"><img src="photos/mizuno-neo-zen-2.jpg" alt=""></div>
+  <div id="x2" class="abs med photo"><img src="photos/puma-velocity-nitro-4.jpg" alt=""></div>
+  <div id="x3" class="abs med photo"><img src="photos/adidas-supernova-rise-3.jpg" alt=""></div>
+  <div id="m-basket" class="abs med"><img src="../../images/horloge/basket.webp" alt=""><span class="lab">Basket</span></div>
+  <div id="m-trail" class="abs med"><img src="../../images/horloge/trail.webp" alt=""><span class="lab">Trail</span></div>
+  <div id="m-padel" class="abs med"><img src="../../images/horloge/padel.webp" alt=""><span class="lab">Padel</span></div>
+  <div id="m-rugby" class="abs med"><img src="../../images/horloge/rugby.webp" alt=""><span class="lab">Rugby</span></div>
+  <div id="m-foot" class="abs med"><img src="../../images/horloge/foot.webp" alt=""><span class="lab">Foot</span></div>
+
+  <!-- Scène 1 : accroche -->
+  <div id="a1" class="hl" style="top:820px;font-size:124px"><div>Des centaines</div><div>de modèles…</div></div>
+  <div id="a2" class="hl" style="top:745px;font-size:112px"><div>Laquelle est</div><div>faite pour</div></div>
+  <div id="toi" class="abs" style="font:900 230px/1 Inter,Arial,sans-serif;letter-spacing:-.04em;color:#74b829;white-space:nowrap">TOI&nbsp;?</div>
+  <div id="toiLine" class="abs" style="width:470px;height:22px;border-radius:11px;background:#fff"></div>
+
+  <!-- Scène 2 : titre -->
+  <div id="k2" class="abs kicker"><b></b>ÉTAPE 1</div>
+  <div id="t2" class="hl" style="top:352px;font-size:100px">Choisis ton sport</div>
+
+  <!-- Scène 3 : questionnaire -->
+  <div id="k3" class="abs kicker"><b></b>ÉTAPE 2</div>
+  <div id="t3" class="hl" style="top:338px;font-size:84px"><div>Réponds à quelques</div><div>questions</div></div>
+  <div id="card" class="abs">
+    <div class="h1">Running Route</div>
+    <div class="h2">Ton profil de coureur</div>
+    <div class="track"><div class="fill" id="pfill"></div></div>
+    <div class="q" id="q1">
+      <div class="qt">Ton objectif principal ?</div>
+      <div class="opt">Confort<span class="ck"></span></div>
+      <div class="opt">Performance<span class="ck"></span></div>
+      <div class="opt">Polyvalence<span class="ck"></span></div>
+      <div class="opt">Compétition<span class="ck"></span></div>
+      <div class="opt" id="o1">Entraînement<span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#041634" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></div>
+    </div>
+    <div class="q" id="q2">
+      <div class="qt">Ta distance principale ?</div>
+      <div class="opt">5 km<span class="ck"></span></div>
+      <div class="opt">10 km<span class="ck"></span></div>
+      <div class="opt" id="o2">Semi-marathon<span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#041634" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></div>
+      <div class="opt">Marathon<span class="ck"></span></div>
+    </div>
+    <div class="q" id="q3">
+      <div class="qt">Ton budget ?</div>
+      <div class="budget" id="bval">80&nbsp;€</div>
+      <div class="slider"><div class="sf" id="bfill"></div><div class="kn" id="bknob"></div><span class="mn">50 €</span><span class="mx">300 €</span></div>
+    </div>
+    <div class="q" id="q4">
+      <div class="qt">Tes 3 priorités</div>
+      <div class="chips">
+        <div class="chip" id="c1">Amorti<span class="ck">1</span></div>
+        <div class="chip" id="c2">Dynamisme<span class="ck">2</span></div>
+        <div class="chip">Stabilité<span class="ck"></span></div>
+        <div class="chip" id="c3">Confort<span class="ck">3</span></div>
+        <div class="chip">Durabilité<span class="ck"></span></div>
+        <div class="chip">Légèreté<span class="ck"></span></div>
+      </div>
+      <div class="go" id="go">VOIR MON TOP 3 <svg viewBox="0 0 24 24" fill="none" stroke="#041634" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+    </div>
+  </div>
+  <div id="m-route" class="abs med"><img src="../../images/horloge/route.webp" alt=""><span class="lab">Route</span></div>
+
+  <!-- Scène 4a : analyse -->
+  <div id="black">
+    <div id="an" class="abs">
+      <svg viewBox="0 0 420 420">
+        <circle cx="210" cy="210" r="180" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="16"/>
+        <circle id="arc" cx="210" cy="210" r="180" fill="none" stroke="#74b829" stroke-width="16" stroke-linecap="round"
+          stroke-dasharray="0 2000" transform="rotate(-90 210 210)"/>
+      </svg>
+      <div class="num" id="cnt">0</div>
+      <div class="lbl">modèles Route analysés</div>
+      <div class="pri"><span id="p1">Amorti</span> · <span id="p2">Dynamisme</span> · <span id="p3">Confort</span></div>
+    </div>
+  </div>
+
+  <!-- Scène 4b : Top 3 -->
+  <div id="s4" class="abs" style="width:1080px;height:1920px">
+    <div id="k4" class="abs kicker"><b></b>ÉTAPE 3</div>
+    <div id="t4" class="hl" style="top:352px;font-size:120px">Ton <span class="green">Top&nbsp;3</span></div>
+    <div id="sub4" class="abs" style="font:600 34px/1 Inter,Arial,sans-serif;color:#c7d4ec;white-space:nowrap">Profil : semi-marathon · 150&nbsp;€ · amorti</div>
+    <div id="r1" class="abs res r1"><img class="ph" src="photos/mizuno-neo-zen-2.jpg" alt=""><div class="medal">1</div>
+      <div class="br">MIZUNO</div><div class="md">Neo Zen 2</div><div class="tr"><div class="tf"></div></div><div class="sc"><span>0</span><small>/100</small></div></div>
+    <div id="r2" class="abs res r2"><img class="ph" src="photos/puma-velocity-nitro-4.jpg" alt=""><div class="medal">2</div>
+      <div class="br">PUMA</div><div class="md">Velocity Nitro 4</div><div class="tr"><div class="tf"></div></div><div class="sc"><span>0</span><small>/100</small></div></div>
+    <div id="r3" class="abs res r3"><img class="ph" src="photos/adidas-supernova-rise-3.jpg" alt=""><div class="medal">3</div>
+      <div class="br">ADIDAS</div><div class="md">Supernova Rise 3</div><div class="tr"><div class="tf"></div></div><div class="sc"><span>0</span><small>/100</small></div></div>
+    <div id="f4" class="abs pill"><svg viewBox="0 0 24 24" fill="none" stroke="#74b829" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6l8-3z"/><path d="M8.5 12.2l2.4 2.4 4.6-4.8"/></svg>Les commissions n’entrent pas dans le calcul</div>
+  </div>
+
+  <!-- Transition -->
+  <div id="wG" class="abs wipe"></div>
+  <div id="wN" class="abs wipe"></div>
+
+  <!-- Scène 5 : CTA -->
+  <div id="s5" class="abs" style="width:1080px;height:1920px">
+    <div id="n-basket" class="abs mini"><img src="../../images/horloge/basket.webp" alt=""></div>
+    <div id="n-route" class="abs mini"><img src="../../images/horloge/route.webp" alt=""></div>
+    <div id="n-trail" class="abs mini"><img src="../../images/horloge/trail.webp" alt=""></div>
+    <div id="n-padel" class="abs mini"><img src="../../images/horloge/padel.webp" alt=""></div>
+    <div id="n-rugby" class="abs mini"><img src="../../images/horloge/rugby.webp" alt=""></div>
+    <div id="n-foot" class="abs mini"><img src="../../images/horloge/foot.webp" alt=""></div>
+    <img id="mono5" class="abs" src="../../images/horloge/monogramme.webp" alt="" style="width:290px">
+    <img id="word5" class="abs" src="../../images/horloge/mybestpair.webp" alt="" style="width:330px">
+    <div id="t5" class="hl" style="top:950px;font-size:92px"><div>Trouve la</div><div>meilleure paire</div><div class="green">pour ton sport</div></div>
+    <div id="pulse" class="abs"></div>
+    <div id="cta" class="abs">Fais le test gratuit<span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="#74b829" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="shine" id="shine"></span></div>
+    <div id="url" class="abs">mybestpair<span>.fr</span></div>
+  </div>
+
+  <div id="ripple" class="abs"></div>
+  <div id="finger" class="abs"></div>
+</div>
+
+<script>
+(() => {
+  const DUR = 15;
+  const $ = (s) => document.querySelector(s);
+  const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+  const P = (t, a, b) => clamp((t - a) / (b - a));
+  const L = (a, b, k) => a + (b - a) * k;
+  const E = {
+    outCubic: (x) => 1 - Math.pow(1 - x, 3),
+    inCubic: (x) => x * x * x,
+    inOutCubic: (x) => (x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2),
+    outExpo: (x) => (x >= 1 ? 1 : 1 - Math.pow(2, -10 * x)),
+    outBack: (x) => { const c1 = 1.70158, c3 = c1 + 1; return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); },
+  };
+  const bump = (t, a, b) => (t < a || t > b ? 0 : Math.sin(Math.PI * P(t, a, b)));
+
+  /* Place un élément par son centre. */
+  function put(el, x, y, o = 1, s = 1, r = 0, extra = "") {
+    el.style.transform = `translate(${x}px,${y}px) translate(-50%,-50%) rotate(${r}deg) scale(${s})${extra}`;
+    el.style.opacity = o;
+    el.style.visibility = o <= 0.001 ? "hidden" : "visible";
+  }
+
+  /* Découpe les titres en mots (texte révélé mot par mot). */
+  function split(el) {
+    const walk = (node) => {
+      [...node.childNodes].forEach((n) => {
+        if (n.nodeType === 3) {
+          const frag = document.createDocumentFragment();
+          n.textContent.split(/( )/).forEach((part) => {
+            if (part === " ") frag.appendChild(document.createTextNode(" "));
+            else if (part) { const w = document.createElement("span"); w.className = "w"; w.innerHTML = "<i></i>"; w.firstChild.textContent = part; frag.appendChild(w); }
+          });
+          n.replaceWith(frag);
+        } else if (n.nodeType === 1) walk(n);
+      });
+    };
+    walk(el);
+    return [...el.querySelectorAll(".w>i")];
+  }
+  const HL = {};
+  ["a1", "a2", "t2", "t3", "t4", "t5"].forEach((id) => { HL[id] = { el: $("#" + id), words: split($("#" + id)) }; });
+  function words(id, t, tin, tout, st = 0.055) {
+    const { el, words: ws } = HL[id];
+    const visible = t >= tin - 0.01 && (tout == null || t <= tout + 0.6);
+    el.style.visibility = visible ? "visible" : "hidden";
+    if (!visible) return;
+    ws.forEach((w, i) => {
+      const kin = E.outExpo(P(t, tin + i * st, tin + i * st + 0.55));
+      const kout = tout == null ? 0 : E.inCubic(P(t, tout + i * 0.03, tout + i * 0.03 + 0.28));
+      w.style.transform = `translateY(${(1 - kin) * 110 - kout * 110}%)`;
+    });
+  }
+
+  /* ---------- Données de mise en scène ---------- */
+  const C = [540, 960];
+  const SP = [
+    { k: "basket", ang: -90 }, { k: "route", ang: -30 }, { k: "trail", ang: 30 },
+    { k: "padel", ang: 90 }, { k: "rugby", ang: 150 }, { k: "foot", ang: 210 },
+  ];
+  // Scène 1 : position éparpillée [x, y, rotation, taille relative, ordre d'entrée]
+  const SC = {
+    rugby: [540, 300, 6, 1, 0], route: [205, 575, -12, 1, 1], trail: [880, 545, 10, 1, 2],
+    basket: [200, 1395, 8, 1, 3], padel: [880, 1400, -9, 1, 4], foot: [540, 1665, -6, 1, 5],
+    x1: [88, 975, -8, .72, 6], x2: [995, 990, 9, .72, 7], x3: [900, 215, -5, .6, 8],
+  };
+  const MED = {};
+  [...SP.map((s) => s.k), "x1", "x2", "x3"].forEach((k) => { MED[k] = $(k[0] === "x" ? "#" + k : "#m-" + k); });
+
+  function scatterPos(k, t) {
+    const [x, y, r, sz, j] = SC[k];
+    const a = 0.05 + j * 0.06;
+    const ke = E.outExpo(P(t, a, a + 0.8));
+    const f = 1 + 1.5 * (1 - ke);
+    const push = 1 + 0.05 * P(t, 0, 2.2);
+    return {
+      x: C[0] + (x - C[0]) * f * push + 7 * Math.cos(1.7 * t + j),
+      y: C[1] + (y - C[1]) * f * push + 13 * Math.sin(2.1 * t + j * 1.3),
+      s: sz * (0.45 + 0.55 * ke), r: r + 35 * (1 - ke), o: P(t, a, a + 0.25),
+    };
+  }
+  const RC = [540, 1010], RR = 370;
+  function ringPos(i, t) {
+    const rot = 14 * E.inOutCubic(P(t, 2.2, 4.6));
+    const a = ((SP[i].ang + rot) * Math.PI) / 180;
+    return [RC[0] + RR * Math.cos(a), RC[1] + RR * Math.sin(a)];
+  }
+  const ROUTE_TAP = ringPos(1, 3.75);
+  const HEAD = [80 + 100, 590 + 100]; // icône Route dans l'en-tête du questionnaire
+
+  /* Doigt : [temps, x, y, opacité] */
+  const FK = [
+    [3.25, 640, 1800, 0], [3.66, ROUTE_TAP[0], ROUTE_TAP[1], 1], [3.95, ROUTE_TAP[0], ROUTE_TAP[1], 1], [4.15, ROUTE_TAP[0] + 30, ROUTE_TAP[1] + 70, 0],
+    [4.7, 780, 1640, 0], [5.15, 540, 1379, 1], [5.5, 540, 1379, 1], [6.15, 540, 1171, 1], [6.5, 540, 1171, 1],
+    [6.95, 251.2, 1169, 1], [7.0, 251.2, 1169, 1], [7.45, 464, 1169, 1], [7.6, 464, 1169, 1],
+    [7.85, 330, 970, 1], [7.93, 330, 970, 1], [8.04, 750, 970, 1], [8.1, 750, 970, 1], [8.21, 750, 1090, 1], [8.28, 750, 1090, 1],
+    [8.44, 540, 1365, 1], [8.56, 540, 1365, 1], [8.72, 570, 1420, 0],
+    [13.5, 860, 1760, 0], [13.92, 760, 1354, 1], [14.22, 760, 1354, 1], [14.45, 790, 1400, 0],
+  ];
+  const TAPS = [3.75, 5.22, 6.22, 7.9, 8.08, 8.26, 8.5, 14.0];
+  const HOLD = [7.0, 7.45]; // glisser du curseur de budget
+
+  function fingerAt(t) {
+    if (t <= FK[0][0]) return [FK[0][1], FK[0][2], 0];
+    for (let i = 0; i < FK.length - 1; i++) {
+      const [ta, xa, ya, oa] = FK[i], [tb, xb, yb, ob] = FK[i + 1];
+      if (t >= ta && t <= tb) {
+        const k = P(t, ta, tb), e = E.inOutCubic(k);
+        return [L(xa, xb, e), L(ya, yb, e), L(oa, ob, k)];
+      }
+    }
+    const l = FK[FK.length - 1];
+    return [l[1], l[2], 0];
+  }
+
+  const R4 = [$("#r1"), $("#r2"), $("#r3")];
+  const SCORES = [92.7, 92.7, 92.5];
+  const fr1 = (v) => v.toFixed(1).replace(".", ",");
+  const MINI = SP.map((s) => $("#n-" + s.k));
+
+  /* ---------- Rendu d'une image à l'instant t (en secondes) ---------- */
+  function render(t) {
+    // Fond
+    put($("#glowG"), L(260, 820, (Math.sin(t * 0.5) + 1) / 2), L(1500, 1200, P(t, 0, 15)), 1, 1);
+    put($("#glowW"), L(840, 300, P(t, 0, 15)), L(420, 640, (Math.sin(t * 0.7) + 1) / 2), 1, 1);
+    $("#grid").style.transform = `translateY(${-(t * 14) % 46}px)`;
+
+    /* Scène 1 — accroche */
+    words("a1", t, 0.08, 1.0);
+    words("a2", t, 1.12, 2.08, 0.06);
+    {
+      const k = E.outBack(P(t, 1.42, 1.78)), out = E.inCubic(P(t, 2.08, 2.34));
+      put($("#toi"), 540, 1110 - out * 40, P(t, 1.42, 1.55) * (1 - out), (0.4 + 0.6 * k) * (1 - 0.15 * out), -4 * (1 - k));
+      const ul = E.outExpo(P(t, 1.68, 2.0));
+      put($("#toiLine"), 540, 1238 - out * 40, (t > 1.68 ? 1 : 0) * (1 - out), 1, -2, ` scaleX(${ul})`);
+    }
+
+    /* Médaillons des 6 sports */
+    const toRing = E.inOutCubic(P(t, 2.08, 2.78));
+    SP.forEach((sp, i) => {
+      const el = MED[sp.k];
+      const lab = el.querySelector(".lab");
+      const sc = scatterPos(sp.k, t);
+      const [rx, ry] = ringPos(i, t);
+      let x = L(sc.x, rx, toRing), y = L(sc.y, ry, toRing), s = L(sc.s, 0.875, toRing), r = L(sc.r, 0, toRing), o = sc.o;
+      let labO = P(t, 2.62, 2.9);
+      if (sp.k === "route") {
+        s *= 1 + 0.12 * bump(t, 3.72, 4.02);
+        const g = 10 * P(t, 3.72, 3.84);
+        const m = E.inOutCubic(P(t, 4.0, 4.55));
+        x = L(x, HEAD[0], m); y = L(y, HEAD[1], m); s = L(s, 0.5, m);
+        el.style.boxShadow = `0 26px 60px rgba(0,0,0,.45), 0 0 0 ${L(g, 12, m)}px #74b829`;
+        labO *= 1 - P(t, 3.95, 4.08);
+        o *= 1 - P(t, 9.5, 9.6);
+      } else {
+        const ex = E.inCubic(P(t, 3.92, 4.3));
+        s *= 1 - 0.8 * ex; o *= 1 - ex;
+        x += (x - RC[0]) * 0.25 * ex; y += (y - RC[1]) * 0.25 * ex;
+        labO *= 1 - P(t, 3.88, 4.02);
+      }
+      lab.style.opacity = labO;
+      put(el, x, y, o, s, r);
+    });
+    ["x1", "x2", "x3"].forEach((k) => {
+      const sc = scatterPos(k, t), ex = E.inCubic(P(t, 2.0, 2.4));
+      put(MED[k], sc.x + (sc.x - C[0]) * ex * 0.9, sc.y + (sc.y - C[1]) * ex * 0.9, sc.o * (1 - ex), sc.s, sc.r);
+      MED[k].style.filter = "blur(2px)";
+    });
+
+    /* Scène 2 — cadran */
+    {
+      const o = P(t, 2.25, 2.65) * (1 - P(t, 3.95, 4.3));
+      const s = (0.72 + 0.28 * E.outBack(P(t, 2.25, 2.85))) * (1 + 0.12 * P(t, 3.95, 4.3));
+      put($("#dial"), RC[0], RC[1], o, s, 6 * E.inOutCubic(P(t, 2.2, 4.6)));
+      $("#dial .center").style.transform = `rotate(${-6 * E.inOutCubic(P(t, 2.2, 4.6))}deg)`;
+      const k = E.outBack(P(t, 2.4, 2.75));
+      put($("#k2"), 540, 285, P(t, 2.4, 2.55) * (1 - P(t, 3.9, 4.05)), 0.6 + 0.4 * k);
+      words("t2", t, 2.48, 3.9);
+    }
+
+    /* Scène 3 — questionnaire */
+    {
+      const k = E.outExpo(P(t, 4.12, 4.72));
+      put($("#card"), 540, 1040 + (1 - k) * 320, P(t, 4.12, 4.35), 0.94 + 0.06 * k);
+      const ck = E.outBack(P(t, 4.3, 4.65));
+      put($("#k3"), 540, 272, P(t, 4.3, 4.45), 0.6 + 0.4 * ck);
+      words("t3", t, 4.36, null);
+      // barre de progression
+      const steps = [[4.6, 0.06], [5.22, 0.28], [6.22, 0.5], [7.45, 0.72], [8.26, 0.92], [8.5, 1]];
+      let pv = 0;
+      steps.forEach(([ts, v], i) => { const prev = i ? steps[i - 1][1] : 0; pv = t >= ts ? L(prev, v, E.outCubic(P(t, ts, ts + 0.3))) : pv; });
+      $("#pfill").style.width = (pv * 100).toFixed(2) + "%";
+      // questions
+      const Q = [["#q1", 4.5, 5.55], ["#q2", 5.68, 6.55], ["#q3", 6.68, 7.52], ["#q4", 7.6, 99]];
+      Q.forEach(([id, a, b]) => {
+        const ki = E.outCubic(P(t, a, a + 0.26)), ko = E.inCubic(P(t, b, b + 0.2));
+        const el = $(id);
+        el.style.transform = `translateX(${(1 - ki) * 150 - ko * 150}px)`;
+        el.style.opacity = P(t, a, a + 0.18) * (1 - P(t, b, b + 0.18));
+        el.style.visibility = t >= a && t <= b + 0.25 && t < 9.6 ? "visible" : "hidden";
+      });
+      const sel = (el, tap) => {
+        const on = t >= tap;
+        el.style.background = on ? "#061d45" : "#fff";
+        el.style.borderColor = on ? "#061d45" : "#dfe5ef";
+        el.style.color = on ? "#fff" : "#061d45";
+        el.style.transform = `scale(${1 + 0.05 * bump(t, tap, tap + 0.28)})`;
+        const c = el.querySelector(".ck");
+        const kk = E.outBack(P(t, tap, tap + 0.3));
+        c.style.opacity = on ? 1 : 0;
+        c.style.transform = `scale(${kk})`;
+      };
+      sel($("#o1"), 5.22); sel($("#o2"), 6.22);
+      sel($("#c1"), 7.9); sel($("#c2"), 8.08); sel($("#c3"), 8.26);
+      // budget
+      const bk = E.inOutCubic(P(t, 7.0, 7.45));
+      const bv = L(80, 150, bk);
+      $("#bval").textContent = Math.round(bv) + " €";
+      const bp = (bv - 50) / 250;
+      $("#bfill").style.width = bp * 760 + "px";
+      $("#bknob").style.left = bp * 760 + "px";
+      $("#bknob").style.transform = `scale(${t >= HOLD[0] && t <= HOLD[1] + 0.05 ? 1.12 : 1})`;
+      $("#go").style.transform = `scale(${1 - 0.05 * bump(t, 8.5, 8.7)})`;
+      const hide = t > 9.6;
+      if (hide) { $("#card").style.visibility = "hidden"; $("#k3").style.visibility = "hidden"; HL.t3.el.style.visibility = "hidden"; }
+    }
+
+    /* Scène 4a — analyse */
+    {
+      const bl = $("#black");
+      const R = 2300 * E.inOutCubic(P(t, 8.55, 8.95));
+      bl.style.clipPath = `circle(${R}px at 540px 1365px)`;
+      bl.style.opacity = 1 - P(t, 9.55, 9.82);
+      bl.style.visibility = t > 8.55 && t < 9.85 ? "visible" : "hidden";
+      const k = P(t, 8.8, 9.42);
+      $("#an").style.opacity = P(t, 8.78, 8.95) * (1 - P(t, 9.45, 9.6));
+      $("#an").style.transform = `scale(${0.92 + 0.08 * E.outCubic(P(t, 8.78, 9.1)) - 0.06 * P(t, 9.45, 9.6)})`;
+      $("#an").style.transformOrigin = "540px 900px";
+      $("#cnt").textContent = Math.round(50 * E.outCubic(k));
+      $("#arc").setAttribute("stroke-dasharray", `${(2 * Math.PI * 180 * E.outCubic(k)).toFixed(1)} 2000`);
+      ["#p1", "#p2", "#p3"].forEach((id, i) => {
+        const kk = E.outBack(P(t, 8.95 + i * 0.1, 9.25 + i * 0.1));
+        $(id).style.opacity = P(t, 8.95 + i * 0.1, 9.05 + i * 0.1);
+        $(id).style.transform = `translateY(${(1 - kk) * 30}px)`;
+      });
+    }
+
+    /* Scène 4b — Top 3 */
+    {
+      const out = E.inCubic(P(t, 12.15, 12.45));
+      const s4 = $("#s4");
+      s4.style.transform = `translateY(${-260 * out}px)`;
+      s4.style.opacity = 1 - out;
+      s4.style.visibility = t > 9.5 && t < 12.5 ? "visible" : "hidden";
+      const kk = E.outBack(P(t, 9.62, 9.95));
+      put($("#k4"), 540, 285, P(t, 9.62, 9.75), 0.6 + 0.4 * kk);
+      words("t4", t, 9.68, null);
+      const sk = E.outCubic(P(t, 9.9, 10.3));
+      put($("#sub4"), 540, 505 + (1 - sk) * 20, sk);
+      const Y = [705, 985, 1265];
+      R4.forEach((el, i) => {
+        const a = 9.82 + i * 0.13;
+        const k = E.outExpo(P(t, a, a + 0.65));
+        let s = 1, glow = "";
+        if (i === 0) {
+          const h = E.outCubic(P(t, 11.05, 11.4));
+          s = 1 + 0.035 * h + 0.02 * bump(t, 11.05, 11.45);
+          glow = `, 0 0 0 ${7 * h}px #74b829, 0 0 ${80 * h}px rgba(116,184,41,${0.45 * h})`;
+        }
+        el.style.boxShadow = `0 30px 80px rgba(0,0,0,.45)${glow}`;
+        put(el, 540 + (1 - k) * 760, Y[i], P(t, a, a + 0.2), s, (1 - k) * 6);
+        const sc = E.outCubic(P(t, 10.2 + i * 0.1, 11.0 + i * 0.1));
+        el.querySelector(".sc span").textContent = fr1(SCORES[i] * sc);
+        el.querySelector(".tf").style.width = SCORES[i] * sc + "%";
+      });
+      const fk = E.outBack(P(t, 11.25, 11.6));
+      put($("#f4"), 540, 1500, P(t, 11.25, 11.4), 0.8 + 0.2 * fk);
+    }
+
+    /* Transition vers le CTA */
+    {
+      const g = E.inOutCubic(P(t, 12.1, 12.42)), n = E.inOutCubic(P(t, 12.26, 12.6));
+      put($("#wG"), 540, 960 + (1 - g) * 2500, t > 12.1 && t < 12.65 ? 1 : 0, 1, -8);
+      put($("#wN"), 540, 960 + (1 - n) * 2500, (t > 12.26 ? 1 : 0) * (1 - P(t, 12.65, 13.0)), 1, -8);
+    }
+
+    /* Scène 5 — CTA */
+    {
+      const s5 = $("#s5");
+      s5.style.visibility = t > 12.5 ? "visible" : "hidden";
+      const MC = [540, 560], MR = 285;
+      SP.forEach((sp, i) => {
+        const a0 = 12.55 + i * 0.05;
+        const k = E.outBack(P(t, a0, a0 + 0.5));
+        const ang = ((sp.ang + 22 * (t - 12.55)) * Math.PI) / 180;
+        const rr = MR * E.outExpo(P(t, a0, a0 + 0.6));
+        put(MINI[i], MC[0] + rr * Math.cos(ang), MC[1] + rr * Math.sin(ang), P(t, a0, a0 + 0.15), Math.max(0, k));
+      });
+      const mk = E.outBack(P(t, 12.6, 13.0));
+      put($("#mono5"), 540, 535, P(t, 12.6, 12.75), 0.5 + 0.5 * mk);
+      const wk = E.outCubic(P(t, 12.8, 13.1));
+      put($("#word5"), 540, 630 + (1 - wk) * 20, wk);
+      words("t5", t, 12.78, null, 0.06);
+      const bk = E.outBack(P(t, 13.15, 13.55));
+      const press = 1 - 0.05 * bump(t, 13.98, 14.2);
+      put($("#cta"), 540, 1352, P(t, 13.15, 13.3), (0.5 + 0.5 * bk) * press);
+      const ph = t > 13.55 ? ((t - 13.55) % 0.95) / 0.95 : 0;
+      put($("#pulse"), 540, 1352, t > 13.55 ? 0.7 * (1 - ph) : 0, 1 + 0.18 * E.outCubic(ph));
+      $("#shine").style.transform = `translateX(${L(-200, 960, E.inOutCubic(P(t, 14.25, 14.85)))}px) skewX(-20deg)`;
+      const uk = E.outCubic(P(t, 13.4, 13.75));
+      put($("#url"), 540, 1510 + (1 - uk) * 24, uk);
+    }
+
+    /* Doigt + onde au toucher */
+    {
+      const [fx, fy, fo] = fingerAt(t);
+      let press = 1;
+      TAPS.forEach((tp) => { press = Math.min(press, 1 - 0.18 * bump(t, tp - 0.06, tp + 0.16)); });
+      if (t >= HOLD[0] && t <= HOLD[1]) press = 0.86;
+      put($("#finger"), fx, fy, fo, press);
+      let ro = 0, rs = 1;
+      TAPS.forEach((tp) => { if (t >= tp && t <= tp + 0.45) { const k = P(t, tp, tp + 0.45); ro = 0.9 * (1 - k); rs = 1 + 1.4 * E.outCubic(k); } });
+      put($("#ripple"), fx, fy, ro * (fo > 0.5 ? 1 : 0), rs);
+    }
+  }
+
+  window.render = render;
+  window.DURATION = DUR;
+  const imgs = [...document.images].map((im) => (im.decode ? im.decode().catch(() => {}) : Promise.resolve()));
+  window.__ready = Promise.all([document.fonts.ready, ...imgs]).then(() => { render(0); return true; });
+
+  if (/[?&]render\b/.test(location.search)) {
+    document.body.classList.add("render");
+  } else {
+    // Aperçu dans le navigateur : lecture en boucle, mise à l'échelle de la fenêtre.
+    const st = $("#stage");
+    const fit = () => { st.style.transform = `scale(${Math.min(innerHeight / 1920, innerWidth / 1080)})`; };
+    addEventListener("resize", fit); fit();
+    let t0 = null;
+    const loop = (ts) => { if (t0 === null) t0 = ts; render(((ts - t0) / 1000) % DUR); requestAnimationFrame(loop); };
+    window.__ready.then(() => requestAnimationFrame(loop));
+  }
+})();
+</script>
+</body>
+</html>
