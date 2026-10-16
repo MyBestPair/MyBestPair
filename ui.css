@@ -209,3 +209,15 @@ body.mbp-loading { overflow:hidden; }
 /* Espace entre l'icône et le texte dans les boutons en flex */
 .product-link,
 .shoe-link { gap:.45em; }
+
+/* Guide replié sous le questionnaire (ui.js) */
+.guide-fold > summary { list-style:none; cursor:pointer; display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:4px 14px; }
+.guide-fold > summary::-webkit-details-marker { display:none; }
+.guide-fold > summary h2 { margin:0 !important; font-size:clamp(17px,4.6vw,21px) !important; line-height:1.3; }
+.guide-fold-hint { font-size:14px; font-weight:800; color:#1559ae; white-space:nowrap; }
+.guide-fold-hint::after { content:" ▾"; }
+.guide-fold[open] .guide-fold-hint::after { content:" ▴"; }
+.guide-fold[open] > summary { margin-bottom:16px; }
+.guide-fold[open] .guide-fold-hint { font-size:0; }
+.guide-fold[open] .guide-fold-hint::after { font-size:14px; content:"Replier ▴"; }
+.guide-fold .section-heading .eyebrow { display:none; }
