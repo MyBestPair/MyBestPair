@@ -14,6 +14,25 @@
     return `<span class="rank-badge rank-badge-${variant}" aria-hidden="true">${n}</span>`;
   };
 
+  /*
+   * Guide « Comment choisir… » sous le questionnaire : replié par défaut
+   * (demande de Romain du 16 oct. 2026 : la page de résultats était trop longue).
+   * Le texte reste dans la page pour Google ; le titre du guide sert de bouton.
+   */
+  document.querySelectorAll(".seo-guide, .seo-section").forEach(function (section) {
+    const title = section.querySelector("h2");
+    if (!title || section.querySelector(".guide-fold")) return;
+    const fold = document.createElement("details");
+    fold.className = "guide-fold";
+    const summary = document.createElement("summary");
+    summary.appendChild(title);
+    summary.insertAdjacentHTML("beforeend", '<span class="guide-fold-hint">Lire le guide</span>');
+    fold.appendChild(summary);
+    while (section.firstChild) fold.appendChild(section.firstChild);
+    fold.insertBefore(summary, fold.firstChild);
+    section.appendChild(fold);
+  });
+
   let running = false;
 
   /*
