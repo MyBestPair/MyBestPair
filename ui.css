@@ -221,3 +221,11 @@ body.mbp-loading { overflow:hidden; }
 .guide-fold[open] .guide-fold-hint { font-size:0; }
 .guide-fold[open] .guide-fold-hint::after { font-size:14px; content:"Replier ▴"; }
 .guide-fold .section-heading .eyebrow { display:none; }
+
+/* Route / Trail : lien « Retour » et pied de page lisibles sur fond clair (16 oct. 2026) */
+@media (max-width:719px) {
+  #results ~ .back,
+  .seo-guide ~ .back { color:#1559ae; }
+}
+footer[style*="#dce7fb"] { color:#5b6b82 !important; }
+footer[style*="#dce7fb"] a { color:#1559ae; }
