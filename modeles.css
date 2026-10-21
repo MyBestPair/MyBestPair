@@ -51,3 +51,48 @@ footer{border-top:1px solid var(--line);padding:27px 20px;text-align:center;colo
 .hero-fig img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px}
 .hero-fig figcaption{font-size:.72rem;color:var(--muted);margin:7px 0 1px}
 @media(max-width:850px){.hero-split{grid-template-columns:1fr;gap:22px}}
+/* ===== Fiches et catalogues façon boutique.mybestpair.fr =====
+   Grands titres en majuscules étroites, sections numérotées séparées par des filets (sans cadres),
+   monogramme en filigrane et en tampon, notes dont les barres se remplissent (classe ajoutée par ambiance.js),
+   catalogue en grille de grandes vignettes. */
+.crumbs{font:700 11px Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase}
+.eyebrow{font:700 11px Arial,sans-serif;letter-spacing:.2em}
+.hero{border-radius:24px}
+.hero:after{width:min(72%,560px);height:auto;aspect-ratio:343/160;right:-50px;top:auto;bottom:-24px;border:0;border-radius:0;box-shadow:none;background:#fff;opacity:.07;transform:rotate(-8deg);-webkit-mask:url(images/horloge/monogramme.webp) center/contain no-repeat;mask:url(images/horloge/monogramme.webp) center/contain no-repeat}
+.hero h1{font-size:clamp(2.9rem,8vw,5.6rem);line-height:.88;max-width:13ch}
+.hero .cta{border-radius:999px}
+.hero-meta span{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase}
+.hero-fig{position:relative;border-radius:20px;overflow:hidden}
+.hero-fig img{transition:transform 1.2s cubic-bezier(.16,1,.3,1)}
+.hero-fig:hover img{transform:scale(1.05)}
+.hero-fig:after{content:"";position:absolute;right:18px;top:18px;width:70px;aspect-ratio:343/160;background:#09254c;opacity:0;transform:translateY(10px) rotate(-10deg);-webkit-mask:url(images/horloge/monogramme.webp) center/contain no-repeat;mask:url(images/horloge/monogramme.webp) center/contain no-repeat;animation:fiche-stamp .9s cubic-bezier(.16,1,.3,1) 1s forwards}
+@keyframes fiche-stamp{to{opacity:.85;transform:rotate(-6deg)}}
+/* Sections de la fiche : filets fins et numéros, plus de cadres */
+.layout>div{counter-reset:fiche}
+.layout>div>.card{counter-increment:fiche;background:none;border:0;border-top:1px solid #c6d2e2;border-radius:0;box-shadow:none;padding:30px 0 36px;margin:0}
+.layout>div>.card>h2{font-family:"Archivo","Arial Narrow",Arial,sans-serif;font-weight:900;font-variation-settings:"wdth" 64;font-stretch:64%;text-transform:uppercase;letter-spacing:0;font-size:clamp(2.2rem,5vw,3.3rem);line-height:.9;margin:0 0 22px}
+.layout>div>.card>h2:before{content:counter(fiche,decimal-leading-zero);display:block;margin-bottom:10px;font:700 11px Arial,sans-serif;letter-spacing:.2em;color:var(--blue)}
+aside .card>h2{font-family:"Archivo","Arial Narrow",Arial,sans-serif;font-weight:900;font-variation-settings:"wdth" 64;font-stretch:64%;text-transform:uppercase;letter-spacing:0;font-size:2rem;line-height:.92}
+aside .card:has(.cta){background:#09254c;border-color:#09254c;color:#fff}
+aside .card:has(.cta) small{color:#b9cbe4}
+aside .card:has(.cta) .cta{background:#fff;color:#0a315e;border-radius:999px}
+/* Notes : chiffres en gros, barres qui se remplissent quand elles arrivent à l'écran */
+.score strong{font-family:"Archivo","Arial Narrow",Arial,sans-serif;font-weight:900;font-variation-settings:"wdth" 64;font-stretch:64%;font-size:1.3rem;color:#09254c}
+.score:after{height:8px;border-radius:0;background:linear-gradient(#1559ae,#1559ae) 0 0/var(--score) 100% no-repeat,#e3e9f1;transition:background-size 1.4s cubic-bezier(.16,1,.3,1)}
+html.amb-on .scores:not(.amb-fill) .score:after{background-size:0 100%,auto}
+.scores .score:nth-child(2):after{transition-delay:.07s}.scores .score:nth-child(3):after{transition-delay:.14s}.scores .score:nth-child(4):after{transition-delay:.21s}.scores .score:nth-child(5):after{transition-delay:.28s}.scores .score:nth-child(6):after{transition-delay:.35s}.scores .score:nth-child(7):after{transition-delay:.42s}.scores .score:nth-child(8):after{transition-delay:.49s}
+/* Catalogue : grandes vignettes, la chaussure bouge et le tampon MBP apparaît au survol */
+.catalogue-toolbar h2{font-family:"Archivo","Arial Narrow",Arial,sans-serif;font-weight:900;font-variation-settings:"wdth" 64;font-stretch:64%;text-transform:uppercase;letter-spacing:0;font-size:clamp(2.2rem,5vw,3.5rem);line-height:.9;margin:0}
+.catalogue-grid{gap:36px 18px}
+.model-tile{background:none;border:0;border-radius:0;padding:0;box-shadow:none}
+.model-tile:hover{border:0;transform:none;box-shadow:none}
+.tile-photo{height:auto;aspect-ratio:1/1;margin:0 0 14px;border-radius:16px;background:#eaeff6;overflow:hidden}
+.tile-photo img{width:86%;height:78%;transition:transform 1s cubic-bezier(.16,1,.3,1)}
+.model-tile:hover .tile-photo img{transform:scale(1.08) rotate(-4deg)}
+.tile-photo:after{content:"";position:absolute;right:12px;top:12px;width:52px;aspect-ratio:343/160;background:#09254c;opacity:0;transform:translateY(8px) rotate(-10deg);transition:opacity .4s,transform .5s cubic-bezier(.16,1,.3,1);-webkit-mask:url(images/horloge/monogramme.webp) center/contain no-repeat;mask:url(images/horloge/monogramme.webp) center/contain no-repeat}
+.model-tile:hover .tile-photo:after{opacity:.9;transform:rotate(-6deg)}
+.model-tile .tile-brand{font:700 11px Arial,sans-serif;letter-spacing:.18em}
+.model-tile strong{font-family:"Archivo","Arial Narrow",Arial,sans-serif;font-weight:900;font-variation-settings:"wdth" 64;font-stretch:64%;text-transform:uppercase;letter-spacing:0;font-size:1.75rem;line-height:.92;margin:6px 0 8px}
+.model-tile .tile-link{margin-top:10px}
+@media(max-width:570px){.hero:after{right:-70px;bottom:-14px}.catalogue-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 12px}.model-tile strong{font-size:1.3rem}.tile-photo{border-radius:12px}}
+@media(prefers-reduced-motion:reduce){.hero-fig:after{animation:none;opacity:.85;transform:rotate(-6deg)}.score:after,.tile-photo img,.tile-photo:after,.hero-fig img{transition:none}}
