@@ -1,7 +1,9 @@
-/* MyBestPair — ambiance commune à tout le site : couleurs selon le moment de la journée et animations.
+/* MyBestPair — ambiance commune à tout le site : fond vivant selon le moment de la journée, et animations.
    Chargé dans le <head> de chaque page, avant l'affichage, pour que les couleurs soient bonnes dès le départ.
-   Ne touche ni aux liens, ni aux mesures GA4 : uniquement des couleurs et des animations.
-   Moments et couleurs : les mêmes que l'horloge de l'accueil (planche de couleurs du logo).
+   Ne touche ni aux liens, ni aux mesures GA4 : uniquement le fond de page et des animations.
+   Fond vivant : 3 grandes taches de couleur qui dérivent lentement derrière le contenu, dans les bleus du site, assez profonds pour que les textes blancs et bleus restent lisibles ;
+   leurs couleurs suivent l'heure du visiteur (mêmes 8 moments que l'horloge de l'accueil).
+   Pages à fond foncé : fond bleu profond ; pages à fond clair (fiches, catalogues) : version pastel.
    Les animations sont coupées si le visiteur a demandé à les réduire ; les couleurs restent. */
 (function () {
   var root = document.documentElement;
@@ -15,39 +17,36 @@
   update();
   setInterval(update, 60000);
 
-  // --m-glow : couleur du moment sur fond foncé ; --m-soft : sa version claire ; --m-deep : sur fond clair
+  // --sky-base : fond ; --sky-1, --sky-2, --sky-3 : les 3 taches de couleur
   var css = [
-    '@property --m-glow { syntax:"<color>"; inherits:true; initial-value:#8fbaff; }',
-    '@property --m-soft { syntax:"<color>"; inherits:true; initial-value:#cfe0ff; }',
-    '@property --m-deep { syntax:"<color>"; inherits:true; initial-value:#1f7cff; }',
-    ':root { --m-glow:#8fbaff; --m-soft:#cfe0ff; --m-deep:#1f7cff; transition:--m-glow 3s ease, --m-soft 3s ease, --m-deep 3s ease; }',
-    ':root[data-moment="nuit"]           { --m-glow:#d9f23e; --m-soft:#f2fbb8; --m-deep:#141414; }',
-    ':root[data-moment="aube"]           { --m-glow:#a9cdee; --m-soft:#e4eff9; --m-deep:#0b2545; }',
-    ':root[data-moment="matin"]          { --m-glow:#5b9bff; --m-soft:#c9dcff; --m-deep:#0b55d9; }',
-    ':root[data-moment="midi"]           { --m-glow:#ff7a45; --m-soft:#ffd2bd; --m-deep:#c8461e; }',
-    ':root[data-moment="apres-midi"]     { --m-glow:#a9c4a8; --m-soft:#e2eadc; --m-deep:#4a5c4d; }',
-    ':root[data-moment="fin-de-journee"] { --m-glow:#e0d0b8; --m-soft:#f3ece2; --m-deep:#2f3b24; }',
-    ':root[data-moment="crepuscule"]     { --m-glow:#d9a9bf; --m-soft:#f4dee8; --m-deep:#7a5f6c; }',
-    '::selection { background:var(--m-glow); color:#0b0b0b; }',
+    '@property --sky-base { syntax:"<color>"; inherits:true; initial-value:#051b3f; }',
+    '@property --sky-1 { syntax:"<color>"; inherits:true; initial-value:#12407f; }',
+    '@property --sky-2 { syntax:"<color>"; inherits:true; initial-value:#1d5fbf; }',
+    '@property --sky-3 { syntax:"<color>"; inherits:true; initial-value:#0a2a5c; }',
+    ':root { --sky-base:#051b3f; --sky-1:#12407f; --sky-2:#1d5fbf; --sky-3:#0a2a5c; transition:--sky-base 4s ease, --sky-1 4s ease, --sky-2 4s ease, --sky-3 4s ease; }',
+    ':root[data-moment="nuit"]           { --sky-base:#01050f; --sky-1:#0a1f52; --sky-2:#1a1550; --sky-3:#032838; }', /* 0 h – 6 h : presque noir bleuté */
+    ':root[data-moment="aube"]           { --sky-base:#071a40; --sky-1:#1a4d9a; --sky-2:#2a3f8f; --sky-3:#0b4a7a; }', /* 6 h – 9 h : bleu qui s'éclaircit */
+    ':root[data-moment="matin"]          { --sky-base:#082660; --sky-1:#0d47a8; --sky-2:#0a5a9e; --sky-3:#123c8c; }', /* 9 h – 12 h : bleu roi */
+    ':root[data-moment="midi"]           { --sky-base:#0a2d70; --sky-1:#0f50b8; --sky-2:#0b62a8; --sky-3:#1546a0; }', /* 12 h – 14 h : bleu le plus lumineux */
+    ':root[data-moment="apres-midi"]     { --sky-base:#082a66; --sky-1:#0b5a8c; --sky-2:#0e4aa8; --sky-3:#076278; }', /* 14 h – 17 h : bleu et turquoise */
+    ':root[data-moment="fin-de-journee"] { --sky-base:#08205a; --sky-1:#2a3fae; --sky-2:#3b2f9e; --sky-3:#0e4aa8; }', /* 17 h – 19 h : bleu indigo */
+    ':root[data-moment="crepuscule"]     { --sky-base:#0a1640; --sky-1:#3a2a8a; --sky-2:#4a2a7a; --sky-3:#1f3a9a; }', /* 19 h – 21 h : indigo et violet */
+    /* 21 h – minuit (soir) : bleu nuit actuel du site, valeurs de :root */
 
-    /* Logo : le monogramme prend la couleur du moment, le nom garde sa couleur ; un reflet passe à l'arrivée */
-    'img.amb-logo { object-position:-99999px 0; -webkit-mask:var(--amb-src) 0 0 / 100% 100% no-repeat; mask:var(--amb-src) 0 0 / 100% 100% no-repeat;',
-    '  background:linear-gradient(105deg, transparent 42%, rgba(255,255,255,.85) 50%, transparent 58%) 130% 0 / 250% 100% no-repeat, linear-gradient(90deg, var(--m-glow) 37.7%, #fff 37.7%);',
-    '  animation:amb-sheen 1.8s ease .4s both; }',
-    'img.amb-logo.amb-marine { background:linear-gradient(105deg, transparent 42%, rgba(255,255,255,.7) 50%, transparent 58%) 130% 0 / 250% 100% no-repeat, linear-gradient(90deg, var(--m-deep) 37.7%, #061d45 37.7%); }',
-    '@media (hover:hover) { a:hover > img.amb-logo { animation:amb-sheen 1.2s ease both; } }',
-    '@keyframes amb-sheen { from { background-position:130% 0, 0 0; } to { background-position:-30% 0, 0 0; } }',
-
-    /* Barre de lecture en haut de page, aux couleurs du moment, avec un reflet qui circule */
-    '.amb-bar { position:fixed; left:0; top:0; z-index:2147483000; width:100%; height:3px; pointer-events:none; transform-origin:0 50%; transform:scaleX(var(--amb-progress, 0));',
-    '  background:linear-gradient(90deg, var(--m-glow), var(--m-soft), var(--m-glow)) 0 0 / 200% 100%; animation:amb-flow 4s linear infinite; }',
-    '@keyframes amb-flow { to { background-position:-200% 0; } }',
-
-    /* Lueur douce aux couleurs du moment, derrière le contenu (visible sur les fonds de page) */
-    '.amb-glow { position:fixed; inset:-20vmax; z-index:-1; pointer-events:none;',
-    '  background:radial-gradient(40vmax 30vmax at 85% 18%, color-mix(in srgb, var(--m-glow) 22%, transparent), transparent 70%), radial-gradient(36vmax 28vmax at 10% 85%, color-mix(in srgb, var(--m-glow) 12%, transparent), transparent 70%);',
-    '  animation:amb-drift 22s ease-in-out infinite alternate; }',
-    '@keyframes amb-drift { to { transform:translate(-6vmax, 5vmax) rotate(8deg); } }',
+    'html.amb-on { background:var(--sky-base); }',
+    'html.amb-on body { background:transparent !important; }',
+    '.amb-sky { position:fixed; inset:0; z-index:-1; pointer-events:none; overflow:hidden; background:var(--sky-base); }',
+    '.amb-sky i { position:absolute; width:95vmax; height:95vmax; border-radius:50%; will-change:transform; }',
+    '.amb-sky i:nth-child(1) { left:-35vmax; top:-40vmax; background:radial-gradient(closest-side, var(--sky-1), transparent); animation:amb-b1 24s ease-in-out infinite alternate; }',
+    '.amb-sky i:nth-child(2) { right:-40vmax; top:-5vmax; background:radial-gradient(closest-side, var(--sky-2), transparent); animation:amb-b2 30s ease-in-out infinite alternate; }',
+    '.amb-sky i:nth-child(3) { left:-15vmax; bottom:-50vmax; background:radial-gradient(closest-side, var(--sky-3), transparent); animation:amb-b3 36s ease-in-out infinite alternate; }',
+    '@keyframes amb-b1 { to { transform:translate(35vmax, 30vmax) scale(1.25); } }',
+    '@keyframes amb-b2 { to { transform:translate(-30vmax, 35vmax) scale(.85); } }',
+    '@keyframes amb-b3 { to { transform:translate(25vmax, -40vmax) scale(1.15); } }',
+    /* Pages à fond clair : même mouvement, en pastel, pour garder les textes lisibles */
+    'html.amb-on.amb-clair { background:#eef3fb; }',
+    '.amb-clair .amb-sky { background:#eef3fb; }',
+    '.amb-clair .amb-sky i { opacity:.45; }',
 
     /* Titre principal : arrive en glissant */
     'h1 { animation:amb-title .8s cubic-bezier(.2,.7,.2,1) both; }',
@@ -64,10 +63,10 @@
 
     /* Cartes cliquables : légère montée au survol */
     '@media (hover:hover) { .catalogue-grid > a, .hub-grid > a, .cards > article { transition:translate .25s ease, box-shadow .25s ease; }',
-    '  .catalogue-grid > a:hover, .hub-grid > a:hover, .cards > article:hover { translate:0 -4px; box-shadow:0 14px 30px color-mix(in srgb, var(--m-deep) 22%, transparent); } }',
+    '  .catalogue-grid > a:hover, .hub-grid > a:hover, .cards > article:hover { translate:0 -4px; box-shadow:0 14px 30px rgba(10,40,90,.22); } }',
 
-    '@media (prefers-reduced-motion: reduce) { :root { transition:none; } img.amb-logo, .amb-bar, .amb-glow, h1, .amb-in, .t3 > * { animation:none; } .catalogue-grid > a, .hub-grid > a, .cards > article { transition:none; } }',
-    '@media print { .amb-bar, .amb-glow { display:none; } .amb-wait { opacity:1; } }'
+    '@media (prefers-reduced-motion: reduce) { :root { transition:none; } .amb-sky i, h1, .amb-in, .t3 > * { animation:none; } .catalogue-grid > a, .hub-grid > a, .cards > article { transition:none; } }',
+    '@media print { .amb-sky { display:none; } html.amb-on, html.amb-on body { background:#fff !important; } .amb-wait { opacity:1; } }'
   ].join('\n');
   var style = document.createElement('style');
   style.id = 'ambiance-css';
@@ -76,42 +75,24 @@
 
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // Clarté du fond d'origine de la page (couleur, ou première couleur de son dégradé)
+  function isLight(el) {
+    var cs = getComputedStyle(el), c = cs.backgroundColor;
+    if (/rgba\(.*,\s*0\)$/.test(c) || c === 'transparent') c = (cs.backgroundImage.match(/rgba?\([^)]*\)|#[0-9a-f]{3,6}/i) || ['rgb(255,255,255)'])[0];
+    var m = c.match(/\d+(\.\d+)?/g);
+    if (!m) return true;
+    return 0.299 * m[0] + 0.587 * m[1] + 0.114 * m[2] > 140;
+  }
+
   function start() {
     var body = document.body;
-
-    // Logos : recoloriés en gardant le même fichier (il sert de masque)
-    var logos = document.querySelectorAll('img[src$="logo-mybestpair.webp"], img[src$="logo-mybestpair-marine.webp"]');
-    for (var i = 0; i < logos.length; i++) {
-      logos[i].style.setProperty('--amb-src', 'url("' + logos[i].src + '")');
-      logos[i].classList.add('amb-logo');
-      if (/marine/.test(logos[i].getAttribute('src'))) logos[i].classList.add('amb-marine');
-    }
-
-    // Bandeaux foncés en haut de page : lumière du moment dans le coin (ajoutée à leur ombre existante)
-    var heads = document.querySelectorAll('header.hero, .hero-copy');
-    for (var k = 0; k < heads.length; k++) {
-      var shadow = getComputedStyle(heads[k]).boxShadow;
-      heads[k].style.boxShadow = 'inset -70px 70px 140px -50px color-mix(in srgb, var(--m-glow) 45%, transparent)' + (shadow && shadow !== 'none' ? ', ' + shadow : '');
-    }
-
-    var glow = document.createElement('div');
-    glow.className = 'amb-glow';
-    glow.setAttribute('aria-hidden', 'true');
-    body.insertBefore(glow, body.firstChild);
-
-    var bar = document.createElement('div');
-    bar.className = 'amb-bar';
-    bar.setAttribute('aria-hidden', 'true');
-    body.appendChild(bar);
-    var ticking = false;
-    function progress() {
-      ticking = false;
-      var max = document.documentElement.scrollHeight - window.innerHeight;
-      bar.style.setProperty('--amb-progress', max > 0 ? Math.min(1, window.scrollY / max).toFixed(4) : 0);
-    }
-    window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(progress); } }, { passive: true });
-    window.addEventListener('resize', progress);
-    progress();
+    if (isLight(body)) root.classList.add('amb-clair');
+    var sky = document.createElement('div');
+    sky.className = 'amb-sky';
+    sky.setAttribute('aria-hidden', 'true');
+    sky.innerHTML = '<i></i><i></i><i></i>';
+    body.insertBefore(sky, body.firstChild);
+    root.classList.add('amb-on');
 
     if (reduce || !('IntersectionObserver' in window)) return;
 
@@ -122,8 +103,7 @@
     for (var j = 0; j < found.length; j++) {
       var el = found[j];
       if (el.closest(SKIP) || el.querySelector('input, select, textarea')) continue;
-      var top = el.getBoundingClientRect().top;
-      if (top <= limit || !el.offsetParent) continue;
+      if (el.getBoundingClientRect().top <= limit || !el.offsetParent) continue;
       el.classList.add('amb-wait');
       targets.push(el);
     }
