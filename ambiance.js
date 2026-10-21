@@ -6,6 +6,8 @@
    - sur ordinateur, curseur rond qui grossit sur les éléments cliquables (« Voir » sur les cartes) ;
    - Top 3 : cartes l'une après l'autre.
    Les animations sont coupées si le visiteur a demandé à les réduire.
+   - pages des sports : photo d'en-tête découverte à travers le monogramme, bandeau des critères qui défile (styles dans ui.css) ;
+   - fiches : barres de notes qui se remplissent (styles dans modeles.css).
    Les effets propres à l'accueil (ouverture, bandeau, monogramme) sont dans index.html. */
 (function () {
   var root = document.documentElement;
@@ -26,6 +28,7 @@
     /* Titres */
     'html.amb-on:not(.amb-pret) h1 { opacity:0; }',
     'html.amb-on h1 { font-family:"Archivo","Arial Narrow",Arial,sans-serif; font-weight:900; font-variation-settings:"wdth" 64; font-stretch:64%; text-transform:uppercase; letter-spacing:0; line-height:.9; }',
+    'html.amb-on h1.amb-long { font-size:clamp(2.3rem, 6.4vw, 4rem) !important; line-height:.92; max-width:22ch; }',
     'amb-ln { display:block; overflow:hidden; padding:.08em 0 .06em; margin:-.08em 0 -.06em; }',
     'amb-li { display:block; transform:translateY(110%); transition:transform 1s ' + OUT + '; }',
     '.amb-up amb-li { transform:none; }',
@@ -92,6 +95,8 @@
     // Titres principaux
     var titles = document.querySelectorAll('h1');
     for (var i = 0; i < titles.length; i++) {
+      // Titres longs (Black Friday, guides, comparatifs) : un peu plus petits pour rester lisibles
+      if (titles[i].textContent.replace(/\s+/g, ' ').trim().length > 48) titles[i].classList.add('amb-long');
       splitTitle(titles[i]);
       if (reduce) titles[i].classList.add('amb-up');
     }
@@ -127,6 +132,50 @@
         c.style.transform = 'translate(' + x + 'px,' + y + 'px)';
         requestAnimationFrame(loop);
       })();
+    }
+
+    // Pages des sports : photo d'en-tête découverte à travers le monogramme, bandeau des critères qui défile
+    var heroPhoto = document.querySelector('header.hero > .hero-photo');
+    if (heroPhoto) {
+      var me = document.querySelector('script[src$="ambiance.js"]');
+      var base = me ? me.getAttribute('src').replace(/ambiance\.js$/, '') : '';
+      if (!reduce) {
+        var hole = document.createElement('span');
+        hole.className = 'hole';
+        hole.setAttribute('aria-hidden', 'true');
+        heroPhoto.appendChild(hole);
+        setTimeout(function () { heroPhoto.classList.add('open'); }, 350);
+      }
+      var words = [];
+      document.querySelectorAll('#priority1 option, [data-key="priorite1"] .option').forEach(function (o) { if (o.textContent.trim()) words.push(o.textContent.trim()); });
+      if (words.length < 4) {
+        var kick = document.querySelector('.hero-kicker');
+        if (kick) words.push(kick.textContent.trim());
+        document.querySelectorAll('.hero-chip').forEach(function (c) { words.push(c.textContent.trim()); });
+      }
+      var band = document.createElement('div'), track = document.createElement('div');
+      band.className = 'sport-marq';
+      band.setAttribute('aria-hidden', 'true');
+      for (var r = 0; r < 2; r++) words.forEach(function (wd) {
+        var sp = document.createElement('span'), im = document.createElement('img');
+        sp.textContent = wd;
+        im.src = base + 'images/horloge/monogramme.webp';
+        im.alt = '';
+        track.appendChild(sp);
+        track.appendChild(im);
+      });
+      band.appendChild(track);
+      heroPhoto.parentNode.insertAdjacentElement('afterend', band);
+    }
+
+    // Fiches : les barres de notes se remplissent quand elles arrivent à l'écran
+    var scores = document.querySelectorAll('.scores');
+    if (reduce || !('IntersectionObserver' in window)) scores.forEach(function (sc) { sc.classList.add('amb-fill'); });
+    else {
+      var so = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('amb-fill'); so.unobserve(e.target); } });
+      }, { threshold: 0.3 });
+      scores.forEach(function (sc) { so.observe(sc); });
     }
 
     if (reduce || !('IntersectionObserver' in window)) return;
