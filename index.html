@@ -20,6 +20,16 @@
   <meta name="description" content="MyBestPair analyse ton profil pour te recommander les chaussures de sport adaptées à ta pratique, ton budget et tes priorités : running, trail, basket, padel, rugby et foot.">
   <link rel="canonical" href="https://mybestpair.fr/">
   <link rel="icon" type="image/png" href="favicon.png">
+  <script src="ambiance.js"></script>
+  <script>
+    // Ouverture façon boutique (monogramme puis photo), une seule fois par visite
+    try {
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches && !sessionStorage.getItem('mbp-ouverture')) {
+        document.documentElement.classList.add('amb-ouverture');
+        sessionStorage.setItem('mbp-ouverture', '1');
+      }
+    } catch (e) {}
+  </script>
 
   <!-- Google Analytics : chargé uniquement après consentement -->
   <script>
@@ -649,11 +659,164 @@
     .bf-banner em { font-style:normal; font-weight:800; color:#ffb489; }
     .bf-banner:hover em { text-decoration:underline; }
     @media(max-width:900px) { .hub-grid { grid-template-columns:1fr; } }
+    /* ===== Accueil façon boutique.mybestpair.fr : grandes photos, gros titres posés dessus, numéros, peu de listes ===== */
+    /* Ouverture : le monogramme s'écrit, devient une fenêtre sur le site, puis on entre dedans */
+    .mbp-open { position:fixed; inset:0; z-index:2147483100; cursor:pointer; }
+    .mbp-open .cover { position:absolute; inset:0; background:#051b3f; }
+    .mbp-open .cover.hole { -webkit-mask:url(images/horloge/monogramme.webp) no-repeat, linear-gradient(#000 0 0); -webkit-mask-composite:xor; mask:url(images/horloge/monogramme.webp) no-repeat exclude, linear-gradient(#000 0 0); }
+    .mbp-open .sig, .mbp-open .wm { position:absolute; display:block; height:auto; }
+    .mbp-open .sig { clip-path:inset(0 100% 0 0); }
+    .mbp-open .wm { opacity:0; }
+    .mbp-open .skip { position:absolute; left:50%; top:calc(env(safe-area-inset-top,0px) + 24px); transform:translateX(-50%); font:700 11px Arial, sans-serif; letter-spacing:.16em; text-transform:uppercase; color:#8fa6cc; white-space:nowrap; transition:opacity .3s; }
+    html.amb-ouverture { overflow:hidden; }
+    html.amb-ouverture .hero-art, html.amb-ouverture .hero-art * { animation-play-state:paused !important; }
+
+    /* Grands titres de section, alignés à gauche, comme la boutique */
+    .section-title, .how-title, .models-hub > h2, .info-section > h2 { font-family:"Archivo","Arial Narrow",Arial,sans-serif; font-weight:900; font-variation-settings:"wdth" 64; font-stretch:64%; text-transform:uppercase; letter-spacing:0; line-height:.86; font-size:clamp(46px,8vw,104px); text-align:left; }
+    .section-title { display:block; margin:9vh 0 26px; }
+    .section-title::before, .section-title::after { display:none; }
+    .kicker { display:block; margin-bottom:14px; font:700 11px Arial, sans-serif; letter-spacing:.18em; text-transform:uppercase; color:#8fbaff; }
+
+    /* Bandeau qui défile */
+    .marq { overflow:hidden; border-block:1px solid rgba(255,255,255,.14); width:100vw; margin:6px 0 26px calc(50% - 50vw); padding:16px 0; }
+    .marq-tr { display:flex; width:max-content; align-items:center; gap:30px; animation:marq 32s linear infinite; }
+    .marq-tr span { font-family:"Archivo","Arial Narrow",Arial,sans-serif; font-weight:900; font-variation-settings:"wdth" 64; font-stretch:64%; text-transform:uppercase; font-size:34px; line-height:1; white-space:nowrap; }
+    .marq-tr span:nth-of-type(even) { color:transparent; -webkit-text-stroke:1px rgba(255,255,255,.75); }
+    .marq-tr img { height:24px; width:auto; opacity:.9; }
+    @keyframes marq { to { transform:translateX(-50%); } }
+
+    /* Les 6 sports : grands panneaux photo, numéro, flèche, nom du sport en très gros */
+    .cards { gap:18px; counter-reset:sport; }
+    .card { position:relative; counter-increment:sport; display:flex; flex-direction:column; justify-content:flex-end; min-height:560px; border:0; border-radius:18px; background:#000; isolation:isolate; box-shadow:none; }
+    .card:hover { transform:none; box-shadow:none; }
+    .card .card-image { position:absolute; inset:0; height:auto; z-index:-1; overflow:hidden; transition:transform 1.2s cubic-bezier(.16,1,.3,1); }
+    .card:hover .card-image { transform:scale(1.05); }
+    .card .card-image::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(4,14,34,.45), rgba(4,14,34,0) 26%, rgba(4,14,34,.35) 48%, rgba(4,14,34,.94) 78%); }
+    .card::before { content:"0" counter(sport); position:absolute; left:24px; top:22px; z-index:2; font:700 12px Arial, sans-serif; letter-spacing:.18em; color:#fff; }
+    .card::after { content:"→"; position:absolute; right:20px; top:16px; z-index:2; width:46px; height:46px; border-radius:50%; border:1px solid rgba(255,255,255,.55); display:grid; place-items:center; color:#fff; font-size:18px; transition:background-color .4s, border-color .4s, transform .5s cubic-bezier(.16,1,.3,1); }
+    .card:hover::after { background:#1681ff; border-color:#1681ff; transform:rotate(-45deg); }
+    .card-body { position:relative; padding:24px; }
+    .card h2 { margin:0 0 12px; font-family:"Archivo","Arial Narrow",Arial,sans-serif; font-weight:900; font-variation-settings:"wdth" 64; font-stretch:64%; text-transform:uppercase; letter-spacing:0; font-size:min(84px,15vw); line-height:.84; overflow-wrap:anywhere; }
+    @media (min-width:901px) { .card h2 { font-size:clamp(46px,4.4vw,70px); } }
+    .card h2 .mini-icon { display:none; }
+    .card p { min-height:0; margin:0 0 14px; color:#e3eaf6; font-size:15px; }
+    .card .facts { display:flex; flex-wrap:wrap; gap:6px 16px; margin:0 0 18px; }
+    .card .fact { font:700 11px/1.3 Arial, sans-serif; letter-spacing:.12em; text-transform:uppercase; color:#cfe0ff; }
+    .card .check { display:none; }
+    .card .cta { display:inline-flex; width:auto; border-radius:999px; padding:14px 22px; }
+    .card .card-models { text-align:left; margin-top:12px; }
+    /* On découvre d'abord la photo à travers le monogramme, puis l'ouverture s'agrandit */
+    .card-image .hole { position:absolute; inset:0; z-index:1; background:#061633; pointer-events:none;
+      -webkit-mask:url(images/horloge/monogramme.webp) 43.7% 40% / 62% auto no-repeat, linear-gradient(#000 0 0); -webkit-mask-composite:xor;
+      mask:url(images/horloge/monogramme.webp) 43.7% 40% / 62% auto no-repeat exclude, linear-gradient(#000 0 0);
+      transition:-webkit-mask-size 1.3s cubic-bezier(.7,0,.2,1), mask-size 1.3s cubic-bezier(.7,0,.2,1), opacity .5s .8s; }
+    .card-image.open .hole { -webkit-mask-size:3200% auto, 100% 100%; mask-size:3200% auto, 100% 100%; opacity:0; }
+
+    /* Phrase qui s'allume mot à mot au défilement */
+    .manif { padding:14vh 0 12vh; }
+    .manif p { margin:0; max-width:17ch; font-family:"Archivo","Arial Narrow",Arial,sans-serif; font-weight:800; font-variation-settings:"wdth" 82; font-stretch:82%; text-transform:uppercase; font-size:clamp(38px,6.4vw,84px); line-height:1.02; }
+    .manif .w { opacity:.14; transition:opacity .25s; }
+    .manif .w.lit { opacity:1; }
+    .manif .w.acc.lit { color:var(--blue); }
+
+    /* Fiches modèles : liste éditoriale, nom du sport en gros */
+    .models-hub { margin:0; padding:10vh 0 4vh; border:0; border-top:1px solid rgba(255,255,255,.14); border-radius:0; background:none; }
+    .models-hub > p { max-width:52ch; font-size:16px; margin:16px 0 34px; }
+    .hub-grid { gap:0 28px; }
+    .hub-col { border:0; border-top:1px solid rgba(255,255,255,.18); border-radius:0; background:none; padding:20px 0 26px; }
+    .hub-col h3 { margin:0 0 14px; }
+    .hub-col h3 a { font-family:"Archivo","Arial Narrow",Arial,sans-serif; font-weight:900; font-variation-settings:"wdth" 64; font-stretch:64%; text-transform:uppercase; font-size:40px; line-height:.9; }
+    .hub-col h3 .ico { display:none; }
+    .hub-all { color:#8fbaff; }
+
+    /* Comment ça marche : gros numéros en contour */
+    .how { margin:0; padding:10vh 0 6vh; border:0; border-top:1px solid rgba(255,255,255,.14); border-radius:0; background:none; }
+    .how-title { margin:0 0 40px; }
+    .steps { gap:0 28px; }
+    .step { text-align:left; border-top:1px solid rgba(255,255,255,.18); padding-top:18px; }
+    .step::after { display:none !important; }
+    .step-num { width:auto; height:auto; margin:0 0 10px; border-radius:0; background:none; display:block; font-family:"Archivo","Arial Narrow",Arial,sans-serif; font-weight:900; font-variation-settings:"wdth" 64; font-stretch:64%; font-size:76px; line-height:.9; color:transparent; -webkit-text-stroke:1px rgba(255,255,255,.8); }
+    .step-num::before { content:"0"; }
+    .step-icon { display:none; }
+    .step strong { font-family:"Archivo","Arial Narrow",Arial,sans-serif; font-weight:900; font-variation-settings:"wdth" 64; font-stretch:64%; font-size:30px; line-height:.95; }
+    .step p { margin:0; max-width:32ch; font-size:14px; }
+
+    /* À propos : titre, phrase d'accroche en gros, texte sur deux colonnes */
+    .info-section { margin:0; padding:10vh 0 6vh; border:0; border-top:1px solid rgba(255,255,255,.14); border-radius:0; background:none; columns:2 340px; column-gap:5vw; }
+    .info-section > h2 { column-span:all; margin:0 0 24px; }
+    .info-section > p:first-of-type { column-span:all; max-width:24ch; margin:0 0 30px; font-family:"Archivo","Arial Narrow",Arial,sans-serif; font-weight:800; font-variation-settings:"wdth" 82; font-stretch:82%; text-transform:uppercase; font-size:clamp(28px,3.8vw,48px); line-height:1.04; color:#fff; }
+    .info-section p { font-size:15px; break-inside:avoid; }
+
+    @media (max-width:900px) { .card { min-height:520px; } }
+    @media (prefers-reduced-motion: reduce) {
+      .marq-tr { animation:none; }
+      .card-image .hole { display:none; }
+      .manif .w { opacity:1; }
+      .card .card-image, .card::after { transition:none; }
+    }
 </style>
   <link rel="stylesheet" href="ui.css">
 </head>
 
 <body>
+  <script>
+    // Ouverture : le monogramme s'écrit, devient une fenêtre sur le site, puis on entre dedans
+    (function () {
+      var root = document.documentElement;
+      if (!root.classList.contains('amb-ouverture')) return;
+      var AR = 343 / 160, INNER = 0.0351, U = 0.437, V = 0.487;
+      var o = document.createElement('div'), w = innerWidth, h = innerHeight;
+      var b = Math.min(w * 0.62, 520), cy = h * 0.44, C = Math.hypot(w, h) / 2 / INNER * 1.15, T = 0, done = false, entered = false;
+      o.className = 'mbp-open';
+      o.setAttribute('aria-hidden', 'true');
+      o.innerHTML = '<div class="cover"></div><span class="skip">Toucher pour passer</span><img class="sig" src="images/horloge/monogramme.webp" alt=""><img class="wm" src="images/horloge/mybestpair.webp" alt="">';
+      document.body.appendChild(o);
+      var cover = o.querySelector('.cover'), sig = o.querySelector('.sig'), wm = o.querySelector('.wm'), skip = o.querySelector('.skip');
+      Object.assign(sig.style, { left: (w / 2 - b / 2) + 'px', top: (cy - b / AR / 2) + 'px', width: b + 'px' });
+      Object.assign(wm.style, { left: (w / 2 - b * 0.7) + 'px', top: (cy + b / AR / 2 + 22) + 'px', width: (b * 1.4) + 'px' });
+      function holeAt(W, fx, fy) {
+        var H = W / AR;
+        cover.style.webkitMaskSize = cover.style.maskSize = W + 'px ' + H + 'px, 100% 100%';
+        cover.style.webkitMaskPosition = cover.style.maskPosition = (w / 2 - fx * W) + 'px ' + (cy - fy * H) + 'px, 0 0';
+      }
+      function enter() {
+        if (entered) return;
+        entered = true;
+        root.classList.remove('amb-ouverture');
+        if (window.ambTitles) window.ambTitles();
+      }
+      function finish() {
+        if (done) return;
+        done = true;
+        enter();
+        o.remove();
+      }
+      o.addEventListener('click', finish);
+      addEventListener('keydown', finish, { once: true });
+      var eo = function (t) { return 1 - Math.pow(1 - t, 3); };
+      var io = function (t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; };
+      function frame(t) {
+        if (done) return;
+        if (!T) T = t;
+        var e = t - T;
+        sig.style.clipPath = 'inset(0 ' + (100 - 100 * eo(Math.min(1, e / 1000))) + '% 0 0)';
+        wm.style.opacity = Math.min(1, Math.max(0, (e - 500) / 350)) * (1 - Math.min(1, Math.max(0, (e - 1250) / 250)));
+        if (e >= 1150) {
+          // Le monogramme devient un trou dans le voile : on voit le site au travers
+          if (!cover.classList.contains('hole')) { cover.classList.add('hole'); holeAt(b, 0.5, 0.5); skip.style.opacity = 0; }
+          sig.style.opacity = 1 - Math.min(1, (e - 1150) / 400);
+        }
+        if (e >= 1650) {
+          enter();
+          var z = Math.min(1, (e - 1650) / 1300), ze = io(z), W = b * Math.exp(Math.log(C / b) * ze), k = Math.min(1, z / 0.3);
+          holeAt(W, 0.5 + (U - 0.5) * k, 0.5 + (V - 0.5) * k);
+          if (z >= 1) { finish(); return; }
+        }
+        requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+    })();
+  </script>
   <div class="page">
 
     <div class="topbar">
@@ -715,9 +878,11 @@
       </script>
     </section>
 
+    <div class="marq" aria-hidden="true"><div class="marq-tr" id="marq"></div></div>
+
     <a class="bf-banner" href="black-friday/"><strong>Black Friday 2026 · 27 novembre</strong><span>Les chaussures à surveiller et comment repérer une vraie promo</span><em>Voir la page →</em></a>
 
-    <div class="section-title">Choisis ton univers</div>
+    <div class="section-title"><span class="kicker">6 sports · 234 modèles</span>Choisis ton univers</div>
 
     <section class="cards">
 
@@ -824,6 +989,8 @@
       </article>
 
     </section>
+
+    <section class="manif" aria-label="Notre principe"><p id="manp">Pas de classement acheté. Pas de pub déguisée. Tu réponds, on compare, tu trouves ta meilleure paire.</p></section>
 
     <section id="fiches-modeles" class="models-hub">
       <h2>Fiches modèles</h2>
@@ -1068,6 +1235,49 @@
         banner.classList.add('show');
       }
       if (location.hash === '#cookies') banner.classList.add('show');
+    })();
+  </script>
+  <script>
+    // Effets façon boutique : bandeau, photos des cartes à travers le monogramme, phrase mot à mot
+    (function () {
+      var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var one = ['Basket', 'Route', 'Trail', 'Padel', 'Rugby', 'Foot', 'Trouve ta paire'].map(function (t) {
+        return '<span>' + t + '</span><img src="images/horloge/monogramme.webp" alt="">';
+      }).join('');
+      document.getElementById('marq').innerHTML = one + one;
+
+      var imgs = document.querySelectorAll('.card-image');
+      if (!reduce && 'IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (es) {
+          es.forEach(function (e) {
+            if (!e.isIntersecting) return;
+            io.unobserve(e.target);
+            setTimeout(function () { e.target.classList.add('open'); }, 350);
+          });
+        }, { threshold: 0.6 });
+        imgs.forEach(function (im) {
+          var hole = document.createElement('span');
+          hole.className = 'hole';
+          hole.setAttribute('aria-hidden', 'true');
+          im.appendChild(hole);
+          io.observe(im);
+        });
+      }
+
+      var p = document.getElementById('manp'), acc = ['acheté.', 'déguisée.', 'paire.'];
+      p.innerHTML = p.textContent.split(' ').map(function (wd) {
+        return '<span class="w' + (acc.indexOf(wd) > -1 ? ' acc' : '') + '">' + wd + '</span>';
+      }).join(' ');
+      var ws = p.querySelectorAll('.w'), sec = p.parentNode, ticking = false;
+      function light() {
+        ticking = false;
+        var r = sec.getBoundingClientRect();
+        var k = Math.min(1, Math.max(0, (innerHeight * 0.85 - r.top) / (r.height * 0.9)));
+        var n = Math.round(k * ws.length);
+        for (var i = 0; i < ws.length; i++) ws[i].classList.toggle('lit', reduce || i < n);
+      }
+      addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(light); } }, { passive: true });
+      light();
     })();
   </script>
 </body>
