@@ -154,6 +154,7 @@ def render(c, shoes):
   {article}
   {faq}
   <script src="{root}analytics-consent.js"></script>
+  <script src="{root}ambiance.js"></script>
   <link rel="stylesheet" href="{root}modeles.css">
   <style>
 {CSS}  </style>
