@@ -165,34 +165,89 @@
       aspect-ratio:1;
       margin:8px auto 18px;
     }
-    /* Horloge des 6 sports : cadran, logo au centre, chaussures en médaillons */
+    /* Horloge des 6 sports : cadran, logo au centre, chaussures en médaillons.
+       Les couleurs suivent le moment de la journée (heure du visiteur), d'après la planche de couleurs du logo :
+       le script placé après l'horloge choisit data-moment et la position de la lumière (--sun-x, --sun-y). */
+    @property --dial-a { syntax:'<color>'; inherits:true; initial-value:#12407f; }
+    @property --dial-b { syntax:'<color>'; inherits:true; initial-value:#071d45; }
+    @property --logo { syntax:'<color>'; inherits:true; initial-value:#ffffff; }
+    @property --sub { syntax:'<color>'; inherits:true; initial-value:#8fbaff; }
+    @property --accent { syntax:'<color>'; inherits:true; initial-value:#1f7cff; }
+    @property --accent-ink { syntax:'<color>'; inherits:true; initial-value:#ffffff; }
+    @property --sun-x { syntax:'<percentage>'; inherits:true; initial-value:50%; }
+    @property --sun-y { syntax:'<percentage>'; inherits:true; initial-value:40%; }
+    .hero-art {
+      /* Soir (21 h – minuit) et affichage sans JavaScript : bleu nuit d'origine */
+      --dial-a:#12407f; --dial-b:#071d45; --logo:#fff; --sub:#8fbaff; --accent:#1f7cff; --accent-ink:#fff;
+      transition:--dial-a 3s ease, --dial-b 3s ease, --logo 3s ease, --sub 3s ease, --accent 3s ease, --accent-ink 3s ease, --sun-x 3s ease, --sun-y 3s ease;
+    }
+    .hero-art[data-moment="nuit"]           { --dial-a:#1e1f1c; --dial-b:#050505; --logo:#d9f23e; --sub:#d9f23e; --accent:#d9f23e; --accent-ink:#0b0b0b; } /* 0 h – 6 h */
+    .hero-art[data-moment="aube"]           { --dial-a:#e4eff9; --dial-b:#b7d0e6; --logo:#0b2545; --sub:#0b2545; --accent:#0b2545; --accent-ink:#fff; }    /* 6 h – 9 h */
+    .hero-art[data-moment="matin"]          { --dial-a:#ffffff; --dial-b:#e3e9f2; --logo:#0b55d9; --sub:#0b55d9; --accent:#0b55d9; --accent-ink:#fff; }    /* 9 h – 12 h */
+    .hero-art[data-moment="midi"]           { --dial-a:#ffffff; --dial-b:#f1e9e2; --logo:#c8461e; --sub:#c8461e; --accent:#c8461e; --accent-ink:#fff; }    /* 12 h – 14 h */
+    .hero-art[data-moment="apres-midi"]     { --dial-a:#6f8472; --dial-b:#4a5c4d; --logo:#f4f0e8; --sub:#e2eadc; --accent:#4a5c4d; --accent-ink:#fff; }    /* 14 h – 17 h */
+    .hero-art[data-moment="fin-de-journee"] { --dial-a:#ebe5de; --dial-b:#cbc2b7; --logo:#2f3b24; --sub:#2f3b24; --accent:#2f3b24; --accent-ink:#fff; }    /* 17 h – 19 h */
+    .hero-art[data-moment="crepuscule"]     { --dial-a:#b29aa5; --dial-b:#7e6371; --logo:#fbf6f2; --sub:#f6e9ef; --accent:#7a5f6c; --accent-ink:#fff; }    /* 19 h – 21 h */
     .clock-dial {
       position:absolute; inset:13%;
       border-radius:50%;
-      background:radial-gradient(circle at 50% 40%, #12407f 0%, #0a2a5c 55%, #071d45 100%);
+      background:radial-gradient(circle at var(--sun-x) var(--sun-y), color-mix(in srgb, var(--dial-a), #fff 14%) 0%, var(--dial-a) 32%, var(--dial-b) 100%);
       box-shadow:0 0 0 2px rgba(255,255,255,.14), 0 0 0 16px rgba(255,255,255,.04), 0 30px 60px rgba(0,0,0,.35);
+      animation:mbp-dial .9s cubic-bezier(.2,.7,.2,1) both;
+    }
+    /* Reflet qui fait le tour du bord du cadran (ni graduation ni aiguille) */
+    .clock-dial::after {
+      content:""; position:absolute; inset:0; border-radius:50%;
+      background:conic-gradient(from 0deg, transparent 0 78%, color-mix(in srgb, var(--logo) 55%, transparent) 97%, transparent 100%);
+      -webkit-mask:radial-gradient(closest-side, transparent 95%, #000 96%, #000 99%, transparent 100%);
+      mask:radial-gradient(closest-side, transparent 95%, #000 96%, #000 99%, transparent 100%);
+      animation:mbp-sweep 16s linear 1.6s infinite both;
     }
     .clock-center { position:absolute; left:50%; top:50%; width:34%; transform:translate(-50%,-50%); display:flex; flex-direction:column; align-items:center; gap:10px; text-align:center; }
-    .clock-center .mono { display:block; width:62%; height:auto; }
-    .clock-center .word { display:block; width:100%; height:auto; }
-    .clock-center span { display:block; font-size:12px; font-weight:800; letter-spacing:.18em; text-transform:uppercase; color:#8fbaff; }
+    /* Monogramme et nom recoloriés selon le moment : les images servent de masque */
+    .clock-center .mono, .clock-center .word {
+      display:block; height:auto; background:var(--logo);
+      -webkit-mask:var(--src) center / contain no-repeat; mask:var(--src) center / contain no-repeat;
+    }
+    .clock-center .mono { --src:url(images/horloge/monogramme.webp); width:62%; aspect-ratio:343/160; animation:mbp-write 1.3s cubic-bezier(.65,0,.35,1) .45s both; }
+    .clock-center .word { --src:url(images/horloge/mybestpair.webp); width:100%; aspect-ratio:545/42; animation:mbp-word .8s cubic-bezier(.2,.7,.2,1) 1.35s both; }
+    .clock-center span { display:block; font-size:12px; font-weight:800; letter-spacing:.18em; text-transform:uppercase; color:var(--sub); animation:mbp-rise .6s ease 1.8s both; }
     .clock-sport {
       position:absolute; width:24%; aspect-ratio:1;
       transform:translate(-50%,-50%);
       border-radius:50%; background:#fff;
       display:flex; align-items:center; justify-content:center;
-      box-shadow:0 0 0 4px rgba(31,124,255,.55), 0 12px 26px rgba(0,0,0,.35);
+      box-shadow:0 0 0 4px color-mix(in srgb, var(--accent) 55%, transparent), 0 12px 26px rgba(0,0,0,.35);
       text-decoration:none;
       transition:transform .2s ease, box-shadow .2s ease;
+      animation:mbp-pop .55s cubic-bezier(.34,1.56,.64,1) .3s backwards;
     }
+    .clock-sport:nth-of-type(2) { animation-delay:.38s; }
+    .clock-sport:nth-of-type(3) { animation-delay:.46s; }
+    .clock-sport:nth-of-type(4) { animation-delay:.54s; }
+    .clock-sport:nth-of-type(5) { animation-delay:.62s; }
+    .clock-sport:nth-of-type(6) { animation-delay:.7s; }
     .clock-sport img { width:80%; height:auto; border-radius:50%; }
     .clock-sport span {
       position:absolute; left:50%; bottom:-12px; transform:translateX(-50%);
-      background:#1f7cff; color:#fff; font-size:11px; font-weight:800; letter-spacing:.08em; text-transform:uppercase;
+      background:var(--accent); color:var(--accent-ink); font-size:11px; font-weight:800; letter-spacing:.08em; text-transform:uppercase;
       padding:3px 9px; border-radius:999px; white-space:nowrap;
     }
-    .clock-sport:hover, .clock-sport:focus-visible { transform:translate(-50%,-50%) scale(1.07); box-shadow:0 0 0 4px #1f7cff, 0 16px 30px rgba(0,0,0,.4); }
-    @media (prefers-reduced-motion: reduce) { .clock-sport { transition:none; } }
+    .clock-sport:hover, .clock-sport:focus-visible { transform:translate(-50%,-50%) scale(1.07); box-shadow:0 0 0 4px var(--accent), 0 16px 30px rgba(0,0,0,.4); }
+    /* Étiquettes foncées : liseré clair pour rester lisibles sur le fond bleu nuit de la page */
+    .hero-art[data-moment]:not([data-moment="soir"]):not([data-moment="nuit"]) .clock-sport span { box-shadow:0 0 0 1.5px rgba(255,255,255,.4); }
+    @keyframes mbp-dial { from { opacity:0; transform:scale(.9); } to { opacity:1; transform:none; } }
+    @keyframes mbp-sweep { to { transform:rotate(1turn); } }
+    /* Le monogramme « s'écrit » de gauche à droite, avec un bord penché comme l'écriture */
+    @keyframes mbp-write { from { clip-path:polygon(0 0, 0 0, -30% 100%, -30% 100%); } to { clip-path:polygon(0 0, 130% 0, 100% 100%, 0 100%); } }
+    @keyframes mbp-word { from { opacity:0; clip-path:inset(0 50%); } to { opacity:1; clip-path:inset(0 0); } }
+    @keyframes mbp-rise { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:none; } }
+    @keyframes mbp-pop { from { opacity:0; transform:translate(-50%,-50%) scale(.5); } }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-art { transition:none; }
+      .clock-sport { transition:none; }
+      .clock-dial, .clock-dial::after, .clock-center .mono, .clock-center .word, .clock-center span, .clock-sport { animation:none; }
+    }
 
     .section-title {
       display:flex;
@@ -638,7 +693,26 @@
         </div>
       </div>
 
-      <div class="hero-art"><div class="clock-dial" aria-hidden="true"></div><div class="clock-center" aria-hidden="true"><img class="mono" src="images/horloge/monogramme.webp" alt="" width="343" height="160"><img class="word" src="images/horloge/mybestpair.webp" alt="" width="545" height="42"><span>6 sports</span></div><a class="clock-sport" href="basket/" style="left:50.00%;top:16.00%" aria-label="Basket : trouver ma paire"><img src="images/horloge/basket.webp" alt="" width="320" height="320" decoding="async"><span>Basket</span></a><a class="clock-sport" href="running/route/" style="left:79.44%;top:33.00%" aria-label="Route : trouver ma paire"><img src="images/horloge/route.webp" alt="" width="320" height="320" decoding="async"><span>Route</span></a><a class="clock-sport" href="running/trail/" style="left:79.44%;top:67.00%" aria-label="Trail : trouver ma paire"><img src="images/horloge/trail.webp" alt="" width="320" height="320" decoding="async"><span>Trail</span></a><a class="clock-sport" href="padel/" style="left:50.00%;top:84.00%" aria-label="Padel : trouver ma paire"><img src="images/horloge/padel.webp" alt="" width="320" height="320" decoding="async"><span>Padel</span></a><a class="clock-sport" href="rugby/" style="left:20.56%;top:67.00%" aria-label="Rugby : trouver ma paire"><img src="images/horloge/rugby.webp" alt="" width="320" height="320" decoding="async"><span>Rugby</span></a><a class="clock-sport" href="foot/" style="left:20.56%;top:33.00%" aria-label="Foot : trouver ma paire"><img src="images/horloge/foot.webp" alt="" width="320" height="320" decoding="async"><span>Foot</span></a></div>
+      <div class="hero-art"><div class="clock-dial" aria-hidden="true"></div><div class="clock-center" aria-hidden="true"><i class="mono"></i><i class="word"></i><span>6 sports</span></div><a class="clock-sport" href="basket/" style="left:50.00%;top:16.00%" aria-label="Basket : trouver ma paire"><img src="images/horloge/basket.webp" alt="" width="320" height="320" decoding="async"><span>Basket</span></a><a class="clock-sport" href="running/route/" style="left:79.44%;top:33.00%" aria-label="Route : trouver ma paire"><img src="images/horloge/route.webp" alt="" width="320" height="320" decoding="async"><span>Route</span></a><a class="clock-sport" href="running/trail/" style="left:79.44%;top:67.00%" aria-label="Trail : trouver ma paire"><img src="images/horloge/trail.webp" alt="" width="320" height="320" decoding="async"><span>Trail</span></a><a class="clock-sport" href="padel/" style="left:50.00%;top:84.00%" aria-label="Padel : trouver ma paire"><img src="images/horloge/padel.webp" alt="" width="320" height="320" decoding="async"><span>Padel</span></a><a class="clock-sport" href="rugby/" style="left:20.56%;top:67.00%" aria-label="Rugby : trouver ma paire"><img src="images/horloge/rugby.webp" alt="" width="320" height="320" decoding="async"><span>Rugby</span></a><a class="clock-sport" href="foot/" style="left:20.56%;top:33.00%" aria-label="Foot : trouver ma paire"><img src="images/horloge/foot.webp" alt="" width="320" height="320" decoding="async"><span>Foot</span></a></div>
+      <script>
+        // Horloge : couleurs selon le moment de la journée (heure du visiteur), mises à jour chaque minute
+        (function () {
+          var art = document.querySelector('.hero-art');
+          if (!art) return;
+          var MOMENTS = [[6, 'nuit'], [9, 'aube'], [12, 'matin'], [14, 'midi'], [17, 'apres-midi'], [19, 'fin-de-journee'], [21, 'crepuscule'], [24, 'soir']];
+          function update() {
+            var d = new Date(), h = d.getHours() + d.getMinutes() / 60, i = 0;
+            while (h >= MOMENTS[i][0]) i++;
+            art.setAttribute('data-moment', MOMENTS[i][1]);
+            // Lumière du cadran : se lève à gauche vers 6 h, culmine vers 13 h, se couche à droite vers 20 h ; la nuit, même course
+            var t = h >= 6 && h < 20 ? (h - 6) / 14 : ((h + 4) % 24) / 10;
+            art.style.setProperty('--sun-x', (18 + 64 * t).toFixed(1) + '%');
+            art.style.setProperty('--sun-y', (70 - 160 * t * (1 - t)).toFixed(1) + '%');
+          }
+          update();
+          setInterval(update, 60000);
+        })();
+      </script>
     </section>
 
     <a class="bf-banner" href="black-friday/"><strong>Black Friday 2026 · 27 novembre</strong><span>Les chaussures à surveiller et comment repérer une vraie promo</span><em>Voir la page →</em></a>
