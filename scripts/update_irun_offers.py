@@ -4,7 +4,8 @@
 Usage :
     python3 scripts/update_irun_offers.py chemin/vers/catalogue_i-run.csv
 
-Le catalogue est le CSV exporté depuis Kwanko (colonnes title, gender, size, sale_price, link…).
+Le catalogue est le CSV exporté depuis Kwanko : une ligne par pointure (colonnes title, gender, size,
+sale_price, link…) ou, depuis oct. 2026, une ligne par coloris (availables_sizes « 40|40.5|41 », prix, prix_promo…).
 Pour chaque modèle des moteurs Route et Trail, le script :
   - retrouve les articles du catalogue dont le nom correspond EXACTEMENT au modèle
     (voir ALIASES quand le nom i-Run diffère du nom MyBestPair) ;
@@ -40,32 +41,38 @@ ALIASES = {
         "Nike Air Zoom Alphafly Next% 3 PRM",
         "Nike Air Zoom Alphafly Next% 3 Women's Race Series",
     ],
-    "Adidas Adios Pro 4": [
-        "adidas adizero Adios Pro 4",
-        "adidas adizero Adios Pro 4 Berlin Marathon",
-        "adidas adizero Adios Pro 4 Ekiden",
-    ],
     "HOKA Clifton 11": ["Hoka One One Clifton 11"],
     "HOKA Mach 7": ["Hoka One One Mach 7"],
     "HOKA Bondi 9": ["Hoka One One Bondi 9"],
     "Nike Vaporfly 4": ["Nike Vaporfly Next% 4"],
     "On Cloudsurfer 2": ["On-Running Cloudsurfer 2"],
-    "On Cloudmonster 2": ["On-Running Cloudmonster 2"],
     "KIPRUN KD900X LD+": [],
-    "New Balance FuelCell SC Elite v5": [],
+    "Adidas Adios Pro 5": ["adidas Adizero Adios Pro 5 Berlin", "adidas Adizero Adios Pro 5 Chicago", "adidas Adizero Adios Pro 5 NYC"],
+    "Adidas Adistar 5": ["adidas Adistar 5"],
+    "On Cloudmonster 3": ["On-Running Cloudmonster 3"],
+    "New Balance SuperComp Elite v6": ["New Balance SuperComp Elite V6", "New Balance SuperComp Elite V6 NYC Marathon 2026"],
+    "HOKA Arahi 9": ["Hoka One One Arahi 9"],
+    "HOKA Gaviota 6": ["Hoka One One Gaviota 6"],
+    "HOKA Rincon 5": ["Hoka One One Rincon 5"],
+    "ASICS Gel-Kayano 33": ["Asics Gel-Kayano 33", "Asics Gel-Kayano 33 Lite-Show"],
+    "ASICS GT-2000 15": ["Asics GT-2000 15", "Asics GT-2000 15 Lite-Show"],
+    "ASICS Gel-Cumulus 28": ["Asics Gel-Cumulus 28", "Asics Gel-Cumulus 28 Lite-Show"],
+    "Mizuno Wave Rider 30": ["Mizuno Wave Rider 30", "Mizuno Wave Rider 30 Disclosure"],
+    "Nike Structure Plus": ["Nike Structure Plus", "Nike Structure Plus Energy / NA Gel", "Nike Structure Plus Match A Mile", "Nike Structure Plus Reductive Reflective"],
     # Trail
     "HOKA Speedgoat 7": ["Hoka One One Speedgoat 7"],
     "HOKA Mafate 5": ["Hoka One One Mafate 5"],
-    "HOKA Tecton X 3": ["Hoka One One Tecton X 3", "Hoka One One Tecton X 3 Neon Pack"],
+    "HOKA Mafate X": ["Hoka One One Mafate X"],
+    "HOKA Tecton X 4": ["Hoka One One Tecton X 4"],
+    "HOKA Torrent 5": ["Hoka One One Torrent 5"],
+    "ON Cloudultra Pro": ["On-Running Cloudultra Pro"],
     "HOKA Challenger 8": ["Hoka One One Challenger 8"],
     "HOKA Zinal 3": ["Hoka One One Zinal 3"],
-    "NIKE Zegama 2": ["Nike Zegama Trail 2", "Nike Zegama Trail 2 W"],
     "NIKE ACG Zegama Trail": ["Nike ACG Zegama"],
     "NNORMAL Kjerag 2.0": ["NNormal Kjerag 02"],
     "ASICS GEL-Trabuco 14": ["Asics Trabuco 14"],
     "ASICS Fuji Speed 4": ["Asics Fujispeed 4"],
     "ON Cloudultra 3": ["On-Running Cloudultra 3"],
-    "SALOMON S/LAB Genesis": [],  # i-Run ne vend que la Genesis 2 / Genesis Spine
     "LA SPORTIVA Jackal II": [],  # i-Run ne vend que les versions Boa et Gore-Tex
     "NNORMAL Tomir 2.0": [],
     "NEW BALANCE Fresh Foam X More Trail v3": [],
@@ -103,17 +110,22 @@ def load_feed(path):
                 continue
             if r.get("availability") not in ("in_stock", ""):
                 continue
-            size = parse_size(r.get("size", ""))
-            if size is None:
-                continue
-            price = r.get("sale_price") or r.get("price")
-            rows.append({
-                "title": r["title"],
-                "gender": r["gender"] if r["gender"] in ("male", "female") else "unisex",
-                "size": size,
-                "price": float(price),
-                "link": r["link"],
-            })
+            if "availables_sizes" in r:
+                sizes = [parse_size(x) for x in r["availables_sizes"].split("|")]
+                price = r.get("prix_promo") or r.get("prix")
+            else:
+                sizes = [parse_size(r.get("size", ""))]
+                price = r.get("sale_price") or r.get("price")
+            for size in sizes:
+                if size is None:
+                    continue
+                rows.append({
+                    "title": r["title"],
+                    "gender": r["gender"] if r["gender"] in ("male", "female") else "unisex",
+                    "size": size,
+                    "price": float(price),
+                    "link": r["link"],
+                })
     return rows
 
 
