@@ -264,6 +264,7 @@ def render(shoe, sport, base, category, fields, photo=None, related=""):
         fragment = "profile-section"
     else:
         details = [("Catégorie dans la base", shoe["type"]), ("Distance enregistrée", shoe["distance"]), ("Poids indicatif dans la base", f'{shoe["poidsChaussure"]:g} g'), ("Drop dans la base", f'{shoe["drop"]:g} mm'), ("Plaque carbone enregistrée", shoe["carbone"]), ("Type de pied enregistré", shoe["typePied"])]
+        details.append(("Foulée", "Stabilité (pronation)" if shoe["foulee"] == "STABILITÉ" else "Neutre"))
         if sport == "trail":
             details.append(("Terrain enregistré", shoe["terrain"]))
             use = f"Dans la base Trail, {h(name)} est classée {h(shoe['type'].lower())}, pour les distances {h(shoe['distance'].lower())} et les terrains {h(shoe['terrain'].lower())}."
@@ -271,7 +272,6 @@ def render(shoe, sport, base, category, fields, photo=None, related=""):
             factors = "ton terrain, ta distance, ton budget, ton poids, ton type de pied, ton attaque, ta foulée et tes priorités"
         else:
             details.append(("Allure enregistrée", shoe["allure"]))
-            details.append(("Foulée", "Stabilité (pronation)" if shoe["foulee"] == "STABILITÉ" else "Neutre"))
             allure = "quelle que soit l'allure" if shoe["allure"] == "TOUTES" else f"aux allures {h(shoe['allure'].lower())}"
             use = f"Dans la base Route, {h(name)} est classée {h(shoe['type'].lower())}, pour les distances {h(shoe['distance'].lower())} et {allure}."
             caveat = "Vérifie que la distance et l'allure de tes sorties correspondent à ces indications. La largeur et le maintien se confirment à l'essayage."
