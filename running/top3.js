@@ -56,8 +56,8 @@
 
   /* Foulée : ce que la chaussure apporte au pied qui s'affaisse vers l'intérieur (pronation). */
   function fouleeNote(shoe, p) {
-    if (IS_TRAIL) return p.foulee === "PRONATION" ? `<b>Ta foulée :</b> les chaussures de trail sont presque toutes neutres ; les plus stables passent devant (stabilité ${num(shoe.stabilite)}/10).` : "";
     if (shoe.foulee === "STABILITÉ") return "<b>Chaussure de stabilité :</b> elle guide le pied qui s'affaisse vers l'intérieur (pronation).";
+    if (IS_TRAIL) return p.foulee === "PRONATION" ? `<b>Ta foulée :</b> les chaussures de trail sont presque toutes neutres ; les plus stables passent devant (stabilité ${num(shoe.stabilite)}/10).` : "";
     if (p.foulee === "PRONATION") return "<b>Chaussure neutre :</b> stable mais sans guidage. Pour une pronation marquée, fais confirmer ton choix par une analyse de foulée en magasin.";
     return "";
   }

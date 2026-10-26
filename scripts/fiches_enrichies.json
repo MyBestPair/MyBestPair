@@ -21,16 +21,6 @@
     "rivales": "Par rapport à la Nike Pegasus 42, la Clifton 11 est plus douce et plus haute, mais moins vive dès qu'on accélère. Si tu veux encore plus d'amorti, regarde l'ASICS Gel-Nimbus 28 ; si tu as besoin de stabilité, la HOKA Clifton reste neutre et la Gel-Kayano 32 sera plus adaptée.",
     "sources": [["Flawless Shoe Reviews – test de la Clifton 11", "https://flawlessshoereviews.com/hoka-shoes/hoka-clifton-11-review/"]]
   },
-  "Brooks Ghost 17": {
-    "pour_qui": "La Ghost est la valeur sûre de Brooks : une chaussure neutre, stable et durable, pensée pour enchaîner les kilomètres d'entraînement. Elle convient très bien aux débutants comme aux coureurs réguliers qui veulent une paire fiable, sans surprise, du 5 km au marathon.",
-    "nouveautes": [
-      "Mousse DNA Loft v3, infusée à l'azote, conservée de la version précédente.",
-      "Plus de hauteur : 36 mm au talon et 26 mm à l'avant, surtout pour gagner en confort sous l'avant-pied.",
-      "Tige en double mesh jacquard respirante, avec un talon évasé pour des transitions plus fluides."
-    ],
-    "rivales": "Dans notre base, la Ghost 17 est l'une des chaussures les mieux notées en durabilité et en confort parmi les modèles d'entraînement. Face à la Nike Pegasus 42, elle est un peu moins dynamique mais plus rassurante. Pour plus d'amorti sur les longues distances, la Brooks Glycerin 23 est l'étape au-dessus.",
-    "sources": [["Runner's World – présentation de la Ghost 17", "https://www.runnersworld.co.za/gear/all-new-brooks-ghost-17-more-cushioning-bold-new-look/"]]
-  },
   "ASICS Gel-Nimbus 28": {
     "pour_qui": "La Nimbus est la chaussure la plus amortie de la gamme neutre d'ASICS. Elle s'adresse aux coureurs qui veulent un maximum de confort sur les footings et les sorties longues, à allure tranquille, y compris les gabarits plus lourds qui apprécient une grosse épaisseur de mousse.",
     "nouveautes": [
@@ -41,17 +31,6 @@
     ],
     "rivales": "Dans notre base, la Nimbus 28 fait partie des rares modèles Route notés 10/10 à la fois en amorti et en confort. Face à la Nike Vomero 18, elle est nettement plus légère. Si ton pied a tendance à s'affaisser vers l'intérieur, la Gel-Kayano 32 offre le même confort avec plus de stabilité.",
     "sources": [["ASICS – nouveautés de la Gel-Nimbus", "https://www.asics.com/us/en-us/blog/whats-new-in-the-gel-nimbus-shoe"]]
-  },
-  "ASICS Gel-Kayano 32": {
-    "pour_qui": "La Kayano est la référence des chaussures de stabilité : elle guide le pied sans le forcer, grâce au système 4D Guidance d'ASICS. Elle convient aux coureurs dont le pied s'affaisse vers l'intérieur à l'appui (pronation), ou à ceux qui veulent une chaussure très stable et très amortie pour les sorties longues.",
-    "nouveautes": [
-      "2 mm de mousse en plus sous l'avant-pied : 40 mm au talon et 32 mm à l'avant.",
-      "Le drop passe de 10 mm à 8 mm, pour un déroulé plus fluide.",
-      "Retour à une tige en maille tricotée, plus respirante que celle de la Kayano 31.",
-      "Environ 8 g de moins que la version précédente."
-    ],
-    "rivales": "Dans notre base, la Kayano 32 obtient la note maximale de stabilité (10/10). Si tu n'as pas besoin d'un tel maintien, la Gel-Nimbus 28 offre un confort équivalent en version neutre. Chez Brooks, l'Adrenaline GTS 25 est son alternative de stabilité la plus proche, un peu moins chère.",
-    "sources": [["Fleet Feet – test de la Gel-Kayano 32", "https://www.fleetfeet.com/blog/asics-gel-kayano-32-review-smooth-solid-support"]]
   },
   "Nike Vomero 18": {
     "pour_qui": "La Vomero 18 est la chaussure d'amorti maximal de Nike : beaucoup de mousse, une sensation moelleuse et protectrice, pensée pour les footings de récupération et les sorties longues à allure tranquille. Elle convient bien aux coureurs lourds ou à ceux qui cherchent un confort maximal plutôt que la vitesse.",
@@ -94,15 +73,5 @@
     ],
     "rivales": "Face à la HOKA Speedgoat 7, la Peregrine 16 est plus basse et plus directe, donc plus agile, mais moins amortie pour l'ultra. Pour la boue profonde, la Salomon Speedcross 6 et ses crampons de 5 mm accrochent davantage.",
     "sources": [["Road Trail Run – test de la Peregrine 16", "https://www.roadtrailrun.com/2025/12/saucony-peregrine16-review-vibram-and.html"]]
-  },
-  "NIKE Pegasus Trail 5": {
-    "pour_qui": "La Pegasus Trail est une chaussure « route vers sentier » : confortable sur le bitume pour rejoindre les chemins, et suffisante sur les sentiers roulants ou peu techniques. Elle convient bien au coureur sur route qui débute le trail, ou à celui qui court surtout sur chemins et pistes forestières.",
-    "nouveautes": [
-      "Nouvelle mousse ReactX, annoncée avec 13 % de retour d'énergie en plus que l'ancienne React.",
-      "5 mm de hauteur en plus que la version 4 : 37 mm au talon, 27,5 mm à l'avant, pour 9,5 mm de drop.",
-      "Semelle en gomme ATC (All Terrain Compound), plus accrocheuse que la version précédente."
-    ],
-    "rivales": "Sur terrain technique ou boueux, elle montre ses limites : la Saucony Peregrine 16 ou la Salomon Speedcross 6 sont alors plus adaptées. Pour un usage mixte route et chemin, c'est en revanche l'une des options les plus confortables de notre base.",
-    "sources": [["Road Trail Run – test de la Pegasus Trail 5", "https://www.roadtrailrun.com/2024/04/nike-reactx-pegasus-trail-5-multi.html"]]
   }
 }
