@@ -203,6 +203,58 @@ def meta_of(shoe, sport):
     return f"{display_value(shoe['type'])} · {shoe['distance']}"
 
 
+# Bloc « Où l'acheter » des fiches (27 oct. 2026) : offres déjà présentes dans les données des questionnaires.
+# Liens Kwanko écrits ir:/es:/ek:CODE (règle 5), reconstruits par fiche-offres.js, qui envoie aussi les événements GA4.
+GA_SPORT = {"route": "running_route", "trail": "trail", "basket": "basketball", "padel": "padel", "rugby": "rugby", "foot": "foot"}
+OFFER_NAMES = {"decathlon": "Decathlon", "i-run": "i-Run", "ekosport": "Ekosport", "endurance-store": "Endurance Store"}
+DOMAIN_NAMES = [("linksynergy.com", "DECATHLON", "Decathlon"), ("awin1.com", "BASKET CENTER", "Basket Center"), ("basket4ballers.com", "BASKET4BALLERS", "Basket4Ballers"),
+                ("wayofwade.com", "WAY OF WADE", "Way of Wade"), ("shinzo.paris", "SHINZO", "Shinzo"), ("newbalance.fr", "NEW BALANCE", "New Balance"), ("nike.com", "NIKE", "Nike"), ("anta", "ANTA", "ANTA")]
+FALLBACK = {"i-run": 0, "decathlon": 1}
+
+
+def euros(value):
+    return (f"{value:.2f}".rstrip("0").rstrip(".") if value % 1 else f"{value:g}").replace(".", ",") + " €"
+
+
+def buy_offers(shoe, sport, offers, name):
+    """List of (merchant label, GA merchant, price text, link, affiliate) — one line per merchant."""
+    rows = []
+    if sport in ("route", "trail"):
+        best = {}
+        for offer in offers.get(shoe.get("modele", name), []):
+            if offer.get("link") and (offer["key"] not in best or offer["price"] < best[offer["key"]]["price"]):
+                best[offer["key"]] = offer
+        for offer in sorted(best.values(), key=lambda o: (o["price"], FALLBACK.get(o["key"], 2))):
+            rows.append((OFFER_NAMES.get(offer["key"], offer["merchant"].title()), offer["merchant"], "dès " + euros(offer["price"]), offer["link"], True))
+        return rows
+    link = shoe.get("link")
+    if not link or shoe.get("merchant"):
+        return rows
+    label, ga = next(((lab, ga) for dom, ga, lab in DOMAIN_NAMES if dom in link), ("le marchand", ""))
+    affiliate = "linksynergy.com" in link or "awin1.com" in link
+    rows.append((label, ga, euros(shoe["price"]), link, affiliate))
+    women = shoe.get("women")
+    if isinstance(women, dict) and women.get("link"):
+        rows.append((label + " (version femme)", ga, euros(women.get("price", shoe["price"])), women["link"], affiliate))
+    return rows
+
+
+def buy_html(shoe, sport, offers, name, root_link):
+    brand = shoe.get("brand") or name.split()[0]
+    lines = []
+    for label_, ga, price, link, affiliate in buy_offers(shoe, sport, offers, name):
+        kw = re.match(r"^(ir|es|ek):", link)
+        target = f'href="#" data-k="{h(link)}"' if kw else f'href="{h(link)}"'
+        rel = "noopener noreferrer sponsored" if affiliate or kw else "noopener noreferrer"
+        lines.append(f'<li><span class="buy-shop">{h(label_)}</span><span class="buy-price">{h(price)}</span><a class="shoe-link buy-btn" {target} target="_blank" rel="{rel}" data-product-name="{h(name)}" data-product-brand="{h(brand)}" data-merchant="{h(ga)}" data-sport="{GA_SPORT[sport]}">Voir le prix</a></li>')
+    offers_part = (f'<ul class="buy-list">{"".join(lines)}</ul><p class="muted">Prix relevés chez les marchands : pointures, coloris et prix du jour se vérifient sur leur site.</p>'
+                   if lines else '<p>Nous n’avons pas encore d’offre marchand pour ce modèle. Les meilleures offres du moment sont sur notre page Black Friday.</p>')
+    return f'<section class="card buy" id="ou-acheter"><h2>Où l’acheter</h2>{offers_part}<p class="buy-bf"><a href="{root_link}black-friday/">Voir les offres Black Friday →</a></p></section>'
+
+
+TEST_CARD = '<section class="card"><h2>Est-ce la bonne paire pour toi ?</h2><p>Fais le test : renseigne ton profil pour voir si {name} ressort parmi tes recommandations et quels autres modèles lui sont comparés.</p><a class="cta" href="../../#{fragment}" id="questionnaireLink">Fais le test gratuitement</a><small>Prix et disponibilité peuvent évoluer : vérifie-les chez le marchand.</small></section>'
+
+
 def alternatives_html(shoe, shoes, sport, fields):
     links = []
     for name, other in alternatives(shoe, shoes, sport, fields):
@@ -211,7 +263,7 @@ def alternatives_html(shoe, shoes, sport, fields):
     return f'<section class="card"><h2>Modèles proches à comparer</h2><p class="muted">Paires dont les notes, la catégorie et le prix se rapprochent le plus dans notre base.</p><ul>{"".join(links)}</ul></section>'
 
 
-def render(shoe, sport, base, category, fields, photo=None, related=""):
+def render(shoe, sport, base, category, fields, photo=None, related="", buy=""):
     root_link = "../../../" if sport in FLAT else "../../../../"
     name = display_name(shoe, sport)
     notes = scores(shoe, sport, fields)
@@ -307,6 +359,7 @@ def render(shoe, sport, base, category, fields, photo=None, related=""):
   <script src="{root_link}analytics-consent.js"></script>
   <script src="{root_link}ambiance.js"></script>
   <link rel="stylesheet" href="{root_link}modeles.css">
+  <script src="{root_link}fiche-offres.js" defer></script>
 </head>
 <body>
   <nav class="topbar" aria-label="Navigation principale"><a class="brand" href="{root_link}" aria-label="MyBestPair — accueil"><img src="{root_link}logo-mybestpair.webp" alt="MyBestPair" width="159" height="28"></a><a href="../../#{fragment}">Questionnaire {h(category)}</a></nav>
@@ -314,10 +367,10 @@ def render(shoe, sport, base, category, fields, photo=None, related=""):
     <nav class="crumbs" aria-label="Fil d'Ariane"><a href="{root_link}">Accueil</a> › <a href="../../">{h(category)}</a> › <a href="../">Modèles</a> › {h(name)}</nav>
     {hero}
     {affiliate_note(root_link)}
+    {buy}
     <div class="layout"><div>
-{main_col}    </div><aside>{visual}
+{main_col}    </div><aside>{TEST_CARD.format(name=h(name), fragment=fragment)}{visual}
       <section class="card"><h2>Repères techniques</h2><dl class="specs">{specs}</dl><p class="muted" style="margin-top:16px">Données indicatives de notre base. Les caractéristiques exactes peuvent varier selon la version et la pointure : vérifie-les auprès du fabricant.</p>{official}</section>
-      <section class="card"><h2>Est-ce ta paire ?</h2><p>Renseigne ton profil pour voir si {h(name)} ressort parmi tes recommandations et quels autres modèles lui sont comparés.</p><a class="cta" href="../../#{fragment}" id="questionnaireLink">Tester mon profil gratuitement</a><small>Prix et disponibilité peuvent évoluer : vérifie-les chez le marchand.</small></section>
     </aside></div>
   </main><footer>© 2026 MyBestPair · <a href="{root_link}conditions-utilisation.html">Conditions d’utilisation</a> · <a href="{root_link}methodologie.html">Méthodologie</a> · <a href="{root_link}confidentialite.html">Confidentialité</a></footer>
   <script>document.getElementById('questionnaireLink').addEventListener('click',function(){{if(typeof gtag==='function')gtag('event','model_page_questionnaire_click',{{sport:'{sport}',model:{json.dumps(name, ensure_ascii=False)}}})}});</script>
@@ -355,12 +408,16 @@ def main():
                     pilot = re.sub(r'(<script src="([./]*)analytics-consent\.js"></script>)', r'\1\n  <script src="\2ambiance.js"></script>', pilot, count=1)
                 if "affiliate-note" not in pilot:
                     pilot = pilot.replace("</header>", "</header>\n    " + affiliate_note("../../../../"), 1)
-                block = alternatives_html(shoe, shoes, sport, fields)
+                pilot = re.sub(r'\n    <section class="card buy" id="ou-acheter">.*?</section>', "", pilot, flags=re.S)
+                pilot = pilot.replace("</p>\n    <div class=\"layout\">", "</p>\n    " + buy_html(shoe, sport, offers, name, "../../../../") + "\n    <div class=\"layout\">", 1)
+                if "fiche-offres.js" not in pilot:
+                    pilot = pilot.replace("</head>", '  <script src="../../../../fiche-offres.js" defer></script>\n</head>', 1)
+                block =alternatives_html(shoe, shoes, sport, fields)
                 pilot = re.sub(r'\n        <section class="card"><h2>Modèles proches à comparer</h2>.*?</section>', "", pilot, flags=re.S)
                 marker = '\n      </div>\n      <aside>'
                 page.write_text(pilot.replace(marker, "\n        " + block + marker, 1))
             if not (sport == "route" and path == "asics-novablast-6"):
-                page.write_text(render(shoe, sport, base, category, fields, image_for(name, offers, shoe), alternatives_html(shoe, shoes, sport, fields)))
+                page.write_text(render(shoe, sport, base, category, fields, image_for(name, offers, shoe), alternatives_html(shoe, shoes, sport, fields), buy_html(shoe, sport, offers, name, "../../../" if sport in FLAT else "../../../../")))
             all_urls.append(f"https://mybestpair.fr/{base}/modeles/{path}/")
         tiles = []
         for shoe, name, path in zip(shoes, names, slugs):
