@@ -295,7 +295,32 @@ def alternatives_html(shoe, shoes, sport, fields):
     return f'<section class="card"><h2>Modèles proches à comparer</h2><p class="muted">Paires dont les notes, la catégorie et le prix se rapprochent le plus dans notre base.</p><ul>{"".join(links)}</ul></section>'
 
 
-def render(shoe, sport, base, category, fields, photo=None, related="", buy="", top_price=""):
+def seo_texts(shoe, sport, fields, offers, name):
+    """Titre et description pour Google (2 nov. 2026) : ce que les gens cherchent (« avis », « prix »),
+    sans dépasser ~60 caractères (titre) et ~160 (description)."""
+    title = next(t for t in (f"{name} : avis, notes et prix | MyBestPair", f"{name} : avis, notes et prix",
+                             f"{name} : avis et prix", f"{name} : avis") if len(t) <= 60 or t == f"{name} : avis")
+    notes = scores(shoe, sport, fields)
+    ranked = sorted(notes, key=lambda key: (-notes[key], fields.index(key)))
+    usual = euros(price_of(shoe))
+    rows = buy_offers(shoe, sport, offers, name)
+    if rows and rows[0][2].replace("dès ", "") != usual:
+        price = f"Prix habituel {usual}, {rows[0][2]} chez {rows[0][0]}."
+    elif rows:
+        price = f"{usual} chez {rows[0][0]}."
+    else:
+        price = f"Prix public indicatif ≈ {usual}." if shoe.get("priceIndicative") else f"Prix habituel {usual}."
+    end = "Test gratuit pour savoir si c'est ta paire."
+    candidates = []
+    for tail in (f" {end}", ""):
+        for count in (3, 2, 1):
+            strengths = ", ".join(label(key).lower() for key in ranked[:count])
+            candidates.append(f"{name} : notre avis et nos notes ({strengths}). {price}{tail}")
+    description = next((d for d in candidates if len(d) <= 160), candidates[-1])
+    return title, description
+
+
+def render(shoe, sport, base, category, fields, photo=None, related="", buy="", top_price="", offers=None):
     root_link = "../../../" if sport in FLAT else "../../../../"
     name = display_name(shoe, sport)
     notes = scores(shoe, sport, fields)
@@ -303,12 +328,7 @@ def render(shoe, sport, base, category, fields, photo=None, related="", buy="", 
     strengths = ", ".join(label(key).lower() for key in ranked[:3])
     modest = ", ".join(label(key).lower() for key in sorted(notes, key=lambda key: (notes[key], fields.index(key)))[:2])
     url = f"https://mybestpair.fr/{base}/modeles/{slug(name)}/"
-    title = f"{name} : notes et profil | MyBestPair"
-    if len(title) > 60:
-        title = f"{name} : notes et profil"
-    description = f"{name} : notes MyBestPair en {strengths}. Caractéristiques clés et test gratuit pour savoir si c'est ta paire."
-    if len(description) > 155:
-        description = f"{name} : notes MyBestPair en {strengths}. Teste gratuitement si c'est ta paire."
+    title, description = seo_texts(shoe, sport, fields, offers or {}, name)
     rows = "\n".join(f'<div class="score" style="--score:{notes[key] * 10:g}%"><span>{h(label(key))}</span><strong>{score(notes[key])}</strong></div>' for key in fields)
     if sport == "basket":
         details = [("Surface enregistrée", shoe["surface"]), ("Type de pied enregistré", shoe["foot"]), ("Prix indicatif de la base", f'{shoe["price"]:g} €'.replace(".", ","))]
@@ -456,12 +476,18 @@ def main():
                     pilot = pilot.replace("</div></header>", "</div>" + hero_figure(name, photo) + "</header>", 1)
                 pilot = re.sub(r'<div class="hero-buy buy[^"]*">.*?</div><!-- /hero-buy -->', "", pilot, count=1, flags=re.S)
                 pilot = pilot.replace("<h1>ASICS Novablast 6</h1>", "<h1>ASICS Novablast 6</h1>" + hero_price_html(shoe, sport, offers, name), 1)
+                # Titre et description pour Google, même formule que les fiches générées (2 nov. 2026).
+                seo_title, seo_desc = seo_texts(shoe, sport, fields, offers, name)
+                pilot = re.sub(r"<title>.*?</title>", lambda m: f"<title>{h(seo_title)}</title>", pilot, count=1)
+                pilot = re.sub(r'<meta name="description" content=".*?">', lambda m: f'<meta name="description" content="{h(seo_desc)}">', pilot, count=1)
+                pilot = re.sub(r'<meta property="og:title" content=".*?">', lambda m: f'<meta property="og:title" content="{h(seo_title)}">', pilot, count=1)
+                pilot = re.sub(r'<meta property="og:description" content=".*?">', lambda m: f'<meta property="og:description" content="{h(seo_desc)}">', pilot, count=1)
                 block =alternatives_html(shoe, shoes, sport, fields)
                 pilot = re.sub(r'\n        <section class="card"><h2>Modèles proches à comparer</h2>.*?</section>', "", pilot, flags=re.S)
                 marker = '\n      </div>\n      <aside>'
                 page.write_text(pilot.replace(marker, "\n        " + block + marker, 1))
             if not (sport == "route" and path == "asics-novablast-6"):
-                page.write_text(render(shoe, sport, base, category, fields, image_for(name, offers, shoe), alternatives_html(shoe, shoes, sport, fields), buy_html(shoe, sport, offers, name, "../../../" if sport in FLAT else "../../../../"), hero_price_html(shoe, sport, offers, name)))
+                page.write_text(render(shoe, sport, base, category, fields, image_for(name, offers, shoe), alternatives_html(shoe, shoes, sport, fields), buy_html(shoe, sport, offers, name, "../../../" if sport in FLAT else "../../../../"), hero_price_html(shoe, sport, offers, name), offers))
             all_urls.append(f"https://mybestpair.fr/{base}/modeles/{path}/")
         tiles = []
         for shoe, name, path in zip(shoes, names, slugs):
