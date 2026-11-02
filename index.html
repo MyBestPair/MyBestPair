@@ -653,11 +653,18 @@
     .top-links { display:flex; gap:16px; font-size:13px; font-weight:800; text-transform:uppercase; }
     .top-links a { color:#dce7fb; text-decoration:none; }
     .top-links .top-bf { color:#ffb489; }
-    .bf-banner { display:flex; flex-wrap:wrap; align-items:center; gap:6px 16px; margin:0 0 26px; padding:16px 20px; border:1px solid rgba(255,107,44,.55); border-radius:14px; background:linear-gradient(90deg,rgba(255,107,44,.22),rgba(11,42,97,.55)); color:#fff; }
-    .bf-banner strong { font-size:17px; text-transform:uppercase; letter-spacing:.5px; }
-    .bf-banner span { color:#dce7fb; font-size:15px; flex:1 1 260px; }
-    .bf-banner em { font-style:normal; font-weight:800; color:#ffb489; }
-    .bf-banner:hover em { text-decoration:underline; }
+    /* Bandeau Black Friday en haut de l'accueil (2 nov. 2026) : compte à rebours, masqué après le Cyber Monday */
+    .bf-banner { display:flex; align-items:center; gap:4px 14px; margin:16px 0 0; padding:11px 18px; border:1px solid rgba(255,107,44,.6); border-radius:999px; background:linear-gradient(90deg,rgba(255,107,44,.28),rgba(11,42,97,.6)); color:#fff; text-decoration:none; line-height:1.3; }
+    .bf-banner strong { flex:none; font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:.6px; color:#ffb489; }
+    .bf-banner span { flex:1 1 auto; min-width:0; color:#dce7fb; font-size:14.5px; }
+    .bf-banner em { flex:none; font-style:normal; font-weight:800; font-size:14px; }
+    .bf-banner:hover em, .bf-banner:focus-visible em { text-decoration:underline; }
+    .bf-banner[hidden] { display:none; }
+    @media (max-width:600px) {
+      .bf-banner { flex-wrap:wrap; border-radius:16px; padding:10px 16px; }
+      .bf-banner strong { flex:1 1 auto; }
+      .bf-banner span { order:3; flex-basis:100%; font-size:13.5px; }
+    }
     @media(max-width:900px) { .hub-grid { grid-template-columns:1fr; } }
     /* ===== Accueil façon boutique.mybestpair.fr : grandes photos, gros titres posés dessus, numéros, peu de listes ===== */
     /* Ouverture : le monogramme s'écrit, devient une fenêtre sur le site, puis on entre dedans */
@@ -819,6 +826,19 @@
   </script>
   <div class="page">
 
+    <a class="bf-banner" id="bfBanner" href="black-friday/"><strong id="bfWhen">Black Friday · 27 novembre</strong><span>Les chaussures à surveiller et leurs prix chez les marchands</span><em>Voir →</em></a>
+    <script>
+      // Compte à rebours jusqu'au Black Friday (27 nov. 2026), à l'heure du visiteur ; bandeau masqué à partir du 1er déc.
+      (function () {
+        var banner = document.getElementById('bfBanner'), when = document.getElementById('bfWhen');
+        var now = new Date(), today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        var days = Math.round((new Date(2026, 10, 27) - today) / 86400000);
+        if (days < -3) { banner.hidden = true; return; }
+        when.textContent = days > 1 ? 'Black Friday dans ' + days + ' jours' : days === 1 ? 'Black Friday demain' : days === 0 ? 'C’est le Black Friday' : days === -3 ? 'Cyber Monday : dernier jour' : 'Black Friday en cours';
+        banner.addEventListener('click', function () { if (typeof gtag === 'function') gtag('event', 'bf_banner_click', { days_left: days }); });
+      })();
+    </script>
+
     <div class="topbar">
       <a class="brand" href="./" aria-label="MyBestPair — accueil">
         <img class="brand-logo" src="logo-mybestpair.webp" alt="MyBestPair" width="216" height="38">
@@ -879,8 +899,6 @@
     </section>
 
     <div class="marq" aria-hidden="true"><div class="marq-tr" id="marq"></div></div>
-
-    <a class="bf-banner" href="black-friday/"><strong>Black Friday 2026 · 27 novembre</strong><span>Les chaussures à surveiller et comment repérer une vraie promo</span><em>Voir la page →</em></a>
 
     <div class="section-title"><span class="kicker">6 sports · 234 modèles</span>Choisis ton univers</div>
 
