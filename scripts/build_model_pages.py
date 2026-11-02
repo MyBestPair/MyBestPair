@@ -98,6 +98,12 @@ def image_for(name, offers, shoe=None):
     return None
 
 
+def hero_figure(name, photo):
+    # Si la photo ne se charge pas (site marchand indisponible…), le cadre disparaît : pas de case vide en haut de la fiche.
+    fallback = "var f=this.closest('figure');f.parentNode.classList.remove('hero-split');f.remove()"
+    return f'<figure class="hero-fig"><img src="{h(photo[0])}" alt="{h(name)} — {"photo " + h(photo[2]) if photo[2] else "visuel marchand"}" decoding="async" onerror="{fallback}"><figcaption>{photo_caption(photo)}</figcaption></figure>'
+
+
 def photo_caption(photo):
     if photo[2]:
         return f"Photo : © {h(photo[2])} · le coloris peut varier"
@@ -239,16 +245,36 @@ def buy_offers(shoe, sport, offers, name):
     return rows
 
 
+def offer_link(row, shoe, sport, name, css):
+    """Merchant button: Kwanko links as data-k (rule 5), data-* read by fiche-offres.js for GA4."""
+    label_, ga, price, link, affiliate = row
+    brand = shoe.get("brand") or name.split()[0]
+    kw = re.match(r"^(ir|es|ek):", link)
+    target = f'href="#" data-k="{h(link)}"' if kw else f'href="{h(link)}"'
+    rel = "noopener noreferrer sponsored" if affiliate or kw else "noopener noreferrer"
+    return f'<a class="shoe-link {css}" {target} target="_blank" rel="{rel}" data-product-name="{h(name)}" data-product-brand="{h(brand)}" data-merchant="{h(ga)}" data-sport="{GA_SPORT[sport]}">Voir le prix</a>'
+
+
 def buy_lines(shoe, sport, offers, name):
     """One <li> per merchant (also used by build_black_friday.py)."""
-    brand = shoe.get("brand") or name.split()[0]
-    lines = []
-    for label_, ga, price, link, affiliate in buy_offers(shoe, sport, offers, name):
-        kw = re.match(r"^(ir|es|ek):", link)
-        target = f'href="#" data-k="{h(link)}"' if kw else f'href="{h(link)}"'
-        rel = "noopener noreferrer sponsored" if affiliate or kw else "noopener noreferrer"
-        lines.append(f'<li><span class="buy-shop">{h(label_)}</span><span class="buy-price">{h(price)}</span><a class="shoe-link buy-btn" {target} target="_blank" rel="{rel}" data-product-name="{h(name)}" data-product-brand="{h(brand)}" data-merchant="{h(ga)}" data-sport="{GA_SPORT[sport]}">Voir le prix</a></li>')
-    return lines
+    return [f'<li><span class="buy-shop">{h(row[0])}</span><span class="buy-price">{h(row[2])}</span>{offer_link(row, shoe, sport, name, "buy-btn")}</li>'
+            for row in buy_offers(shoe, sport, offers, name)]
+
+
+def hero_price_html(shoe, sport, offers, name):
+    """Price block at the top of a fiche (2 nov. 2026): usual price, lowest merchant price, button to that merchant."""
+    usual = euros(price_of(shoe))
+    label_ = "Prix public indicatif" if shoe.get("priceIndicative") else "Prix habituel"
+    rows = buy_offers(shoe, sport, offers, name)
+    if not rows:
+        return f'<div class="hero-buy buy"><p class="hero-prix"><span>{label_}</span> <strong>{"≈ " if shoe.get("priceIndicative") else ""}{h(usual)}</strong></p></div><!-- /hero-buy -->'
+    best = rows[0]
+    if best[2].replace("dès ", "") == usual:
+        line = f'<p class="hero-prix"><strong>{h(usual)}</strong> <span>chez {h(best[0])}</span></p>'
+    else:
+        line = f'<p class="hero-prix"><span>{label_} {h(usual)} ·</span> <strong>{h(best[2])}</strong> <span>chez {h(best[0])}</span></p>'
+    more = f'<a class="hero-more" href="#ou-acheter">Comparer les {len(rows)} offres ↓</a>' if len(rows) > 1 else ""
+    return f'<div class="hero-buy buy with-btn">{line}{offer_link(best, shoe, sport, name, "hero-btn")}{more}</div><!-- /hero-buy -->'
 
 
 def buy_html(shoe, sport, offers, name, root_link):
@@ -269,7 +295,7 @@ def alternatives_html(shoe, shoes, sport, fields):
     return f'<section class="card"><h2>Modèles proches à comparer</h2><p class="muted">Paires dont les notes, la catégorie et le prix se rapprochent le plus dans notre base.</p><ul>{"".join(links)}</ul></section>'
 
 
-def render(shoe, sport, base, category, fields, photo=None, related="", buy=""):
+def render(shoe, sport, base, category, fields, photo=None, related="", buy="", top_price=""):
     root_link = "../../../" if sport in FLAT else "../../../../"
     name = display_name(shoe, sport)
     notes = scores(shoe, sport, fields)
@@ -348,9 +374,11 @@ def render(shoe, sport, base, category, fields, photo=None, related="", buy=""):
       <section class="card"><h2>Avant de choisir</h2><p>{caveat}</p><p>Le questionnaire tient aussi compte de {factors}. Le classement change donc selon ton profil.</p><p><a href="../">Voir toutes les chaussures {h(category)} →</a></p></section>
       {related}
 '''
-    hero = f'''<header class="hero"><div class="eyebrow">MyBestPair / {h(category)}</div><h1>{h(name)}</h1><p>{hero_text}</p><div class="hero-meta"><span>{h(context)}</span><span>{h(key_point)}</span></div><a class="cta" href="../../#{fragment}">Vérifier avec mon profil →</a></header>'''
-    if detail and photo:
-        hero = f'''<header class="hero hero-split"><div><div class="eyebrow">MyBestPair / {h(category)}</div><h1>{h(name)}</h1><p>{hero_text}</p><div class="hero-meta"><span>{h(context)}</span><span>{h(key_point)}</span></div><a class="cta" href="../../#{fragment}">Vérifier avec mon profil →</a></div><figure class="hero-fig"><img src="{h(photo[0])}" alt="{h(name)} — {'photo ' + h(photo[2]) if photo[2] else 'visuel marchand'}" decoding="async"><figcaption>{photo_caption(photo)}</figcaption></figure></header>'''
+    # En-tête (2 nov. 2026) : photo et prix en haut de toutes les fiches qui ont une photo.
+    hero_body = f'''<div class="eyebrow">MyBestPair / {h(category)}</div><h1>{h(name)}</h1>{top_price}<p>{hero_text}</p><div class="hero-meta"><span>{h(context)}</span><span>{h(key_point)}</span></div><a class="cta" href="../../#{fragment}">Vérifier avec mon profil →</a>'''
+    hero = f'''<header class="hero">{hero_body}</header>'''
+    if photo:
+        hero = f'''<header class="hero hero-split"><div>{hero_body}</div>{hero_figure(name, photo)}</header>'''
         visual = ""
     return f'''<!DOCTYPE html>
 <html lang="fr">
@@ -418,12 +446,22 @@ def main():
                 pilot = pilot.replace("</p>\n    <div class=\"layout\">", "</p>\n    " + buy_html(shoe, sport, offers, name, "../../../../") + "\n    <div class=\"layout\">", 1)
                 if "fiche-offres.js" not in pilot:
                     pilot = pilot.replace("</head>", '  <script src="../../../../fiche-offres.js" defer></script>\n</head>', 1)
+                # En-tête : photo et prix en haut, comme les fiches générées (2 nov. 2026).
+                if 'class="hero hero-split"' not in pilot:
+                    pilot = re.sub(r'<header class="hero">(.*?)\n    </header>', r'<header class="hero hero-split"><div>\1\n    </div></header>', pilot, count=1, flags=re.S)
+                    pilot = re.sub(r'\n\s*<figure class="product-photo">.*?</figure>', "", pilot, count=1, flags=re.S)
+                pilot = re.sub(r'<figure class="hero-fig">.*?</figure>', "", pilot, count=1, flags=re.S)
+                photo = image_for(name, offers, shoe)
+                if photo:
+                    pilot = pilot.replace("</div></header>", "</div>" + hero_figure(name, photo) + "</header>", 1)
+                pilot = re.sub(r'<div class="hero-buy buy[^"]*">.*?</div><!-- /hero-buy -->', "", pilot, count=1, flags=re.S)
+                pilot = pilot.replace("<h1>ASICS Novablast 6</h1>", "<h1>ASICS Novablast 6</h1>" + hero_price_html(shoe, sport, offers, name), 1)
                 block =alternatives_html(shoe, shoes, sport, fields)
                 pilot = re.sub(r'\n        <section class="card"><h2>Modèles proches à comparer</h2>.*?</section>', "", pilot, flags=re.S)
                 marker = '\n      </div>\n      <aside>'
                 page.write_text(pilot.replace(marker, "\n        " + block + marker, 1))
             if not (sport == "route" and path == "asics-novablast-6"):
-                page.write_text(render(shoe, sport, base, category, fields, image_for(name, offers, shoe), alternatives_html(shoe, shoes, sport, fields), buy_html(shoe, sport, offers, name, "../../../" if sport in FLAT else "../../../../")))
+                page.write_text(render(shoe, sport, base, category, fields, image_for(name, offers, shoe), alternatives_html(shoe, shoes, sport, fields), buy_html(shoe, sport, offers, name, "../../../" if sport in FLAT else "../../../../"), hero_price_html(shoe, sport, offers, name)))
             all_urls.append(f"https://mybestpair.fr/{base}/modeles/{path}/")
         tiles = []
         for shoe, name, path in zip(shoes, names, slugs):
