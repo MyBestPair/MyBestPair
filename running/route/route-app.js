@@ -90,14 +90,27 @@ function validateProfile(p) {
   return "";
 }
 
+/* Gabarit (nov. 2026) : à partir de 85 kg, puis de 100 kg, l'amorti, la stabilité et la durabilité
+   comptent davantage dans la note technique, la légèreté et le dynamisme moins (conseil habituel des
+   magasins pour les coureurs lourds). Ces coefficients s'ajoutent à ceux des 3 priorités. */
+const BUILD_COEFS = {
+  LOURD: {amorti:1.3, stabilite:1.2, durabilite:1.2, confort:1.1, dynamisme:0.8, legerete:0.6},
+  TRES_LOURD: {amorti:1.5, stabilite:1.3, durabilite:1.3, confort:1.1, dynamisme:0.7, legerete:0.4}
+};
+
+function runnerBuild(p) {
+  return p.poids >= 100 ? "TRES_LOURD" : p.poids >= 85 ? "LOURD" : "";
+}
+
 function personalizedScore(shoe,p) {
   const priorities = [p.priorite1,p.priorite2,p.priorite3];
+  const build = BUILD_COEFS[runnerBuild(p)] || {};
   let numerator = 0;
   let denominator = 0;
   CRITERIA.forEach(([criterion,key]) => {
-    let coef = 1;
+    let coef = build[key] || 1;
     const pos = priorities.indexOf(criterion);
-    if (pos >= 0) coef = PRIORITY_COEFS[pos];
+    if (pos >= 0) coef *= PRIORITY_COEFS[pos];
     numerator += shoe[key] * coef;
     denominator += coef;
   });
@@ -105,7 +118,10 @@ function personalizedScore(shoe,p) {
 }
 
 function objectiveScore(shoe,p) {
-  return OBJECTIVE_TYPE[p.objectif]?.[shoe.type] ?? 0;
+  const row = OBJECTIVE_TYPE[p.objectif] || {};
+  // Coureur lourd : une chaussure très amortie convient aussi bien qu'une chaussure d'entraînement classique.
+  if (runnerBuild(p) && shoe.type === "MAX CUSHION") return Math.max(row["MAX CUSHION"] ?? 0, row["DAILY"] ?? 0);
+  return row[shoe.type] ?? 0;
 }
 
 function budgetScore(shoe,p) {
@@ -249,7 +265,7 @@ function whyText(shoe,p) {
   const p3=priorityValue(shoe,p.priorite3);
   const avg=(p1+p2+p3)/3;
   const lead=avg>=8.5 ? "Elle correspond très bien à tes priorités" : "Elle correspond bien à tes priorités";
-  return `Cette chaussure obtient ${Math.round(shoe.final)}/100 pour ton profil. ${lead} : ${prettyCriterion(p.priorite1).toLowerCase()} ${p1.toString().replace(".",",")}/10, ${prettyCriterion(p.priorite2).toLowerCase()} ${p2.toString().replace(".",",")}/10 et ${prettyCriterion(p.priorite3).toLowerCase()} ${p3.toString().replace(".",",")}/10.`;
+  return `Cette chaussure obtient ${Math.round(shoe.final)}/100 pour ton profil. ${lead} : ${prettyCriterion(p.priorite1).toLowerCase()} ${p1.toString().replace(".",",")}/10, ${prettyCriterion(p.priorite2).toLowerCase()} ${p2.toString().replace(".",",")}/10 et ${prettyCriterion(p.priorite3).toLowerCase()} ${p3.toString().replace(".",",")}/10.${runnerBuild(p) ? ` Pour ton gabarit (${p.poids} kg), l'amorti, la stabilité et la durabilité comptent davantage, la légèreté moins.` : ""}`;
 }
 
 
