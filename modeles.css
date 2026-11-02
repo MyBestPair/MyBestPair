@@ -108,3 +108,14 @@ html.amb-on .scores:not(.amb-fill) .score:after{background-size:0 100%,auto}
 .buy-btn:hover{background:#0a4086}
 .buy-bf{margin:6px 0 0;font-weight:800}
 @media(max-width:570px){.buy-list li{grid-template-columns:minmax(0,1fr) auto;gap:8px 12px}.buy-btn{grid-column:1/-1}}
+/* Fiches : photo et prix en haut (2 nov. 2026) */
+.hero-buy{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;margin:16px 0 20px}
+.hero .hero-prix{flex-basis:100%;max-width:none;margin:0;font-size:.95rem;color:#dfebfa}
+.hero-prix strong{font:800 1.55rem Manrope,'DM Sans',sans-serif;letter-spacing:-.02em;color:#fff;margin:0 3px}
+.hero-btn{display:inline-flex;align-items:center;justify-content:center;background:#ff6b2c;color:#fff;font-weight:800;text-decoration:none;border-radius:999px;padding:12px 28px;transition:background .2s,transform .2s}
+.hero-btn:hover{background:#e8561a;transform:translateY(-1px)}
+.hero-more{color:#fff;font-weight:800;font-size:.9rem}
+.hero .with-btn~.cta{background:transparent;color:#fff;box-shadow:inset 0 0 0 2px #ffffff88}
+.hero .with-btn~.cta:hover{background:#ffffff14}
+@media(max-width:850px){.hero-split .hero-fig{order:-1}.hero-split .hero-fig img{aspect-ratio:auto;height:190px;object-fit:contain}}
+@media(max-width:570px){.hero-btn{flex:1 1 100%}.hero-more{flex:1 1 100%;text-align:center}}
