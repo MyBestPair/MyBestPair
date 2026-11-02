@@ -239,7 +239,8 @@ def buy_offers(shoe, sport, offers, name):
     return rows
 
 
-def buy_html(shoe, sport, offers, name, root_link):
+def buy_lines(shoe, sport, offers, name):
+    """One <li> per merchant (also used by build_black_friday.py)."""
     brand = shoe.get("brand") or name.split()[0]
     lines = []
     for label_, ga, price, link, affiliate in buy_offers(shoe, sport, offers, name):
@@ -247,6 +248,11 @@ def buy_html(shoe, sport, offers, name, root_link):
         target = f'href="#" data-k="{h(link)}"' if kw else f'href="{h(link)}"'
         rel = "noopener noreferrer sponsored" if affiliate or kw else "noopener noreferrer"
         lines.append(f'<li><span class="buy-shop">{h(label_)}</span><span class="buy-price">{h(price)}</span><a class="shoe-link buy-btn" {target} target="_blank" rel="{rel}" data-product-name="{h(name)}" data-product-brand="{h(brand)}" data-merchant="{h(ga)}" data-sport="{GA_SPORT[sport]}">Voir le prix</a></li>')
+    return lines
+
+
+def buy_html(shoe, sport, offers, name, root_link):
+    lines = buy_lines(shoe, sport, offers, name)
     offers_part = (f'<ul class="buy-list">{"".join(lines)}</ul><p class="muted">Prix relevés chez les marchands : pointures, coloris et prix du jour se vérifient sur leur site.</p>'
                    if lines else '<p>Nous n’avons pas encore d’offre marchand pour ce modèle. Les meilleures offres du moment sont sur notre page Black Friday.</p>')
     return f'<section class="card buy" id="ou-acheter"><h2>Où l’acheter</h2>{offers_part}<p class="buy-bf"><a href="{root_link}black-friday/">Voir les offres Black Friday →</a></p></section>'
