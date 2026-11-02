@@ -369,6 +369,8 @@ def render(shoe, sport, base, category, fields, photo=None, related="", buy="", 
     else:
         details = [("Catégorie dans la base", shoe["type"]), ("Distance enregistrée", shoe["distance"]), ("Poids indicatif dans la base", f'{shoe["poidsChaussure"]:g} g'), ("Drop dans la base", f'{shoe["drop"]:g} mm'), ("Plaque carbone enregistrée", shoe["carbone"]), ("Type de pied enregistré", shoe["typePied"])]
         details.append(("Foulée", "Stabilité (pronation)" if shoe["foulee"] == "STABILITÉ" else "Neutre"))
+        if shoe.get("gabarit"):
+            details.append(("Gabarit du coureur", "Moins de 80 kg" if shoe["gabarit"] == "-80" else "Tous gabarits, y compris plus de 80 kg"))
         if sport == "trail":
             details.append(("Terrain enregistré", shoe["terrain"]))
             use = f"Dans la base Trail, {h(name)} est classée {h(shoe['type'].lower())}, pour les distances {h(shoe['distance'].lower())} et les terrains {h(shoe['terrain'].lower())}."
@@ -482,6 +484,11 @@ def main():
                 pilot = re.sub(r'<meta name="description" content=".*?">', lambda m: f'<meta name="description" content="{h(seo_desc)}">', pilot, count=1)
                 pilot = re.sub(r'<meta property="og:title" content=".*?">', lambda m: f'<meta property="og:title" content="{h(seo_title)}">', pilot, count=1)
                 pilot = re.sub(r'<meta property="og:description" content=".*?">', lambda m: f'<meta property="og:description" content="{h(seo_desc)}">', pilot, count=1)
+                # Gabarit du coureur dans les repères techniques (nov. 2026), comme les fiches générées.
+                pilot = re.sub(r'\n            <div><dt>Gabarit du coureur</dt>.*?</div>', "", pilot, count=1)
+                if shoe.get("gabarit"):
+                    gab = "Moins de 80 kg" if shoe["gabarit"] == "-80" else "Tous gabarits, y compris plus de 80 kg"
+                    pilot = pilot.replace("\n          </dl>", f"\n            <div><dt>Gabarit du coureur</dt><dd>{gab}</dd></div>\n          </dl>", 1)
                 block =alternatives_html(shoe, shoes, sport, fields)
                 pilot = re.sub(r'\n        <section class="card"><h2>Modèles proches à comparer</h2>.*?</section>', "", pilot, flags=re.S)
                 marker = '\n      </div>\n      <aside>'

@@ -62,8 +62,8 @@
     return "";
   }
 
-  // Gabarit (nov. 2026) : à partir de 85 kg, la note technique renforce amorti et stabilité (route-app.js / trail-app.js).
-  const weightChip = (p) => p.poids + " kg" + (p.poids >= 85 ? " · amorti et stabilité renforcés" : "");
+  // Gabarit (nov. 2026) : au-dessus de 80 kg, seuls les modèles « + de 80 kg » sont proposés, amorti et stabilité renforcés (route-app.js / trail-app.js).
+  const weightChip = (p) => p.poids + " kg" + (p.poids > 80 ? " · modèles + de 80 kg" : "");
   const CONFIGS = {
     route: {
       sport: "running_route", fn: "showResults", total: "Route", storage: "myshoesRouteProfil",
