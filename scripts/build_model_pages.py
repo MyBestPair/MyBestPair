@@ -320,6 +320,34 @@ def seo_texts(shoe, sport, fields, offers, name):
     return title, description
 
 
+def overall_note(shoe, sport, fields):
+    """Note moyenne MyBestPair sur 10 (moyenne des critères), affichée dans l'en-tête de la fiche."""
+    notes = scores(shoe, sport, fields)
+    return round(sum(notes.values()) / len(notes), 1)
+
+
+def brand_of(shoe, name):
+    brand = shoe.get("brand") or shoe.get("marque") or name.split()[0]
+    return name[:len(brand)] if name.casefold().startswith(brand.casefold()) else brand
+
+
+def product_ld(shoe, sport, fields, offers, name, photo, url):
+    """Données structurées Product (2 nov. 2026) pour la note et le prix dans les résultats Google :
+    avis de MyBestPair (note moyenne visible dans l'en-tête) et, s'il y a des marchands, fourchette de prix
+    (AggregateOffer, mêmes prix que l'en-tête ; aucun lien marchand, donc rien de Kwanko : règle 5)."""
+    data = {"@context": "https://schema.org", "@type": "Product", "name": name, "brand": {"@type": "Brand", "name": brand_of(shoe, name)},
+            "url": url,
+            "review": {"@type": "Review", "author": {"@type": "Organization", "name": "MyBestPair", "url": "https://mybestpair.fr/"},
+                       "reviewRating": {"@type": "Rating", "ratingValue": overall_note(shoe, sport, fields), "bestRating": 10, "worstRating": 0}}}
+    if photo:
+        data["image"] = photo[0]
+    rows = buy_offers(shoe, sport, offers, name)
+    prices = sorted(float(row[2].replace("dès ", "").replace(" €", "").replace(",", ".")) for row in rows)
+    if prices:
+        data["offers"] = {"@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": prices[0], "highPrice": prices[-1], "offerCount": len(prices)}
+    return json_ld(data)
+
+
 def render(shoe, sport, base, category, fields, photo=None, related="", buy="", top_price="", offers=None):
     root_link = "../../../" if sport in FLAT else "../../../../"
     name = display_name(shoe, sport)
@@ -397,7 +425,7 @@ def render(shoe, sport, base, category, fields, photo=None, related="", buy="", 
       {related}
 '''
     # En-tête (2 nov. 2026) : photo et prix en haut de toutes les fiches qui ont une photo.
-    hero_body = f'''<div class="eyebrow">MyBestPair / {h(category)}</div><h1>{h(name)}</h1>{top_price}<p>{hero_text}</p><div class="hero-meta"><span>{h(context)}</span><span>{h(key_point)}</span></div><a class="cta" href="../../#{fragment}">Vérifier avec mon profil →</a>'''
+    hero_body = f'''<div class="eyebrow">MyBestPair / {h(category)}</div><h1>{h(name)}</h1>{top_price}<p>{hero_text}</p><div class="hero-meta"><span>{h(context)}</span><span>{h(key_point)}</span><span>Note MyBestPair : {score(overall_note(shoe, sport, fields))}</span></div><a class="cta" href="../../#{fragment}">Vérifier avec mon profil →</a>'''
     hero = f'''<header class="hero">{hero_body}</header>'''
     if photo:
         hero = f'''<header class="hero hero-split"><div>{hero_body}</div>{hero_figure(name, photo)}</header>'''
@@ -411,7 +439,7 @@ def render(shoe, sport, base, category, fields, photo=None, related="", buy="", 
   <meta name="description" content="{h(description)}">
   <link rel="canonical" href="{url}"><link rel="icon" href="{root_link}favicon.png">
   {head_extras(title, description, url)}
-  {json_ld(breadcrumb([("Accueil", "https://mybestpair.fr/"), (category, f"https://mybestpair.fr/{base}/"), ("Modèles", f"https://mybestpair.fr/{base}/modeles/"), (name, url)]))}{faq_ld(detail) if detail else ""}
+  {json_ld(breadcrumb([("Accueil", "https://mybestpair.fr/"), (category, f"https://mybestpair.fr/{base}/"), ("Modèles", f"https://mybestpair.fr/{base}/modeles/"), (name, url)]))}{faq_ld(detail) if detail else ""}{product_ld(shoe, sport, fields, offers or {}, name, photo, url)}
   <script src="{root_link}analytics-consent.js"></script>
   <script src="{root_link}ambiance.js"></script>
   <link rel="stylesheet" href="{root_link}modeles.css">
@@ -489,6 +517,11 @@ def main():
                 if shoe.get("gabarit"):
                     gab = "Moins de 80 kg" if shoe["gabarit"] == "-80" else "Tous gabarits, y compris plus de 80 kg"
                     pilot = pilot.replace("\n          </dl>", f"\n            <div><dt>Gabarit du coureur</dt><dd>{gab}</dd></div>\n          </dl>", 1)
+                # Note et prix dans Google (2 nov. 2026) : note moyenne visible dans l'en-tête + données Product, comme les fiches générées.
+                pilot = re.sub(r'<span>Note MyBestPair : [^<]*</span>', "", pilot, count=1)
+                pilot = re.sub(r'(<div class="hero-meta">.*?)</div>', lambda m: m.group(1) + f"<span>Note MyBestPair : {score(overall_note(shoe, sport, fields))}</span></div>", pilot, count=1, flags=re.S)
+                pilot = re.sub(r'\n  <script type="application/ld\+json">\{"@context": ?"https://schema.org", ?"@type": ?"Product".*?</script>', "", pilot, count=1, flags=re.S)
+                pilot = pilot.replace('\n  <link rel="icon"', "\n  " + product_ld(shoe, sport, fields, offers, name, image_for(name, offers, shoe), f"https://mybestpair.fr/{base}/modeles/{path}/") + '\n  <link rel="icon"', 1)
                 block =alternatives_html(shoe, shoes, sport, fields)
                 pilot = re.sub(r'\n        <section class="card"><h2>Modèles proches à comparer</h2>.*?</section>', "", pilot, flags=re.S)
                 marker = '\n      </div>\n      <aside>'
