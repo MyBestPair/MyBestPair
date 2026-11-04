@@ -169,7 +169,7 @@ def render(c, shoes):
       <p>{h(c["lead"])}</p>
       <div class="hero-meta"><span>Mis à jour le <time datetime="{c["updated"]}">{date_fr(c["updated"])}</time></span><span>Notes MyBestPair + données fabricants</span></div>
     </header>
-    <p class="note affiliate-note">Certains liens vers les marchands sont des liens d’affiliation (Kwanko, Awin, Rakuten) : un achat peut rapporter une commission à MyBestPair, sans surcoût pour toi. Le classement n’en dépend pas. <a href="{root}methodologie.html#liens-commerciaux">En savoir plus</a></p>
+    <p class="note affiliate-note">Certains liens vers les marchands sont des liens d’affiliation (Kwanko, Awin, Rakuten, Amazon) : un achat peut rapporter une commission à MyBestPair, sans surcoût pour toi. Le classement n’en dépend pas. En tant que Partenaire Amazon, MyBestPair réalise un bénéfice sur les achats remplissant les conditions requises. <a href="{root}methodologie.html#liens-commerciaux">En savoir plus</a></p>
 
     <section class="card">{faces}
       <h2>Côte à côte</h2>

@@ -27,7 +27,8 @@ const SHOES = [
     "surface": "INDOOR/OUTDOOR",
     "foot": "ETROIT",
     "scoreBrand": "NIKE",
-    "link": "https://www.basket4ballers.com/fr/chaussure-basket/60321-nike-gt-cut-academy-2-purple-dinasty-hv9774-104.html"
+    "link": "https://www.basket4ballers.com/fr/chaussure-basket/60321-nike-gt-cut-academy-2-purple-dinasty-hv9774-104.html",
+    "amazon": "Nike G.T. Cut Academy 2"
   },
   {
     "name": "Giannis Immortality 5",
@@ -46,7 +47,8 @@ const SHOES = [
     "surface": "INDOOR/OUTDOOR",
     "foot": "STANDARD",
     "scoreBrand": "NIKE",
-    "link": "https://www.basket4ballers.com/fr/2790-chaussures-nike-giannis-immortality-5"
+    "link": "https://www.basket4ballers.com/fr/2790-chaussures-nike-giannis-immortality-5",
+    "amazon": "Nike Giannis Immortality 5"
   },
   {
     "name": "LeBron Witness 9",
@@ -65,7 +67,8 @@ const SHOES = [
     "surface": "INDOOR/OUTDOOR",
     "foot": "UNIVERSEL",
     "scoreBrand": "NIKE",
-    "link": "https://www.basket4ballers.com/fr/nouveautes/59685-nike-lebron-witness-9-bronny-james-pe-io7381-600.html"
+    "link": "https://www.basket4ballers.com/fr/nouveautes/59685-nike-lebron-witness-9-bronny-james-pe-io7381-600.html",
+    "amazon": "Nike LeBron Witness 9"
   },
   {
     "name": "Ja 3",
@@ -84,7 +87,8 @@ const SHOES = [
     "surface": "INDOOR/OUTDOOR",
     "foot": "STANDARD",
     "scoreBrand": "NIKE",
-    "link": "https://www.basket4ballers.com/fr/1569-chaussures-nike-ja-3"
+    "link": "https://www.basket4ballers.com/fr/1569-chaussures-nike-ja-3",
+    "amazon": "Nike Ja 3"
   },
   {
     "name": "Sabrina 3",
@@ -103,7 +107,8 @@ const SHOES = [
     "surface": "INDOOR/OUTDOOR",
     "foot": "STANDARD",
     "scoreBrand": "NIKE",
-    "link": "https://www.basket4ballers.com/fr/1653-chaussures-nike-sabrina-3"
+    "link": "https://www.basket4ballers.com/fr/1653-chaussures-nike-sabrina-3",
+    "amazon": "Nike Sabrina 3"
   },
   {
     "name": "Luka 5",
@@ -122,7 +127,8 @@ const SHOES = [
     "surface": "INDOOR/OUTDOOR",
     "foot": "STANDARD",
     "scoreBrand": "NIKE",
-    "link": "https://www.basket4ballers.com/fr/1458-chaussures-jordan-luka-5"
+    "link": "https://www.basket4ballers.com/fr/1458-chaussures-jordan-luka-5",
+    "amazon": "Jordan Luka 5"
   },
   {
     "name": "Tatum 4",
@@ -141,7 +147,8 @@ const SHOES = [
     "surface": "INDOOR/OUTDOOR",
     "foot": "STANDARD",
     "scoreBrand": "NIKE",
-    "link": "https://www.basket4ballers.com/fr/412-jayson-tatum"
+    "link": "https://www.basket4ballers.com/fr/412-jayson-tatum",
+    "amazon": "Jordan Tatum 4"
   },
   {
     "name": "KD19",
@@ -160,7 +167,8 @@ const SHOES = [
     "surface": "INDOOR/OUTDOOR",
     "foot": "ETROIT",
     "scoreBrand": "NIKE",
-    "link": "https://www.basket4ballers.com/fr/1233-chaussures-basketball-kevin-durant"
+    "link": "https://www.basket4ballers.com/fr/1233-chaussures-basketball-kevin-durant",
+    "amazon": "Nike KD19"
   },
   {
     "name": "Kobe IX Elite Low Protro",
@@ -179,7 +187,8 @@ const SHOES = [
     "surface": "INDOOR",
     "foot": "ETROIT",
     "scoreBrand": "NIKE",
-    "link": "https://www.basket4ballers.com/fr/122-kobe-bryant"
+    "link": "https://www.basket4ballers.com/fr/122-kobe-bryant",
+    "amazon": "Nike Kobe IX Elite Low Protro"
   },
   {
     "name": "Book 2",
@@ -198,7 +207,8 @@ const SHOES = [
     "surface": "INDOOR/OUTDOOR",
     "foot": "STANDARD",
     "scoreBrand": "NIKE",
-    "link": "https://www.basket4ballers.com/fr/chaussure-basket/59325-nike-book-2-the-phoenix-ib6687-700.html"
+    "link": "https://www.basket4ballers.com/fr/chaussure-basket/59325-nike-book-2-the-phoenix-ib6687-700.html",
+    "amazon": "Nike Book 2"
   },
   {
     "name": "Harden Volume 10",
@@ -324,7 +334,8 @@ const SHOES = [
     "surface": "INDOOR/OUTDOOR",
     "foot": "STANDARD",
     "scoreBrand": "UNDER ARMOUR",
-    "link": "https://www.basket4ballers.com/fr/1203-chaussures-basketball-de-aaron-fox"
+    "link": "https://www.basket4ballers.com/fr/1203-chaussures-basketball-de-aaron-fox",
+    "amazon": "Under Armour D. Fox 2"
   },
   {
     "name": "All-Pro Nitro 2",
@@ -366,7 +377,8 @@ const SHOES = [
     "surface": "INDOOR/OUTDOOR",
     "foot": "LARGE",
     "scoreBrand": "NEW BALANCE",
-    "link": "https://www.shinzo.paris/fr/chaussures-basketball/37634-new-balance-two-wxy-v5-bb2wycg5.html"
+    "link": "https://www.shinzo.paris/fr/chaussures-basketball/37634-new-balance-two-wxy-v5-bb2wycg5.html",
+    "amazon": "New Balance TWO WXY V5"
   },
   {
     "name": "Fresh Foam BB V3",
@@ -385,7 +397,8 @@ const SHOES = [
     "surface": "INDOOR/OUTDOOR",
     "foot": "ETROIT",
     "scoreBrand": "NEW BALANCE",
-    "link": "https://www.newbalance.fr/fr/pd/fresh-foam-bb-v3/BBFRSV3-49565.html"
+    "link": "https://www.newbalance.fr/fr/pd/fresh-foam-bb-v3/BBFRSV3-49565.html",
+    "amazon": "New Balance Fresh Foam BB V3"
   },
   {
     "name": "Giannis Freak 7",
@@ -404,7 +417,8 @@ const SHOES = [
     "surface": "INDOOR/OUTDOOR",
     "foot": "ETROIT",
     "scoreBrand": "NIKE",
-    "link": "https://www.basket4ballers.com/fr/basketball/59637-nike-giannis-freak-7-laser-orange-hf3450-007.html"
+    "link": "https://www.basket4ballers.com/fr/basketball/59637-nike-giannis-freak-7-laser-orange-hf3450-007.html",
+    "amazon": "Nike Giannis Freak 7"
   },
   {
     "name": "Way of Wade 12",
@@ -480,7 +494,8 @@ const SHOES = [
     "surface": "INDOOR",
     "foot": "ETROIT",
     "scoreBrand": "NIKE",
-    "link": "https://www.nike.com/fr/t/chaussures-de-basket-ball-nike-gt-future-Wi2B6Qgq"
+    "link": "https://www.nike.com/fr/t/chaussures-de-basket-ball-nike-gt-future-Wi2B6Qgq",
+    "amazon": "Nike G.T. Future"
   },
   {
     "name": "MB.05",
@@ -522,7 +537,8 @@ const SHOES = [
     "surface": "INDOOR",
     "foot": "STANDARD",
     "scoreBrand": "PUMA",
-    "link": ""
+    "link": "",
+    "amazon": "PUMA All-Pro Nitro 3"
   },
   {
     "name": "Nova Surge 4",
@@ -541,7 +557,8 @@ const SHOES = [
     "surface": "INDOOR",
     "foot": "STANDARD",
     "scoreBrand": "ASICS",
-    "link": ""
+    "link": "",
+    "amazon": "Asics Nova Surge 4"
   },
   {
     "name": "Gelburst 30",
@@ -560,7 +577,8 @@ const SHOES = [
     "surface": "INDOOR",
     "foot": "STANDARD",
     "scoreBrand": "ASICS",
-    "link": ""
+    "link": "",
+    "amazon": "Asics Gelburst 30"
   },
   {
     "name": "ANTA KAI 3",
