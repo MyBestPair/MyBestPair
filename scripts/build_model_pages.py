@@ -5,6 +5,7 @@ import json
 import re
 import unicodedata
 from pathlib import Path
+from urllib.parse import urlencode
 from xml.sax.saxutils import escape as xml_escape
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -28,7 +29,7 @@ GENDERS = {"HOMME": "Homme", "FEMME": "Femme", "MIXTE": "Homme et femme"}
 STUDS = {"FER": "fer (vissés)", "MOULES": "moulés", "HYBRIDE": "hybrides"}
 FOOT_STUDS = {"FG": "moulés FG", "MG": "multi-terrain", "SG": "vissés SG", "TF": "stabilisé TF"}
 PUBLICS = {"ADULTE": "Adulte (homme et femme)", "FEMME": "Femme", "ENFANT": "Enfant"}
-AFFILIATE_NOTE = "Certains liens vers les marchands sont des liens d’affiliation (Kwanko, Awin, Rakuten) : un achat peut rapporter une commission à MyBestPair, sans surcoût pour toi. Le classement n’en dépend pas."
+AFFILIATE_NOTE = "Certains liens vers les marchands sont des liens d’affiliation (Kwanko, Awin, Rakuten, Amazon) : un achat peut rapporter une commission à MyBestPair, sans surcoût pour toi. Le classement n’en dépend pas. En tant que Partenaire Amazon, MyBestPair réalise un bénéfice sur les achats remplissant les conditions requises."
 
 
 def affiliate_note(root):
@@ -222,43 +223,62 @@ def euros(value):
     return (f"{value:.2f}".rstrip("0").rstrip(".") if value % 1 else f"{value:g}").replace(".", ",") + " €"
 
 
-def buy_offers(shoe, sport, offers, name):
-    """List of (merchant label, GA merchant, price text, link, affiliate) — one line per merchant."""
+# Amazon Partenaires (4 nov. 2026) : identifiant de suivi de Romain. Amazon interdit d'afficher ses prix sans son
+# outil officiel : la ligne Amazon n'a donc pas de prix (prix vide). Lien de recherche Amazon sur le nom exact du
+# modèle (champ « amazon » des données basket / rugby), pour les modèles sans lien rémunéré.
+AMAZON_TAG = "mybestpair-21"
+
+
+def amazon_url(query):
+    return "https://www.amazon.fr/s?" + urlencode({"k": query, "tag": AMAZON_TAG})
+
+
+def buy_offers(shoe, sport, offers, name, with_amazon=True):
+    """List of (merchant label, GA merchant, price text, link, affiliate) — one line per merchant.
+    The Amazon line, if any, comes last and has an empty price text."""
     rows = []
+    if with_amazon and shoe.get("amazon"):
+        rows.append(("Amazon", "AMAZON", "", amazon_url(shoe["amazon"]), True))
     if sport in ("route", "trail"):
         best = {}
         for offer in offers.get(shoe.get("modele", name), []):
             if offer.get("link") and (offer["key"] not in best or offer["price"] < best[offer["key"]]["price"]):
                 best[offer["key"]] = offer
         for offer in sorted(best.values(), key=lambda o: (o["price"], FALLBACK.get(o["key"], 2))):
-            rows.append((OFFER_NAMES.get(offer["key"], offer["merchant"].title()), offer["merchant"], "dès " + euros(offer["price"]), offer["link"], True))
+            rows.insert(len(rows) - (1 if rows and rows[-1][1] == "AMAZON" else 0), (OFFER_NAMES.get(offer["key"], offer["merchant"].title()), offer["merchant"], "dès " + euros(offer["price"]), offer["link"], True))
         return rows
+    amazon = rows[:]
+    rows = []
     link = shoe.get("link")
-    if not link or shoe.get("merchant"):
-        return rows
-    label, ga = next(((lab, ga) for dom, ga, lab in DOMAIN_NAMES if dom in link), ("le marchand", ""))
-    affiliate = "linksynergy.com" in link or "awin1.com" in link
-    rows.append((label, ga, euros(shoe["price"]), link, affiliate))
-    women = shoe.get("women")
-    if isinstance(women, dict) and women.get("link"):
-        rows.append((label + " (version femme)", ga, euros(women.get("price", shoe["price"])), women["link"], affiliate))
-    return rows
+    if link and not shoe.get("merchant"):
+        label, ga = next(((lab, ga) for dom, ga, lab in DOMAIN_NAMES if dom in link), ("le marchand", ""))
+        affiliate = "linksynergy.com" in link or "awin1.com" in link
+        rows.append((label, ga, euros(shoe["price"]), link, affiliate))
+        women = shoe.get("women")
+        if isinstance(women, dict) and women.get("link"):
+            rows.append((label + " (version femme)", ga, euros(women.get("price", shoe["price"])), women["link"], affiliate))
+    return rows + amazon
 
 
-def offer_link(row, shoe, sport, name, css):
+def priced(rows):
+    """Merchant lines that show a price (all but Amazon)."""
+    return [row for row in rows if row[2]]
+
+
+def offer_link(row, shoe, sport, name, css, text="Voir le prix"):
     """Merchant button: Kwanko links as data-k (rule 5), data-* read by fiche-offres.js for GA4."""
     label_, ga, price, link, affiliate = row
     brand = shoe.get("brand") or name.split()[0]
     kw = re.match(r"^(ir|es|ek):", link)
     target = f'href="#" data-k="{h(link)}"' if kw else f'href="{h(link)}"'
     rel = "noopener noreferrer sponsored" if affiliate or kw else "noopener noreferrer"
-    return f'<a class="shoe-link {css}" {target} target="_blank" rel="{rel}" data-product-name="{h(name)}" data-product-brand="{h(brand)}" data-merchant="{h(ga)}" data-sport="{GA_SPORT[sport]}">Voir le prix</a>'
+    return f'<a class="shoe-link {css}" {target} target="_blank" rel="{rel}" data-product-name="{h(name)}" data-product-brand="{h(brand)}" data-merchant="{h(ga)}" data-sport="{GA_SPORT[sport]}">{text}</a>'
 
 
-def buy_lines(shoe, sport, offers, name):
+def buy_lines(shoe, sport, offers, name, with_amazon=True):
     """One <li> per merchant (also used by build_black_friday.py)."""
-    return [f'<li><span class="buy-shop">{h(row[0])}</span><span class="buy-price">{h(row[2])}</span>{offer_link(row, shoe, sport, name, "buy-btn")}</li>'
-            for row in buy_offers(shoe, sport, offers, name)]
+    return [f'<li><span class="buy-shop">{h(row[0])}</span><span class="buy-price">{h(row[2] or "Prix sur le site")}</span>{offer_link(row, shoe, sport, name, "buy-btn")}</li>'
+            for row in buy_offers(shoe, sport, offers, name, with_amazon)]
 
 
 def hero_price_html(shoe, sport, offers, name):
@@ -266,8 +286,11 @@ def hero_price_html(shoe, sport, offers, name):
     usual = euros(price_of(shoe))
     label_ = "Prix public indicatif" if shoe.get("priceIndicative") else "Prix habituel"
     rows = buy_offers(shoe, sport, offers, name)
+    price_only = f'<p class="hero-prix"><span>{label_}</span> <strong>{"≈ " if shoe.get("priceIndicative") else ""}{h(usual)}</strong></p>'
     if not rows:
-        return f'<div class="hero-buy buy"><p class="hero-prix"><span>{label_}</span> <strong>{"≈ " if shoe.get("priceIndicative") else ""}{h(usual)}</strong></p></div><!-- /hero-buy -->'
+        return f'<div class="hero-buy buy">{price_only}</div><!-- /hero-buy -->'
+    if not priced(rows):
+        return f'<div class="hero-buy buy with-btn">{price_only}{offer_link(rows[0], shoe, sport, name, "hero-btn", "Voir sur Amazon")}</div><!-- /hero-buy -->'
     best = rows[0]
     if best[2].replace("dès ", "") == usual:
         line = f'<p class="hero-prix"><strong>{h(usual)}</strong> <span>chez {h(best[0])}</span></p>'
@@ -303,7 +326,7 @@ def seo_texts(shoe, sport, fields, offers, name):
     notes = scores(shoe, sport, fields)
     ranked = sorted(notes, key=lambda key: (-notes[key], fields.index(key)))
     usual = euros(price_of(shoe))
-    rows = buy_offers(shoe, sport, offers, name)
+    rows = priced(buy_offers(shoe, sport, offers, name))
     if rows and rows[0][2].replace("dès ", "") != usual:
         price = f"Prix habituel {usual}, {rows[0][2]} chez {rows[0][0]}."
     elif rows:
@@ -341,7 +364,7 @@ def product_ld(shoe, sport, fields, offers, name, photo, url):
                        "reviewRating": {"@type": "Rating", "ratingValue": overall_note(shoe, sport, fields), "bestRating": 10, "worstRating": 0}}}
     if photo:
         data["image"] = photo[0]
-    rows = buy_offers(shoe, sport, offers, name)
+    rows = priced(buy_offers(shoe, sport, offers, name))
     prices = sorted(float(row[2].replace("dès ", "").replace(" €", "").replace(",", ".")) for row in rows)
     if prices:
         data["offers"] = {"@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": prices[0], "highPrice": prices[-1], "offerCount": len(prices)}
@@ -443,7 +466,7 @@ def render(shoe, sport, base, category, fields, photo=None, related="", buy="", 
   <script src="{root_link}analytics-consent.js"></script>
   <script src="{root_link}ambiance.js"></script>
   <link rel="stylesheet" href="{root_link}modeles.css">
-  <script src="{root_link}fiche-offres.js" defer></script>
+  <script src="{root_link}fiche-offres.js" defer></script>{f'\n  <script src="{root_link}amazon-click.js" defer></script>' if shoe.get("amazon") else ""}
 </head>
 <body>
   <nav class="topbar" aria-label="Navigation principale"><a class="brand" href="{root_link}" aria-label="MyBestPair — accueil"><img src="{root_link}logo-mybestpair.webp" alt="MyBestPair" width="159" height="28"></a><a href="../../#{fragment}">Questionnaire {h(category)}</a></nav>
@@ -492,6 +515,8 @@ def main():
                     pilot = re.sub(r'(<script src="([./]*)analytics-consent\.js"></script>)', r'\1\n  <script src="\2ambiance.js"></script>', pilot, count=1)
                 if "affiliate-note" not in pilot:
                     pilot = pilot.replace("</header>", "</header>\n    " + affiliate_note("../../../../"), 1)
+                else:  # texte de l'encart tenu à jour (ex. ajout d'Amazon, 4 nov. 2026)
+                    pilot = re.sub(r'<p class="note affiliate-note">.*?</p>', lambda m: affiliate_note("../../../../"), pilot, count=1, flags=re.S)
                 pilot = re.sub(r'\n    <section class="card buy" id="ou-acheter">.*?</section>', "", pilot, flags=re.S)
                 pilot = pilot.replace("</p>\n    <div class=\"layout\">", "</p>\n    " + buy_html(shoe, sport, offers, name, "../../../../") + "\n    <div class=\"layout\">", 1)
                 if "fiche-offres.js" not in pilot:

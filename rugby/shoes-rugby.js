@@ -294,7 +294,8 @@ const SHOES = [
     "link": "",
     "priceIndicative": true,
     "photo": "https://cdn.shopify.com/s/files/1/0783/7945/0580/files/Q-B000173BK8-B1_600x400_crop_center.jpg?v=1787917372",
-    "photoCredit": "Canterbury"
+    "photoCredit": "Canterbury",
+    "amazon": "Canterbury Stampede Pro SG"
   },
   {
     "name": "Phoenix 2.0 Pro SG",
@@ -317,7 +318,8 @@ const SHOES = [
     "link": "",
     "priceIndicative": true,
     "photo": "https://cdn.shopify.com/s/files/1/0783/7945/0580/files/Q-B000180989-B1-1_600x400_crop_center.jpg?v=1787917376",
-    "photoCredit": "Canterbury"
+    "photoCredit": "Canterbury",
+    "amazon": "Canterbury Phoenix 2.0 Pro SG"
   },
   {
     "name": "Phoenix 2.0 Team FG",
@@ -340,7 +342,8 @@ const SHOES = [
     "link": "",
     "priceIndicative": true,
     "photo": "https://cdn.shopify.com/s/files/1/0783/7945/0580/files/Q-B000183989-B1-2_600x400_crop_center.jpg?v=1787917374",
-    "photoCredit": "Canterbury"
+    "photoCredit": "Canterbury",
+    "amazon": "Canterbury Phoenix 2.0 Team FG"
   },
   {
     "name": "Speed Falcon 2.0 SG",
@@ -363,7 +366,8 @@ const SHOES = [
     "link": "",
     "priceIndicative": true,
     "photo": "https://cdn.shopify.com/s/files/1/0783/7945/0580/files/Q-F000010A89-B1_600x400_crop_center.jpg?v=1787925185",
-    "photoCredit": "Canterbury"
+    "photoCredit": "Canterbury",
+    "amazon": "Canterbury Speed Falcon 2.0 SG"
   },
   {
     "name": "Speed Junior Pro",
@@ -386,7 +390,8 @@ const SHOES = [
     "link": "",
     "priceIndicative": true,
     "photo": "https://cdn.shopify.com/s/files/1/0783/7945/0580/files/Q-F000015A89-B1_600x400_crop_center.jpg?v=1787917593",
-    "photoCredit": "Canterbury"
+    "photoCredit": "Canterbury",
+    "amazon": "Canterbury Speed Junior Pro"
   },
   {
     "name": "Kakari Elite SG",
@@ -407,7 +412,8 @@ const SHOES = [
     "public": "ADULTE",
     "scoreBrand": "ADIDAS",
     "link": "",
-    "priceIndicative": true
+    "priceIndicative": true,
+    "amazon": "adidas Kakari Elite SG"
   },
   {
     "name": "Kakari RS SG",
@@ -428,7 +434,8 @@ const SHOES = [
     "public": "ADULTE",
     "scoreBrand": "ADIDAS",
     "link": "",
-    "priceIndicative": true
+    "priceIndicative": true,
+    "amazon": "adidas Kakari RS SG"
   },
   {
     "name": "Adizero RS15 Pro SG",
@@ -449,7 +456,8 @@ const SHOES = [
     "public": "ADULTE",
     "scoreBrand": "ADIDAS",
     "link": "",
-    "priceIndicative": true
+    "priceIndicative": true,
+    "amazon": "adidas Adizero RS15 Pro SG"
   },
   {
     "name": "Morelia Neo IV Elite SG",
@@ -472,7 +480,8 @@ const SHOES = [
     "link": "",
     "priceIndicative": true,
     "photo": "https://emea.mizuno.com/dw/image/v2/BDBS_PRD/on/demandware.static/-/Sites-masterCatalog_Mizuno/default/dw4b5d9008/SS26/Footwear/SH_P1GC264350_00.png?sw=600",
-    "photoCredit": "Mizuno"
+    "photoCredit": "Mizuno",
+    "amazon": "Mizuno Morelia Neo IV Elite SG"
   },
   {
     "name": "Waitangi II CL",
@@ -495,7 +504,8 @@ const SHOES = [
     "link": "",
     "priceIndicative": true,
     "photo": "https://emea.mizuno.com/dw/image/v2/BDBS_PRD/on/demandware.static/-/Sites-masterCatalog_Mizuno/default/dw08560cbe/AW26/Footwear/SH_R1GA261101_00.png?sw=600",
-    "photoCredit": "Mizuno"
+    "photoCredit": "Mizuno",
+    "amazon": "Mizuno Waitangi II CL"
   },
   {
     "name": "Sidestep Icon 8S",
@@ -518,7 +528,8 @@ const SHOES = [
     "link": "",
     "priceIndicative": true,
     "photo": "https://cdn.shopify.com/s/files/1/0068/0227/6407/files/RSCA26Boots_20Sidestep_20Icon_208_20Stud_20Black_20Main_600x400_crop_center.jpg?v=1780658277",
-    "photoCredit": "Gilbert"
+    "photoCredit": "Gilbert",
+    "amazon": "Gilbert Sidestep Icon 8S"
   },
   {
     "name": "Speedster 6S",
@@ -541,7 +552,8 @@ const SHOES = [
     "link": "",
     "priceIndicative": true,
     "photo": "https://cdn.shopify.com/s/files/1/0068/0227/6407/files/RSBA26Boots_20Speedster_20Boot_20Aqua_206_20Stud_20Instep_600x400_crop_center.jpg?v=1780658223",
-    "photoCredit": "Gilbert"
+    "photoCredit": "Gilbert",
+    "amazon": "Gilbert Speedster 6S"
   },
   {
     "name": "RS15 Avaglide",
@@ -562,7 +574,8 @@ const SHOES = [
     "public": "FEMME",
     "scoreBrand": "ADIDAS",
     "link": "",
-    "priceIndicative": true
+    "priceIndicative": true,
+    "amazon": "adidas RS15 Avaglide"
   },
   {
     "name": "Kakari W SG",
@@ -583,7 +596,8 @@ const SHOES = [
     "public": "FEMME",
     "scoreBrand": "ADIDAS",
     "link": "",
-    "priceIndicative": true
+    "priceIndicative": true,
+    "amazon": "adidas Kakari W SG"
   },
   {
     "name": "Stampede Groundbreak Team SG",
@@ -606,7 +620,8 @@ const SHOES = [
     "link": "",
     "priceIndicative": true,
     "photo": "https://cdn.shopify.com/s/files/1/0783/7945/0580/files/Q-B000174BK8-B1_600x400_crop_center.jpg?v=1789562130",
-    "photoCredit": "Canterbury"
+    "photoCredit": "Canterbury",
+    "amazon": "Canterbury Stampede Groundbreak Team SG"
   },
   {
     "name": "Speed Falcon 2.0 Team SG",
@@ -629,7 +644,8 @@ const SHOES = [
     "link": "",
     "priceIndicative": true,
     "photo": "https://cdn.shopify.com/s/files/1/0783/7945/0580/files/Q-F000012A89-B1_600x400_crop_center.jpg?v=1787917458",
-    "photoCredit": "Canterbury"
+    "photoCredit": "Canterbury",
+    "amazon": "Canterbury Speed Falcon 2.0 Team SG"
   },
   {
     "name": "PWR X 8S V2 SG",
@@ -652,7 +668,8 @@ const SHOES = [
     "link": "",
     "priceIndicative": true,
     "photo": "https://cdn.shopify.com/s/files/1/0068/0227/6407/files/RSAI25Boots_20Icon_20Power_20X_208_20Stud_20V2_20Black_20Instep_600x400_crop_center.jpg?v=1747232281",
-    "photoCredit": "Gilbert"
+    "photoCredit": "Gilbert",
+    "amazon": "Gilbert PWR X 8S V2 SG"
   },
   {
     "name": "Morelia Neo IV Pro SG",
@@ -675,7 +692,8 @@ const SHOES = [
     "link": "",
     "priceIndicative": true,
     "photo": "https://emea.mizuno.com/dw/image/v2/BDBS_PRD/on/demandware.static/-/Sites-masterCatalog_Mizuno/default/dw4491cce9/SS26/Footwear/SH_P1GC263450_00.png?sw=600",
-    "photoCredit": "Mizuno"
+    "photoCredit": "Mizuno",
+    "amazon": "Mizuno Morelia Neo IV Pro SG"
   }
 ];
 

@@ -93,7 +93,7 @@ def pick_html(sport, base, fields, shoes, offers, profile, chosen_brands):
     for shoe in shoes:
         name = bm.display_name(shoe, sport)
         brand = (shoe.get("marque") or shoe.get("brand")).casefold()
-        if brand in chosen_brands or not keep(shoe) or not bm.buy_offers(shoe, sport, offers, name):
+        if brand in chosen_brands or not keep(shoe) or not bm.buy_offers(shoe, sport, offers, name, with_amazon=False):
             continue
         notes = bm.scores(shoe, sport, fields)
         value = avg(notes) if crit == "moyenne" else notes[crit]
@@ -114,7 +114,7 @@ def pick_html(sport, base, fields, shoes, offers, profile, chosen_brands):
     if photo:
         credit = f'<span class="tile-credit">Photo : © {bm.h(photo[2])}</span>' if photo[2] else ""
         visual = f'<span class="tile-photo"><img src="{bm.h(photo[0])}" alt="{bm.h(name)}" loading="lazy" decoding="async">{credit}</span>'
-    lines = bm.buy_lines(shoe, sport, offers, name)
+    lines = bm.buy_lines(shoe, sport, offers, name, with_amazon=False)  # pages Black Friday / Noël : marchands avec prix uniquement
     more = len(lines) - MAX_SHOPS
     extra = f'<p class="pick-more"><a href="../{base}/modeles/{path}/#ou-acheter">+ {more} autre{"s" if more > 1 else ""} marchand{"s" if more > 1 else ""} sur la fiche</a></p>' if more > 0 else ""
     usual = ("≈ " if shoe.get("priceIndicative") else "") + bm.euros(price)

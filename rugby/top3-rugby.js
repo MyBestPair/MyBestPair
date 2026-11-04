@@ -37,6 +37,9 @@
     if (u.includes("linksynergy.com") || u.includes("decathlon.fr")) return "Decathlon";
     return "Decathlon";
   }
+  // Amazon Partenaires (nov. 2026) : lien de recherche sur le nom exact du modèle, sans prix (règle d'Amazon).
+  const amazonUrl = (r) => (r.amazon ? "https://www.amazon.fr/s?" + new URLSearchParams({ k: r.amazon, tag: "mybestpair-21" }) : "");
+  const AMZ_SECOND = 'style="display:block;text-align:center;margin-top:10px;font-weight:800;font-size:.9rem"';
   const fullName = (r) => (r.name.toUpperCase().startsWith(r.brand.toUpperCase() + " ") ? r.name : r.brand + " " + r.name);
   const shortName = (r) => (r.name.toUpperCase().startsWith(r.brand.toUpperCase() + " ") ? r.name.slice(r.brand.length).trim() : r.name);
   const note = (r, c) => r.scores[CRITERIA.indexOf(c)];
@@ -78,9 +81,12 @@
       const rankClass = i < 3 ? "rank" + (i + 1) : "other";
       const shop = shopName(r.link);
       const fiche = "modeles/" + slug(fullName(r)) + "/";
+      const amz = amazonUrl(r);
       const offer = r.link
         ? `<a class="product-link t3-cta" href="${esc(r.link)}" target="_blank" rel="noopener noreferrer sponsored" data-product-brand="${esc(r.brand)}" data-merchant="${esc(shop)}">Voir chez ${esc(shop)} ${ARROW}</a>`
-        : `<span class="product-link disabled t3-cta">Lien bientôt disponible</span>`;
+        : amz
+          ? `<a class="product-link t3-cta" href="${esc(amz)}" target="_blank" rel="noopener noreferrer sponsored" data-product-brand="${esc(r.brand)}" data-merchant="AMAZON">Voir sur Amazon ${ARROW}</a>`
+          : `<span class="product-link disabled t3-cta">Lien bientôt disponible</span>`;
       return `<article class="t3-card" id="t3-panel" role="tabpanel" aria-label="${esc(fullName(r))}">
         <div class="t3-plate t3-plate-text r${Math.min(i + 1, 3)}${photoOf(r) ? "" : " t3-noimg"}">
           <span class="t3-tag">${CHECK}${esc(tag)}</span>
@@ -106,7 +112,7 @@
           <div class="t3-offer shoe-card t3-trk ${rankClass}">
             <span class="shoe-name" hidden>${esc(r.name)}</span>
             <div class="t3-offer-top">
-              <div><div class="t3-offer-label">OÙ L'ACHETER</div><div class="t3-offer-meta">${r.link ? esc(shop) + " · coloris et pointures sur le site" : "Prix public indicatif · lien marchand bientôt disponible"}</div></div>
+              <div><div class="t3-offer-label">OÙ L'ACHETER</div><div class="t3-offer-meta">${r.link ? esc(shop) + " · coloris et pointures sur le site" : amz ? "Prix public indicatif · prix du jour sur Amazon" : "Prix public indicatif · lien marchand bientôt disponible"}</div></div>
               <div class="t3-price">${r.priceIndicative ? "≈ " : ""}${price(r.price)}</div>
             </div>
             ${offer}
@@ -162,7 +168,7 @@
         <div class="t3-tabs" role="tablist" aria-label="Choisir une paire">${tabs}</div>
         ${card(list[sel], sel, p, tagList[sel])}
         ${compare(rankedResults.slice(0, 3), p)}
-        <p class="t3-legal">Certains liens sont affiliés : MyBestPair peut toucher une commission si tu achètes, sans surcoût pour toi. Le classement n'en dépend pas.</p>
+        <p class="t3-legal">Certains liens sont affiliés : MyBestPair peut toucher une commission si tu achètes, sans surcoût pour toi. Le classement n'en dépend pas. En tant que Partenaire Amazon, MyBestPair réalise un bénéfice sur les achats remplissant les conditions requises.</p>
       </div>`;
       box.querySelectorAll(".t3-tab").forEach((b) => b.addEventListener("click", () => {
         sel = Number(b.dataset.t3);
