@@ -235,7 +235,8 @@ const SHOES = [
     "foot": "STANDARD",
     "gender": "MIXTE",
     "scoreBrand": "ASICS",
-    "link": ""
+    "link": "",
+    "amazon": "ASICS Solution Swift FF Padel"
   },
   {
     "name": "Gel-Challenger 15 Padel",
@@ -486,7 +487,8 @@ const SHOES = [
     "foot": "LARGE",
     "gender": "FEMME",
     "scoreBrand": "HEAD",
-    "link": ""
+    "link": "",
+    "amazon": "HEAD Sprint Evo 4.0 padel femme"
   },
   {
     "name": "Hurakn Pro V2",
@@ -506,7 +508,8 @@ const SHOES = [
     "foot": "STANDARD",
     "gender": "MIXTE",
     "scoreBrand": "WILSON",
-    "link": ""
+    "link": "",
+    "amazon": "Wilson Hurakn Pro V2 padel"
   },
   {
     "name": "Bela Tour",
@@ -568,7 +571,8 @@ const SHOES = [
     "foot": "STANDARD",
     "gender": "MIXTE",
     "scoreBrand": "NOX",
-    "link": ""
+    "link": "",
+    "amazon": "NOX Nerbo padel"
   },
   {
     "name": "Indiga W 26V",
