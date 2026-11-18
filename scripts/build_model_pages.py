@@ -213,7 +213,7 @@ def meta_of(shoe, sport):
 # Bloc « Où l'acheter » des fiches (27 oct. 2026) : offres déjà présentes dans les données des questionnaires.
 # Liens Kwanko écrits ir:/es:/ek:CODE (règle 5), reconstruits par fiche-offres.js, qui envoie aussi les événements GA4.
 GA_SPORT = {"route": "running_route", "trail": "trail", "basket": "basketball", "padel": "padel", "rugby": "rugby", "foot": "foot"}
-OFFER_NAMES = {"decathlon": "Decathlon", "i-run": "i-Run", "ekosport": "Ekosport", "endurance-store": "Endurance Store"}
+OFFER_NAMES = {"decathlon": "Decathlon", "i-run": "i-Run", "ekosport": "Ekosport", "endurance-store": "Endurance Store", "intersport": "Intersport"}
 DOMAIN_NAMES = [("linksynergy.com", "DECATHLON", "Decathlon"), ("awin1.com", "BASKET CENTER", "Basket Center"), ("basket4ballers.com", "BASKET4BALLERS", "Basket4Ballers"),
                 ("wayofwade.com", "WAY OF WADE", "Way of Wade"), ("shinzo.paris", "SHINZO", "Shinzo"), ("newbalance.fr", "NEW BALANCE", "New Balance"), ("nike.com", "NIKE", "Nike"), ("anta", "ANTA", "ANTA")]
 FALLBACK = {"i-run": 0, "decathlon": 1}

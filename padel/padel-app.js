@@ -337,7 +337,7 @@ document.addEventListener("click", e => {
   const href = link.href || "";
   const isRakuten = href.includes("click.linksynergy.com");
   const isAwin = href.includes("awin1.com");
-  const isKwanko = href.includes("kwanko.com");
+  const isKwanko = href.includes("kwanko.com") || href.includes([..."rf.tropsretni.btc"].reverse().join("")); /* Intersport (Kwanko), 18 nov. 2026 */
   const isAffiliate = isRakuten || isAwin || isKwanko;
   const affiliateNetwork = isKwanko ? "kwanko" : (isRakuten ? "rakuten" : (isAwin ? "awin" : ""));
 

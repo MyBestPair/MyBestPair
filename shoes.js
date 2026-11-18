@@ -28,7 +28,11 @@ const SHOES = [
     "foot": "ETROIT",
     "scoreBrand": "NIKE",
     "link": "https://www.basket4ballers.com/fr/chaussure-basket/60321-nike-gt-cut-academy-2-purple-dinasty-hv9774-104.html",
-    "amazon": "Nike G.T. Cut Academy 2"
+    "amazon": "Nike G.T. Cut Academy 2",
+    "intersport": {
+      "link": "is:P5129AD58CB1F19S1UE41364301583410V4",
+      "price": 64.99
+    }
   },
   {
     "name": "Giannis Immortality 5",
@@ -48,7 +52,11 @@ const SHOES = [
     "foot": "STANDARD",
     "scoreBrand": "NIKE",
     "link": "https://www.basket4ballers.com/fr/2790-chaussures-nike-giannis-immortality-5",
-    "amazon": "Nike Giannis Immortality 5"
+    "amazon": "Nike Giannis Immortality 5",
+    "intersport": {
+      "link": "is:P5129AD58CB1F19S1UE41364301743553V4",
+      "price": 79.99
+    }
   },
   {
     "name": "LeBron Witness 9",
@@ -68,7 +76,11 @@ const SHOES = [
     "foot": "UNIVERSEL",
     "scoreBrand": "NIKE",
     "link": "https://www.basket4ballers.com/fr/nouveautes/59685-nike-lebron-witness-9-bronny-james-pe-io7381-600.html",
-    "amazon": "Nike LeBron Witness 9"
+    "amazon": "Nike LeBron Witness 9",
+    "intersport": {
+      "link": "is:P5129AD58CB1F19S1UE41364301418169V4",
+      "price": 69.99
+    }
   },
   {
     "name": "Ja 3",
@@ -128,7 +140,11 @@ const SHOES = [
     "foot": "STANDARD",
     "scoreBrand": "NIKE",
     "link": "https://www.basket4ballers.com/fr/1458-chaussures-jordan-luka-5",
-    "amazon": "Jordan Luka 5"
+    "amazon": "Jordan Luka 5",
+    "intersport": {
+      "link": "is:P5129AD58CB1F19S1UE41364301735708V4",
+      "price": 129.99
+    }
   },
   {
     "name": "Tatum 4",
@@ -250,7 +266,11 @@ const SHOES = [
     "decathlonPrice": 119.99,
     "decathlonRegularPrice": 119.99,
     "decathlonSku": "386596",
-    "decathlonImage": "https://contents.mediadecathlon.com/p3182856/k$e5cc9b66bc5879618859c3755b5af10f/picture.jpg"
+    "decathlonImage": "https://contents.mediadecathlon.com/p3182856/k$e5cc9b66bc5879618859c3755b5af10f/picture.jpg",
+    "intersport": {
+      "link": "is:P5129AD58CB1F19S1UE41364301758583V4",
+      "price": 119.99
+    }
   },
   {
     "name": "Anthony Edwards 2",
@@ -273,7 +293,11 @@ const SHOES = [
     "decathlonPrice": 129.99,
     "decathlonRegularPrice": 129.99,
     "decathlonSku": "386555",
-    "decathlonImage": "https://contents.mediadecathlon.com/p3204855/k$e5dfd6493e5cb4229d00d4dd2e2e9f4f/picture.jpg"
+    "decathlonImage": "https://contents.mediadecathlon.com/p3204855/k$e5dfd6493e5cb4229d00d4dd2e2e9f4f/picture.jpg",
+    "intersport": {
+      "link": "is:P5129AD58CB1F19S1UE41364301458019V4",
+      "price": 79.99
+    }
   },
   {
     "name": "Dame X",
@@ -296,7 +320,11 @@ const SHOES = [
     "decathlonPrice": 49.99,
     "decathlonRegularPrice": 49.99,
     "decathlonSku": "373766",
-    "decathlonImage": "https://contents.mediadecathlon.com/p3100437/k$2d5f46deebe9c6ae455e7e637dc30a96/picture.jpg"
+    "decathlonImage": "https://contents.mediadecathlon.com/p3100437/k$2d5f46deebe9c6ae455e7e637dc30a96/picture.jpg",
+    "intersport": {
+      "link": "is:P5129AD58CB1F19S1UE41364301318606V4",
+      "price": 54.99
+    }
   },
   {
     "name": "Curry 13",
@@ -358,7 +386,11 @@ const SHOES = [
     "decathlonPrice": 59.99,
     "decathlonRegularPrice": 59.99,
     "decathlonSku": "362929",
-    "decathlonImage": "https://contents.mediadecathlon.com/p3033160/k$1a1f9efe3d052d1d710c9504721e5b7f/picture.jpg"
+    "decathlonImage": "https://contents.mediadecathlon.com/p3033160/k$1a1f9efe3d052d1d710c9504721e5b7f/picture.jpg",
+    "intersport": {
+      "link": "is:P5129AD58CB1F19S1UE41364301478625V4",
+      "price": 84.99
+    }
   },
   {
     "name": "TWO WXY V5",

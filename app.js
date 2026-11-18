@@ -1023,6 +1023,9 @@ document.addEventListener(
         ) ||
                 href.includes(
           "endurance-store.fr"
+        ) ||
+                href.includes(
+          [..."rf.tropsretni.btc"].reverse().join("") /* Intersport (Kwanko), 18 nov. 2026 */
         );
 
 
