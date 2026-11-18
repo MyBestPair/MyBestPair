@@ -1,14 +1,14 @@
 /* Fiches modèles : bloc « Où l'acheter ».
- * - Les liens Kwanko sont écrits ir:/es:/ek:CODE dans la page (jamais en clair, règle 5 de CLAUDE.md)
+ * - Les liens Kwanko sont écrits ir:/es:/ek:/is:CODE dans la page (is = Intersport, 18 nov. 2026) (jamais en clair, règle 5 de CLAUDE.md)
  *   et reconstruits ici, comme kwankoLink() dans route-app.js / trail-app.js.
  * - Chaque clic envoie product_click et, pour un lien affilié, affiliate_click avec les mêmes
  *   paramètres que les questionnaires (rank = 0 : clic depuis une fiche, hors Top 3).
  */
 (function () {
-  var HOSTS = { ir: "rf.nur-i.xsf", es: "rf.erots-ecnarudne.foz", ek: "rf.tropsoke.azi" };
+  var HOSTS = { ir: "rf.nur-i.xsf", es: "rf.erots-ecnarudne.foz", ek: "rf.tropsoke.azi", is: "rf.tropsretni.btc" };
   Object.keys(HOSTS).forEach(function (k) { HOSTS[k] = HOSTS[k].split("").reverse().join(""); });
   function rebuild(v) {
-    var m = /^(ir|es|ek):(.+)$/.exec(v || "");
+    var m = /^(ir|es|ek|is):(.+)$/.exec(v || "");
     return m ? "https://" + HOSTS[m[1]] + "/?" + m[2] : v;
   }
   function isKwanko(href) {

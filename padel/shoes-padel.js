@@ -189,7 +189,11 @@ const SHOES = [
     "gender": "HOMME",
     "scoreBrand": "ASICS",
     "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.4480616367255597944003148&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-padel-homme-asics-gel-dedicate-9%2F386627%2Fm9030241",
-    "photo": "https://contents.mediadecathlon.com/p3173722/k$ab83530ca9cc05edc197d26ea09baa77/picture.jpg"
+    "photo": "https://contents.mediadecathlon.com/p3173722/k$ab83530ca9cc05edc197d26ea09baa77/picture.jpg",
+    "intersport": {
+      "link": "is:P5129AD58CB1F19S1UE41364301669495V4",
+      "price": 74.99
+    }
   },
   {
     "name": "Game FF",
@@ -257,7 +261,11 @@ const SHOES = [
     "gender": "HOMME",
     "scoreBrand": "ASICS",
     "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.44806745693465105546124&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-padel-homme-asics-gel-challenguer-15-blanc-bleu%2F381323%2Fm9001456",
-    "photo": "https://contents.mediadecathlon.com/p3039965/k$2162f3a160c1b79adeb1f17fc4b9fbe4/picture.jpg"
+    "photo": "https://contents.mediadecathlon.com/p3039965/k$2162f3a160c1b79adeb1f17fc4b9fbe4/picture.jpg",
+    "intersport": {
+      "link": "is:P5129AD58CB1F19S1UE41364301445523V4",
+      "price": 84.99
+    }
   },
   {
     "name": "Sonicsmash FF",
@@ -278,7 +286,11 @@ const SHOES = [
     "gender": "HOMME",
     "scoreBrand": "ASICS",
     "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.448064921583686734084084&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-padel-homme-asics-sonicsmash-ff-white-orange%2F381312%2Fm9049415",
-    "photo": "https://contents.mediadecathlon.com/p3212420/k$82705f8252c4e39f17f3706214b98674/picture.jpg"
+    "photo": "https://contents.mediadecathlon.com/p3212420/k$82705f8252c4e39f17f3706214b98674/picture.jpg",
+    "intersport": {
+      "link": "is:P5129AD58CB1F19S1UE41364301521360V4",
+      "price": 99.99
+    }
   },
   {
     "name": "Sensa 25",
@@ -320,7 +332,11 @@ const SHOES = [
     "gender": "HOMME",
     "scoreBrand": "BABOLAT",
     "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.4480611580387529285262133&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-padel-homme-babolat-jet-viva-blanc%2F365394%2Fm8941944",
-    "photo": "https://contents.mediadecathlon.com/p2816643/k$e09b8de425d44f954a9087dadce32037/picture.jpg"
+    "photo": "https://contents.mediadecathlon.com/p2816643/k$e09b8de425d44f954a9087dadce32037/picture.jpg",
+    "intersport": {
+      "link": "is:P5129AD58CB1F19S1UE41364301670025V4",
+      "price": 109.99
+    }
   },
   {
     "name": "Premura 3 Juan Lebron",
@@ -341,7 +357,11 @@ const SHOES = [
     "gender": "MIXTE",
     "scoreBrand": "BABOLAT",
     "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.4480614634464146526800284&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-padel-premura-3-juan-lebron-pour-homme%2F381314%2Fm9001489",
-    "photo": "https://contents.mediadecathlon.com/p2952052/k$82f2bf32f48000a4e7010c87bad23f68/picture.jpg"
+    "photo": "https://contents.mediadecathlon.com/p2952052/k$82f2bf32f48000a4e7010c87bad23f68/picture.jpg",
+    "intersport": {
+      "link": "is:P5129AD58CB1F19S1UE41364301773207V4",
+      "price": 169.99
+    }
   },
   {
     "name": "Bogun 25",
@@ -404,7 +424,11 @@ const SHOES = [
     "gender": "HOMME",
     "scoreBrand": "BULLPADEL",
     "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.4480614752201594169353422&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-padel-homme-bullpadel-neuron-26v-grey%2F381427%2Fm9001994",
-    "photo": "https://contents.mediadecathlon.com/p3031108/k$e21b30870febaeefd673b882718d1217/picture.jpg"
+    "photo": "https://contents.mediadecathlon.com/p3031108/k$e21b30870febaeefd673b882718d1217/picture.jpg",
+    "intersport": {
+      "link": "is:P5129AD58CB1F19S1UE41364301536413V4",
+      "price": 139.99
+    }
   },
   {
     "name": "Vertex Vibram 26",
@@ -661,7 +685,11 @@ const SHOES = [
     "gender": "HOMME",
     "scoreBrand": "BABOLAT",
     "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.4480645167581628324641&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-padel-homme-babolat-movea-2-blanches%2F365368%2Fm8942113",
-    "photo": "https://contents.mediadecathlon.com/p2852246/k$95cc9006b2ec73ad1d5df04067c72f4b/picture.jpg"
+    "photo": "https://contents.mediadecathlon.com/p2852246/k$95cc9006b2ec73ad1d5df04067c72f4b/picture.jpg",
+    "intersport": {
+      "link": "is:P5129AD58CB1F19S1UE41364301659849V4",
+      "price": 129.99
+    }
   },
   {
     "name": "Motion One LTD",
@@ -703,7 +731,11 @@ const SHOES = [
     "gender": "HOMME",
     "scoreBrand": "HEAD",
     "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.44806268452679361736637&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-padel-homme-head-sprint-pro-4-0-bleu-vert%2F365315%2Fm8942682",
-    "photo": "https://contents.mediadecathlon.com/p2860136/k$8d1cf7323614169836c95ad9039e60f7/picture.jpg"
+    "photo": "https://contents.mediadecathlon.com/p2860136/k$8d1cf7323614169836c95ad9039e60f7/picture.jpg",
+    "intersport": {
+      "link": "is:P5129AD58CB1F19S1UE41364301773217V4",
+      "price": 159.99
+    }
   }
 ];
 

@@ -20,7 +20,7 @@
     "DURABILITE": "Durabilité", "LÉGÈRETÉ": "Légèreté", "ACCROCHE": "Accroche", "PROTECTION": "Protection"
   };
   const TYPES = { "DAILY": "Daily", "TEMPO": "Tempo", "MAX CUSHION": "Max cushion", "RACE": "Compétition", "POLYVALENTE": "Polyvalente", "TECHNIQUE": "Technique", "ULTRA": "Ultra" };
-  const SHOPS = { "I-RUN": "i-Run", "ENDURANCE-STORE": "Endurance Store", "EKOSPORT": "Ekosport", "DECATHLON": "Decathlon", "LE REVENDEUR": "le revendeur" };
+  const SHOPS = { "I-RUN": "i-Run", "ENDURANCE-STORE": "Endurance Store", "EKOSPORT": "Ekosport", "DECATHLON": "Decathlon", "INTERSPORT": "Intersport", "LE REVENDEUR": "le revendeur" };
 
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const num = (n, d = 1) => Number(n).toFixed(d).replace(/\.0+$/, "").replace(".", ",");
