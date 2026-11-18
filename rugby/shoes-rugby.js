@@ -124,7 +124,11 @@ const SHOES = [
     "public": "ADULTE",
     "scoreBrand": "ADIDAS",
     "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.448062272152388770656329&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fcrampons-de-rugby-visses-adulte-kakari-sg-bleu-marine%2F358012%2Fc195m9029997",
-    "photo": "https://contents.mediadecathlon.com/p3161428/k$61111cc4f8a5aab679d727ca91df98ca/picture.jpg"
+    "photo": "https://contents.mediadecathlon.com/p3161428/k$61111cc4f8a5aab679d727ca91df98ca/picture.jpg",
+    "intersport": {
+      "link": "is:P5129AD58CB1F19S1UE41364301468507V4",
+      "price": 54.99
+    }
   },
   {
     "name": "RS15 FG",
@@ -145,7 +149,11 @@ const SHOES = [
     "public": "ADULTE",
     "scoreBrand": "ADIDAS",
     "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.4480613244336284637932353&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-rugby-adulte-rs15-fg-bleu-et-bleu-ciel%2F386637%2Fm9030242",
-    "photo": "https://contents.mediadecathlon.com/p3156071/k$02ba689b519e7d089ad0f2a1001ee23b/picture.jpg"
+    "photo": "https://contents.mediadecathlon.com/p3156071/k$02ba689b519e7d089ad0f2a1001ee23b/picture.jpg",
+    "intersport": {
+      "link": "is:P5129AD58CB1F19S1UE41364301651901V4",
+      "price": 84.99
+    }
   },
   {
     "name": "RS15 SG Hybride",
@@ -166,7 +174,11 @@ const SHOES = [
     "public": "ADULTE",
     "scoreBrand": "ADIDAS",
     "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.4480618475367278530129&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fcrampons-hybrides-de-rugby-adulte-adidas-rs15-sg-hybride-noir-et-blanc%2F357967%2Fc1m8966720",
-    "photo": "https://contents.mediadecathlon.com/p2926954/k$c1ce536ca015bd0b0990005111a00c9f/picture.jpg"
+    "photo": "https://contents.mediadecathlon.com/p2926954/k$c1ce536ca015bd0b0990005111a00c9f/picture.jpg",
+    "intersport": {
+      "link": "is:P5129AD58CB1F19S1UE41364301468497V4",
+      "price": 64.99
+    }
   },
   {
     "name": "RS15 Elite SG Hybride",
@@ -187,7 +199,11 @@ const SHOES = [
     "public": "ADULTE",
     "scoreBrand": "ADIDAS",
     "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.448067234179248475457243&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fcrampons-hybrides-de-rugby-adulte-rs15-elite-sg-hybride-rose-jaune%2F358061%2Fc24c22m9030010",
-    "photo": "https://contents.mediadecathlon.com/p3184378/k$f46d1f2f3439e602e7f7b7e96dff172a/picture.jpg"
+    "photo": "https://contents.mediadecathlon.com/p3184378/k$f46d1f2f3439e602e7f7b7e96dff172a/picture.jpg",
+    "intersport": {
+      "link": "is:P5129AD58CB1F19S1UE41364301473841V4",
+      "price": 79.99
+    }
   },
   {
     "name": "Monarcida Neo III",
@@ -413,7 +429,11 @@ const SHOES = [
     "scoreBrand": "ADIDAS",
     "link": "",
     "priceIndicative": true,
-    "amazon": "adidas Kakari Elite SG"
+    "amazon": "adidas Kakari Elite SG",
+    "intersport": {
+      "link": "is:P5129AD58CB1F19S1UE41364301468502V4",
+      "price": 74.99
+    }
   },
   {
     "name": "Kakari RS SG",
@@ -505,7 +525,11 @@ const SHOES = [
     "priceIndicative": true,
     "photo": "https://emea.mizuno.com/dw/image/v2/BDBS_PRD/on/demandware.static/-/Sites-masterCatalog_Mizuno/default/dw08560cbe/AW26/Footwear/SH_R1GA261101_00.png?sw=600",
     "photoCredit": "Mizuno",
-    "amazon": "Mizuno Waitangi II CL"
+    "amazon": "Mizuno Waitangi II CL",
+    "intersport": {
+      "link": "is:P5129AD58CB1F19S1UE41364301718940V4",
+      "price": 129.99
+    }
   },
   {
     "name": "Sidestep Icon 8S",
@@ -529,7 +553,11 @@ const SHOES = [
     "priceIndicative": true,
     "photo": "https://cdn.shopify.com/s/files/1/0068/0227/6407/files/RSCA26Boots_20Sidestep_20Icon_208_20Stud_20Black_20Main_600x400_crop_center.jpg?v=1780658277",
     "photoCredit": "Gilbert",
-    "amazon": "Gilbert Sidestep Icon 8S"
+    "amazon": "Gilbert Sidestep Icon 8S",
+    "intersport": {
+      "link": "is:P5129AD58CB1F19S1UE41364301746910V4",
+      "price": 79.99
+    }
   },
   {
     "name": "Speedster 6S",
@@ -553,7 +581,11 @@ const SHOES = [
     "priceIndicative": true,
     "photo": "https://cdn.shopify.com/s/files/1/0068/0227/6407/files/RSBA26Boots_20Speedster_20Boot_20Aqua_206_20Stud_20Instep_600x400_crop_center.jpg?v=1780658223",
     "photoCredit": "Gilbert",
-    "amazon": "Gilbert Speedster 6S"
+    "amazon": "Gilbert Speedster 6S",
+    "intersport": {
+      "link": "is:P5129AD58CB1F19S1UE41364301695607V4",
+      "price": 99.99
+    }
   },
   {
     "name": "RS15 Avaglide",
@@ -575,7 +607,11 @@ const SHOES = [
     "scoreBrand": "ADIDAS",
     "link": "",
     "priceIndicative": true,
-    "amazon": "adidas RS15 Avaglide"
+    "amazon": "adidas RS15 Avaglide",
+    "intersport": {
+      "link": "is:P5129AD58CB1F19S1UE41364301655643V4",
+      "price": 79.99
+    }
   },
   {
     "name": "Kakari W SG",

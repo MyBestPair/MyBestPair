@@ -37,9 +37,18 @@
     if (u.includes("linksynergy.com") || u.includes("decathlon.fr")) return "Decathlon";
     return "Decathlon";
   }
+  /* Intersport (Kwanko, 18 nov. 2026) : lien écrit « is:CODE » dans les données (règle 5, jamais en clair), reconstruit ici.
+   * Les marchands avec prix sont proposés du moins cher au plus cher ; le classement n'en dépend pas. */
+  const IS_HOST = [..."rf.tropsretni.btc"].reverse().join("");
+  const kwanko = (v) => { const m = /^is:(.+)$/.exec(v || ""); return m ? "https://" + IS_HOST + "/?" + m[1] : v; };
+  const offersOf = (r) => [
+    r.link ? { shop: shopName(r.link), href: r.link, price: r.price } : null,
+    r.intersport && r.intersport.link ? { shop: "Intersport", href: kwanko(r.intersport.link), price: r.intersport.price, from: true } : null
+  ].filter(Boolean).sort((a, b) => a.price - b.price);
   // Amazon Partenaires (nov. 2026) : lien de recherche sur le nom exact du modèle, sans prix (règle d'Amazon).
   const amazonUrl = (r) => (r.amazon ? "https://www.amazon.fr/s?" + new URLSearchParams({ k: r.amazon, tag: "mybestpair-21" }) : "");
   const AMZ_SECOND = 'style="display:block;text-align:center;margin-top:10px;font-weight:800;font-size:.9rem"';
+  const SECOND = 'style="display:block;text-align:center;margin:12px 0 0;padding:4px 0;font-weight:800;font-size:.9rem;background:none;box-shadow:none;color:#195cff;min-height:0"';
   const fullName = (r) => (r.name.toUpperCase().startsWith(r.brand.toUpperCase() + " ") ? r.name : r.brand + " " + r.name);
   const shortName = (r) => (r.name.toUpperCase().startsWith(r.brand.toUpperCase() + " ") ? r.name.slice(r.brand.length).trim() : r.name);
   const note = (r, c) => r.scores[CRITERIA.indexOf(c)];
@@ -79,11 +88,15 @@
       const min = Math.min(...r.scores);
       const weak = min < 8 ? LABELS[CRITERIA[r.scores.indexOf(min)]] : "";
       const rankClass = i < 3 ? "rank" + (i + 1) : "other";
-      const shop = shopName(r.link);
       const fiche = "modeles/" + slug(fullName(r)) + "/";
       const amz = amazonUrl(r);
-      const offer = r.link
-        ? `<a class="product-link t3-cta" href="${esc(r.link)}" target="_blank" rel="noopener noreferrer sponsored" data-product-brand="${esc(r.brand)}" data-merchant="${esc(shop)}">Voir chez ${esc(shop)} ${ARROW}</a>`
+      const shops = offersOf(r);
+      const shop = shops.length ? shops[0].shop : "";
+      const ga = (o) => (o.shop === "Intersport" ? "INTERSPORT" : o.shop);
+      const offer = shops.length
+        ? `<a class="product-link t3-cta" href="${esc(shops[0].href)}" target="_blank" rel="noopener noreferrer sponsored" data-product-brand="${esc(r.brand)}" data-merchant="${esc(ga(shops[0]))}">Voir chez ${esc(shop)} ${ARROW}</a>` +
+          shops.slice(1).map((o) => `<a class="product-link" ${SECOND} href="${esc(o.href)}" target="_blank" rel="noopener noreferrer sponsored" data-product-brand="${esc(r.brand)}" data-merchant="${esc(ga(o))}">Aussi chez ${esc(o.shop)} · ${o.from ? "dès " : ""}${price(o.price)} ${ARROW}</a>`).join("") +
+          (amz ? `<a class="product-link" ${SECOND} href="${esc(amz)}" target="_blank" rel="noopener noreferrer sponsored" data-product-brand="${esc(r.brand)}" data-merchant="AMAZON">Voir aussi sur Amazon ${ARROW}</a>` : "")
         : amz
           ? `<a class="product-link t3-cta" href="${esc(amz)}" target="_blank" rel="noopener noreferrer sponsored" data-product-brand="${esc(r.brand)}" data-merchant="AMAZON">Voir sur Amazon ${ARROW}</a>`
           : `<span class="product-link disabled t3-cta">Lien bientôt disponible</span>`;
@@ -112,7 +125,7 @@
           <div class="t3-offer shoe-card t3-trk ${rankClass}">
             <span class="shoe-name" hidden>${esc(r.name)}</span>
             <div class="t3-offer-top">
-              <div><div class="t3-offer-label">OÙ L'ACHETER</div><div class="t3-offer-meta">${r.link ? esc(shop) + " · coloris et pointures sur le site" : amz ? "Prix public indicatif · prix du jour sur Amazon" : "Prix public indicatif · lien marchand bientôt disponible"}</div></div>
+              <div><div class="t3-offer-label">OÙ L'ACHETER</div><div class="t3-offer-meta">${shops.length ? esc(shop) + (shops[0].from ? " · dès " + price(shops[0].price) : "") + " · coloris et pointures sur le site" : amz ? "Prix public indicatif · prix du jour sur Amazon" : "Prix public indicatif · lien marchand bientôt disponible"}</div></div>
               <div class="t3-price">${r.priceIndicative ? "≈ " : ""}${price(r.price)}</div>
             </div>
             ${offer}

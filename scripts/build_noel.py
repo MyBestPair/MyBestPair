@@ -17,7 +17,7 @@ import build_model_pages as bm
 
 PAGE = bm.ROOT / "noel/index.html"
 URL = "https://mybestpair.fr/noel/"
-UPDATED = ("2026-11-02", "2 novembre 2026")  # date de la dernière mise à jour du contenu ou des prix
+UPDATED = ("2026-11-18", "18 novembre 2026")  # date de la dernière mise à jour du contenu ou des prix
 TITLE = "Idées cadeaux de Noël 2026 : chaussures de sport par sport et par budget"
 DESCRIPTION = ("Offrir des chaussures de running, trail, basket, padel, rugby ou foot à Noël : notre sélection par budget, "
                "les prix chez les marchands et comment ne pas se tromper de pointure.")

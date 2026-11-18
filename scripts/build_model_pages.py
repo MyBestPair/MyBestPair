@@ -257,6 +257,12 @@ def buy_offers(shoe, sport, offers, name, with_amazon=True):
         women = shoe.get("women")
         if isinstance(women, dict) and women.get("link"):
             rows.append((label + " (version femme)", ga, euros(women.get("price", shoe["price"])), women["link"], affiliate))
+    # Intersport (Kwanko, 18 nov. 2026) : prix du jour le plus bas relevé par scripts/update_intersport_offers.py,
+    # lien écrit « is:CODE » (règle 5). Les lignes sont triées du moins cher au plus cher, Amazon toujours à la fin.
+    inter = shoe.get("intersport")
+    if isinstance(inter, dict) and inter.get("link"):
+        rows.append(("Intersport", "INTERSPORT", "dès " + euros(inter["price"]), inter["link"], True))
+        rows.sort(key=lambda row: float(row[2].replace("dès ", "").replace(" €", "").replace(",", ".")))
     return rows + amazon
 
 
@@ -269,7 +275,7 @@ def offer_link(row, shoe, sport, name, css, text="Voir le prix"):
     """Merchant button: Kwanko links as data-k (rule 5), data-* read by fiche-offres.js for GA4."""
     label_, ga, price, link, affiliate = row
     brand = shoe.get("brand") or name.split()[0]
-    kw = re.match(r"^(ir|es|ek):", link)
+    kw = re.match(r"^(ir|es|ek|is):", link)
     target = f'href="#" data-k="{h(link)}"' if kw else f'href="{h(link)}"'
     rel = "noopener noreferrer sponsored" if affiliate or kw else "noopener noreferrer"
     return f'<a class="shoe-link {css}" {target} target="_blank" rel="{rel}" data-product-name="{h(name)}" data-product-brand="{h(brand)}" data-merchant="{h(ga)}" data-sport="{GA_SPORT[sport]}">{text}</a>'
