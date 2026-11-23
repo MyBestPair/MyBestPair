@@ -253,10 +253,12 @@ def buy_offers(shoe, sport, offers, name, with_amazon=True):
     if link and not shoe.get("merchant"):
         label, ga = next(((lab, ga) for dom, ga, lab in DOMAIN_NAMES if dom in link), ("le marchand", ""))
         affiliate = "linksynergy.com" in link or "awin1.com" in link
-        rows.append((label, ga, euros(shoe["price"]), link, affiliate))
+        # Promo Decathlon (23 nov. 2026, scripts/update_decathlon_offers.py) : prix du jour affiché à la place du prix
+        # habituel ; `price` (prix habituel, utilisé par le classement) ne change pas.
+        rows.append((label, ga, euros(shoe.get("promo") or shoe["price"]), link, affiliate))
         women = shoe.get("women")
         if isinstance(women, dict) and women.get("link"):
-            rows.append((label + " (version femme)", ga, euros(women.get("price", shoe["price"])), women["link"], affiliate))
+            rows.append((label + " (version femme)", ga, euros(women.get("promo") or women.get("price", shoe["price"])), women["link"], affiliate))
     # Intersport (Kwanko, 18 nov. 2026) : prix du jour le plus bas relevé par scripts/update_intersport_offers.py,
     # lien écrit « is:CODE » (règle 5). Les lignes sont triées du moins cher au plus cher, Amazon toujours à la fin.
     inter = shoe.get("intersport")

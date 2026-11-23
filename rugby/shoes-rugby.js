@@ -61,7 +61,8 @@ const SHOES = [
     "public": "ADULTE",
     "scoreBrand": "OFFLOAD",
     "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.448063929930118908167885&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fcrampons-rugby-hybrides-adulte-advance-r500-sg-noir%2F338943%2Fc382m8737282",
-    "photo": "https://contents.mediadecathlon.com/p2504171/k$03bfff9155de64701964f20ed6140b16/picture.jpg"
+    "photo": "https://contents.mediadecathlon.com/p2504171/k$03bfff9155de64701964f20ed6140b16/picture.jpg",
+    "promo": 39.99
   },
   {
     "name": "Advance R500 FG",
@@ -82,7 +83,8 @@ const SHOES = [
     "public": "ADULTE",
     "scoreBrand": "OFFLOAD",
     "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.448067540292089809545231&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fcrampons-rugby-adulte-advance-r500-fg-noir%2F347138%2Fc382c183c414m8803788",
-    "photo": "https://contents.mediadecathlon.com/p2574401/k$4e46bceb32b880554ae2ef2af870f6b6/picture.jpg"
+    "photo": "https://contents.mediadecathlon.com/p2574401/k$4e46bceb32b880554ae2ef2af870f6b6/picture.jpg",
+    "promo": 21.99
   },
   {
     "name": "Score R500 FG",
@@ -103,7 +105,8 @@ const SHOES = [
     "public": "ADULTE",
     "scoreBrand": "OFFLOAD",
     "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.4480614052487974463292069&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fcrampons-rugby-moulees-adulte-score-r500-fg-bleu-noir%2F341129%2Fc59c382m8757916",
-    "photo": "https://contents.mediadecathlon.com/p2635293/k$8e2490b338fd8176d5b1cf1a8f9ea1ba/picture.jpg"
+    "photo": "https://contents.mediadecathlon.com/p2635293/k$8e2490b338fd8176d5b1cf1a8f9ea1ba/picture.jpg",
+    "promo": 24.99
   },
   {
     "name": "Kakari SG",
@@ -153,7 +156,8 @@ const SHOES = [
     "intersport": {
       "link": "is:P5129AD58CB1F19S1UE41364301651901V4",
       "price": 84.99
-    }
+    },
+    "promo": 69.99
   },
   {
     "name": "RS15 SG Hybride",
@@ -178,7 +182,8 @@ const SHOES = [
     "intersport": {
       "link": "is:P5129AD58CB1F19S1UE41364301468497V4",
       "price": 64.99
-    }
+    },
+    "promo": 54.99
   },
   {
     "name": "RS15 Elite SG Hybride",
@@ -203,7 +208,8 @@ const SHOES = [
     "intersport": {
       "link": "is:P5129AD58CB1F19S1UE41364301473841V4",
       "price": 79.99
-    }
+    },
+    "promo": 89.99
   },
   {
     "name": "Monarcida Neo III",
@@ -224,7 +230,8 @@ const SHOES = [
     "public": "ADULTE",
     "scoreBrand": "MIZUNO",
     "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.448065742436976717311313&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fcrampons-de-rugby-adulte-monarcida-neo-iii-noir-et-rouge%2F373707%2Fc1c14m9030250",
-    "photo": "https://contents.mediadecathlon.com/p3175340/k$21272c44824c71284d9e6fdc37b6a246/picture.jpg"
+    "photo": "https://contents.mediadecathlon.com/p3175340/k$21272c44824c71284d9e6fdc37b6a246/picture.jpg",
+    "promo": 64.99
   },
   {
     "name": "R500 Enfant FG",
@@ -245,7 +252,8 @@ const SHOES = [
     "public": "ENFANT",
     "scoreBrand": "OFFLOAD",
     "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.448061905530887214886739&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-rugby-moulees-terrain-sec-r500-enfant-rouge%2F308466%2Fc221c66c239m8774039",
-    "photo": "https://contents.mediadecathlon.com/p2383999/k$e1bfa7b99bd80d5c872e4b58e9504107/picture.jpg"
+    "photo": "https://contents.mediadecathlon.com/p2383999/k$e1bfa7b99bd80d5c872e4b58e9504107/picture.jpg",
+    "promo": 19.99
   },
   {
     "name": "Skill R500 Junior SG",
@@ -266,7 +274,8 @@ const SHOES = [
     "public": "ENFANT",
     "scoreBrand": "OFFLOAD",
     "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.44806819089812362995427&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fcrampons-de-rugby-visses-enfant-skill-r500-junior-sg-noir-motif%2F312699%2Fc381c76c230m8736004",
-    "photo": "https://contents.mediadecathlon.com/p2384007/k$66b5c8c0bd41aa444cf86136a651d504/picture.jpg"
+    "photo": "https://contents.mediadecathlon.com/p2384007/k$66b5c8c0bd41aa444cf86136a651d504/picture.jpg",
+    "promo": 21.99
   },
   {
     "name": "Monarcida Neo III Select JR",
@@ -287,7 +296,8 @@ const SHOES = [
     "public": "ENFANT",
     "scoreBrand": "MIZUNO",
     "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.4480611867596825236753881&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-rugby-enfant-monarcida-neo-3-select-jr-fg-noir-et-rouge%2F386653%2Fm9030253",
-    "photo": "https://contents.mediadecathlon.com/p3177961/k$32a0c105eea370397ad57eea8b003bb5/picture.jpg"
+    "photo": "https://contents.mediadecathlon.com/p3177961/k$32a0c105eea370397ad57eea8b003bb5/picture.jpg",
+    "promo": 44.99
   },
   {
     "name": "Stampede Pro SG",

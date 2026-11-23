@@ -42,7 +42,7 @@
   const IS_HOST = [..."rf.tropsretni.btc"].reverse().join("");
   const kwanko = (v) => { const m = /^is:(.+)$/.exec(v || ""); return m ? "https://" + IS_HOST + "/?" + m[1] : v; };
   const offersOf = (r) => [
-    r.link ? { shop: shopName(r.link), href: r.link, price: r.price } : null,
+    r.link ? { shop: shopName(r.link), href: r.link, price: r.promo || r.price, promo: !!r.promo } : null,
     r.intersport && r.intersport.link ? { shop: "Intersport", href: kwanko(r.intersport.link), price: r.intersport.price, from: true } : null
   ].filter(Boolean).sort((a, b) => a.price - b.price);
   // Amazon Partenaires (nov. 2026) : lien de recherche sur le nom exact du modèle, sans prix (règle d'Amazon).
@@ -125,7 +125,7 @@
           <div class="t3-offer shoe-card t3-trk ${rankClass}">
             <span class="shoe-name" hidden>${esc(r.name)}</span>
             <div class="t3-offer-top">
-              <div><div class="t3-offer-label">OÙ L'ACHETER</div><div class="t3-offer-meta">${shops.length ? esc(shop) + (shops[0].from ? " · dès " + price(shops[0].price) : "") + " · coloris et pointures sur le site" : amz ? "Prix public indicatif · prix du jour sur Amazon" : "Prix public indicatif · lien marchand bientôt disponible"}</div></div>
+              <div><div class="t3-offer-label">OÙ L'ACHETER</div><div class="t3-offer-meta">${shops.length ? esc(shop) + (shops[0].from ? " · dès " + price(shops[0].price) : shops[0].promo ? " · promo " + price(shops[0].price) : "") + " · coloris et pointures sur le site" : amz ? "Prix public indicatif · prix du jour sur Amazon" : "Prix public indicatif · lien marchand bientôt disponible"}</div></div>
               <div class="t3-price">${r.priceIndicative ? "≈ " : ""}${price(r.price)}</div>
             </div>
             ${offer}
