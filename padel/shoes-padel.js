@@ -126,7 +126,8 @@ const SHOES = [
     "gender": "FEMME",
     "scoreBrand": "KUIKMA",
     "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.448061717091583171456539&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-padel-femme-ps-comfort-bleu-clair%2F355874%2Fc155c158m8891469",
-    "photo": "https://contents.mediadecathlon.com/p2700147/k$4b70817a5770b223c8da8469b494c26f/picture.jpg"
+    "photo": "https://contents.mediadecathlon.com/p2700147/k$4b70817a5770b223c8da8469b494c26f/picture.jpg",
+    "promo": 34.99
   },
   {
     "name": "PS 500",
@@ -147,7 +148,8 @@ const SHOES = [
     "gender": "HOMME",
     "scoreBrand": "KUIKMA",
     "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.448063115558676368338148&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-padel-homme-ps-500-noir-jaune%2F310385%2Fc382c132m8805268",
-    "photo": "https://contents.mediadecathlon.com/p2448110/k$438a3973598cce6306fbeb3d1b1bd1aa/picture.jpg"
+    "photo": "https://contents.mediadecathlon.com/p2448110/k$438a3973598cce6306fbeb3d1b1bd1aa/picture.jpg",
+    "promo": 34.99
   },
   {
     "name": "Comfort Lite",
@@ -193,7 +195,8 @@ const SHOES = [
     "intersport": {
       "link": "is:P5129AD58CB1F19S1UE41364301669495V4",
       "price": 74.99
-    }
+    },
+    "promo": 64.99
   },
   {
     "name": "Game FF",
@@ -449,7 +452,8 @@ const SHOES = [
     "gender": "HOMME",
     "scoreBrand": "BULLPADEL",
     "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.4480612588568593961950133&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-padel-homme-bullpadel-vertex-vibram-26%2F381408%2Fm9001997",
-    "photo": "https://contents.mediadecathlon.com/p3031113/k$a914f156f953b9a9853ee8979338d838/picture.jpg"
+    "photo": "https://contents.mediadecathlon.com/p3031113/k$a914f156f953b9a9853ee8979338d838/picture.jpg",
+    "promo": 94.99
   },
   {
     "name": "Crazyquick LS Padel",
@@ -554,7 +558,8 @@ const SHOES = [
     "gender": "HOMME",
     "scoreBrand": "WILSON",
     "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.448068987620541671657488&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-padel-homme-wilson-bela-tour-blanc-rouge%2F365525%2Fm8942655",
-    "photo": "https://contents.mediadecathlon.com/p2816184/k$9ed03eeb257a44d9896e44229957ae32/picture.jpg"
+    "photo": "https://contents.mediadecathlon.com/p2816184/k$9ed03eeb257a44d9896e44229957ae32/picture.jpg",
+    "promo": 109.99
   },
   {
     "name": "Slam Pro",
@@ -710,7 +715,8 @@ const SHOES = [
     "gender": "HOMME",
     "scoreBrand": "HEAD",
     "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.4480617830542872473190793&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-padel-homme-head-motion-one-ltd%2F381287%2Fm9001594",
-    "photo": "https://contents.mediadecathlon.com/p3139826/k$32205bbbae08a910755a62569c14b912/picture.jpg"
+    "photo": "https://contents.mediadecathlon.com/p3139826/k$32205bbbae08a910755a62569c14b912/picture.jpg",
+    "promo": 59.99
   },
   {
     "name": "Sprint Pro 4.0",

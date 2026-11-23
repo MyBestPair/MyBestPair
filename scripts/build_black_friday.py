@@ -17,7 +17,7 @@ import build_model_pages as bm
 
 PAGE = bm.ROOT / "black-friday/index.html"
 MAX_SHOPS = 2  # marchands affichés par modèle (les moins chers) ; les autres sont sur la fiche
-RELEVE = "23 novembre 2026 (i-Run, Ekosport, Endurance Store), le 18 novembre pour Intersport et le 27 octobre pour les autres"  # date des exports marchands utilisés : à changer à chaque mise à jour des prix
+RELEVE = "23 novembre 2026 (i-Run, Ekosport, Endurance Store, Decathlon), le 18 novembre pour Intersport et le 27 octobre pour les autres"  # date des exports marchands utilisés : à changer à chaque mise à jour des prix
 
 QUIZ = {"route": "../running/route/#questionnaire", "trail": "../running/trail/#questionnaire", "basket": "../basket/#profile-section",
         "padel": "../padel/#profile-section", "rugby": "../rugby/#profile-section", "foot": "../foot/#profile-section"}

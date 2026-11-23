@@ -634,7 +634,8 @@ const SHOES = [
     "public": "FEMME",
     "scoreBrand": "KIPSTA",
     "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.4480613906612958979910336&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussure-de-football-femme-viralto-iii-mg-grise%2F312678%2Fc143m8595964",
-    "photo": "https://contents.mediadecathlon.com/p2066678/k$dd65fc962a74e13aeb003b1e90f8cb33/picture.jpg"
+    "photo": "https://contents.mediadecathlon.com/p2066678/k$dd65fc962a74e13aeb003b1e90f8cb33/picture.jpg",
+    "promo": 34.99
   },
   {
     "name": "Predator 26 League FG Jr",
@@ -734,7 +735,8 @@ const SHOES = [
     "public": "ENFANT",
     "scoreBrand": "KIPSTA",
     "link": "https://click.linksynergy.com/link?id=wi07X/YO2lw&offerid=2079203.448067252491431447382300&type=15&murl=https%3A%2F%2Fwww.decathlon.fr%2Fp%2Fchaussures-de-football-enfant-a-scratch-viralto-i-easy-fg-snake%2F343046%2Fc155m8917497",
-    "photo": "https://contents.mediadecathlon.com/p2814782/k$d5297de361280f5c5286f5d8ee3ab068/picture.jpg"
+    "photo": "https://contents.mediadecathlon.com/p2814782/k$d5297de361280f5c5286f5d8ee3ab068/picture.jpg",
+    "promo": 24.99
   },
   {
     "name": "Mercurial Vapor 17 Elite FG",

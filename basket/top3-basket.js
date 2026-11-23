@@ -93,7 +93,7 @@
       const fiche = "modeles/" + slug(fullName(r)) + "/";
       const amz = amazonUrl(r);
       const shops = [
-        r.link ? { shop: shopName(r.link), href: r.link, price: r.price, aff: /linksynergy\.com|awin1\.com/.test(r.link) } : null,
+        r.link ? { shop: shopName(r.link), href: r.link, price: r.promo || r.price, promo: !!r.promo, aff: /linksynergy\.com|awin1\.com/.test(r.link) } : null,
         r.intersport && r.intersport.link ? { shop: "Intersport", href: kwanko(r.intersport.link), price: r.intersport.price, from: true, aff: true } : null
       ].filter(Boolean).sort((a, b) => a.price - b.price);
       const shop = shops.length ? shops[0].shop : shopName(r.link);
@@ -130,7 +130,7 @@
           <div class="t3-offer shoe-card t3-trk ${rankClass}">
             <span class="shoe-name" hidden>${esc(r.name)}</span>
             <div class="t3-offer-top">
-              <div><div class="t3-offer-label">OÙ L'ACHETER</div><div class="t3-offer-meta">${shops.length && shops[0].from ? esc(shop) + " · dès " + price(shops[0].price) + " · coloris et pointures sur le site" : r.link || !amz ? esc(shop) + " · coloris et pointures sur le site" : "Prix indicatif · prix du jour sur Amazon"}</div></div>
+              <div><div class="t3-offer-label">OÙ L'ACHETER</div><div class="t3-offer-meta">${shops.length && (shops[0].from || shops[0].promo) ? esc(shop) + (shops[0].from ? " · dès " : " · promo ") + price(shops[0].price) + " · coloris et pointures sur le site" : r.link || !amz ? esc(shop) + " · coloris et pointures sur le site" : "Prix indicatif · prix du jour sur Amazon"}</div></div>
               <div class="t3-price">${price(r.price)}</div>
             </div>
             ${offer}

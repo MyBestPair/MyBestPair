@@ -270,7 +270,8 @@ const SHOES = [
     "intersport": {
       "link": "is:P5129AD58CB1F19S1UE41364301758583V4",
       "price": 119.99
-    }
+    },
+    "promo": 84.99
   },
   {
     "name": "Anthony Edwards 2",
@@ -297,7 +298,8 @@ const SHOES = [
     "intersport": {
       "link": "is:P5129AD58CB1F19S1UE41364301458019V4",
       "price": 79.99
-    }
+    },
+    "promo": 94.99
   },
   {
     "name": "Dame X",
@@ -324,7 +326,8 @@ const SHOES = [
     "intersport": {
       "link": "is:P5129AD58CB1F19S1UE41364301318606V4",
       "price": 54.99
-    }
+    },
+    "promo": 49.99
   },
   {
     "name": "Curry 13",
@@ -390,7 +393,8 @@ const SHOES = [
     "intersport": {
       "link": "is:P5129AD58CB1F19S1UE41364301478625V4",
       "price": 84.99
-    }
+    },
+    "promo": 84.99
   },
   {
     "name": "TWO WXY V5",
@@ -550,7 +554,8 @@ const SHOES = [
     "decathlonPrice": 114.99,
     "decathlonRegularPrice": 114.99,
     "decathlonSku": "386580",
-    "decathlonImage": "https://contents.mediadecathlon.com/p3181630/k$adbc94c20646a6a351ea06a9db775a07/picture.jpg"
+    "decathlonImage": "https://contents.mediadecathlon.com/p3181630/k$adbc94c20646a6a351ea06a9db775a07/picture.jpg",
+    "promo": 89.99
   },
   {
     "name": "All-Pro Nitro 3",
